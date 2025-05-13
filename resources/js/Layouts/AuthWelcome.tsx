@@ -1,0 +1,216 @@
+import ApplicationLogo from '@/Components/ApplicationLogo';
+import Dropdown from '@/Components/Dropdown';
+import NavLink from '@/Components/NavLink';
+import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
+import { Link, usePage } from '@inertiajs/react';
+import { PropsWithChildren, ReactNode, useEffect, useState } from 'react';
+import LangWraper from './LangWraper';
+import { User } from '@/types';
+import { useTranslation } from 'react-i18next';
+import ChangeLang from '@/Components/ChangeLang/ChangeLang';
+import { AiOutlineGlobal } from 'react-icons/ai';
+
+export default function AuthWelcome({
+    header,
+    children,
+}: PropsWithChildren<{ header?: ReactNode }>) {
+    const { currentRoute }: string | any = usePage().props;
+    console.log(currentRoute);
+    const [showingNavigationDropdown, setShowingNavigationDropdown] =
+        useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    const { t, i18n } = useTranslation();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 0);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    return (
+        <LangWraper>
+            <div className="min-h-screen " dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}>
+                <nav
+                    className={` fixed top-0 left-0 w-full z-50 transition-colors duration-300 `}
+                >
+                    <div
+                    className={`w-full h-16 fixed ${
+                        isScrolled ? 'bg-black opacity-50' : 'bg-transparent'
+                    }`}
+                    ></div>
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="flex h-16 justify-between">
+                            <div className="flex relative">
+                                <div className="flex shrink-0 items-center">
+                                    <Link href="/">
+                                        <ApplicationLogo className="block h-9 w-auto fill-current text-white" />
+                                    </Link>
+                                </div>
+                            </div>
+
+                            <div className="hidden sm:ms-6 sm:flex sm:items-center relative">
+                                <div className="hidden gap-8 sm:-my-px sm:ms-10 sm:flex">
+                                    <NavLink
+                                        href={route('home', { lang: i18n.language })}
+                                        active={route().current('home')}
+                                    >
+                                        {t('home.home')}
+                                    </NavLink>
+                                    <NavLink
+                                        href={route('about-us', { lang: i18n.language })}
+                                        active={route().current('about-us')}
+                                    >
+                                        {t('home.about')}
+                                    </NavLink>
+                                    <NavLink
+                                        href={route('contact-us', { lang: i18n.language })}
+                                        active={route().current('contact-us')}
+                                    >
+                                        {t('home.contact')}
+                                    </NavLink>
+                                    <NavLink
+                                        href={route('products', { lang: i18n.language })}
+                                        active={route().current('products')}
+                                    >
+                                        {t('home.products')}
+                                    </NavLink>
+                                    <NavLink
+                                        href={route('contact-form', { lang: i18n.language })}
+                                        active={route().current('contact-form')}
+                                    >
+                                        {t('home.contactform')}
+                                    </NavLink>
+                                </div>
+                                <div className="relative ms-3">
+                                    <Dropdown>
+                                        <Dropdown.Trigger>
+                                            <span className="inline-flex rounded-md">
+                                                <button
+                                                    type="button"
+                                                    className="inline-flex items-center rounded-md border border-transparent text-white px-3 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none"
+                                                >
+                                                    <AiOutlineGlobal size={24} />
+                                                </button>
+                                            </span>
+                                        </Dropdown.Trigger>
+                                        <ChangeLang />
+                                    </Dropdown>
+                                </div>
+                            </div>
+
+                            <div className="-me-2 flex items-center sm:hidden relative">
+                                <Dropdown>
+                                    <Dropdown.Trigger>
+                                        <span className="inline-flex rounded-md">
+                                            <button
+                                                type="button"
+                                                className="inline-flex items-center rounded-md border border-transparent text-white px-3 py-2 text-sm font-medium leading-4  transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none"
+                                            >
+                                                <AiOutlineGlobal size={24} />
+                                            </button>
+                                        </span>
+                                    </Dropdown.Trigger>
+                                    <ChangeLang />
+                                </Dropdown>
+                                <button
+                                    onClick={() =>
+                                        setShowingNavigationDropdown(
+                                            (previousState) => !previousState,
+                                        )
+                                    }
+                                    className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition duration-150 ease-in-out hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none"
+                                >
+                                    <svg
+                                        className="h-6 w-6"
+                                        stroke="currentColor"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            className={
+                                                !showingNavigationDropdown
+                                                    ? 'inline-flex'
+                                                    : 'hidden'
+                                            }
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            d="M4 6h16M4 12h16M4 18h16"
+                                        />
+                                        <path
+                                            className={
+                                                showingNavigationDropdown
+                                                    ? 'inline-flex'
+                                                    : 'hidden'
+                                            }
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            d="M6 18L18 6M6 6l12 12"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        className={
+                            (showingNavigationDropdown ? 'block' : 'hidden') +
+                            ' sm:hidden'
+                        }
+                    >
+                        <div className="space-y-1 pb-3 pt-2">
+                            <ResponsiveNavLink
+                                href={route('home', { lang: i18n.language })}
+                                active={route().current('home')}
+                            >
+                                {t('home.home')}
+                            </ResponsiveNavLink>
+                            <ResponsiveNavLink
+                                href={route('about-us', { lang: i18n.language })}
+                                active={route().current('about-us')}
+                            >
+                                {t('home.about')}
+                            </ResponsiveNavLink>
+                            <ResponsiveNavLink
+                                href={route('contact-us', { lang: i18n.language })}
+                                active={route().current('contact-us')}
+                            >
+                                {t('home.contact')}
+                            </ResponsiveNavLink>
+                            <ResponsiveNavLink
+                                href={route('products', { lang: i18n.language })}
+                                active={route().current('products')}
+                            >
+                                {t('home.products')}
+                            </ResponsiveNavLink>
+                            <ResponsiveNavLink
+                                href={route('contact-form', { lang: i18n.language })}
+                                active={route().current('contact-form')}
+                            >
+                                {t('home.contactform')}
+                            </ResponsiveNavLink>
+                        </div>
+                    </div>
+                </nav>
+
+                {header && (
+                    <header className="bg-white shadow mt-16">
+                        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                            {header}
+                        </div>
+                    </header>
+                )}
+
+                <main className="relative">{children}</main>
+            </div>
+        </LangWraper>
+    );
+}

@@ -1,0 +1,48 @@
+{
+    "home":{
+        "home" : "الصفحة الرئيسية",
+        "about" : "من نحن",
+        "contact" : "اتصل بنا",
+        "services" : "الخدمات",
+        "products" : "المنتجات",
+        "contactform" : "نموذج الاتصال",
+        "portfolio" : "المعرض",
+        "testimonials" : "الشهادات",
+        "faq" : "الأسئلة الشائعة",
+        "privacy_policy" : "سياسة الخصوصية",
+        "terms_of_service" : "شروط الخدمة"
+    },
+    "welcome": "مرحبا بك في تطبيقنا",
+    "login": {
+        "title": "تسجيل الدخول",
+        "email": "البريد الإلكتروني",
+        "password": "كلمة المرور",
+        "remember_me": "تذكرني",
+        "forgot_password": "نسيت كلمة المرور؟",
+        "login_button": "تسجيل الدخول"
+    },
+    "register": {
+        "title": "إنشاء حساب جديد",
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "password": "كلمة المرور",
+        "confirm_password": "تأكيد كلمة المرور",
+        "register_button": "إنشاء حساب"
+    },
+    "dashboard": {
+        "welcome_message": "مرحبًا بك في لوحة التحكم",
+        "logout": "تسجيل الخروج",
+        "settings": "الإعدادات",
+        "profile": "الملف الشخصي"
+    },
+    "errors": {
+        "not_found": "لم يتم العثور على الصفحة",
+        "unauthorized": "غير مصرح لك بالوصول إلى هذه الصفحة",
+        "server_error": "خطأ في الخادم، يرجى المحاولة لاحقًا"
+    },
+    "success": {
+        "profile_updated": "تم تحديث الملف الشخصي بنجاح",
+        "password_changed": "تم تغيير كلمة المرور بنجاح",
+        "logged_out": "تم تسجيل الخروج بنجاح"
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "home" :{
+        "home" : "Home",
+        "about" : "About",
+        "contact" : "Contact Us",
+        "services" : "Services",
+        "products" : "Products",
+        "contactform" : "Contact Form",
+        "portfolio" : "Portfolio",
+        "testimonials" : "Testimonials",
+        "faq" : "FAQ",
+        "privacy_policy" : "Privacy Policy",
+        "terms_of_service" : "Terms of Service"
+    },
+    "welcome" : "Welcome to our application",
+    "login" : {
+        "title" : "Login",
+        "email" : "Email",
+        "password" : "Password",
+        "remember_me" : "Remember Me",
+        "forgot_password" : "Forgot Password?",
+        "login_button" : "Login"
+    },
+    "register" : {
+        "title" : "Create a New Account",
+        "name" : "Name",
+        "email" : "Email",
+        "password" : "Password",
+        "confirm_password" : "Confirm Password",
+        "register_button" : "Register"
+    },
+    "dashboard" : {
+        "welcome_message" : "Welcome to the Dashboard",
+        "logout" : "Logout",
+        "settings" : "Settings",
+        "profile" : "Profile"
+    },
+    "errors" : {
+        "not_found" : "Page Not Found",
+        "unauthorized" : "Unauthorized Access to this Page",
+        "server_error" : "Server Error, Please Try Again Later"
+    },
+    "success" : {
+        "profile_updated" : "Profile Updated Successfully",
+        "password_changed" : "Password Changed Successfully",
+        "logged_out" : "Logged Out Successfully"
+    }
+}
