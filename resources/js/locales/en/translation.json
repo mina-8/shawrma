@@ -1,48 +1,105 @@
 {
-    "home" :{
-        "home" : "Home",
-        "about" : "About",
-        "contact" : "Contact Us",
-        "services" : "Services",
-        "products" : "Products",
-        "contactform" : "Contact Form",
-        "portfolio" : "Portfolio",
-        "testimonials" : "Testimonials",
-        "faq" : "FAQ",
-        "privacy_policy" : "Privacy Policy",
-        "terms_of_service" : "Terms of Service"
+    "home": {
+        "home": "Home",
+        "about": "About",
+        "contact": "Contact Us",
+        "services": "Services",
+        "products": "Products",
+        "contactform": "Contact Form",
+        "portfolio": "Portfolio",
+        "testimonials": "Testimonials",
+        "faq": "FAQ",
+        "privacy_policy": "Privacy Policy",
+        "terms_of_service": "Terms of Service"
     },
-    "welcome" : "Welcome to our application",
-    "login" : {
-        "title" : "Login",
-        "email" : "Email",
-        "password" : "Password",
-        "remember_me" : "Remember Me",
-        "forgot_password" : "Forgot Password?",
-        "login_button" : "Login"
+    "slides": {
+        "title_1": "Welcome to Our Site",
+        "title_2": "We Offer the Best Services",
+        "title_3": "Contact Us Today",
+        "description_1": "We are here to help you achieve your goals",
+        "description_2": "We offer a variety of services to meet your needs",
+        "description_3": "Contact us for a free consultation",
+        "button_1": "Learn More",
+        "button_2": "Get a Quote",
+        "button_3": "Contact Us"
     },
-    "register" : {
-        "title" : "Create a New Account",
-        "name" : "Name",
-        "email" : "Email",
-        "password" : "Password",
-        "confirm_password" : "Confirm Password",
-        "register_button" : "Register"
+    "ournews": {
+        "title": "Latest News",
+        "readmore": "Read More"
     },
-    "dashboard" : {
-        "welcome_message" : "Welcome to the Dashboard",
-        "logout" : "Logout",
-        "settings" : "Settings",
-        "profile" : "Profile"
+    "aboutus": {
+        "title": "Our Core Values",
+        "readmore": "Read More"
     },
-    "errors" : {
-        "not_found" : "Page Not Found",
-        "unauthorized" : "Unauthorized Access to this Page",
-        "server_error" : "Server Error, Please Try Again Later"
+    "possibilty": {
+        "title": "Facts and Figures",
+        "number_1": "100",
+        "number_2": "200",
+        "number_3": "300",
+        "number_4": "400",
+        "number_5": "500",
+        "number_6": "600",
+        "name_1": "Satisfied Clients",
+        "name_2": "Completed Projects",
+        "name_3": "Hours Worked",
+        "name_4": "Team Members",
+        "name_5": "Awards",
+        "name_6": "Certificates"
     },
-    "success" : {
-        "profile_updated" : "Profile Updated Successfully",
-        "password_changed" : "Password Changed Successfully",
-        "logged_out" : "Logged Out Successfully"
+    "login": {
+        "title": "Login",
+        "email": "Email",
+        "password": "Password",
+        "remember_me": "Remember Me",
+        "forgot_password": "Forgot Password?",
+        "login_button": "Login"
+    },
+    "register": {
+        "title": "Create a New Account",
+        "name": "Name",
+        "email": "Email",
+        "password": "Password",
+        "confirm_password": "Confirm Password",
+        "register_button": "Register"
+    },
+    "dashboard": {
+        "welcome_message": "Welcome to the Dashboard",
+        "logout": "Logout",
+        "settings": "Settings",
+        "profile": "Profile"
+    },
+    "errors": {
+        "not_found": "Page Not Found",
+        "unauthorized": "Unauthorized Access to this Page",
+        "server_error": "Server Error, Please Try Again Later"
+    },
+    "success": {
+        "profile_updated": "Profile Updated Successfully",
+        "password_changed": "Password Changed Successfully",
+        "logged_out": "Logged Out Successfully"
+    },
+    "footer": {
+        "description": "The largest local manufacturer of global products and solutions in the Middle East and North Africa region.",
+        "about_us": "About Us",
+        "ourstory": "Our Story",
+        "ourservices": "Our Services",
+        "ourproducts": "Our Products",
+        "ourclients": "Our Clients",
+        "ourteam": "Our Team",
+        "ourvision": "Our Vision",
+        "ourmission": "Our Mission",
+        "ourvalues": "Our Values",
+        
+        "services": "Services",
+        "products": "Products",
+        "contact_us": "Contact Us",
+        "privacy_policy": "Privacy Policy",
+        "terms_of_service": "Terms of Service",
+        "follow_us": "Follow Us",
+        "copyright": "All rights reserved",
+        "policy": "Privacy Policy",
+        "contactus": "You can contact us 24 hours a day",
+        "mobdwon": "This website was developed with creativity and passion by the Al-Mubdi'un Digital Marketing team. Click here to contact us",
+        "mobdwon_link": "(Al-Mubdi'un Digital Marketing Company)"
     }
 }

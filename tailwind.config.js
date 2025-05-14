@@ -17,6 +17,7 @@ export default {
             },
             animation: {
                 'fadeup': 'fadeup 1s 0s both',
+                'scaleup': 'scaleUp  0.8s ease-in-out infinite alternate',
             },
             keyframes: {
                 fadeup: {
@@ -28,6 +29,10 @@ export default {
                         opacity: '1',
                         transform: 'translateZ(0)',
                     },
+                },
+                scaleUp: {
+                    '0%': { transform: 'scale(1)' },
+                    '100%': { transform: 'scale(1.25)' },
                 },
             },
         },

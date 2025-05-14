@@ -9,8 +9,8 @@ import AuthLayout from './Layouts/AuthLayout';
 const appName = import.meta.env.VITE_APP_NAME || 'BSCO';
 
 createInertiaApp({
-    // title: (title) => `${title} - ${appName}`,
-    title: (title) => `${appName}`,
+    title: (title) => `${appName} - ${title}`,
+
     resolve: (name) => resolvePageComponent(
             `./Pages/${name}.tsx`,
             import.meta.glob('./Pages/**/*.tsx'),

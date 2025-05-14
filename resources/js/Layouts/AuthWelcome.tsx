@@ -9,6 +9,10 @@ import { User } from '@/types';
 import { useTranslation } from 'react-i18next';
 import ChangeLang from '@/Components/ChangeLang/ChangeLang';
 import { AiOutlineGlobal } from 'react-icons/ai';
+import { FaArrowUp } from 'react-icons/fa';
+import { IoSearch } from 'react-icons/io5';
+import SearchForm from '@/Components/SearchWeb/SearchForm';
+import Footer from './Footer';
 
 export default function AuthWelcome({
     header,
@@ -19,12 +23,13 @@ export default function AuthWelcome({
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [showSearch, setShowSearch] = useState(false);
 
     const { t, i18n } = useTranslation();
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 0);
+            setIsScrolled(window.scrollY > 500);
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -88,6 +93,15 @@ export default function AuthWelcome({
                                     </NavLink>
                                 </div>
                                 <div className="relative ms-3">
+                                    <button
+                                        type="button"
+                                        className="inline-flex items-center rounded-full bg-sky-500 hover:bg-sky-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
+                                        onClick={() => setShowSearch(true)}
+                                    >
+                                        <IoSearch size={24} />
+                                    </button>
+                                </div>
+                                <div className="relative ms-3">
                                     <Dropdown>
                                         <Dropdown.Trigger>
                                             <span className="inline-flex rounded-md">
@@ -105,6 +119,20 @@ export default function AuthWelcome({
                             </div>
 
                             <div className="-me-2 flex items-center sm:hidden relative">
+                                <Dropdown>
+                                    <Dropdown.Trigger>
+                                        <span className="inline-flex rounded-md">
+                                            <button
+                                        type="button"
+                                        className="inline-flex items-center rounded-full bg-sky-500 hover:bg-sky-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
+                                        onClick={() => setShowSearch(true)}
+                                    >
+                                        <IoSearch size={24} />
+                                    </button>
+                                        </span>
+                                    </Dropdown.Trigger>
+
+                                </Dropdown>
                                 <Dropdown>
                                     <Dropdown.Trigger>
                                         <span className="inline-flex rounded-md">
@@ -200,7 +228,7 @@ export default function AuthWelcome({
                         </div>
                     </div>
                 </nav>
-
+                {showSearch && <SearchForm onClose={() => setShowSearch(false)} />}
                 {header && (
                     <header className="bg-white shadow mt-16">
                         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -210,6 +238,17 @@ export default function AuthWelcome({
                 )}
 
                 <main className="relative">{children}</main>
+                {isScrolled && (
+                    <div className='fixed bottom-4 right-4 z-50'>
+                        <div
+                            className='bg-sky-500 text-white p-4 rounded-full shadow-lg cursor-pointer hover:bg-gray-700 transition duration-300 animate-bounce'
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        >
+                            <FaArrowUp />
+                        </div>
+                    </div>
+                )}
+                <Footer />
             </div>
         </LangWraper>
     );
