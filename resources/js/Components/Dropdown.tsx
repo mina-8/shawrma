@@ -19,7 +19,7 @@ const DropDownContext = createContext<{
     toggleOpen: () => {},
 });
 
-const Dropdown = ({ children }: PropsWithChildren) => {
+const Dropdown = ({ children , className = '' }: PropsWithChildren<{className?: string}>) => {
     const [open, setOpen] = useState(false);
 
     const toggleOpen = () => {
@@ -28,17 +28,17 @@ const Dropdown = ({ children }: PropsWithChildren) => {
 
     return (
         <DropDownContext.Provider value={{ open, setOpen, toggleOpen }}>
-            <div className="relative">{children}</div>
+            <div className={`relative ${className}`} >{children}</div>
         </DropDownContext.Provider>
     );
 };
 
-const Trigger = ({ children }: PropsWithChildren) => {
+const Trigger = ({ children , className ='' }: PropsWithChildren<{className?:string}>) => {
     const { open, setOpen, toggleOpen } = useContext(DropDownContext);
 
     return (
         <>
-            <div onClick={toggleOpen}>{children}</div>
+            <div onClick={toggleOpen} className={className}>{children}</div>
 
             {open && (
                 <div
@@ -52,13 +52,15 @@ const Trigger = ({ children }: PropsWithChildren) => {
 
 const Content = ({
     align = 'right',
-    width = '48',
+    // width = '48',
     contentClasses = 'py-1 bg-white',
+    className = '',
     children,
 }: PropsWithChildren<{
     align?: 'left' | 'right';
-    width?: '48';
+    // width?: '48';
     contentClasses?: string;
+    className? :string;
 }>) => {
     const { open, setOpen } = useContext(DropDownContext);
 
@@ -70,11 +72,11 @@ const Content = ({
         alignmentClasses = 'ltr:origin-top-right rtl:origin-top-left end-0';
     }
 
-    let widthClasses = '';
+    // let widthClasses = '';
 
-    if (width === '48') {
-        widthClasses = 'w-48';
-    }
+    // if (width === '48') {
+    //     widthClasses = 'w-48';
+    // }
 
     return (
         <>
@@ -88,12 +90,12 @@ const Content = ({
                 leaveTo="opacity-0 scale-95"
             >
                 <div
-                    className={`absolute z-50 mt-2 rounded-md shadow-lg ${alignmentClasses} ${widthClasses}`}
+                    className={`absolute z-50 mt-2 rounded-md shadow-lg ${alignmentClasses}  ${className}`}
                     onClick={() => setOpen(false)}
                 >
                     <div
                         className={
-                            `rounded-md ring-1 ring-black ring-opacity-5 ` +
+                            ` ring-1 ring-black ring-opacity-5 ` +
                             contentClasses
                         }
                     >

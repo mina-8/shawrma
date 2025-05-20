@@ -13,6 +13,7 @@ import { FaArrowUp } from 'react-icons/fa';
 import { IoSearch } from 'react-icons/io5';
 import SearchForm from '@/Components/SearchWeb/SearchForm';
 import Footer from './Footer';
+import ProductNav from '@/Components/ProductsNav/ProductNav';
 
 export default function AuthWelcome({
     header,
@@ -23,6 +24,7 @@ export default function AuthWelcome({
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isnavbar, setIsnavbar] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
 
     const { t, i18n } = useTranslation();
@@ -32,9 +34,15 @@ export default function AuthWelcome({
             setIsScrolled(window.scrollY > 500);
         };
 
+        const handlnav = () => {
+            setIsnavbar(window.scrollY > 100);
+        }
+
         window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handlnav);
         return () => {
             window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', handlnav);
         };
     }, []);
 
@@ -45,25 +53,24 @@ export default function AuthWelcome({
                     className={` fixed top-0 left-0 w-full z-50 transition-colors duration-300 `}
                 >
                     <div
-                    className={`w-full h-16 fixed ${
-                        isScrolled ? 'bg-black opacity-50' : 'bg-transparent'
-                    }`}
+                        className={`w-full h-16 fixed ${isnavbar ? 'bg-black opacity-50' : 'bg-transparent'
+                            }`}
                     ></div>
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="flex h-16 justify-between">
                             <div className="flex relative">
                                 <div className="flex shrink-0 items-center">
-                                    <Link href="/">
+                                    <Link href={route('welcome', { lang: i18n.language })}>
                                         <ApplicationLogo className="block h-9 w-auto fill-current text-white" />
                                     </Link>
                                 </div>
                             </div>
 
                             <div className="hidden sm:ms-6 sm:flex sm:items-center relative">
-                                <div className="hidden gap-8 sm:-my-px sm:ms-10 sm:flex">
+                                <div className="hidden gap-1 sm:-my-px sm:ms-10 sm:flex">
                                     <NavLink
-                                        href={route('home', { lang: i18n.language })}
-                                        active={route().current('home')}
+                                        href={route('welcome', { lang: i18n.language })}
+                                        active={route().current('welcome')}
                                     >
                                         {t('home.home')}
                                     </NavLink>
@@ -79,12 +86,16 @@ export default function AuthWelcome({
                                     >
                                         {t('home.contact')}
                                     </NavLink>
-                                    <NavLink
-                                        href={route('products', { lang: i18n.language })}
-                                        active={route().current('products')}
-                                    >
-                                        {t('home.products')}
-                                    </NavLink>
+
+                                    <Dropdown className='hover:bg-white hover:text-sky-500 px-4 py-6 cursor-pointer text-white'>
+                                        <Dropdown.Trigger>
+                                            {t('home.products')}
+                                        </Dropdown.Trigger>
+                                        <Dropdown.Content className='mt-6 ' >
+                                           <ProductNav/>
+                                        </Dropdown.Content>
+                                    </Dropdown>
+
                                     <NavLink
                                         href={route('contact-form', { lang: i18n.language })}
                                         active={route().current('contact-form')}
@@ -107,7 +118,7 @@ export default function AuthWelcome({
                                             <span className="inline-flex rounded-md">
                                                 <button
                                                     type="button"
-                                                    className="inline-flex items-center rounded-md border border-transparent text-white px-3 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none"
+                                                    className="inline-flex items-center rounded-md border border-transparent text-white px-3 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none"
                                                 >
                                                     <AiOutlineGlobal size={24} />
                                                 </button>
@@ -123,12 +134,12 @@ export default function AuthWelcome({
                                     <Dropdown.Trigger>
                                         <span className="inline-flex rounded-md">
                                             <button
-                                        type="button"
-                                        className="inline-flex items-center rounded-full bg-sky-500 hover:bg-sky-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
-                                        onClick={() => setShowSearch(true)}
-                                    >
-                                        <IoSearch size={24} />
-                                    </button>
+                                                type="button"
+                                                className="inline-flex items-center rounded-full bg-sky-500 hover:bg-sky-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
+                                                onClick={() => setShowSearch(true)}
+                                            >
+                                                <IoSearch size={24} />
+                                            </button>
                                         </span>
                                     </Dropdown.Trigger>
 
@@ -196,8 +207,8 @@ export default function AuthWelcome({
                     >
                         <div className="space-y-1 pb-3 pt-2">
                             <ResponsiveNavLink
-                                href={route('home', { lang: i18n.language })}
-                                active={route().current('home')}
+                                href={route('welcome', { lang: i18n.language })}
+                                active={route().current('welcome')}
                             >
                                 {t('home.home')}
                             </ResponsiveNavLink>

@@ -10,12 +10,12 @@ export default function ApplicationLogo(props: SVGAttributes<SVGElement>) {
 
             <text
                 x="50%"
-                y="50%"
+                y="60%"
                 textAnchor="middle"
                 dominantBaseline="middle"
-                fontSize="40"
+                fontSize="70"
                 fill="#EEE"
-                fontFamily="Arial, sans-serif"
+                fontFamily="'Times New Roman', serif"
                 fontWeight="bold"
             >
                 BSCO

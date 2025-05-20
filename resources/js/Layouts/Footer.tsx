@@ -16,11 +16,11 @@ const Footer = () => {
             <div
             className="mx-auto w-full max-w-7xl px-4 py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
             >
-                <div className="flex flex-col items-center md:items-start gap-4 border-b pb-2 lg:pb-0 lg:border-l lg:border-b-0 border-sky-500">
+                <div className={`flex flex-col items-center md:items-start gap-4 border-b pb-2  lg:pb-0 ${i18n.language === 'ar' ? 'lg:border-l' : 'lg:border-r'}  lg:border-b-0 border-sky-500`}>
                     <Link href="/">
                         <ApplicationLogo className="block h-12 w-auto fill-current text-white" />
                     </Link>
-                    <p className="text-white text-lg  ">{t('footer.description')}</p>
+                    <p className={`text-white text-lg ${i18n.language === 'ar' ? 'pl-2' : 'pr-2'}`}>{t('footer.description')}</p>
                     <div className='flex gap-4'>
                         <a
                         href='#'

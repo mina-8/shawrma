@@ -10,20 +10,9 @@ import AboutUs from './Welcome/AboutUs/AboutUs';
 import Possibilty from './Welcome/Possibilty/Possibilty';
 
 export default function Welcome({
-    auth,
-    laravelVersion,
-    phpVersion,
-}: PageProps<{ laravelVersion: string; phpVersion: string }>) {
-    const handleImageError = () => {
-        document
-            .getElementById('screenshot-container')
-            ?.classList.add('!hidden');
-        document.getElementById('docs-card')?.classList.add('!row-span-1');
-        document
-            .getElementById('docs-card-content')
-            ?.classList.add('!flex-row');
-        document.getElementById('background')?.classList.add('!hidden');
-    };
+  blogs = []
+}: PageProps<{ blogs?: []}>) {
+
     const { t, i18n } = useTranslation();
     const { applang } = usePage().props;
     console.log(applang, i18n.language);
@@ -32,7 +21,7 @@ export default function Welcome({
             <Head title="Home" />
             <Sliders slides={[]} />
         <div className=" flex min-h-screen flex-col items-center justify-start">
-            <OurNews news={[]}/>
+            <OurNews news={blogs}/>
 
             <AboutUs about={[]}/>
 

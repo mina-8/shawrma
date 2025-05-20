@@ -31,6 +31,24 @@
         "title": "Our Core Values",
         "readmore": "Read More"
     },
+    "blogcards": {
+        "readmore": "Read More",
+        "otherblogs": "Explore More"
+    },
+    "products": {
+        "custom-design": "Design Your Own",
+        "page-design": "Page Design",
+        "uses": "Uses",
+        "advantages": "Advantages",
+        "instruction-uses": "Instructions for use",
+        "downloadpdf": "Download Pdf",
+        "pdf-file": "Technical Data Sheet",
+        "explore-more": "Explore more products"
+    },
+    "mainproduct": {
+        "featured-products": "Featured Products",
+        "all-products": "Other Products"
+    },
     "possibilty": {
         "title": "Facts and Figures",
         "number_1": "100",
@@ -89,7 +107,6 @@
         "ourvision": "Our Vision",
         "ourmission": "Our Mission",
         "ourvalues": "Our Values",
-        
         "services": "Services",
         "products": "Products",
         "contact_us": "Contact Us",

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\MainProduct;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -30,13 +31,38 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $appLang = app()->getLocale();
         return [
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
             ],
-            'applang' =>  app()->getLocale(),
+            'applang' =>  $appLang,
             'currentRoute' => Route::currentRouteName(),
+            'mainproducts' => fn()=> MainProduct::with('products:id,title,slug,mainproduct_id')
+            ->select('id', 'title', 'slug')
+            ->get()
+            ->map(function ($mainproduct) use ($appLang) {
+                $mainTitle = $mainproduct->getTranslation('title', $appLang);
+                $mainSlug =  $mainproduct->getTranslation('slug', $appLang);
+                $products = $mainproduct->products->map(function ($product) use ($appLang) {
+                    $productTitle = $product->getTranslation('title', $appLang);
+                    $productSlug = $product->getTranslation('slug', $appLang);
+                    return [
+
+                            'id' => $product->id,
+                            'title' => $productTitle,
+                            'slug' => $productSlug
+
+                    ];
+                });
+                return [
+                    'id' => $mainproduct->id,
+                    'title' => $mainTitle,
+                    'slug' => $mainSlug,
+                    'products' => $products
+                ];
+            })
         ];
     }
 }

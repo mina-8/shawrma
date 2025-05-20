@@ -31,6 +31,24 @@
         "title" : "ركائزنا الأساسية",
         "readmore" : "اقرأ المزيد"
     },
+    "blogcards" :{
+        "readmore" : "اقرأ المزيد",
+        "otherblogs" : "استكشف المزيد"
+    },
+    "products":{
+        "custom-design" : "صمم بنفسك",
+        "page-design" : "صفحة التصميمات",
+        "uses" : "الاستخدامات",
+        "advantages" : "المزايا",
+        "instruction-uses" : "تعليمات الاستخدام",
+        "downloadpdf" : "تحميل",
+        "pdf-file" : "ورقة البيانات الفنية",
+        "explore-more" : "استكشف المزيد من المنتجات"
+    },
+    "mainproduct":{
+        "featured-products" : "المنتجات المميزة",
+        "all-products" : "منتجات اخري"
+    },
     "possibilty" :{
         "title" : "حقائق و ارقام",
         "number_1" : "7000",

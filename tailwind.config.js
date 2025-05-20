@@ -13,7 +13,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['"Times New Roman"', 'serif', ...defaultTheme.fontFamily.sans],
             },
             animation: {
                 'fadeup': 'fadeup 1s 0s both',

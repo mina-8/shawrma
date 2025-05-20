@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Home;
+use App\Models\MainProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Inertia\Inertia;
 
 class HomeController extends Controller
 {
@@ -12,8 +16,34 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return 'mina home';
+        $appLang = app()->getLocale(); // 'en' or 'ar'
+
+        $blogs = Blog::latest()
+            ->take(4)
+            ->get()
+            ->map(function ($blog) use ($appLang) {
+                $title = $blog->getTranslation('title', $appLang);
+                $content = $blog->getTranslation('content', $appLang);
+                $slug = $blog->getTranslation('slug', $appLang);
+                $image = Storage::url($blog->image);
+
+                return [
+                    'id' => $blog->id,
+                    'title' => $title,
+                    'content' => $content,
+                    'image' => $image,
+                    'slug' => $slug
+                ];
+            });
+
+
+        return Inertia::render('Welcome', [
+            'blogs' => $blogs,
+            
+        ]);
     }
+
+
 
     /**
      * Show the form for creating a new resource.

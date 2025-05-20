@@ -10,9 +10,11 @@ import { FormEventHandler } from 'react';
 export default function Login({
     status,
     canResetPassword,
+
 }: {
     status?: string;
     canResetPassword: boolean;
+    
 }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
@@ -22,6 +24,7 @@ export default function Login({
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
+        // Determine which route to use based on login type
 
         post(route('login'), {
             onFinish: () => reset('password'),
