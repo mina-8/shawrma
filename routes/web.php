@@ -4,9 +4,13 @@ use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactformController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OurCulterController;
+use App\Http\Controllers\OurPromiseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CotactUsController;
 use App\Http\Controllers\MainProductController;
+use App\Http\Controllers\OurImpactController;
+use App\Http\Controllers\OurStoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -32,12 +36,24 @@ Route::group(
 
         Route::get('about-us', [AboutUsController::class, 'index'])->name('about-us');
 
+        // our story
+        Route::get('our-story' , [OurStoryController::class , 'index'])->name('our-story');
+        // our proimse
+        Route::get('our-promise' , [OurPromiseController::class , 'index'])->name('our-promise');
+        // our culter
+        Route::get('our-culter' , [OurCulterController::class , 'index'])->name('our-culture');
+
+        // impact
+        Route::get('leading-impact/{slug}' , [OurImpactController::class , 'show'])->name('leading-impact.show');
+
         Route::get('contact-us', [CotactUsController::class, 'index'])->name('contact-us');
 
         Route::get('mainproduct/{slug}' , [MainProductController::class , 'show'])->name('mainproduct.show');
-        
+
         Route::get('Products', [ProductController::class, 'index'])->name('products');
         Route::get('product/{slug}' , [ProductController::class , 'show'])->name('product.show');
+        Route::get('product-search' , [ProductController::class , 'search'])->name('product-search');
+        Route::get('product-video' , [ProductController::class , 'video'])->name('product-video');
 
         Route::get('contact-form', [ContactformController::class, 'index'])->name('contact-form');
 

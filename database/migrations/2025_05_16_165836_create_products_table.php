@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('pdf');
             $table->json('uses');
             $table->json('advantages');
+            $table->string('color');
             $table->boolean('special')->default(false);
             $table->json('slug');
             $table->timestamps();

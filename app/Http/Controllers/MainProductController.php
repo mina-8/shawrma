@@ -11,7 +11,7 @@ class MainProductController extends Controller
 {
     public function show(string $lang, string $slug)
     {
-        $mainProduct = MainProduct::with('products:id,title,slug,image,mainproduct_id')
+        $mainProduct = MainProduct::with('products:id,title,slug,image,special,mainproduct_id')
             ->where("slug->$lang", $slug)
             ->first();
 

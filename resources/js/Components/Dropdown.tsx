@@ -7,62 +7,68 @@ import {
     SetStateAction,
     useContext,
     useState,
+    useRef,
+    useEffect,
 } from 'react';
 
 const DropDownContext = createContext<{
     open: boolean;
     setOpen: Dispatch<SetStateAction<boolean>>;
-    toggleOpen: () => void;
 }>({
     open: false,
     setOpen: () => {},
-    toggleOpen: () => {},
 });
 
-const Dropdown = ({ children , className = '' }: PropsWithChildren<{className?: string}>) => {
+const Dropdown = ({ children, className = '' }: PropsWithChildren<{ className?: string }>) => {
     const [open, setOpen] = useState(false);
+    const closeTimeout = useRef<NodeJS.Timeout | null>(null);
 
-    const toggleOpen = () => {
-        setOpen((previousState) => !previousState);
+    // Helpers to open and close with delay on mouse leave
+    const openMenu = () => {
+        if (closeTimeout.current) {
+            clearTimeout(closeTimeout.current);
+            closeTimeout.current = null;
+        }
+        setOpen(true);
+    };
+
+    const closeMenu = () => {
+        closeTimeout.current = setTimeout(() => {
+            setOpen(false);
+        }, 150); // delay 150ms before closing to allow smooth hover between menu and submenu
     };
 
     return (
-        <DropDownContext.Provider value={{ open, setOpen, toggleOpen }}>
-            <div className={`relative ${className}`} >{children}</div>
+        <DropDownContext.Provider value={{ open, setOpen }}>
+            {/*
+                Wrap with div to track mouse enter/leave for hover behavior
+                We'll pass openMenu/closeMenu handlers as props for Trigger and Content
+             */}
+            <div className={`relative ${className}`} onMouseLeave={closeMenu} onMouseEnter={openMenu}>
+                {children}
+            </div>
         </DropDownContext.Provider>
     );
 };
 
-const Trigger = ({ children , className ='' }: PropsWithChildren<{className?:string}>) => {
-    const { open, setOpen, toggleOpen } = useContext(DropDownContext);
-
-    return (
-        <>
-            <div onClick={toggleOpen} className={className}>{children}</div>
-
-            {open && (
-                <div
-                    className="fixed inset-0 z-40"
-                    onClick={() => setOpen(false)}
-                ></div>
-            )}
-        </>
-    );
+const Trigger = ({ children, className = '' }: PropsWithChildren<{ className?: string }>) => {
+    // Trigger does not handle open state directly now (it's on parent hover)
+    return <div className={className}>{children}</div>;
 };
 
 const Content = ({
-    align = 'right',
-    // width = '48',
+    align = 'left',
+    width = '48',
     contentClasses = 'py-1 bg-white',
     className = '',
     children,
 }: PropsWithChildren<{
     align?: 'left' | 'right';
-    // width?: '48';
+    width?: '48';
     contentClasses?: string;
-    className? :string;
+    className?: string;
 }>) => {
-    const { open, setOpen } = useContext(DropDownContext);
+    const { open } = useContext(DropDownContext);
 
     let alignmentClasses = 'origin-top';
 
@@ -72,38 +78,30 @@ const Content = ({
         alignmentClasses = 'ltr:origin-top-right rtl:origin-top-left end-0';
     }
 
-    // let widthClasses = '';
+    let widthClasses = '';
 
-    // if (width === '48') {
-    //     widthClasses = 'w-48';
-    // }
+    if (width === '48') {
+        widthClasses = `w-48`;
+    }
 
     return (
-        <>
-            <Transition
-                show={open}
-                enter="transition ease-out duration-200"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="transition ease-in duration-75"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
+        <Transition
+            show={open}
+            enter="transition ease-out duration-200"
+            enterFrom="opacity-0 scale-95"
+            enterTo="opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-95"
+        >
+            <div
+                className={`absolute z-50 mt-2 rounded-md shadow-lg ${alignmentClasses} ${className}`}
             >
-                <div
-                    className={`absolute z-50 mt-2 rounded-md shadow-lg ${alignmentClasses}  ${className}`}
-                    onClick={() => setOpen(false)}
-                >
-                    <div
-                        className={
-                            ` ring-1 ring-black ring-opacity-5 ` +
-                            contentClasses
-                        }
-                    >
-                        {children}
-                    </div>
+                <div className={`ring-1 ring-black ring-opacity-5 ${contentClasses}`}>
+                    {children}
                 </div>
-            </Transition>
-        </>
+            </div>
+        </Transition>
     );
 };
 

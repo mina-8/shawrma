@@ -1,0 +1,29 @@
+import React from 'react'
+import { useTranslation } from 'react-i18next'
+import buildingbestar from '@/../../public/aboutus/spaces-we-build-ar.png'
+import buildingbesten from '@/../../public/aboutus/spaces-we-build.png'
+import useInView from '@/Components/useInView '
+const BuildingBest = () => {
+    const {t , i18n} = useTranslation();
+    const { ref, isVisible } = useInView();
+    return (
+        <div className='flex justify-center items-center flex-col w-full py-12 bg-gray-100'>
+            <h2
+            ref={ref}
+                className={`text-3xl border-b-2 border-yellow-original pb-2 mb-4 text-center transition-all duration-700 ease-in-out transform ${isVisible ? 'animate-fadeup opacity-100' : 'opacity-0'}`}
+            >{t('buildingbest.title')}</h2>
+            <div
+            ref={ref}
+            className={`transition-all duration-700 ease-in-out transform ${isVisible ? 'animate-fadeup opacity-100' : 'opacity-0'}`}
+            >
+                {i18n.language === 'ar' ?
+                <img src={buildingbestar} alt={t('buildingbest.title')} />
+                :
+                <img src={buildingbesten} alt={t('buildingbest.title')} />
+                }
+            </div>
+        </div>
+    )
+}
+
+export default BuildingBest

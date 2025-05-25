@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { FaRegFilePdf, FaStar } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
 import img4 from '@/../../public/ournews/live-uni.jpg'
+import ReciveUpdate from '@/Components/ReciveUpdate';
 interface UsageProducts {
     id: number;
     title: string;
@@ -15,6 +16,7 @@ interface Product {
     id: number;
     title: string;
     content: string;
+    description:string;
     uses: string;
     advantages: string;
     image: string;
@@ -23,9 +25,10 @@ interface Product {
 }
 
 interface Props {
-    product: Product
+    product: Product;
+    otherproducts:Product[]
 }
-const Show = ({ product }: Props) => {
+const Show = ({ product  , otherproducts}: Props) => {
     const { t, i18n } = useTranslation();
 
     return (
@@ -33,17 +36,18 @@ const Show = ({ product }: Props) => {
             <Head title={product.title} />
             <div className=" bg-gray-50 flex flex-col">
                 {/* Top Banner */}
-                <div className="w-full h-16 bg-sky-500 bg-cover bg-center" />
+                <div className="w-full h-16 bg-yellow-original bg-cover bg-center" />
 
                 {/* Main Content */}
                 <div className="container mx-auto px-4 py-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                         {/* Text Section */}
                         <div className="flex flex-col justify-center items-center text-center px-4">
-                            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-sky-600">
+                            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-yellow-original">
                                 {product.title}
-                            </h1>
-                            <div className="prose prose-sky max-w-prose text-center">
+                            </h2>
+                            <p className='py-4'>{product.description}</p>
+                            <div className="text-xl leading-8 text-center">
                                 <ReactMarkdown>{product.content}</ReactMarkdown>
                             </div>
                         </div>
@@ -60,7 +64,7 @@ const Show = ({ product }: Props) => {
                 </div>
 
                 {/* Uses and Advantages Section */}
-                <div className="bg-amber-500 text-white py-8">
+                <div className="bg-yellow-original text-white py-8">
                     <div className="container mx-auto px-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="flex flex-col items-center">
@@ -119,7 +123,7 @@ const Show = ({ product }: Props) => {
                         className='flex flex-col justify-center items-center my-8'
                     >
                         <h3
-                            className='text-4xl font-medium border-b-4 pb-4 border-sky-600'
+                            className='text-4xl font-medium border-b-4 pb-4 border-yellow-original'
                         >
                             {t('products.instruction-uses')}
                         </h3>
@@ -138,7 +142,7 @@ const Show = ({ product }: Props) => {
                 )}
 
                 {/* download pdf */}
-                <div className="bg-yellow-500 text-white py-8">
+                <div className="bg-yellow-original text-white py-8">
                     <div className="container mx-auto px-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="flex justify-evenly items-center">
@@ -163,25 +167,25 @@ const Show = ({ product }: Props) => {
                 {/* explore more */}
 
                 <div className="flex flex-col justify-center items-center my-8 px-4">
-                    <h3 className="text-4xl font-medium border-b-4 pb-4 border-amber-500 text-center">
+                    <h3 className="text-4xl font-medium border-b-4 pb-4 border-yellow-original text-center">
                         {t('products.explore-more')}
                     </h3>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-8 w-full max-w-7xl">
-                        {/* Card 1 */}
-                        {[1, 2, 3, 4, 5, 6].map((item: any) => (
+
+                        {otherproducts.length > 0 && otherproducts.map((item) => (
 
                             <div className="flex bg-white shadow-lg p-2 overflow-hidden">
                                 <div className="w-1/2">
                                     <img
-                                        src={product.image}
-                                        alt="Product 1"
+                                        src={item.image}
+                                        alt={item.title}
                                         className="object-cover h-40"
                                     />
                                 </div>
                                 <div className="w-1/2 p-4 flex flex-col">
-                                    <h4 className="text-lg font-semibold mb-2 text-sky-500">عنوان المنتج</h4>
-                                    <p className="text-sm text-gray-600">وصف مختصر للمنتج أو المحتوى.</p>
+                                    <h4 className="text-lg font-semibold mb-2 text-sky-500">{item.title}</h4>
+                                    <p className="text-sm text-gray-600">{item.description}</p>
                                 </div>
                             </div>
                         ))}
@@ -190,6 +194,8 @@ const Show = ({ product }: Props) => {
                 </div>
 
             </div>
+
+            <ReciveUpdate/>
         </>
     );
 };

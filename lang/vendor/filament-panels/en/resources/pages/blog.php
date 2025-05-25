@@ -16,6 +16,8 @@ return [
     'fields' => [
         'title' => 'Title',
         'content' => 'Content',
+        'str_btn' => 'Button Content',
+        'link' => 'Button Link',
         'image' => 'Image',
         'created_at' => 'Created At',
     ],

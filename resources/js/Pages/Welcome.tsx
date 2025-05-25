@@ -4,14 +4,23 @@ import { PageProps } from '@/types';
 import { Head, Link, usePage } from '@inertiajs/react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineGlobal } from 'react-icons/ai';
-import Sliders from './Welcome/Sliders/Sliders';
+
 import OurNews from './Welcome/OurNews/OurNews';
-import AboutUs from './Welcome/AboutUs/AboutUs';
+
 import Possibilty from './Welcome/Possibilty/Possibilty';
+import Sliders from './Welcome/Sliders/Sliders';
+import OurMainPlairs from './Welcome/OurMainPlairs/OurMainPlairs';
+import Sustainability from './Welcome/Sustainability/Sustainability';
+import ReciveUpdate from '@/Components/ReciveUpdate';
+import OurImapct from './Welcome/OurImpact/OurImapct';
+import BuildingBest from './Welcome/BuildingBest/BuildingBest';
 
 export default function Welcome({
-  blogs = []
-}: PageProps<{ blogs?: []}>) {
+  blogs = [],
+  slides = [],
+  factnumbers = [],
+  ourimpacts = []
+}: PageProps<{ blogs?: [] , slides?:[] , factnumbers?:[] , ourimpacts?:[]}>) {
 
     const { t, i18n } = useTranslation();
     const { applang } = usePage().props;
@@ -19,14 +28,22 @@ export default function Welcome({
     return (
         <>
             <Head title="Home" />
-            <Sliders slides={[]} />
+            <Sliders slides={slides} />
         <div className=" flex min-h-screen flex-col items-center justify-start">
             <OurNews news={blogs}/>
 
-            <AboutUs about={[]}/>
+            <OurMainPlairs about={[]}/>
 
-            <Possibilty possibilty={[]}/>
+            <Possibilty possibilty={factnumbers}/>
+
+            <Sustainability/>
+
+            <BuildingBest/>
+
+            <OurImapct ourimpact={ourimpacts} />
+
         </div>
+            <ReciveUpdate/>
         </>
     );
 }

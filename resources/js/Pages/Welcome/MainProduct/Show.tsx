@@ -8,7 +8,7 @@ interface Product {
     title: string
     slug: string
     image: string
-    specail: boolean
+    special: boolean
 }
 
 interface MainProduct {
@@ -23,6 +23,7 @@ interface ShowProps {
 }
 
 const Show: React.FC<ShowProps> = ({ mainproduct }) => {
+    
     const { t, i18n } = useTranslation()
 
     return (
@@ -61,7 +62,7 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
                     {mainproduct.products?.length > 0 && (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-8 w-full max-w-7xl">
                             {mainproduct.products
-                                .filter(product => product.specail)
+                                .filter(product => product.special)
                                 .map(product => (
                                     <Link
                                         key={product.id}
@@ -94,7 +95,7 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
                     {mainproduct.products?.length > 0 && (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-8 w-full max-w-7xl">
                             {mainproduct.products
-                                .filter(product => !product.specail)
+                                .filter(product => !product.special)
                                 .map(product => (
                                     <Link
                                         key={product.id}

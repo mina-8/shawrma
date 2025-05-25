@@ -16,6 +16,7 @@ use Illuminate\Support\Str;
 use Pixelpeter\FilamentLanguageTabs\Forms\Components\LanguageTabs;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
+
 class SlideResource extends Resource
 {
     protected static ?string $model = Slide::class;
@@ -34,6 +35,20 @@ class SlideResource extends Resource
         return 1; // Lower numbers appear first
     }
 
+        public static function getModelLabel(): string
+    {
+        return __('filament-panels::resources/pages/slide.title');
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament-panels::resources/pages/slide.title');
+    }
+    public static function getNavigationLabel(): string
+    {
+        return __('filament-panels::resources/pages/slide.title');
+    }
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -46,8 +61,15 @@ class SlideResource extends Resource
                                 ->required(),
                             Forms\Components\MarkdownEditor::make('content')
                                 ->label(__('filament-panels::resources/pages/blog.fields.content')),
+                            Forms\Components\TextInput::make('str_btn')
+                                ->label(__('filament-panels::resources/pages/blog.fields.str_btn')),
 
                         ]),
+                        Forms\Components\TextInput::make('link')
+                            ->label(__('filament-panels::resources/pages/blog.fields.link'))
+                            ->default('welcome')
+                            ->dehydrated(fn($state) => filled($state)),
+
                         Forms\Components\FileUpload::make('image')
                             ->label(__('filament-panels::resources/pages/blog.fields.image'))
                             ->image()
@@ -73,9 +95,7 @@ class SlideResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->label(__('filament-panels::resources/pages/blog.fields.title'))
                     ->searchable(),
-                Tables\Columns\TextColumn::make('content')
-                    ->label(__('filament-panels::resources/pages/blog.fields.content'))
-                    ->searchable(),
+
                 Tables\Columns\ImageColumn::make('image')
                     ->label(__('filament-panels::resources/pages/blog.fields.image'))
                     ->disk('public')
@@ -91,7 +111,7 @@ class SlideResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                ->label(__('filament-panels::resources/pages/blog.actions.edit.label')),
+                    ->label(__('filament-panels::resources/pages/blog.actions.edit.label')),
 
                 Tables\Actions\DeleteAction::make()
                     ->label(__('filament-panels::resources/pages/blog.actions.delete.label'))

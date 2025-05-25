@@ -10,7 +10,7 @@ const Collapse = ({ title, children }: { title: string, children: React.ReactNod
     return (
         <div className="border shadow-lg overflow-hidden">
             <div
-                className="p-4 flex justify-between items-center cursor-pointer bg-white hover:bg-sky-400 hover:text-white group"
+                className="p-4 flex justify-between items-center cursor-pointer bg-white hover:bg-yellow-original hover:text-white group"
                 onClick={toggleCollapse}
             >
                 <span className='group-hover:text-white text-lg '>{title}</span>

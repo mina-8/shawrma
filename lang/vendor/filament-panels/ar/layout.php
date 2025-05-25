@@ -61,6 +61,7 @@ return [
     ],
 
     'webist'=>[
-        'control webiste' => "التحكم بالموقع"
+        'control webiste' => "التحكم بالموقع",
+        'about_us' => "من نحن"
     ]
 ];

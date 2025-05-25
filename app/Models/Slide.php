@@ -11,12 +11,15 @@ class Slide extends Model
         'title',
         'content',
         'image',
+        'str_btn',
+        'link'
     ];
-    public $translatable = ['title', 'content'];
+    public $translatable = ['title', 'content' , 'str_btn'];
 
     protected $casts = [
         'title' => 'array',
         'content' => 'array',
+        'str_btn' => 'array'
     ];
 
     protected $guarded = ['id'];

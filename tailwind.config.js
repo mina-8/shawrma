@@ -13,7 +13,13 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['"Times New Roman"', 'serif', ...defaultTheme.fontFamily.sans],
+                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                english: ['Poppins', 'Roboto', ...defaultTheme.fontFamily.sans],
+                arabic: ['"Cairo"', '"Readex Pro"', '"Noto Sans"', 'sans-serif'],
+
+            },
+            colors: {
+                'yellow-original': '#ffc50f'
             },
             animation: {
                 'fadeup': 'fadeup 1s 0s both',

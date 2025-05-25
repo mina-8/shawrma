@@ -16,6 +16,7 @@ class Product extends Model
         'pdf',
         'uses',
         'advantages',
+        'color',
         'special',
         'slug'
     ];

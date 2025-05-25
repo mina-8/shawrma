@@ -36,8 +36,9 @@
         "otherblogs": "Explore More"
     },
     "products": {
-        "custom-design": "Design Your Own",
-        "page-design": "Page Design",
+        "ourproducts": "Our Products",
+        "products-search": "Explore All Products",
+        "products-video": "Product App Videos",
         "uses": "Uses",
         "advantages": "Advantages",
         "instruction-uses": "Instructions for use",
@@ -45,9 +46,66 @@
         "pdf-file": "Technical Data Sheet",
         "explore-more": "Explore more products"
     },
+    "product-search":{
+"title" : "Search for Products",
+"product-name" : "Product Name/Search Keywords",
+"mainproduct-name" : "- Select -",
+"search" : "Search"
+},
     "mainproduct": {
         "featured-products": "Featured Products",
         "all-products": "Other Products"
+    },
+    "ourstory": {
+        "title": "Our Story"
+    },
+    "ourpromise": {
+        "title": "Our Commitment",
+        "ourvalues": "Our Values"
+    },
+    "ourculture": {
+        "title": "Our Culture",
+        "stories": "\"BSCO\" Community Stories"
+    },
+    "ourmainplairs": {
+        "ourstory": {
+            "title": "About Us",
+            "content": "A Pioneering Journey in the Industrial World",
+            "description": "Our group began as an ambitious idea to provide high-quality building products and has evolved into one of the largest industrial groups in the Middle East and North Africa. We take pride in our decades-long history, always striving to achieve excellence through innovation and a commitment to the highest quality standards."
+        },
+        "ourservice": {
+            "title": "What We Offer",
+            "content": "Comprehensive Solutions for Construction Needs",
+            "description": "We offer a wide range of services that include the manufacture of high-quality building materials, technical consulting, and customized logistics solutions. We strive to meet the needs of our customers in more than 11 countries, ensuring efficiency and sustainability every step of the way."
+        },
+        "ourculture": {
+            "title": "Our Culture",
+            "content": "Innovation and collaboration are at the core of our work",
+            "description": "Our culture is built on the values ​​of integrity, creativity, and teamwork. We believe in empowering our employees and fostering a positive work environment that supports innovation and contributes to achieving our vision of developing the construction industry in the region."
+        },
+        "ourstyle": {
+            "title": "Our Style",
+            "content": "Quality and Sustainability in Every Detail",
+            "description": "We are distinguished by a work style that combines high craftsmanship with advanced technology. We aim to provide products and services that reflect our commitment to sustainability and excellence, with innovative designs that meet the aspirations of our customers in the Middle East and North Africa."
+        }
+    },
+    "reciveupdate": {
+        "subscribeText": "Receive the latest updates",
+        "placeholder": "Enter your email",
+        "submit": "Send"
+    },
+    "Sustainability": {
+        "title": "Sustainability",
+        "content": "Building for a better tomorrow",
+        "description": "Integrating sustainable practices into all our operations and supply chain to promote innovation and resource efficiency.",
+        "readmore": "Read more"
+    },
+    "ourimpact": {
+        "title": "The Power to Influence",
+        "readmore": "Read More"
+    },
+    "buildingbest": {
+        "title": "Building the best in all respects"
     },
     "possibilty": {
         "title": "Facts and Figures",
@@ -100,6 +158,8 @@
         "description": "The largest local manufacturer of global products and solutions in the Middle East and North Africa region.",
         "about_us": "About Us",
         "ourstory": "Our Story",
+        "ourpromise": "Our covenant",
+        "ourculture": "Our culture",
         "ourservices": "Our Services",
         "ourproducts": "Our Products",
         "ourclients": "Our Clients",

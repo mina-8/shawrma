@@ -47,7 +47,7 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Grid::make(1)
+                // Forms\Components\Grid::make(1)
 
             ]);
     }

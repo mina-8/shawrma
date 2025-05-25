@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Normal dot */
+/* .custom-carousel-dots .slick-dots li button {
+  background-color: white !important;
+  opacity: 0.6;
+} */
+
+/* Active dot */
+.ant-carousel .slick-dots li::after {
+  background-color: #facc15 !important; /* Tailwind's yellow-400 */
+  opacity: 1;
+}
+
+/* Apply perspective to the container */
+.perspective {
+  perspective: 1000px;
+}
+
+/* Enable 3D transform style on the rotating element */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Hide the backface so it doesn’t show when flipped */
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Rotate utility */
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Ensure card flips on group hover */
+.group:hover .rotate-card {
+  transform: rotateY(180deg);
+}
+

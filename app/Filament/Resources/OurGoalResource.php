@@ -32,6 +32,19 @@ class OurGoalResource extends Resource
         return 3;
     }
 
+       public static function getModelLabel(): string
+    {
+        return __('filament-panels::resources/pages/ourgoals.title');
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament-panels::resources/pages/ourgoals.title');
+    }
+    public static function getNavigationLabel(): string
+    {
+        return __('filament-panels::resources/pages/ourgoals.title');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

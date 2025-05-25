@@ -14,13 +14,14 @@ import { IoSearch } from 'react-icons/io5';
 import SearchForm from '@/Components/SearchWeb/SearchForm';
 import Footer from './Footer';
 import ProductNav from '@/Components/ProductsNav/ProductNav';
+import AboutNav from '@/Components/Aboutus/AboutNav';
 
 export default function AuthWelcome({
     header,
     children,
 }: PropsWithChildren<{ header?: ReactNode }>) {
     const { currentRoute }: string | any = usePage().props;
-    console.log(currentRoute);
+
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
@@ -74,12 +75,16 @@ export default function AuthWelcome({
                                     >
                                         {t('home.home')}
                                     </NavLink>
-                                    <NavLink
-                                        href={route('about-us', { lang: i18n.language })}
-                                        active={route().current('about-us')}
-                                    >
-                                        {t('home.about')}
-                                    </NavLink>
+
+                                    <Dropdown className='hover:bg-white hover:text-yellow-original px-4 py-6 cursor-pointer text-white'>
+                                        <Dropdown.Trigger>
+                                           {t('home.about')}
+                                        </Dropdown.Trigger>
+                                        <Dropdown.Content className='mt-6 ' >
+                                           <AboutNav/>
+                                        </Dropdown.Content>
+                                    </Dropdown>
+
                                     <NavLink
                                         href={route('contact-us', { lang: i18n.language })}
                                         active={route().current('contact-us')}
@@ -87,14 +92,20 @@ export default function AuthWelcome({
                                         {t('home.contact')}
                                     </NavLink>
 
-                                    <Dropdown className='hover:bg-white hover:text-sky-500 px-4 py-6 cursor-pointer text-white'>
+                                    <Dropdown className='hover:bg-white hover:text-yellow-original px-4 py-6 cursor-pointer text-white '>
                                         <Dropdown.Trigger>
                                             {t('home.products')}
                                         </Dropdown.Trigger>
-                                        <Dropdown.Content className='mt-6 ' >
-                                           <ProductNav/>
+                                        <Dropdown.Content align='right'
+                                          className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[-25%]' : 'translate-x-[25%]'} `}
+
+                                          >
+                                    <ProductNav/>
                                         </Dropdown.Content>
                                     </Dropdown>
+
+
+
 
                                     <NavLink
                                         href={route('contact-form', { lang: i18n.language })}

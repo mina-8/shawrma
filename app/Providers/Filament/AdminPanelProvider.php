@@ -29,7 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->login() // Use default Filament login route (no argument)
             ->homeUrl('/admin')    // Explicitly set home/redirect after login
             ->colors([
-                'primary' => Color::Blue,
+                'primary' => Color::Amber,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -41,7 +41,7 @@ class AdminPanelProvider extends PanelProvider
             ->plugin(\TomatoPHP\FilamentLanguageSwitcher\FilamentLanguageSwitcherPlugin::make())
             ->spa()
             ->sidebarCollapsibleOnDesktop()
-            
+
             ->widgets([
                 // Widgets\AccountWidget::class,
                 // Widgets\FilamentInfoWidget::class,

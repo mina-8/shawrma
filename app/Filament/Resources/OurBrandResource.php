@@ -27,6 +27,18 @@ class OurBrandResource extends Resource
     {
         return 6;
     }
+     public static function getModelLabel(): string
+    {
+        return __('filament-panels::resources/pages/brand.title');
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament-panels::resources/pages/brand.title');
+    }
+    public static function getNavigationLabel(): string
+    {
+        return __('filament-panels::resources/pages/brand.title');
+    }
 
     public static function form(Form $form): Form
     {

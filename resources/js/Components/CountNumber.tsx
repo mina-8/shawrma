@@ -15,7 +15,7 @@ const CountNumber = ({number}:Numberprops) => {
         return () => controls.stop()
     }, [number , count])
 
-    return <motion.pre className="text-4xl text-sky-500 font-sans font-bold">{rounded}</motion.pre>
+    return <motion.pre className="text-4xl text-yellow-original font-sans font-bold">{rounded}</motion.pre>
 }
 
 export default CountNumber

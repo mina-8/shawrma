@@ -1,6 +1,9 @@
 import { SVGAttributes } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function ApplicationLogo(props: SVGAttributes<SVGElement>) {
+    const {i18n} = useTranslation();
+    const fontFamily = i18n.language === 'ar' ? '"Cairo", "Readex Pro", "Noto Sans", sans-serif' : 'Poppins, Roboto, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'
     return (
         <svg
             {...props}
@@ -15,7 +18,7 @@ export default function ApplicationLogo(props: SVGAttributes<SVGElement>) {
                 dominantBaseline="middle"
                 fontSize="70"
                 fill="#EEE"
-                fontFamily="'Times New Roman', serif"
+                fontFamily={fontFamily}
                 fontWeight="bold"
             >
                 BSCO

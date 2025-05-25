@@ -82,9 +82,7 @@ class BlogResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->label(__('filament-panels::resources/pages/blog.fields.title'))
                     ->searchable(),
-                Tables\Columns\TextColumn::make('content')
-                    ->label(__('filament-panels::resources/pages/blog.fields.content'))
-                    ->searchable(),
+                
                 Tables\Columns\ImageColumn::make('image')
                     ->label(__('filament-panels::resources/pages/blog.fields.image'))
                     ->disk('public')

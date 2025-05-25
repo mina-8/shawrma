@@ -2,45 +2,100 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MainProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+
+    public function search(string $lang , Request $request)
     {
-        //
+        $rules = [
+            'product' => 'nullable|string',     // make nullable because may search only by mainproduct
+            'mainproduct' => 'nullable|integer', // expect mainproduct id (integer)
+        ];
+
+        $validation = Validator::make($request->all(), $rules);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => $validation->errors()
+            ], 400);
+        }
+
+        $productSearch = $request->input('product');
+        $mainproductSearch = $request->input('mainproduct');
+
+        $query = Product::query();
+
+        // Filter by product title if provided
+        if (!empty($productSearch)) {
+
+            $query->where("title->$lang", 'LIKE', '%' . $productSearch . '%');
+        }
+
+        // Filter by mainproduct_id if provided
+        if (!empty($mainproductSearch)) {
+            $query->where('mainproduct_id', $mainproductSearch);
+        }
+
+        $resultproduct = null;
+        $isSearch = !empty($productSearch) || !empty($mainproductSearch);
+
+        if($isSearch){
+            $resultproduct = $query->get()->map(function ($product) use ($lang) {
+                return [
+                    'id' => $product->id,
+                    'title' => $product->getTranslation('title', $lang),
+                    'description' => $product->getTranslation('description', $lang),
+                    'image' => Storage::url($product->image),
+                    'slug' => $product->getTranslation('slug', $lang)
+                ];
+            });
+        }
+
+        $mainproducts = MainProduct::all()->map(function ($mainproduct) use ($lang) {
+            return [
+                'id' => $mainproduct->id,
+                'title' => $mainproduct->getTranslation('title', $lang),
+                'slug' => $mainproduct->getTranslation('slug', $lang),
+            ];
+        });
+
+        $products = Product::all()->map(function ($product) use ($lang) {
+            return [
+                'id' => $product->id,
+                'title' => $product->getTranslation('title', $lang),
+                'description' => $product->getTranslation('description', $lang),
+                'image' => Storage::url($product->image),
+                'slug' => $product->getTranslation('slug', $lang)
+            ];
+        });
+
+        return Inertia::render('Welcome/Product/Search', [
+            'searchmainproducts' => $mainproducts,
+            'searchproducts' => $products,
+            'resultproduct' => $resultproduct
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function video(string $lang) {}
 
     /**
      * Display the specified resource.
      */
     public function show(string $lang, string $slug)
     {
-        
+
         $Product = Product::with(['mainproduct', 'usageproduct'])
-            ->where("slug->$lang" , $slug)->first();
+            ->where("slug->$lang", $slug)->first();
 
 
         if (!$Product) {
@@ -48,9 +103,24 @@ class ProductController extends Controller
         }
 
         $slugs = $Product->getTranslations('slug');
+
+        $otherproducts = Product::whereNot("id", $Product->id)
+        ->where('mainproduct_id' , $Product->mainproduct_id)
+            ->get()
+            ->map(function($products) use($lang){
+                return [
+                    'id' => $products->id,
+                    'title' => $products->getTranslation('title' , $lang),
+                    'description' => $products->getTranslation('description' , $lang),
+                    'image' => Storage::url($products->image),
+                    'slug' => $products->getTranslation('slug' , $lang)
+                ];
+            });
+
         $productData = [
             'id' => $Product->id,
             'title' => $Product->getTranslation('title', $lang),
+            'description' => $Product->getTranslation('description', $lang),
             'content' => $Product->getTranslation('content', $lang),
             'uses' => $Product->getTranslation('uses', $lang),
             'advantages' => $Product->getTranslation('advantages', $lang),
@@ -66,30 +136,6 @@ class ProductController extends Controller
             })
         ];
 
-        return Inertia::render('Welcome/Product/Show', ['product' => $productData , 'slugs'=>$slugs]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Product $product)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Product $product)
-    {
-        //
+        return Inertia::render('Welcome/Product/Show', ['product' => $productData, 'otherproducts'=>$otherproducts , 'slugs' => $slugs]);
     }
 }
