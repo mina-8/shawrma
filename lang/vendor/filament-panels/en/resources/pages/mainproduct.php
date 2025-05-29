@@ -20,6 +20,7 @@ return [
     'fields' => [
         'title' => 'Product Category',
         'content' => 'Description',
+        'icon' => 'Add icons by svg',
         'price' => 'Price',
         'image' => 'Image',
         'created_at' => 'Created At',

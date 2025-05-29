@@ -10,6 +10,8 @@ class MainProduct extends Model
     protected $fillable = [
         'title',
         'content',
+        'color',
+        'icon',
         'image',
         'slug'
     ];

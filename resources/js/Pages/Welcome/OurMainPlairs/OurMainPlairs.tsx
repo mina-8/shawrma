@@ -40,7 +40,7 @@ const OurMainPlairs = ({ about }: Props) => {
             title: t(`ourmainplairs.ourservice.title`),
             content: t('ourmainplairs.ourservice.content'),
             description: t('ourmainplairs.ourservice.description'),
-            href: 'our-story'
+            href: 'mainproduct'
         },
         {
             image: img3,
@@ -54,7 +54,7 @@ const OurMainPlairs = ({ about }: Props) => {
             title: t(`ourmainplairs.ourstyle.title`),
             content: t('ourmainplairs.ourstyle.content'),
             description: t('ourmainplairs.ourstyle.description'),
-            href: 'our-story'
+            href: 'innovation'
         },
     ];
     return (

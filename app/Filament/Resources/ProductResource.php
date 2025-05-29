@@ -60,9 +60,7 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->label(__('filament-panels::resources/pages/product.fields.title'))
                     ->searchable(),
-                // Tables\Columns\TextColumn::make('content')
-                //     ->label(__('filament-panels::resources/pages/product.fields.content'))
-                //     ->searchable(),
+                
                 Tables\Columns\ImageColumn::make('image')
                     ->label(__('filament-panels::resources/pages/product.fields.image'))
                     ->disk('public')

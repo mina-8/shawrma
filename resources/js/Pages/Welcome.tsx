@@ -14,13 +14,15 @@ import Sustainability from './Welcome/Sustainability/Sustainability';
 import ReciveUpdate from '@/Components/ReciveUpdate';
 import OurImapct from './Welcome/OurImpact/OurImapct';
 import BuildingBest from './Welcome/BuildingBest/BuildingBest';
+import OurBrand from './Welcome/OurBrand/OurBrand';
 
 export default function Welcome({
   blogs = [],
   slides = [],
   factnumbers = [],
-  ourimpacts = []
-}: PageProps<{ blogs?: [] , slides?:[] , factnumbers?:[] , ourimpacts?:[]}>) {
+  ourimpacts = [],
+  brands = []
+}: PageProps<{ blogs?: [] , slides?:[] , factnumbers?:[] , ourimpacts?:[] , brands?:[]}>) {
 
     const { t, i18n } = useTranslation();
     const { applang } = usePage().props;
@@ -41,6 +43,8 @@ export default function Welcome({
             <BuildingBest/>
 
             <OurImapct ourimpact={ourimpacts} />
+
+            <OurBrand brands={brands}/>
 
         </div>
             <ReciveUpdate/>

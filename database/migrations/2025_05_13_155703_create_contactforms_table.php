@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('contactforms', function (Blueprint $table) {
             $table->id();
+            $table->string('email');
             $table->timestamps();
         });
     }

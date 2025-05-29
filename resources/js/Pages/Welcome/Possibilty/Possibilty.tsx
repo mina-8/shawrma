@@ -7,6 +7,7 @@ import img5 from '../../../../../public/possibility/poduction-lines.svg';
 import img6 from '../../../../../public/possibility/figures-projects.svg';
 import CountNumber from "@/Components/CountNumber";
 import useInView from "@/Components/useInView ";
+import isInLastRow from "@/Components/IsinLastRow/IsinLastRow";
 interface PossiblitiItems {
     id: number;
     title: string;
@@ -17,10 +18,14 @@ interface PossiblitiItems {
 interface Props {
     possibilty: PossiblitiItems[];
 }
+
+
+
 const Possibilty = ({ possibilty }: Props) => {
 const { ref, isVisible } = useInView();
     const { t, i18n } = useTranslation();
     const staticPossibilty = [img1, img2, img3, img4, img5, img6];
+
     return (
         <div
 
@@ -36,7 +41,7 @@ const { ref, isVisible } = useInView();
                     {possibilty.length > 0 ? (
                         possibilty.map((item, index) => (
                             <div key={index}
-                                    className={`flex items-center p-8  border-gray-400  group relative before:absolute before:content-[''] before:top-1/2 before:-translate-y-1/2  before:right-0 before:w-[1px] before:h-1/2 before:bg-gray-400 after:absolute after:content-[''] after:w-1/2 after:h-[1px] after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-gray-400`}
+                                    className={`flex items-center p-8  border-gray-400  group relative before:absolute before:content-[''] before:top-1/2 before:-translate-y-1/2  before:right-0 before:w-[1px] before:h-1/2 before:bg-gray-400 ${isInLastRow(index , possibilty.length , 3) ? '' : 'after:w-1/2'} after:absolute after:content-['']   after:h-[1px] after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-gray-400`}
                                 >
 
                                     <img src={item.image} alt={item.title} className='h-14 object-cover  group-hover:animate-scaleup transition-transform duration-300' />
@@ -65,7 +70,7 @@ const { ref, isVisible } = useInView();
                     ) : (
                         staticPossibilty.map((item, index) => (
                              <div key={index}
-                                    className={`flex items-center p-8  border-gray-400  group relative before:absolute before:content-[''] before:top-1/2 before:-translate-y-1/2  before:right-0 before:w-[1px] before:h-1/2 before:bg-gray-400 after:absolute after:content-[''] after:w-1/2 after:h-[1px] after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-gray-400`}
+                                    className={`flex items-center p-8  border-gray-400  group relative before:absolute before:content-[''] before:top-1/2 before:-translate-y-1/2  before:right-0 before:w-[1px] before:h-1/2 before:bg-gray-400 after:absolute after:content-[''] ${isInLastRow(index , possibilty.length , 3) ? '' : 'after:w-1/2'} after:h-[1px] after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-gray-400`}
                                 >
 
                                     <img src={item} alt={`Static News ${index + 1}`} className='h-14 object-cover  group-hover:animate-scaleup transition-transform duration-300' />

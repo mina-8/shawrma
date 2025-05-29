@@ -1,16 +1,23 @@
 {
     "home": {
         "home": "الصفحة الرئيسية",
-        "about": "من نحن",
+        "about": "لنبني الأفضل",
         "contact": "اتصل بنا",
-        "services": "الخدمات",
-        "products": "المنتجات",
+        "services": "لنبني المستقبل",
+        "brands": "علاماتنا التجارية",
+        "bulidinus": "لنبني معا",
+        "spotlight": "تسليط الضوء",
+        "products": "منتجات وحلول",
         "contactform": "نموذج الاتصال",
-        "portfolio": "المعرض",
-        "testimonials": "الشهادات",
-        "faq": "الأسئلة الشائعة",
         "privacy_policy": "سياسة الخصوصية",
         "terms_of_service": "شروط الخدمة"
+    },
+    "navbarlist": {
+        "service": {
+            "sustainability": "الاستدامة",
+            "projects": "المشاريع",
+            "innovation": "الابتكار"
+        }
     },
     "slides": {
         "title_1": "مرحبًا بك في موقعنا",
@@ -38,7 +45,7 @@
     "products": {
         "ourproducts": "منتجاتنا",
         "products-search": "استكشف جميع المتجات",
-        "products-video" : "فيديوهات تطبيق المنتجات",
+        "products-video": "فيديوهات تطبيق المنتجات",
         "uses": "الاستخدامات",
         "advantages": "المزايا",
         "instruction-uses": "تعليمات الاستخدام",
@@ -46,13 +53,19 @@
         "pdf-file": "ورقة البيانات الفنية",
         "explore-more": "استكشف المزيد من المنتجات"
     },
-    "product-search":{
-        "title" : "البحث عن منتجات",
-        "product-name" : "اسم المنتج/كلمات البحث",
-        "mainproduct-name" : "- اختر -",
-        "search" : "بحث"
+    "product-search": {
+        "title": "البحث عن منتجات",
+        "product-name": "اسم المنتج/كلمات البحث",
+        "mainproduct-name": "- اختر -",
+        "search": "بحث"
+    },
+    "productvideo": {
+        "header": "فيديوهات تطبيق المنتجات",
+        "title": "معرض الفيديوهات",
+        "content": "أهلاً بكم في منصة عرض منتجاتنا! اكتشفوا كيف تعمل حلولنا من خلال مقاطع فيديو تُظهر المزايا والفوائد والتطبيقات العملية للمنتجات."
     },
     "mainproduct": {
+        "title": "مجموعات المنتجات",
         "featured-products": "المنتجات المميزة",
         "all-products": "منتجات اخري"
     },
@@ -95,10 +108,23 @@
         }
     },
     "Sustainability": {
-        "title": "الإستدامة",
+        "title": "الاستدامة",
         "content": "نبني من أجل غدٍ أفضل",
         "description": "تضمين الممارسات المستدامة في جميع عملياتنا وسلسلة التوريد لدينا لتعزيز الابتكار وكفاءة استخدام الموارد.",
+        "pdf-file": "تحميل تقرير الاستدامة",
         "readmore": "اقرأ المزيد"
+    },
+    "projects": {
+        "title": "المشاريع",
+        "all": "الكل",
+        "details": "تفاصيل المشروع",
+        "project_name": "اسم المشروع",
+        "project_client": "اسم العميل",
+        "project_location": "الموقع"
+    },
+    "innovation": {
+        "title": "الابتكار",
+        "descover": "استكشف ابتكاراتنا"
     },
     "ourimpact": {
         "title": "القدرة على التأثير",
@@ -154,11 +180,41 @@
         "password_changed": "تم تغيير كلمة المرور بنجاح",
         "logged_out": "تم تسجيل الخروج بنجاح"
     },
+    "navbar-links": {
+        "latest-news": "احدث الاخبار",
+        "latest-project": "احدث المشاريع",
+        "sustainability-report": "تقرير الاستدامة",
+        "contact-us": "تواصل معنا"
+    },
+    "ourregional": {
+        "title": "مكاتبنا الإقليمية",
+        "state": "الدولة",
+        "address": "العنوان",
+        "mailbox": "صندوق البريد",
+        "phone": "الهاتف",
+        "email": "البريد الإلكتروني"
+    },
+    "contact": {
+        "query" : "الغاية من الرسالة",
+        "types": {
+            "inquiry": "استفسار",
+            "complaint" : "شكوي",
+            "comments" : "ملاحظات"
+        },
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "phone": "الهاتف",
+        "select_country": "اختر البلد",
+        "message": "الرسالة",
+        "submit": "أرسل"
+    },
     "footer": {
         "description": "أكبر شركة محلية مصنّعة للمنتجات والحلول العالمية في منطقة الشرق الأوسط وشمال إفريقيا.",
         "about_us": "من نحن",
+        "contact-us": "تواصل معنا",
         "ourstory": "قصتنا",
         "ourteam": "فريقنا",
+        "ourgoal": "حياة افضل",
         "ourpromise": "عهدنا",
         "ourculture": "ثقافتنا",
         "ourvision": "رؤيتنا",

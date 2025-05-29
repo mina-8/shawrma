@@ -23,6 +23,7 @@ return [
         'uses' => 'Uses',
         'advantages' => 'Advantages',
         'special' => 'Featured Product',
+        'color' => 'Add product color (optional)',
         'image' => 'Image',
         'pdf' => 'Product Attachments PDF',
         'Usage_Instructions' => 'Usage Instructions',

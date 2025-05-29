@@ -1,16 +1,26 @@
 {
     "home": {
         "home": "Home",
-        "about": "About",
         "contact": "Contact Us",
-        "services": "Services",
-        "products": "Products",
-        "contactform": "Contact Form",
+        "about": "Let's build the best",
+        "services": "Let's build the future",
+        "brands": "Our brands",
+        "bulidinus": "Let's build together",
+        "spotlight": "Spotlight",
+        "products": "Products and solutions",
+        "contactform": "Contact form",
         "portfolio": "Portfolio",
         "testimonials": "Testimonials",
         "faq": "FAQ",
         "privacy_policy": "Privacy Policy",
         "terms_of_service": "Terms of Service"
+    },
+    "navbarlist": {
+        "service": {
+            "sustainability": "Sustainability",
+            "projects": "Projects",
+            "innovation": "Innovation"
+        }
     },
     "slides": {
         "title_1": "Welcome to Our Site",
@@ -46,13 +56,19 @@
         "pdf-file": "Technical Data Sheet",
         "explore-more": "Explore more products"
     },
-    "product-search":{
-"title" : "Search for Products",
-"product-name" : "Product Name/Search Keywords",
-"mainproduct-name" : "- Select -",
-"search" : "Search"
-},
+    "product-search": {
+        "title": "Search for Products",
+        "product-name": "Product Name/Search Keywords",
+        "mainproduct-name": "- Select -",
+        "search": "Search"
+    },
+    "productvideo": {
+        "header": "Product Application Videos",
+        "title": "Video Gallery",
+        "content": "Welcome to our product showcase! Discover how our solutions work through videos that showcase the features, benefits, and practical applications of our products."
+    },
     "mainproduct": {
+        "title": "Product groups",
         "featured-products": "Featured Products",
         "all-products": "Other Products"
     },
@@ -98,7 +114,16 @@
         "title": "Sustainability",
         "content": "Building for a better tomorrow",
         "description": "Integrating sustainable practices into all our operations and supply chain to promote innovation and resource efficiency.",
+        "pdf-file": "Download the Sustainability Report",
         "readmore": "Read more"
+    },
+    "projects": {
+        "title": "Projects",
+        "all": "All",
+        "details": "Project Details",
+        "project_name": "Project Name",
+        "project_client": "Client Name",
+        "project_location": "Location"
     },
     "ourimpact": {
         "title": "The Power to Influence",
@@ -154,12 +179,34 @@
         "password_changed": "Password Changed Successfully",
         "logged_out": "Logged Out Successfully"
     },
+    "navbar-links": {
+        "latest-news": "Latest News",
+        "latest-project": "Latest Projects",
+        "sustainability-report": "Sustainability Report",
+        "contact-us" : "Contact us"
+    },
+    "contact": {
+"query": "Message Purpose",
+"types": {
+"inquiry": "Inquiry",
+"complaint": "Complaint",
+"comments": "Feedback"
+},
+"name": "Name",
+"email": "Email",
+"phone": "Phone",
+"select_country": "Select Country",
+"message": "Message",
+"submit": "Send"
+},
     "footer": {
         "description": "The largest local manufacturer of global products and solutions in the Middle East and North Africa region.",
         "about_us": "About Us",
+        "contact-us" : "Contact us",
         "ourstory": "Our Story",
         "ourpromise": "Our covenant",
         "ourculture": "Our culture",
+        "ourgoal": "Better life",
         "ourservices": "Our Services",
         "ourproducts": "Our Products",
         "ourclients": "Our Clients",

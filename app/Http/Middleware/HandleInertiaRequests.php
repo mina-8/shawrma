@@ -3,9 +3,12 @@
 namespace App\Http\Middleware;
 
 use App\Models\MainProduct;
+use App\Models\OurBrand;
+use App\Models\Sustainability;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -39,30 +42,44 @@ class HandleInertiaRequests extends Middleware
             ],
             'applang' =>  $appLang,
             'currentRoute' => Route::currentRouteName(),
-            'mainproducts' => fn()=> MainProduct::with('products:id,title,slug,mainproduct_id')
-            ->select('id', 'title', 'slug')
-            ->get()
-            ->map(function ($mainproduct) use ($appLang) {
-                $mainTitle = $mainproduct->getTranslation('title', $appLang);
-                $mainSlug =  $mainproduct->getTranslation('slug', $appLang);
-                $products = $mainproduct->products->map(function ($product) use ($appLang) {
-                    $productTitle = $product->getTranslation('title', $appLang);
-                    $productSlug = $product->getTranslation('slug', $appLang);
+            'mainproducts' => fn() => MainProduct::select('id', 'title', 'slug')
+                ->get()
+                ->map(function ($mainproduct) use ($appLang) {
+                    $mainTitle = $mainproduct->getTranslation('title', $appLang);
+                    $mainSlug =  $mainproduct->getTranslation('slug', $appLang);
+
                     return [
-
-                            'id' => $product->id,
-                            'title' => $productTitle,
-                            'slug' => $productSlug
-
+                        'id' => $mainproduct->id,
+                        'title' => $mainTitle,
+                        'slug' => $mainSlug,
                     ];
-                });
-                return [
-                    'id' => $mainproduct->id,
-                    'title' => $mainTitle,
-                    'slug' => $mainSlug,
-                    'products' => $products
-                ];
-            })
+                }),
+            'Brands' => fn() => OurBrand::select('id', 'header_title', 'slug')
+                ->get()
+                ->map(function ($brands) use ($appLang) {
+                    $headertitle = $brands->getTranslation('header_title', $appLang);
+                    $slug = $brands->getTranslation('slug', $appLang);
+                    return [
+                        'id' => $brands->id,
+                        'header_title' => $headertitle,
+                        'slug' => $slug
+                    ];
+                }),
+            'sustainabilityreport' => fn() => optional(
+                Sustainability::select('pdf')->first(),
+                function ($item) {
+                    return [
+                        'sustainability_pdf'=> Storage::url($item->pdf)
+                    ];
+                }
+
+            ),
+             'flash' => function () {
+            return [
+                'success' => session('success'),
+                'error' => session('error'),
+            ];
+        },
         ];
     }
 }

@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('our_brands', function (Blueprint $table) {
             $table->id();
+            $table->string('banner')->nullable();
+            $table->json('header_title');
             $table->json('title');
             $table->json('content');
+            $table->string('color')->nullable();
             $table->string('image');
-            
+            $table->string('pdf');
             $table->json('slug');
             $table->timestamps();
         });

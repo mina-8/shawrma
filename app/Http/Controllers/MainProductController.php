@@ -3,15 +3,40 @@
 namespace App\Http\Controllers;
 
 use App\Models\MainProduct;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class MainProductController extends Controller
 {
+    public function index(){
+        $appLang = app()->getLocale();
+        $mainProduct = MainProduct::latest()
+                                    ->get()
+                                    ->map(function ($mainproduct) use($appLang){
+                                        return [
+                                            'id' => $mainproduct->id,
+                                            'title' => $mainproduct->getTranslation('title' , $appLang),
+                                            'color'=> $mainproduct->color,
+                                            'icon' => Storage::url($mainproduct->icon),
+                                            'image' => Storage::url($mainproduct->image),
+                                            'slug' => $mainproduct->getTranslation('slug' , $appLang)
+                                        ];
+                                    });
+        $products = Product::all()->map(function ($product) use($appLang){
+            return [
+                'id'=>$product->id,
+                'title' => $product->getTranslation('title' , $appLang),
+                'slug' => $product->getTranslation('slug' , $appLang)
+            ];
+        });
+
+        return Inertia::render('Welcome/MainProduct/Index' , ['mainproduct'=>$mainProduct , 'product'=>$products]);
+    }
     public function show(string $lang, string $slug)
     {
-        $mainProduct = MainProduct::with('products:id,title,slug,image,special,mainproduct_id')
+        $mainProduct = MainProduct::with('products:id,title,slug,image,description,special,mainproduct_id')
             ->where("slug->$lang", $slug)
             ->first();
 
@@ -28,6 +53,7 @@ class MainProductController extends Controller
             return [
                 'id' => $product->id,
                 'title' => $product->getTranslation('title', $lang),
+                'description' => $product->getTranslation('description' , $lang),
                 'slug' => $product->getTranslation('slug', $lang),
                 'image' => Storage::url($product->image),
                 'special' => $product->special

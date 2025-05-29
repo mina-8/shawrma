@@ -31,7 +31,7 @@ class FactNumberResource extends Resource
 
     public static function getNavigationSort(): ?int
     {
-        return 4;
+        return 3;
     }
 
     public static function getModelLabel(): string

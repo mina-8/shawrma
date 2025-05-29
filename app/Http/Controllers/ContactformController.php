@@ -3,25 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contactform;
+use App\Models\OurRegionalOffice;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ContactformController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        return 'mina contact form';
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+   
 
     /**
      * Store a newly created resource in storage.
@@ -31,35 +19,4 @@ class ContactformController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Contactform $contactform)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Contactform $contactform)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Contactform $contactform)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Contactform $contactform)
-    {
-        //
-    }
 }

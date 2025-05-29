@@ -58,7 +58,7 @@ class EditProduct extends EditRecord
                             Components\TextInput::make('title')
                                 ->label(__('filament-panels::resources/pages/product.fields.title'))
                                 ->required(),
-                                Components\TextInput::make('description')
+                            Components\TextInput::make('description')
                                 ->label(__('filament-panels::resources/pages/product.fields.product description'))
                                 ->required(),
                             Components\MarkdownEditor::make('content')
@@ -75,6 +75,8 @@ class EditProduct extends EditRecord
                     Components\Toggle::make('special')
                         ->label('Special')
                         ->default(0),
+                    Components\TextInput::make('color')
+                        ->label(__('filament-panels::resources/pages/product.fields.color')),
                     Components\FileUpload::make('image')
                         ->label(__('filament-panels::resources/pages/blog.fields.image'))
                         ->image()
@@ -126,7 +128,7 @@ class EditProduct extends EditRecord
         // Load existing usage instructions for the product
         return UsageInstruction::where('product_id', $this->record->id)
             ->get()
-            ->map(function($instruction) {
+            ->map(function ($instruction) {
                 // Get the raw attributes to ensure we have the actual stored data
                 $attributes = $instruction->getAttributes();
 

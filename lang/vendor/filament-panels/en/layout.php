@@ -62,6 +62,7 @@ return [
 
     'webist'=>[
         'control webiste' => "Contorl Webiste",
-        'about_us' => "About Us"
+        'about_us' => "About Us",
+        'future' => "Buliding future"
     ]
 ];

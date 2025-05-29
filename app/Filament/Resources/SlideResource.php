@@ -35,7 +35,7 @@ class SlideResource extends Resource
         return 1; // Lower numbers appear first
     }
 
-        public static function getModelLabel(): string
+    public static function getModelLabel(): string
     {
         return __('filament-panels::resources/pages/slide.title');
     }
@@ -69,6 +69,23 @@ class SlideResource extends Resource
                             ->label(__('filament-panels::resources/pages/blog.fields.link'))
                             ->default('welcome')
                             ->dehydrated(fn($state) => filled($state)),
+
+
+                        Forms\Components\Select::make('link')
+                            ->label(__('filament-panels::resources/pages/blog.fields.link'))
+                            ->options(function () {
+                                return collect(\Illuminate\Support\Facades\Route::getRoutes())
+                                    ->filter(
+                                        fn($route) =>
+                                        $route->getName() &&
+                                            in_array('web', $route->middleware())
+                                    )
+                                    ->mapWithKeys(fn($route) => [
+                                        $route->getName() => $route->getName()
+                                    ])
+                                    ->toArray();
+                            })
+                            ->searchable(),
 
                         Forms\Components\FileUpload::make('image')
                             ->label(__('filament-panels::resources/pages/blog.fields.image'))

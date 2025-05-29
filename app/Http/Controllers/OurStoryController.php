@@ -49,6 +49,7 @@ class OurStoryController extends Controller
                 ];
             });
         }
+
         if ($ourstory && $ourstory->corestory !== null) {
             $corestories = $ourstory->corestory->map(function ($corestory) use ($appLang) {
                 return [

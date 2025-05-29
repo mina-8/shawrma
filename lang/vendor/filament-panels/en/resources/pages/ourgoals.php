@@ -1,10 +1,10 @@
 <?php
 return [
-    'title' => 'Our Goals',
-    'breadcrumb' => 'Our Goals',
+    'title' => 'Better Life',
+    'breadcrumb' => 'Better Life',
     'actions' => [
         'create' => [
-            'label' => 'Add Goals',
+            'label' => 'Add Better Life',
         ],
         'edit' => [
             'label' => 'Edit',
@@ -18,6 +18,7 @@ return [
         'content' => 'Content',
         'str_btn' => 'Button Content',
         'link' => 'Button Link',
+        'color' => 'Color',
         'image' => 'Image',
         'created_at' => 'Created At',
     ],

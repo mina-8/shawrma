@@ -34,7 +34,7 @@ const Sustainability = () => {
                     {t('Sustainability.description')}
                 </p>
 
-                <Link href={route(`welcome`, { lang: i18n.language })}
+                <Link href={route(`Sustainability`, { lang: i18n.language })}
 
                     style={{
                         animationDuration: "1s",

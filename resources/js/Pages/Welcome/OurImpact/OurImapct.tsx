@@ -71,7 +71,7 @@ const { ref, isVisible } = useInView();
                         >
                             <Carousel
                                 arrows
-                                // autoplay
+                                autoplay
                                 infinite
                                 centerMode={true}
                                 slidesToShow={1}

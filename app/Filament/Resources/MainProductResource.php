@@ -20,7 +20,7 @@ class MainProductResource extends Resource
     protected static ?string $model = MainProduct::class;
 
     protected static ?string $navigationIcon = 'polaris-product-list-icon';
-    public static function getNavigationGroup():string
+    public static function getNavigationGroup(): string
     {
         return __('filament-panels::resources/pages/mainproduct.navigationgroup');
     }
@@ -54,6 +54,21 @@ class MainProductResource extends Resource
                             Forms\Components\Hidden::make('slug')
                                 ->label('slug'),
                         ]),
+                        Forms\Components\FileUpload::make('icon')
+                            ->label(__('filament-panels::resources/pages/mainproduct.fields.icon'))
+                            ->image()
+                            ->disk('public')
+                            ->directory('uploads/mainproduct')
+                            ->visibility('public')
+                            ->maxSize(4096)
+                            ->getUploadedFileNameForStorageUsing(function ($file) {
+                                $extension = $file->getClientOriginalExtension();
+                                return Str::uuid() . '.' . $extension;
+                            })
+                            ->acceptedFileTypes(['image/svg+xml']),
+                        Forms\Components\TextInput::make('color')
+                            ->label(__('filament-panels::resources/pages/product.fields.color')),
+
                         Forms\Components\FileUpload::make('image')
                             ->label(__('filament-panels::resources/pages/mainproduct.fields.image'))
                             ->image()
@@ -78,9 +93,6 @@ class MainProductResource extends Resource
                 Tables\Columns\TextColumn::make('id')->sortable(),
                 Tables\Columns\TextColumn::make('title')
                     ->label(__('filament-panels::resources/pages/mainproduct.fields.title'))
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('content')
-                    ->label(__('filament-panels::resources/pages/mainproduct.fields.content'))
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('image')
                     ->label(__('filament-panels::resources/pages/mainproduct.fields.image'))

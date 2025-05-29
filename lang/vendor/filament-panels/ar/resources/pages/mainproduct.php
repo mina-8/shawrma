@@ -20,6 +20,7 @@ return [
     'fields' => [
         'title' => 'قسم المنتج',
         'content' => 'الوصف',
+        'icon' => 'اضف ايقونة بصيغة svg',
         'price' => 'السعر',
         'image' => 'الصورة',
         'created_at' => 'تاريخ الإنشاء',

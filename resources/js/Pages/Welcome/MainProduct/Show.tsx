@@ -1,3 +1,4 @@
+import ReciveUpdate from '@/Components/ReciveUpdate'
 import { Head, Link } from '@inertiajs/react'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
@@ -5,7 +6,8 @@ import ReactMarkdown from 'react-markdown'
 
 interface Product {
     id: number
-    title: string
+    title: string;
+    description:string;
     slug: string
     image: string
     special: boolean
@@ -23,7 +25,7 @@ interface ShowProps {
 }
 
 const Show: React.FC<ShowProps> = ({ mainproduct }) => {
-    
+
     const { t, i18n } = useTranslation()
 
     return (
@@ -77,8 +79,8 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
                                             />
                                         </div>
                                         <div className="w-1/2 p-4 flex flex-col">
-                                            <h4 className="text-lg font-semibold mb-2 text-sky-500">{product.title}</h4>
-                                            <p className="text-sm text-gray-600">وصف مختصر للمنتج أو المحتوى.</p>
+                                            <h4 className="text-lg font-semibold mb-2 text-yellow-original">{product.title}</h4>
+                                            <p className="text-sm text-gray-600">{product.description}</p>
                                         </div>
                                     </Link>
                                 ))}
@@ -100,18 +102,18 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
                                     <Link
                                         key={product.id}
                                         href={route('product.show', { lang: i18n.language, slug: product.slug })}
-                                        className="flex bg-white shadow-lg p-2 overflow-hidden"
+                                        className="flex bg-white shadow-lg p-2 overflow-hidden group"
                                     >
-                                        <div className="w-1/2">
+                                        <div className="w-1/2 overflow-hidden">
                                             <img
                                                 src={product.image}
                                                 alt={product.title}
-                                                className="object-cover h-40"
+                                                className="object-cover h-40 group-hover:scale-125 group-hover:rotate-12 duration-500"
                                             />
                                         </div>
                                         <div className="w-1/2 p-4 flex flex-col">
-                                            <h4 className="text-lg font-semibold mb-2 text-sky-500">{product.title}</h4>
-                                            <p className="text-sm text-gray-600">وصف مختصر للمنتج أو المحتوى.</p>
+                                            <h4 className="text-lg font-semibold mb-2 text-yellow-original">{product.title}</h4>
+                                            <p className="text-sm text-gray-600">{product.description}</p>
                                         </div>
                                     </Link>
                                 ))}
@@ -119,6 +121,7 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
                     )}
                 </div>
             </div>
+            <ReciveUpdate />
         </>
     )
 }

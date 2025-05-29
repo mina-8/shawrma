@@ -1,4 +1,5 @@
 import BlogCards from "@/Components/BlogCards";
+import ReciveUpdate from "@/Components/ReciveUpdate";
 import { Head } from "@inertiajs/react";
 import { Carousel } from "antd";
 import { useTranslation } from "react-i18next";
@@ -15,9 +16,11 @@ interface Blog {
 
 interface Props {
     blog: Blog;
+    otherblogs: Blog[];
 }
 
-const Show = ({ blog }: Props) => {
+const Show = ({ blog  , otherblogs}: Props) => {
+    
     const { t, i18n } = useTranslation()
     const CustomArrow = ({ direction, onClick }: any) => {
         const ArrowIcon = direction === 'prev' ? FaArrowLeft : FaArrowRight;
@@ -25,7 +28,7 @@ const Show = ({ blog }: Props) => {
 
 
             <div
-                className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-sky-500 text-sky-500 shadow-lg cursor-pointer transition hover:bg-custom-dark-blue group"
+                className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-yellow-original text-yellow-original shadow-lg cursor-pointer transition hover:bg-custom-dark-blue group"
                 style={{
                     position: 'absolute',
                     top: '50%',
@@ -45,14 +48,14 @@ const Show = ({ blog }: Props) => {
             <Head title={blog.title} />
             <div className="flex min-h-screen flex-col items-center justify-start bg-gray-50">
                 {/* Header Image */}
-                <div className="w-full h-20 bg-sky-500 bg-cover bg-center" />
+                <div className="w-full h-20 bg-yellow-original bg-cover bg-center" />
 
                 {/* Blog Content */}
                 <div className="max-w-7xl w-full px-4 py-8 md:px-6 lg:px-8">
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                         {/* Text */}
                         <div className="p-4">
-                            <h1 className="text-3xl font-bold mb-4 text-sky-600 md:text-4xl">
+                            <h1 className="text-3xl font-bold mb-4 text-yellow-original md:text-4xl">
                                 {blog.title}
                             </h1>
                             <div className="prose prose-sky max-w-none">
@@ -71,8 +74,9 @@ const Show = ({ blog }: Props) => {
                     </div>
 
                     {/* Other Blogs Carousel */}
+                    {otherblogs.length > 0 &&
                     <div className="mt-12 text-center">
-                        <h2 className="text-2xl text-sky-500 font-semibold  mb-6 border-b-2 border-sky-500 pb-2">{t('blogcards.otherblogs')}</h2>
+                        <h2 className="text-2xl text-yellow-original font-semibold  mb-6 border-b-2 border-yellow-original pb-2">{t('blogcards.otherblogs')}</h2>
                         <Carousel
                             arrows
                             dots={false}
@@ -97,15 +101,17 @@ const Show = ({ blog }: Props) => {
                                 },
                             ]}
                         >
-                            {[1, 2, 3].map((item, index) => (
+                            {otherblogs.map((item, index) => (
                                 <div key={index} className="px-2">
                                     <BlogCards item={item} />
                                 </div>
                             ))}
                         </Carousel>
                     </div>
+                    }
                 </div>
             </div>
+            <ReciveUpdate/>
         </>
     );
 };

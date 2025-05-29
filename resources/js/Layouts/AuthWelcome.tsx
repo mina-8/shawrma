@@ -14,7 +14,10 @@ import { IoSearch } from 'react-icons/io5';
 import SearchForm from '@/Components/SearchWeb/SearchForm';
 import Footer from './Footer';
 import ProductNav from '@/Components/ProductsNav/ProductNav';
-import AboutNav from '@/Components/Aboutus/AboutNav';
+import AboutNav from '@/Components/NavList/AboutNav';
+import ServiceNav from '@/Components/NavList/ServiceNav';
+import BrandNav from '@/Components/NavList/BrandNav';
+import SpotlightNav from '@/Components/NavList/SpotlightNav';
 
 export default function AuthWelcome({
     header,
@@ -51,13 +54,39 @@ export default function AuthWelcome({
         <LangWraper>
             <div className="min-h-screen " dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}>
                 <nav
-                    className={` fixed top-0 left-0 w-full z-50 transition-colors duration-300 `}
+                    className={` fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${isnavbar ? 'bg-black bg-opacity-50' : 'bg-transparent'} `}
                 >
-                    <div
-                        className={`w-full h-16 fixed ${isnavbar ? 'bg-black opacity-50' : 'bg-transparent'
-                            }`}
-                    ></div>
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    {!isnavbar && (
+                        <div
+                        className='flex items-center w-full max-w-7xl mx-auto  justify-end'
+                        >
+
+                            <Link
+                                className='text-white cursor-pointer'
+
+                                href={route('contact-us', { lang: i18n.language })}
+                                // active={route().current('contact-us')}
+                            >
+
+                                {t('navbar-links.contact-us')}
+                            </Link>
+
+                            <Dropdown>
+                                <Dropdown.Trigger>
+                                    <span className="inline-flex rounded-md">
+                                        <button
+                                            type="button"
+                                            className="inline-flex items-center rounded-md border border-transparent text-white px-3 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none"
+                                        >
+                                            <AiOutlineGlobal size={24} />
+                                        </button>
+                                    </span>
+                                </Dropdown.Trigger>
+                                <ChangeLang />
+                            </Dropdown>
+                        </div>
+                    )}
+                    <div className={`mx-auto  px-4 sm:px-6 lg:px-8 ${i18n.language === 'ar' ? 'max-w-7xl' : 'max-w-fit'} `}>
                         <div className="flex h-16 justify-between">
                             <div className="flex relative">
                                 <div className="flex shrink-0 items-center">
@@ -69,50 +98,73 @@ export default function AuthWelcome({
 
                             <div className="hidden sm:ms-6 sm:flex sm:items-center relative">
                                 <div className="hidden gap-1 sm:-my-px sm:ms-10 sm:flex">
-                                    <NavLink
-                                        href={route('welcome', { lang: i18n.language })}
-                                        active={route().current('welcome')}
-                                    >
-                                        {t('home.home')}
-                                    </NavLink>
 
                                     <Dropdown className='hover:bg-white hover:text-yellow-original px-4 py-6 cursor-pointer text-white'>
                                         <Dropdown.Trigger>
-                                           {t('home.about')}
+                                            {t('home.about')}
                                         </Dropdown.Trigger>
                                         <Dropdown.Content className='mt-6 ' >
-                                           <AboutNav/>
+                                            <AboutNav />
                                         </Dropdown.Content>
                                     </Dropdown>
 
-                                    <NavLink
-                                        href={route('contact-us', { lang: i18n.language })}
-                                        active={route().current('contact-us')}
-                                    >
-                                        {t('home.contact')}
-                                    </NavLink>
+                                    <Dropdown className='hover:bg-white hover:text-yellow-original px-4 py-6 cursor-pointer text-white'>
+                                        <Dropdown.Trigger>
+                                            {t('home.brands')}
+                                        </Dropdown.Trigger>
+                                        <Dropdown.Content className='mt-6 ' >
+                                            <BrandNav />
+                                        </Dropdown.Content>
+                                    </Dropdown>
+
+                                    <Dropdown className='hover:bg-white hover:text-yellow-original px-4 py-6 cursor-pointer text-white'>
+                                        <Dropdown.Trigger>
+                                            {t('home.services')}
+                                        </Dropdown.Trigger>
+                                        <Dropdown.Content className='mt-6 ' >
+                                            <ServiceNav />
+                                        </Dropdown.Content>
+                                    </Dropdown>
+
 
                                     <Dropdown className='hover:bg-white hover:text-yellow-original px-4 py-6 cursor-pointer text-white '>
                                         <Dropdown.Trigger>
                                             {t('home.products')}
                                         </Dropdown.Trigger>
                                         <Dropdown.Content align='right'
-                                          className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[-25%]' : 'translate-x-[25%]'} `}
+                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[-25%]' : 'translate-x-[25%]'} `}
 
-                                          >
-                                    <ProductNav/>
+                                        >
+                                            <ProductNav />
                                         </Dropdown.Content>
                                     </Dropdown>
 
 
+                                    <Dropdown className='hover:bg-white hover:text-yellow-original px-4 py-6 cursor-pointer text-white '>
+                                        <Dropdown.Trigger>
+                                            {t('home.bulidinus')}
+                                        </Dropdown.Trigger>
+                                        <Dropdown.Content align='right'
+                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[-25%]' : 'translate-x-[25%]'} `}
+
+                                        >
+                                            <ProductNav />
+                                        </Dropdown.Content>
+                                    </Dropdown>
+
+                                    <Dropdown className='hover:bg-white hover:text-yellow-original px-4 py-6 cursor-pointer text-white '>
+                                        <Dropdown.Trigger>
+                                            {t('home.spotlight')}
+                                        </Dropdown.Trigger>
+                                        <Dropdown.Content align='right'
+                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[-25%]' : 'translate-x-[25%]'} `}
+
+                                        >
+                                            <SpotlightNav />
+                                        </Dropdown.Content>
+                                    </Dropdown>
 
 
-                                    <NavLink
-                                        href={route('contact-form', { lang: i18n.language })}
-                                        active={route().current('contact-form')}
-                                    >
-                                        {t('home.contactform')}
-                                    </NavLink>
                                 </div>
                                 <div className="relative ms-3">
                                     <button
@@ -123,21 +175,7 @@ export default function AuthWelcome({
                                         <IoSearch size={24} />
                                     </button>
                                 </div>
-                                <div className="relative ms-3">
-                                    <Dropdown>
-                                        <Dropdown.Trigger>
-                                            <span className="inline-flex rounded-md">
-                                                <button
-                                                    type="button"
-                                                    className="inline-flex items-center rounded-md border border-transparent text-white px-3 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none"
-                                                >
-                                                    <AiOutlineGlobal size={24} />
-                                                </button>
-                                            </span>
-                                        </Dropdown.Trigger>
-                                        <ChangeLang />
-                                    </Dropdown>
-                                </div>
+                                
                             </div>
 
                             <div className="-me-2 flex items-center sm:hidden relative">
@@ -223,12 +261,7 @@ export default function AuthWelcome({
                             >
                                 {t('home.home')}
                             </ResponsiveNavLink>
-                            <ResponsiveNavLink
-                                href={route('about-us', { lang: i18n.language })}
-                                active={route().current('about-us')}
-                            >
-                                {t('home.about')}
-                            </ResponsiveNavLink>
+
                             <ResponsiveNavLink
                                 href={route('contact-us', { lang: i18n.language })}
                                 active={route().current('contact-us')}
@@ -241,12 +274,12 @@ export default function AuthWelcome({
                             >
                                 {t('home.products')}
                             </ResponsiveNavLink>
-                            <ResponsiveNavLink
+                            {/* <ResponsiveNavLink
                                 href={route('contact-form', { lang: i18n.language })}
                                 active={route().current('contact-form')}
                             >
                                 {t('home.contactform')}
-                            </ResponsiveNavLink>
+                            </ResponsiveNavLink> */}
                         </div>
                     </div>
                 </nav>

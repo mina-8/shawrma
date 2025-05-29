@@ -119,7 +119,8 @@ export default function Sliders({ slides }: Props) {
                                                 AcitveIndex === index &&
 
                                                     <div className='flex justify-between items-center gap-4 mt-12 xs:flex-col'>
-                                                        <Link href={route(`${item.link}`, { lang: i18n.language })}
+                                                        <Link
+                                                        href={route(`${item.link}`, { lang: i18n.language })}
                                                             className={`${AcitveIndex === index ? 'animate-fadeup' : ''} `}
                                                             style={{
                                                                 animationDuration: "1s",

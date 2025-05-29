@@ -9,33 +9,20 @@ use Inertia\Inertia;
 
 class BlogController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function index(){
+        $appLang = app()->getLocale();
+        $blogs = Blog::latest()->get()->map(function ($blog) use($appLang){
+            return [
+                'id'=>$blog->id,
+                'title' => $blog->getTranslation('title' , $appLang),
+                'content' => $blog->getTranslation('content' , $appLang),
+                'image' => Storage::url($blog->image),
+                'slug' => $blog->getTranslation('slug' , $appLang)
+            ];
+        });
+        return Inertia::render('Welcome/OurNews/Index' , ['blogs'=>$blogs]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(string $lang, string $slug)
     {
         // Step 1: Find blog by checking all translated slugs
@@ -46,6 +33,21 @@ class BlogController extends Controller
         }
 
         $slugs = $blog->getTranslations('slug');
+
+        $otherblogs = Blog::whereNot('id' , $blog->id)
+        ->latest()
+        ->get()
+
+                            ->take(6)
+                            ->map(function ($blog) use($lang){
+                                return [
+                                    'id' => $blog->id,
+                                    'title' => $blog->getTranslation('title' , $lang),
+                                    'content' => $blog->getTranslation('content' , $lang),
+                                    'image' => Storage::url($blog->image),
+                                    'slug' => $blog->getTranslation('slug' , $lang)
+                                ];
+                            });
         // Step 4: Prepare translated blog data
         $blogData = [
             'id' => $blog->id,
@@ -56,7 +58,7 @@ class BlogController extends Controller
             'updated_at' => $blog->updated_at,
         ];
 
-        return Inertia::render('Welcome/OurNews/Show', ['blog' => $blogData, 'slugs' => $slugs]);
+        return Inertia::render('Welcome/OurNews/Show', ['blog' => $blogData , 'otherblogs'=>$otherblogs, 'slugs' => $slugs]);
     }
 
 

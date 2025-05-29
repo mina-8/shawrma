@@ -22,6 +22,11 @@ class OurImpactResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function getNavigationSort(): ?int
+    {
+        return 4;
+    }
+
     public static function getNavigationGroup(): string
     {
         return __('filament-panels::layout.webist.control webiste');

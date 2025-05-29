@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MainProduct;
 use App\Models\Product;
+use App\Models\ProductVideo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -86,7 +87,19 @@ class ProductController extends Controller
     }
 
 
-    public function video(string $lang) {}
+    public function video(string $lang) {
+        $productvideo = ProductVideo::latest()
+        ->whereNull('productvideoable_id')
+        ->whereNull('productvideoable_type')
+        ->get()->map(function($video){
+            return [
+                'id'=>$video->id,
+                'image' => Storage::url($video->image) ,
+                'youtube_link' => $video->youtube_link
+            ];
+        });
+        return Inertia::render('Welcome/Productvideo/Index' , ['productvideo'=>$productvideo]);
+    }
 
     /**
      * Display the specified resource.
@@ -106,7 +119,9 @@ class ProductController extends Controller
 
         $otherproducts = Product::whereNot("id", $Product->id)
         ->where('mainproduct_id' , $Product->mainproduct_id)
-            ->get()
+        ->latest()
+        ->get()
+            ->take(9)
             ->map(function($products) use($lang){
                 return [
                     'id' => $products->id,
@@ -124,6 +139,7 @@ class ProductController extends Controller
             'content' => $Product->getTranslation('content', $lang),
             'uses' => $Product->getTranslation('uses', $lang),
             'advantages' => $Product->getTranslation('advantages', $lang),
+            'color' => $Product->color,
             'image' => Storage::url($Product->image),
             'pdf' => Storage::url($Product->pdf),
             'special' => $Product->special,

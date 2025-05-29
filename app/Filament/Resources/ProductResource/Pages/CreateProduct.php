@@ -49,6 +49,8 @@ class CreateProduct extends CreateRecord
                     Components\Toggle::make('special')
                         ->label(__('filament-panels::resources/pages/product.fields.special'))
                         ->default(0),
+                    Components\TextInput::make('color')
+                        ->label(__('filament-panels::resources/pages/product.fields.color')),
                     Components\FileUpload::make('image')
                         ->label(__('filament-panels::resources/pages/product.fields.image'))
                         ->image()
@@ -128,5 +130,4 @@ class CreateProduct extends CreateRecord
             }
         }
     }
-
 }

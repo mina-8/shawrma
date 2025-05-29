@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('product_videos', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
+            $table->json('image');
             $table->string('youtube_link');
+            $table->unsignedBigInteger('productvideoable_id')->nullable();
+            $table->string('productvideoable_type')->nullable();
             $table->timestamps();
         });
     }

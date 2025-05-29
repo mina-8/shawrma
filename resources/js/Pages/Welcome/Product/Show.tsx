@@ -1,12 +1,14 @@
 import Collapse from '@/Components/Collapse';
 
 import { Head } from '@inertiajs/react';
-import React from 'react';
+
 import { useTranslation } from 'react-i18next';
 import { FaRegFilePdf, FaStar } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
-import img4 from '@/../../public/ournews/live-uni.jpg'
+
 import ReciveUpdate from '@/Components/ReciveUpdate';
+
+import { IoMdCheckmark } from 'react-icons/io';
 interface UsageProducts {
     id: number;
     title: string;
@@ -19,6 +21,7 @@ interface Product {
     description:string;
     uses: string;
     advantages: string;
+    color : string;
     image: string;
     pdf: string;
     usageproduct: UsageProducts[]
@@ -64,7 +67,11 @@ const Show = ({ product  , otherproducts}: Props) => {
                 </div>
 
                 {/* Uses and Advantages Section */}
-                <div className="bg-yellow-original text-white py-8">
+                <div className="bg-yellow-original text-white py-8"
+                style={{
+                    backgroundColor : product.color
+                }}
+                >
                     <div className="container mx-auto px-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="flex flex-col items-center">
@@ -79,7 +86,7 @@ const Show = ({ product  , otherproducts}: Props) => {
                                         li({ children, ...props }) {
                                             return (
                                                 <li className="flex items-start gap-2" {...props}>
-                                                    <FaStar className="text-yellow-500 mt-1" />
+                                                    <IoMdCheckmark  className="text-white mt-1" />
                                                     <span>{children}</span>
                                                 </li>
                                             );
@@ -102,7 +109,7 @@ const Show = ({ product  , otherproducts}: Props) => {
                                         li({ children, ...props }) {
                                             return (
                                                 <li className="flex items-start gap-2" {...props}>
-                                                    <FaStar className="text-yellow-500 mt-1" />
+                                                    <IoMdCheckmark  className="text-white mt-1" />
                                                     <span>{children}</span>
                                                 </li>
                                             );
@@ -142,7 +149,11 @@ const Show = ({ product  , otherproducts}: Props) => {
                 )}
 
                 {/* download pdf */}
-                <div className="bg-yellow-original text-white py-8">
+                <div className="bg-yellow-original text-white py-8"
+                style={{
+                    backgroundColor : product.color
+                }}
+                >
                     <div className="container mx-auto px-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="flex justify-evenly items-center">

@@ -10,7 +10,7 @@ class OurGoal extends Model
     protected $fillable = [
         'title',
         'content',
-        'image',
+        'color',
         'slug'
     ];
     public $translatable = ['title', 'content' , 'slug'];
@@ -22,4 +22,13 @@ class OurGoal extends Model
     ];
 
     protected $guarded = ['id'];
+
+    public function corestation()
+    {
+        return $this->morphMany(CoreStation::class , 'stationable');
+    }
+    public function productvideo()
+    {
+        return $this->morphMany(ProductVideo::class , 'productvideoable');
+    }
 }

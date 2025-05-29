@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\FactNumber;
 use App\Models\Home;
 use App\Models\MainProduct;
+use App\Models\OurBrand;
 use App\Models\OurImpact;
 use App\Models\Slide;
 use Illuminate\Http\Request;
@@ -82,11 +83,23 @@ class HomeController extends Controller
                 ];
             });
 
+            $brands = OurBrand::latest()
+            ->get()
+            ->map(function ($brand) use($appLang){
+                return [
+                    'id' => $brand->id,
+                    'header_title' => $brand->getTranslation('header_title' , $appLang),
+                    'image' => Storage::url($brand->image),
+                    'slug' => $brand->getTranslation('slug' , $appLang)
+                ];
+            });
+
         return Inertia::render('Welcome', [
             'slides' => $slides,
             'blogs' => $blogs,
             'factnumbers' => $factsandnumber,
-            'ourimpacts' => $ourimpacts
+            'ourimpacts' => $ourimpacts,
+            'brands' => $brands
         ]);
     }
 }
