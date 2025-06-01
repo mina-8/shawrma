@@ -28,6 +28,8 @@ class ContactformResource extends Resource
         return 7;
     }
 
+
+
     public static function getModelLabel(): string
     {
         return __('filament-panels::resources/pages/contactform.title');
@@ -62,23 +64,9 @@ class ContactformResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')->sortable(),
-                Tables\Columns\TextColumn::make('type')
-                    ->label(__('filament-panels::resources/pages/contactform.fields.type'))
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('name')
-                    ->label(__('filament-panels::resources/pages/contactform.fields.name'))
-                    ->searchable(),
+
                 Tables\Columns\TextColumn::make('email')
                     ->label(__('filament-panels::resources/pages/contactform.fields.email'))
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('phone')
-                    ->label(__('filament-panels::resources/pages/contactform.fields.phone'))
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('country')
-                    ->label(__('filament-panels::resources/pages/contactform.fields.country'))
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('message')
-                    ->label(__('filament-panels::resources/pages/contactform.fields.message'))
                     ->searchable(),
 
                 Tables\Columns\TextColumn::make('created_at')
@@ -110,8 +98,8 @@ class ContactformResource extends Resource
     {
         return [
             'index' => Pages\ListContactforms::route('/'),
-            'create' => Pages\CreateContactform::route('/create'),
-            'edit' => Pages\EditContactform::route('/{record}/edit'),
+            // 'create' => Pages\CreateContactform::route('/create'),
+            // 'edit' => Pages\EditContactform::route('/{record}/edit'),
         ];
     }
 }

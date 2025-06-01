@@ -13,3 +13,13 @@ post_max_size = 60M
 </p>
 
 # Config::set('livewire.temporary_file_upload.rules', ['file', 'max:51200']);
+
+
+## php artisan make:migration add_column_name_to_table_name_table
+
+ $table->foreignId('solve_brands_id')
+      ->nullable()
+      ->after('id') // 👈 Adds the column after 'id'
+      ->constrained('solve_brands')
+      ->cascadeOnDelete()
+      ->cascadeOnUpdate();

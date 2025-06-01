@@ -1,7 +1,7 @@
 <?php
 return [
-    'title' => 'Contact Us',
-    'breadcrumb' => 'Contact Us',
+    'title' => 'Last updateds',
+    'breadcrumb' => 'Last updateds',
     'actions' => [
         'create' => [
             'label' => 'Add Entry',

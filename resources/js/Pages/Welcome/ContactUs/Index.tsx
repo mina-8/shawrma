@@ -30,7 +30,7 @@ const Index = ({ ourregionalOffice }: Props) => {
     const { props } = usePage<Customflash>();
     const [showSuccess, setShowSuccess] = useState<boolean>(!!props?.flash?.success);
     const SuccessMessage  = props?.flash?.success;
-
+    const [Loading , setLoading] = useState(false);
     useEffect(() => {
         if (SuccessMessage) {
             setShowSuccess(true);
@@ -57,7 +57,20 @@ const Index = ({ ourregionalOffice }: Props) => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        router.post(route('contact-us', { lang: i18n.language }), formData)
+        router.post(route('contact-us', { lang: i18n.language }), formData , {
+            onSuccess : ()=>{
+                setFormData({
+                    type: 'inquiry',
+                name: '',
+                email: '',
+                phone: '',
+                country: '',
+                message: '',
+                })
+            },
+            onBefore : ()=> setLoading(true),
+            onFinish : ()=>setLoading(false)
+        })
     };
     return (
         <>
@@ -157,7 +170,8 @@ const Index = ({ ourregionalOffice }: Props) => {
 
                         </div>
                         <button type='submit'
-                            className='p-4 bg-yellow-original text-white font-semibold text-lg shadow-md hover:shadow-none'
+                        disabled = {Loading}
+                            className={`p-4 ${Loading ? 'bg-gray-200' : 'bg-yellow-original'}  text-white font-semibold text-lg shadow-md hover:shadow-none cursor-pointer`}
                         >{t('contact.submit')}</button>
                     </form>
 

@@ -1,7 +1,7 @@
 <?php
 return [
-    'title' => 'تواصل معنا',
-    'breadcrumb' => 'تواصل معنا',
+    'title' => ' اخر التحديثات',
+    'breadcrumb' => ' اخر التحديثات',
     'actions' => [
         'create' => [
             'label' => 'إضافة مقال',

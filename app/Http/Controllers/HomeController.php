@@ -8,6 +8,7 @@ use App\Models\Home;
 use App\Models\MainProduct;
 use App\Models\OurBrand;
 use App\Models\OurImpact;
+use App\Models\OurMainPlair;
 use App\Models\Slide;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -94,9 +95,20 @@ class HomeController extends Controller
                 ];
             });
 
+        // our main plair
+        $ourmainplairs = OurMainPlair::get()->map(fn($ourmainplair) =>[
+            'id' => $ourmainplair->id,
+            'header_title' => $ourmainplair->getTranslation('header_title' , $appLang),
+            'title' => $ourmainplair->getTranslation('title' , $appLang),
+            'content' => $ourmainplair->getTranslation('content' , $appLang),
+            'image' => Storage::url($ourmainplair->image),
+            'link' => $ourmainplair->link
+        ]);
+
         return Inertia::render('Welcome', [
             'slides' => $slides,
             'blogs' => $blogs,
+            'ourmainplair' => $ourmainplairs,
             'factnumbers' => $factsandnumber,
             'ourimpacts' => $ourimpacts,
             'brands' => $brands

@@ -1,4 +1,5 @@
 import ReciveUpdate from "@/Components/ReciveUpdate";
+import useInView from "@/Components/useInView ";
 import { Head } from "@inertiajs/react";
 import { Carousel } from "antd";
 import { useState } from "react";
@@ -59,7 +60,7 @@ const Index = ({ ourgoal }: Props) => {
                 }}
             >
                 <div
-                    className="w-full h-16 bg-yellow-original bg-cover bg-center"
+                    className="w-full h-24 bg-yellow-original bg-cover bg-center"
                     style={{
                         backgroundColor: `${ourgoal.color}`
                     }}
@@ -68,7 +69,10 @@ const Index = ({ ourgoal }: Props) => {
                 {/* content and video grid */}
                 <div className="w-full mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
                     {/* content */}
-                    <div className="my-12 flex flex-col gap-6">
+                    <div
+
+                        className={`animate-fadeup opacity-100 my-12 flex flex-col gap-6`}
+                    >
                         <h3 className="text-4xl text-white font-bold">{ourgoal.title}</h3>
                         <div className="text-white text-2xl prose prose-invert">
                             <ReactMarkdown>{ourgoal.content}</ReactMarkdown>
@@ -141,27 +145,34 @@ const Index = ({ ourgoal }: Props) => {
 
                 {/* content station */}
                 <div className="w-full max-w-7xl mx-auto px-4 py-8 flex flex-col gap-12">
-                    {ourgoal?.corestations?.map((item, index) => (
-                        <div
-                            key={item.id}
-                            className={`flex flex-col md:flex-row ${index % 2 ? 'md:flex-row' : 'md:flex-row-reverse'
-                                } items-center gap-6`}
-                        >
-                            <div className="w-full md:w-1/2 overflow-hidden">
-                                <img
-                                    src={item.image}
-                                    alt={item.title}
-                                    className="w-full h-auto object-cover transition-transform duration-300 hover:scale-125"
-                                />
-                            </div>
-                            <div className="w-full md:w-1/2">
-                                <h3 className="text-2xl font-bold mb-2 text-white">{item.title}</h3>
-                                <div className="text-white prose prose-invert">
-                                    <ReactMarkdown>{item.content}</ReactMarkdown>
+                    {ourgoal?.corestations?.map((item, index) => {
+                        const { ref, isVisible } = useInView();
+                        return (
+                            <div
+                                key={item.id}
+                                className={`flex flex-col md:flex-row ${index % 2 ? 'md:flex-row' : 'md:flex-row-reverse'
+                                    } items-center gap-6`}
+                            >
+                                <div className="w-full md:w-1/2 overflow-hidden">
+                                    <img
+                                        src={item.image}
+                                        alt={item.title}
+                                        className="w-full h-auto object-cover transition-transform duration-300 hover:scale-125"
+                                    />
+                                </div>
+                                <div
+                                    ref={ref}
+                                    className={`w-full md:w-1/2 ${isVisible ? 'animate-fadeup opacity-100' : 'opacity-0'}`}
+                                >
+                                    <h3 className="text-2xl font-bold mb-2 text-white">{item.title}</h3>
+                                    <div className="text-white prose prose-invert">
+                                        <ReactMarkdown>{item.content}</ReactMarkdown>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        )
+                    }
+                    )}
                 </div>
 
                 {/* product video */}

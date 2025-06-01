@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use App\Models\MainProduct;
 use App\Models\OurBrand;
+use App\Models\SocialLink;
+use App\Models\SolveBrand;
 use App\Models\Sustainability;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -42,44 +44,60 @@ class HandleInertiaRequests extends Middleware
             ],
             'applang' =>  $appLang,
             'currentRoute' => Route::currentRouteName(),
-            'mainproducts' => fn() => MainProduct::select('id', 'title', 'slug')
+            'solvebrands' => fn() => SolveBrand::with(['mainproducts:id,solve_brands_id,title,slug'])
+                ->select('id', 'title', 'slug')
+                ->get()
+                ->map(function ($solvebrand) use ($appLang) {
+                    return [
+                        'id' => $solvebrand->id,
+                        'title' => $solvebrand->getTranslation('title', $appLang),
+                        'slug' => $solvebrand->getTranslation('slug', $appLang),
+                        'mainproducts' => $solvebrand->mainproducts->map(function ($product) use ($appLang) {
+                            return [
+                                'id' => $product->id,
+                                'title' => $product->getTranslation('title', $appLang),
+                                'slug' => $product->getTranslation('slug', $appLang),
+                            ];
+                        })
+                    ];
+                }),
+            'mainproducts' => fn() => MainProduct::whereNull('solve_brands_id')
+                ->select('id', 'title', 'slug')
                 ->get()
                 ->map(function ($mainproduct) use ($appLang) {
-                    $mainTitle = $mainproduct->getTranslation('title', $appLang);
-                    $mainSlug =  $mainproduct->getTranslation('slug', $appLang);
 
                     return [
                         'id' => $mainproduct->id,
-                        'title' => $mainTitle,
-                        'slug' => $mainSlug,
+                        'title' => $mainproduct->getTranslation('title', $appLang),
+                        'slug' => $mainproduct->getTranslation('slug', $appLang)
                     ];
                 }),
             'Brands' => fn() => OurBrand::select('id', 'header_title', 'slug')
                 ->get()
                 ->map(function ($brands) use ($appLang) {
-                    $headertitle = $brands->getTranslation('header_title', $appLang);
-                    $slug = $brands->getTranslation('slug', $appLang);
+
                     return [
                         'id' => $brands->id,
-                        'header_title' => $headertitle,
-                        'slug' => $slug
+                        'header_title' => $brands->getTranslation('header_title', $appLang),
+                        'slug' => $brands->getTranslation('slug', $appLang)
                     ];
                 }),
             'sustainabilityreport' => fn() => optional(
                 Sustainability::select('pdf')->first(),
                 function ($item) {
                     return [
-                        'sustainability_pdf'=> Storage::url($item->pdf)
+                        'sustainability_pdf' => Storage::url($item->pdf)
                     ];
                 }
 
             ),
-             'flash' => function () {
-            return [
-                'success' => session('success'),
-                'error' => session('error'),
-            ];
-        },
+            'socialicons' => fn()=> SocialLink::get(),
+            'flash' => function () {
+                return [
+                    'success' => session('success'),
+                    'error' => session('error'),
+                ];
+            },
         ];
     }
 }

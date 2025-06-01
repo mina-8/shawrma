@@ -13,11 +13,11 @@ const SpotlightNav = () => {
     const { t, i18n } = useTranslation();
     const { sustainabilityreport } = usePage<sustainabilityPdf>().props;
 
-    console.log(sustainabilityreport.sustainability_pdf)
+
     const Spotlight = [
         {
-            href: 'our-story',
-            title: t('footer.ourstory')
+            href: 'build-information',
+            title: t('footer.bulidinfo')
         },
         {
             href: 'news',
@@ -42,7 +42,7 @@ const SpotlightNav = () => {
                     <a
                         key={index}
                         href={item.href}
-                        
+
                         className='!text-yellow-original hover:!text-white hover:!bg-yellow-original !pt-2 !pb-2 mt-2 border-b w-40 last:border-b-0 p-4'
                     >
                         {item.title}

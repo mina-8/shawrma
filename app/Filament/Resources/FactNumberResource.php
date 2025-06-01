@@ -6,6 +6,7 @@ use App\Filament\Resources\FactNumberResource\Pages;
 use App\Filament\Resources\FactNumberResource\RelationManagers;
 use App\Models\OurStory;
 use App\Models\FactNumber;
+use App\Models\OurBrand;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -58,7 +59,7 @@ class FactNumberResource extends Resource
                             ->label('Related Type')
                             ->options([
                                 OurStory::class => 'قصتنا',
-
+                                OurBrand::class => 'علامتنا التجارية'
                             ])
                             ->reactive()
                             ->nullable(),
@@ -69,6 +70,10 @@ class FactNumberResource extends Resource
 
                                 if ($type === OurStory::class) {
                                     return OurStory::pluck('title', 'id');
+                                }
+
+                                if ($type === OurBrand::class) {
+                                    return OurBrand::pluck('header_title', 'id');
                                 }
 
                                 return [];
@@ -83,6 +88,8 @@ class FactNumberResource extends Resource
                         ]),
                         Forms\Components\TextInput::make('number')
                             ->label(__('filament-panels::resources/pages/blog.fields.title'))
+                            ->numeric()            
+                            ->maxLength(11)
                             ->required(),
                         Forms\Components\FileUpload::make('image')
                             ->label(__('filament-panels::resources/pages/blog.fields.image'))
@@ -122,13 +129,26 @@ class FactNumberResource extends Resource
                     ->label('Related Type')
                     ->formatStateUsing(function (?string $state) {
                         return match ($state) {
-                            OurStory::class => 'Project',
+                            OurStory::class => 'قصتنا',
+                            OurBrand::class => 'علامتنا التجارية',
                             // \App\Models\Service::class => 'Service',
                             default => '-',
                         };
                     }),
                 Tables\Columns\TextColumn::make('factable.name') // assuming the related model has a "name" column
                     ->label('Related Name')
+                    ->getStateUsing(function ($record) {
+                        $model = $record->factable;
+                        if (!$model) {
+                            return '_';
+                        }
+
+                        return match (get_class($model)) {
+                            OurStory::class => $model->title ?? '_',
+                            OurBrand::class => $model->header_title ?? '_',
+                            default => $model->title ?? '-',
+                        };
+                    })
                     ->default('-'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(__('filament-panels::resources/pages/blog.fields.created_at'))

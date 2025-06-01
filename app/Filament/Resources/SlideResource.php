@@ -65,27 +65,30 @@ class SlideResource extends Resource
                                 ->label(__('filament-panels::resources/pages/blog.fields.str_btn')),
 
                         ]),
-                        Forms\Components\TextInput::make('link')
-                            ->label(__('filament-panels::resources/pages/blog.fields.link'))
-                            ->default('welcome')
-                            ->dehydrated(fn($state) => filled($state)),
 
 
                         Forms\Components\Select::make('link')
                             ->label(__('filament-panels::resources/pages/blog.fields.link'))
-                            ->options(function () {
-                                return collect(\Illuminate\Support\Facades\Route::getRoutes())
-                                    ->filter(
-                                        fn($route) =>
-                                        $route->getName() &&
-                                            in_array('web', $route->middleware())
-                                    )
-                                    ->mapWithKeys(fn($route) => [
-                                        $route->getName() => $route->getName()
-                                    ])
-                                    ->toArray();
-                            })
+                            ->options([
+                                'welcome' => 'Home',
+                                'our-story' => 'our story',
+                                'our-promise' => 'our promise',
+                                'our-culture' => 'our culture',
+                                'building-best' => 'bulid best',
+                                'Sustainability' => 'Sustainability',
+                                'projects' => 'projects',
+                                'innovation' => 'innovation',
+                                'contact-us' => 'contact-us',
+                                'mainproduct' => 'mainproduct',
+                                'products' => 'products',
+                                'news' => 'news',
+                                'work-us' => 'work-us',
+                                'build-information' => 'build information',
+
+                            ])
                             ->searchable(),
+
+
 
                         Forms\Components\FileUpload::make('image')
                             ->label(__('filament-panels::resources/pages/blog.fields.image'))

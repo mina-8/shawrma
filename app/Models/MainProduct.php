@@ -8,6 +8,7 @@ class MainProduct extends Model
 {
     use \Spatie\Translatable\HasTranslations;
     protected $fillable = [
+        'solve_brands_id',
         'title',
         'content',
         'color',
@@ -27,5 +28,9 @@ class MainProduct extends Model
 
     public function products(){
         return $this->hasMany(Product::class , 'mainproduct_id');
+    }
+
+    public function solvebrand(){
+        return $this->belongsTo(SolveBrand::class , 'solve_brands_id');
     }
 }

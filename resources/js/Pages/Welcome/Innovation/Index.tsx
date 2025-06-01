@@ -98,11 +98,11 @@ const Index = ({ innovation }: Props) => {
                             <h3
                                 className='text-4xl'
                             >{innovation.title}</h3>
-                            <p
+                            <div
                                 className='text-xl'
                             >
                                 <ReactMarkdown>{innovation.content}</ReactMarkdown>
-                            </p>
+                            </div>
                         </div>
 
                         {/* vesion */}
@@ -127,11 +127,11 @@ const Index = ({ innovation }: Props) => {
                                         <h3
                                             className='text-xl'
                                         >{item?.title}</h3>
-                                        <p
+                                        <div
                                             className='text-xl'
                                         >
                                             <ReactMarkdown>{item?.content}</ReactMarkdown>
-                                        </p>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
@@ -152,7 +152,7 @@ const Index = ({ innovation }: Props) => {
                         <div className='w-full'>
                             {innovation.corestations?.length > 0 &&
                                 <div className="mt-12 text-center">
-                                    
+
                                     <Carousel
                                         arrows
                                         dots={false}

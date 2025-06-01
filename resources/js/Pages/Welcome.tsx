@@ -21,12 +21,13 @@ export default function Welcome({
   slides = [],
   factnumbers = [],
   ourimpacts = [],
-  brands = []
-}: PageProps<{ blogs?: [] , slides?:[] , factnumbers?:[] , ourimpacts?:[] , brands?:[]}>) {
+  brands = [],
+  ourmainplair = []
+}: PageProps<{ blogs?: [] , slides?:[] , factnumbers?:[] , ourimpacts?:[] , brands?:[] , ourmainplair?:[]}>) {
 
     const { t, i18n } = useTranslation();
     const { applang } = usePage().props;
-    console.log(applang, i18n.language);
+    
     return (
         <>
             <Head title="Home" />
@@ -34,7 +35,7 @@ export default function Welcome({
         <div className=" flex min-h-screen flex-col items-center justify-start">
             <OurNews news={blogs}/>
 
-            <OurMainPlairs about={[]}/>
+            <OurMainPlairs about={ourmainplair}/>
 
             <Possibilty possibilty={factnumbers}/>
 

@@ -27,7 +27,7 @@ const Index = ({ productvideo }: Props) => {
             <Head title={t('productvideo.header')} />
             <div className=" bg-gray-50 flex flex-col">
                 {/* Top Banner */}
-                <div className="w-full h-16 bg-yellow-original bg-cover bg-center" />
+                <div className="w-full h-24 bg-yellow-original bg-cover bg-center" />
             </div>
             {/* content */}
             <div

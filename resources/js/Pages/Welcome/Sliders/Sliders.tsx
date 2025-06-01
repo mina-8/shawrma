@@ -106,14 +106,14 @@ export default function Sliders({ slides }: Props) {
 
                                             <p className={`pt-20 text-6xl  text-white drop-shadow-3xl xs:text-xl ${AcitveIndex === index ? 'animate-fadeup' : ''} `}>{item.title}</p>
 
-                                            <p className={`py-5 text-3xl  font-bold text-white drop-shadow-3xl xs:text-base xs:text-center ${AcitveIndex === index ? 'animate-fadeup' : ''}`}
+                                            <div className={`py-5 text-3xl  font-bold text-white drop-shadow-3xl xs:text-base xs:text-center ${AcitveIndex === index ? 'animate-fadeup' : ''}`}
                                                 style={{
                                                     animationDuration: "1s",
                                                     animationDelay: "0.75s"
                                                 }}
                                             >
                                                 <ReactMarkdown>{item.content}</ReactMarkdown>
-                                            </p>
+                                            </div>
 
                                             {
                                                 AcitveIndex === index &&

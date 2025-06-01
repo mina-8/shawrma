@@ -208,9 +208,22 @@
         "message": "الرسالة",
         "submit": "أرسل"
     },
+    "search-form":{
+        "search-header" : "ابحث في الموقع",
+        "search-placeholder" : "ما الذي تبحث عنة؟",
+        "search-fastlink" : "روابط سريعة",
+        "search-latest" : "عمليات البحث الاخيرة",
+        "search-btn" : "ابحث"
+    },
     "footer": {
         "description": "أكبر شركة محلية مصنّعة للمنتجات والحلول العالمية في منطقة الشرق الأوسط وشمال إفريقيا.",
-        "about_us": "من نحن",
+        "about_us": "لنبني الأفضل",
+        "brand" : "العلامات التجارية",
+        "services": "لنبني المستقبل",
+        "products": "منتجات وحلول",
+        "quick_link" : "روابط سريعة",
+        "work-us" : "انضم للعمل في \" بسكو \" ",
+        "bulidinfo" : "نمذجة بناء المعلومات",
         "contact-us": "تواصل معنا",
         "ourstory": "قصتنا",
         "ourteam": "فريقنا",
@@ -226,8 +239,8 @@
         "ourtestimonials": "شهاداتنا",
         "ourfaq": "الأسئلة الشائعة",
         "home": "الصفحة الرئيسية",
-        "services": "الخدمات",
-        "products": "المنتجات",
+
+
         "contact_us": "اتصل بنا",
         "privacy_policy": "سياسة الخصوصية",
         "terms_of_service": "شروط الخدمة",

@@ -8,14 +8,15 @@ import { Link } from '@inertiajs/react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { useState } from 'react';
 import useInView from '@/Components/useInView ';
+import ReactMarkdown from 'react-markdown';
 
 interface OurMainPlairs {
     id: number;
     title: string;
     content: string;
 
-    href: string;
-    description: string;
+    link: string;
+    header_title: string;
     image: string;
 }
 
@@ -79,17 +80,21 @@ const OurMainPlairs = ({ about }: Props) => {
                                     <img src={item.image} alt={`Static News ${index + 1}`} className='w-full h-full object-cover' />
                                     <div className='absolute w-full h-full bg-black/50 top-0 right-0'></div>
                                     <h2 className='absolute bottom-0 p-4 text-white font-semibold text-xl'>
-                                        {item.title}
+                                        {item.header_title}
                                     </h2>
                                 </div>
 
                                 <div className='flex flex-col justify-between px-4 py-4 flex-grow'>
                                     <div>
-                                        <h3 className='text-lg font-semibold line-clamp-2'>{item.content}</h3>
-                                        <p className='text-sm text-gray-600 line-clamp-3'>{item.description}</p>
+                                        <h3 className='text-lg font-semibold line-clamp-2'>{item.title}</h3>
+                                        <div className='text-sm text-gray-600 line-clamp-3'>
+                                            <ReactMarkdown>
+                                            {item.content}
+                                            </ReactMarkdown>
+                                            </div>
                                     </div>
                                     <Link
-                                        href={route(item.href, { lang: i18n.language })}
+                                        href={route(item.link, { lang: i18n.language })}
                                         className='text-md text-sky-500 hover:text-sky-700 flex items-center gap-2 mt-4'
                                     >
                                         {t('aboutus.readmore')}

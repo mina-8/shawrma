@@ -45,6 +45,9 @@ class MainProductResource extends Resource
             ->schema([
                 Forms\Components\Grid::make(1)
                     ->schema([
+                        Forms\Components\Select::make('solve_brands_id')
+                            ->label(__('filament-panels::resources/pages/product.fields.mainproduct'))
+                            ->relationship('solvebrand', 'title'),
                         LanguageTabs::make([
                             Forms\Components\TextInput::make('title')
                                 ->label(__('filament-panels::resources/pages/mainproduct.fields.title'))

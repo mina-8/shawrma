@@ -55,7 +55,7 @@ const Show = ({ project, otherProjects }: Props) => {
                 className=" bg-gray-50 flex flex-col"
             >
                 {/* Top Banner */}
-                <div className="w-full h-16 bg-yellow-original bg-cover bg-center" />
+                <div className="w-full h-24 bg-yellow-original bg-cover bg-center" />
                 {/* project */}
                 <div
                     className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 w-full max-w-7xl mx-auto'

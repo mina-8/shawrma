@@ -10,32 +10,29 @@ interface MainProducts {
     title: string;
     slug: string;
 }
-
+export interface SolveBrand {
+    id: number;
+    title: string;
+    slug: string;
+    mainproducts: MainProducts[];
+}
 interface CustomPageProps extends PageProps {
+    solvebrands: SolveBrand[];
     mainproducts: MainProducts[];
 }
 
 const ProductNav = () => {
     const { t, i18n } = useTranslation();
-    const Navmainproducts = usePage<CustomPageProps>().props.mainproducts;
-    
-    // const [width, setWidth] = useState(window.innerWidth);
+    const { solvebrands, mainproducts: unassignedProducts } = usePage<CustomPageProps>().props;
 
-    // useEffect(() => {
-    //     const handleResize = () => setWidth(window.innerWidth);
 
-    //     window.addEventListener('resize', handleResize);
-
-    //     // Cleanup on unmount
-    //     return () => window.removeEventListener('resize', handleResize);
-    // }, []);
 
     return (
         <div
-            // style={{ width: width * 0.9 }}
-            className={`flex gap-2 px-2 justify-around`}
+
+            className={`flex gap-2 px-2 justify-around whitespace-nowrap`}
         >
-            <div className='flex flex-col w-60'>
+            <div className='flex flex-col w-60 '>
                 {/* header title */}
                 <NavLink
                     className='!text-sky-500 pb-1 pt-0 border-b-2 border-yellow-original hover:!bg-yellow-original hover:!text-white flex justify-start'
@@ -57,8 +54,8 @@ const ProductNav = () => {
                         />
                     </svg>
                 </NavLink>
-                {Navmainproducts.length > 0 &&
-                    Navmainproducts.map((item) => (
+                {unassignedProducts.length > 0 &&
+                    unassignedProducts.map((item) => (
                         item.title?.trim() || item.slug?.trim() ? (
                             <NavLink
                                 key={item.id}
@@ -72,6 +69,58 @@ const ProductNav = () => {
                     ))
                 }
             </div>
+
+            <div className='flex flex-row gap-4 '>
+                {solvebrands.map((brand) => (
+                    <div
+                    className='flex flex-col'
+                    key={brand.id}
+                    >
+                        <NavLink
+                            key={brand.id}
+                            className='!text-sky-500 pb-1 pt-0 border-b-2 border-yellow-original hover:!bg-yellow-original hover:!text-white flex justify-start'
+                            href={route('solve-brand', { lang: i18n.language  , slug:brand.slug})}
+                            active={route().current('mainproduct')}
+                        >
+                            {brand.title}
+
+                            <svg
+                                className="-me-0.5 ms-2 h-4 w-4"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                            >
+                                <path
+                                    fillRule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clipRule="evenodd"
+                                />
+                            </svg>
+                        </NavLink>
+
+                        {brand.mainproducts.length > 0 &&
+                            brand.mainproducts.map(product => (
+                                product.title?.trim() || product.slug?.trim() ? (
+                                    <NavLink
+                                        key={product.id}
+                                        className='!text-sky-500 hover:!text-white hover:!bg-yellow-original !pt-2 !pb-2 mt-2'
+                                        href={route('mainproduct.show', {
+                                            lang: i18n.language,
+                                            slug: product.slug
+                                        })}
+                                        active={route().current('mainproduct.show')}
+                                    >
+                                        {product.title}
+                                    </NavLink>
+                                ) : null
+                            ))
+                        }
+
+                    </div>
+                ))}
+
+            </div>
+
             {/* products custom-design */}
 
             <div className='flex flex-col w-60'>

@@ -18,6 +18,7 @@ import AboutNav from '@/Components/NavList/AboutNav';
 import ServiceNav from '@/Components/NavList/ServiceNav';
 import BrandNav from '@/Components/NavList/BrandNav';
 import SpotlightNav from '@/Components/NavList/SpotlightNav';
+import WorkusNav from '@/Components/NavList/WorkusNav';
 
 export default function AuthWelcome({
     header,
@@ -148,7 +149,7 @@ export default function AuthWelcome({
                                             className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[-25%]' : 'translate-x-[25%]'} `}
 
                                         >
-                                            <ProductNav />
+                                            <WorkusNav />
                                         </Dropdown.Content>
                                     </Dropdown>
 
@@ -169,13 +170,13 @@ export default function AuthWelcome({
                                 <div className="relative ms-3">
                                     <button
                                         type="button"
-                                        className="inline-flex items-center rounded-full bg-sky-500 hover:bg-sky-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
+                                        className="inline-flex items-center rounded-full bg-yellow-original hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
                                         onClick={() => setShowSearch(true)}
                                     >
                                         <IoSearch size={24} />
                                     </button>
                                 </div>
-                                
+
                             </div>
 
                             <div className="-me-2 flex items-center sm:hidden relative">
@@ -184,7 +185,7 @@ export default function AuthWelcome({
                                         <span className="inline-flex rounded-md">
                                             <button
                                                 type="button"
-                                                className="inline-flex items-center rounded-full bg-sky-500 hover:bg-sky-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
+                                                className="inline-flex items-center rounded-full bg-yellow-original hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
                                                 onClick={() => setShowSearch(true)}
                                             >
                                                 <IoSearch size={24} />
@@ -296,7 +297,7 @@ export default function AuthWelcome({
                 {isScrolled && (
                     <div className='fixed bottom-4 right-4 z-50'>
                         <div
-                            className='bg-sky-500 text-white p-4 rounded-full shadow-lg cursor-pointer hover:bg-gray-700 transition duration-300 animate-bounce'
+                            className='bg-yellow-original text-white p-4 rounded-full shadow-lg cursor-pointer hover:bg-gray-700 transition duration-300 animate-bounce'
                             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                         >
                             <FaArrowUp />

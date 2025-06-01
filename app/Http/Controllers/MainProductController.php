@@ -12,7 +12,7 @@ class MainProductController extends Controller
 {
     public function index(){
         $appLang = app()->getLocale();
-        $mainProduct = MainProduct::latest()
+        $mainProduct = MainProduct::whereNull('solve_brands_id')->latest()
                                     ->get()
                                     ->map(function ($mainproduct) use($appLang){
                                         return [
