@@ -17,7 +17,7 @@ class OurStoryController extends Controller
         $ourstory = OurStory::first();
 
         if (!$ourstory) {
-            abort(404);
+            return Inertia::render('Welcome/NotFound/NotFound');
         }
         $factsandnumbers = [];
         $corestations = [];

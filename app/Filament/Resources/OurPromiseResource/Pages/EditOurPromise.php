@@ -44,33 +44,33 @@ class EditOurPromise extends EditRecord
                             return Str::uuid() . '.' . $extension;
                         })
                         ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp']),
-                    Components\Group::make([
-                        LanguageTabs::make([
-                            Components\TextInput::make('title')
-                                ->label(__('filament-panels::resources/pages/ourpromise.fields.title'))
-                                ->required(),
+                    // Components\Group::make([
+                    //     LanguageTabs::make([
+                    //         Components\TextInput::make('title')
+                    //             ->label(__('filament-panels::resources/pages/ourpromise.fields.title'))
+                    //             ,
 
 
-                            Components\MarkdownEditor::make('content')
-                                ->label(__('filament-panels::resources/pages/ourpromise.fields.content')),
+                    //         Components\MarkdownEditor::make('content')
+                    //             ->label(__('filament-panels::resources/pages/ourpromise.fields.content')),
 
 
-                            Components\Hidden::make('slug')
-                                ->label('Slug'),
-                        ]),
-                    ]),
-                    Components\FileUpload::make('image')
-                        ->label(__('filament-panels::resources/pages/ourpromise.fields.image'))
-                        ->disk('public')
-                        ->directory('uploads/aboutus')
-                        ->visibility('public')
-                        ->maxSize(4096)
-                        ->getUploadedFileNameForStorageUsing(function ($file) {
-                            $extension = $file->getClientOriginalExtension();
-                            return Str::uuid() . '.' . $extension;
-                        })
-                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp'])
-                        ->required(),
+                    //         Components\Hidden::make('slug')
+                    //             ->label('Slug'),
+                    //     ]),
+                    // ]),
+                    // Components\FileUpload::make('image')
+                    //     ->label(__('filament-panels::resources/pages/ourpromise.fields.image'))
+                    //     ->disk('public')
+                    //     ->directory('uploads/aboutus')
+                    //     ->visibility('public')
+                    //     ->maxSize(4096)
+                    //     ->getUploadedFileNameForStorageUsing(function ($file) {
+                    //         $extension = $file->getClientOriginalExtension();
+                    //         return Str::uuid() . '.' . $extension;
+                    //     })
+                    //     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp'])
+                    //     ,
                 ]),
             Step::make(__('filament-panels::resources/pages/ourpromise.fields.create_vesion.header'))
                 ->description(__('filament-panels::resources/pages/ourpromise.fields.create_vesion.description'))

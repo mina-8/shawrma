@@ -15,7 +15,7 @@ class SustainabilityController extends Controller
         $Sustainability = Sustainability::first();
 
         if(!$Sustainability){
-            abort(404);
+            return Inertia::render('Welcome/NotFound/NotFound');
         }
 
         $corestations = [];
@@ -56,5 +56,14 @@ class SustainabilityController extends Controller
 
 
         return Inertia::render('Welcome/Sustainability/Index' , ['sustainability'=> $dataSustainability]);
+    }
+
+    public function show(string $lang){
+        $pdf = Sustainability::select('pdf')->first();
+        if(!$pdf){
+            return Inertia::render('Welcome/NotFound/NotFound');
+        }
+
+        return response()->file(Storage::disk('public')->path($pdf->pdf) );
     }
 }

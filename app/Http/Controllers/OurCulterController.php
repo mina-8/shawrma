@@ -13,7 +13,7 @@ class OurCulterController extends Controller
         $appLang = app()->getLocale();
         $ourculter = OurCulter::first();
         if(!$ourculter){
-            abort(404);
+            return Inertia::render('Welcome/NotFound/NotFound');
         }
 
         $corevesions = [];

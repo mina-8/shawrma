@@ -29,7 +29,7 @@ class BlogController extends Controller
         $blog = Blog::where("slug->$lang" , $slug)->first();
         // Step 2: Handle not found
         if (!$blog) {
-            abort(404);
+            return Inertia::render('Welcome/NotFound/NotFound');
         }
 
         $slugs = $blog->getTranslations('slug');

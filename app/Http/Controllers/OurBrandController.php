@@ -15,7 +15,7 @@ class OurBrandController extends Controller
     {
         $brand = OurBrand::where("slug->$lang", $slug)->first();
         if (!$brand) {
-            abort(404);
+            return Inertia::render('Welcome/NotFound/NotFound');
         }
 
         $slugs = $brand->getTranslations('slug');

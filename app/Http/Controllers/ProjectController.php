@@ -38,7 +38,7 @@ class ProjectController extends Controller
     {
         $project = Project::where("slug->$lang", $slug)->first();
         if (!$project) {
-            abort(404);
+            return Inertia::render('Welcome/NotFound/NotFound');
         }
         $slugs = $project->getTranslations('slug');
 
@@ -75,7 +75,7 @@ class ProjectController extends Controller
 
     public function filter(string $lang, Request $request)
     {
-        
+
         $qeury = Project::query();
         if ($request->has('location')) {
             $location = $request->input('location');

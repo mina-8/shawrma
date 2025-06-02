@@ -15,7 +15,7 @@ class BuildInformationController extends Controller
         $buildinfo = BuildInformation::first();
 
         if(!$buildinfo){
-            abort(404);
+            return Inertia::render('Welcome/NotFound/NotFound');
         }
 
         $dataBuildInfo = [

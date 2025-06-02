@@ -16,7 +16,7 @@ class OurPromiseController extends Controller
         $ourpromise = OurPromise::first();
 
         if(!$ourpromise){
-            abort(404);
+            return Inertia::render('Welcome/NotFound/NotFound');
         }
 
         $corevesions = [];

@@ -9,14 +9,14 @@ use Inertia\Inertia;
 
 class OurImpactController extends Controller
 {
-    
+
 
     public function show(string $lang, string $slug)
     {
         $ourimpact = OurImpact::where("slug->$lang", $slug)
             ->first();
         if (!$ourimpact) {
-            abort(404);
+            return Inertia::render('Welcome/NotFound/NotFound');
         }
 
         $slugs = $ourimpact->getTranslations('slug');

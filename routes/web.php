@@ -58,6 +58,7 @@ Route::group(
 
         // Sustainability
         Route::get('Sustainability' , [SustainabilityController::class , 'index'])->name('Sustainability');
+        Route::get('pdf-review' , [SustainabilityController::class , 'show'])->name('pdf-review');
         // projects
         Route::get('projects' , [ProjectController::class , 'index'])->name('projects');
         Route::get('projects/{slug}' , [ProjectController::class , 'show'])->name('projects.show');

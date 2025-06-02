@@ -58,7 +58,7 @@ class EditOurStory extends EditRecord
                             return Str::uuid() . '.' . $extension;
                         })
                         ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp'])
-                        ->required(),
+                        ,
                     Components\Group::make([
                         LanguageTabs::make([
                             Components\TextInput::make('title')

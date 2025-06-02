@@ -112,7 +112,7 @@ class ProductController extends Controller
 
 
         if (!$Product) {
-            abort(404);
+            return Inertia::render('Welcome/NotFound/NotFound');
         }
 
         $slugs = $Product->getTranslations('slug');

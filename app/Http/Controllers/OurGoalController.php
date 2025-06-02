@@ -16,7 +16,7 @@ class OurGoalController extends Controller
         $ourgoal = OurGoal::first();
 
         if (!$ourgoal) {
-            abort(404);
+            return Inertia::render('Welcome/NotFound/NotFound');
         }
 
         $corestations = [];

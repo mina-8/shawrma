@@ -1,9 +1,10 @@
 import { Button, Carousel, ConfigProvider } from 'antd'
 import React, { useState } from 'react'
 
-import slideone from '../../../../../public/sliders/hp-slide-3.jpg'
-import slidetow from '../../../../../public/sliders/hp-slider4_0.jpg'
-import slidethree from '../../../../../public/sliders/hp-slider5.jpg'
+import slideone from '../../../../../public/sliders/slide (1).webp'
+import slidetow from '../../../../../public/sliders/slide (2).webp'
+import slidethree from '../../../../../public/sliders/slide (3).webp'
+import slidefour from '../../../../../public/sliders/slide (4).webp'
 import { useTranslation } from 'react-i18next'
 import { Link } from '@inertiajs/react'
 
@@ -56,7 +57,8 @@ export default function Sliders({ slides }: Props) {
     const images = [
         slideone,
         slidetow,
-        slidethree
+        slidethree,
+        slidefour
     ];
 
     return (
@@ -184,6 +186,7 @@ export default function Sliders({ slides }: Props) {
                                         }}
                                         className='relative'
                                         >
+                                            <div className='absolute w-full h-full bg-black top-0 right-0 opacity-50'></div>
                                         <div className={`flex flex-col ${i18n.language === 'ar' ? 'items-end' : 'items-start'} px-24 justify-center gap-2 h-full overflow-hidden`}>
                                             <p className={`pt-20 text-6xl text-white drop-shadow-3xl xs:text-xl ${AcitveIndex === index ? 'animate-fadeup' : ''} `}>
                                                 {t(`slides.title_${index + 1}`)}

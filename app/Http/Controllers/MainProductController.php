@@ -41,7 +41,7 @@ class MainProductController extends Controller
             ->first();
 
         if (!$mainProduct) {
-            abort(404);
+            return Inertia::render('Welcome/NotFound/NotFound');
         }
 
         $mainTitle = $mainProduct->getTranslation('title', $lang);

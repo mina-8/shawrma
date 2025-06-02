@@ -13,7 +13,7 @@ class SolveBrandController extends Controller
     {
         $solvebrand = SolveBrand::with(['mainproducts:id,solve_brands_id,title,slug,image,icon'])->where("slug->$lang", $slug)->first();
         if (!$solvebrand) {
-            abort(404);
+            return Inertia::render('Welcome/NotFound/NotFound');
         }
         $datasolvebrand = [
             'id' => $solvebrand->id,

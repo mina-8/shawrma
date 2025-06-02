@@ -250,39 +250,91 @@ export default function AuthWelcome({
                     </div>
 
                     <div
-                        className={
-                            (showingNavigationDropdown ? 'block' : 'hidden') +
-                            ' sm:hidden'
-                        }
-                    >
-                        <div className="space-y-1 pb-3 pt-2">
-                            <ResponsiveNavLink
-                                href={route('welcome', { lang: i18n.language })}
-                                active={route().current('welcome')}
-                            >
-                                {t('home.home')}
-                            </ResponsiveNavLink>
+    className={`sm:hidden ${showingNavigationDropdown ? 'block' : 'hidden'} bg-white text-black px-4 py-4 shadow-md z-50`}
+>
+    <div className="space-y-1">
+        <ResponsiveNavLink
+            href={route('welcome', { lang: i18n.language })}
+            active={route().current('welcome')}
+        >
+            {t('home.home')}
+        </ResponsiveNavLink>
 
-                            <ResponsiveNavLink
-                                href={route('contact-us', { lang: i18n.language })}
-                                active={route().current('contact-us')}
-                            >
-                                {t('home.contact')}
-                            </ResponsiveNavLink>
-                            <ResponsiveNavLink
-                                href={route('products', { lang: i18n.language })}
-                                active={route().current('products')}
-                            >
-                                {t('home.products')}
-                            </ResponsiveNavLink>
-                            {/* <ResponsiveNavLink
-                                href={route('contact-form', { lang: i18n.language })}
-                                active={route().current('contact-form')}
-                            >
-                                {t('home.contactform')}
-                            </ResponsiveNavLink> */}
-                        </div>
-                    </div>
+        <ResponsiveNavLink
+            href={route('contact-us', { lang: i18n.language })}
+            active={route().current('contact-us')}
+        >
+            {t('home.contact')}
+        </ResponsiveNavLink>
+
+        <Dropdown>
+            <Dropdown.Trigger>
+                <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
+                    {t('home.about')}
+                </span>
+            </Dropdown.Trigger>
+            <Dropdown.Content>
+                <AboutNav />
+            </Dropdown.Content>
+        </Dropdown>
+
+        <Dropdown>
+            <Dropdown.Trigger>
+                <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
+                    {t('home.brands')}
+                </span>
+            </Dropdown.Trigger>
+            <Dropdown.Content>
+                <BrandNav />
+            </Dropdown.Content>
+        </Dropdown>
+
+        <Dropdown>
+            <Dropdown.Trigger>
+                <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
+                    {t('home.services')}
+                </span>
+            </Dropdown.Trigger>
+            <Dropdown.Content>
+                <ServiceNav />
+            </Dropdown.Content>
+        </Dropdown>
+
+        <Dropdown>
+            <Dropdown.Trigger>
+                <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
+                    {t('home.products')}
+                </span>
+            </Dropdown.Trigger>
+            <Dropdown.Content>
+                <ProductNav />
+            </Dropdown.Content>
+        </Dropdown>
+
+        <Dropdown>
+            <Dropdown.Trigger>
+                <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
+                    {t('home.bulidinus')}
+                </span>
+            </Dropdown.Trigger>
+            <Dropdown.Content>
+                <WorkusNav />
+            </Dropdown.Content>
+        </Dropdown>
+
+        <Dropdown>
+            <Dropdown.Trigger>
+                <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
+                    {t('home.spotlight')}
+                </span>
+            </Dropdown.Trigger>
+            <Dropdown.Content>
+                <SpotlightNav />
+            </Dropdown.Content>
+        </Dropdown>
+    </div>
+</div>
+
                 </nav>
                 {showSearch && <SearchForm onClose={() => setShowSearch(false)} />}
                 {header && (

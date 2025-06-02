@@ -101,7 +101,7 @@ class EditOurBrand extends EditRecord
                             $extension = $file->getClientOriginalExtension();
                             return Str::uuid() . '.' . $extension;
                         })
-                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp'])
+                        ->acceptedFileTypes(['image/svg+xml' , '.svg'])
                         ->required(),
                     Components\FileUpload::make('pdf')
                         ->label(__('filament-panels::resources/pages/product.fields.pdf'))

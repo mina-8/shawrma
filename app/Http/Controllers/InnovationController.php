@@ -14,7 +14,7 @@ class InnovationController extends Controller
         $appLang = app()->getLocale();
         $innovation = Innovation::first();
         if (!$innovation) {
-            abort(404);
+            return Inertia::render('Welcome/NotFound/NotFound');
         }
         $corevesions = [];
         $corestations = [];

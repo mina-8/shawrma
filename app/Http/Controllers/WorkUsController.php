@@ -14,7 +14,7 @@ class WorkUsController extends Controller
 
         $workus = WorkUs::first();
         if(!$workus){
-            abort(404);
+            return Inertia::render('Welcome/NotFound/NotFound');
         }
 
         $corevesion = [];

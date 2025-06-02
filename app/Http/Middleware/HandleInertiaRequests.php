@@ -82,15 +82,7 @@ class HandleInertiaRequests extends Middleware
                         'slug' => $brands->getTranslation('slug', $appLang)
                     ];
                 }),
-            'sustainabilityreport' => fn() => optional(
-                Sustainability::select('pdf')->first(),
-                function ($item) {
-                    return [
-                        'sustainability_pdf' => Storage::url($item->pdf)
-                    ];
-                }
-
-            ),
+            
             'socialicons' => fn()=> SocialLink::get(),
             'flash' => function () {
                 return [

@@ -49,7 +49,7 @@ interface Props {
 const Index = ({ ourstory }: Props) => {
     const { t, i18n } = useTranslation();
     const staticPossibilty = [img1, img2, img3, img4, img5, img6];
-    
+
     return (
         <>
             <Head title={t('ourstory.title')} />
@@ -86,7 +86,7 @@ const Index = ({ ourstory }: Props) => {
                             className='text-3xl font-semibold text-yellow-original border-b-4 border-yellow-original pb-4'
                         >{ourstory?.title}</h3>
                         <div
-                            className='mx-12 my-12 text-lg flex justify-center items-center w-1/2'
+                            className='mx-12 my-12 text-lg leading-8 w-1/2'
                         >
                             <ReactMarkdown>{ourstory?.description}</ReactMarkdown>
                         </div>
@@ -115,7 +115,7 @@ const Index = ({ ourstory }: Props) => {
                         {ourstory.corestations.map((corestation) => (
                             <div
                                 key={corestation.id}
-                                className='object-cover object-center flex flex-col justify-center items-center gap-4 py-8 px-12 '
+                                className='bg-cover bg-center bg-no-repeat flex flex-col justify-center items-center gap-4 py-8 px-12 '
                                 style={{
                                     backgroundImage: `url('${corestation.image}')`
                                 }}
