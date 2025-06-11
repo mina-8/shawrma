@@ -94,8 +94,7 @@ class EditProduct extends EditRecord
                         ->visibility('public')
                         ->maxSize(4096)
                         ->preserveFilenames()
-                        ->acceptedFileTypes(['application/pdf'])
-                        ->required(),
+                        ->acceptedFileTypes(['application/pdf']),
                 ]),
             Step::make('Usage Instructions')
                 ->description('Product Usage Instructions')

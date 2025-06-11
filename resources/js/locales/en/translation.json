@@ -35,7 +35,9 @@
     },
     "ournews": {
         "title": "Latest News",
-        "readmore": "Read More"
+        "readmore": "Read More",
+        "title-news": "BSCO is a leading Saudi company in the manufacture of building finishing materials and prefabricated construction supplies, offering innovative solutions that meet the requirements of government and private projects in Saudi Arabia and the Gulf.",
+        "content-news": "We manufacture a wide range of cement-based prefabricated products designed to withstand the region's harsh climatic conditions. These products include more than 40 finishing materials, insulation, putties, and ceramic and marble adhesives. We don't just offer building materials... we offer Saudi industry with engineering confidence that keeps pace with the future."
     },
     "aboutus": {
         "title": "Our Core Values",
@@ -86,23 +88,23 @@
     "ourmainplairs": {
         "ourstory": {
             "title": "About Us",
-            "content": "A Pioneering Journey in the Industrial World",
-            "description": "Our group began as an ambitious idea to provide high-quality building products and has evolved into one of the largest industrial groups in the Middle East and North Africa. We take pride in our decades-long history, always striving to achieve excellence through innovation and a commitment to the highest quality standards."
+            "content": "BSCO | A Saudi Finishing and Building Materials Factory with Global Standards",
+            "description": "BSCO (Binary Specialized Industries Company) is a leading Saudi industrial company specializing in the manufacture and supply of cement-based precast building materials. It was established to serve national projects and meet the demands of the Saudi and Gulf markets through reliable, turnkey solutions built on engineering knowledge."
         },
         "ourservice": {
-            "title": "What We Offer",
-            "content": "Comprehensive Solutions for Construction Needs",
-            "description": "We offer a wide range of services that include the manufacture of high-quality building materials, technical consulting, and customized logistics solutions. We strive to meet the needs of our customers in more than 11 countries, ensuring efficiency and sustainability every step of the way."
+            "title": "Our Mission at BSCO",
+            "content": "At BSCO, we are committed to providing high-performance pre-mixed building and finishing materials, designed with a cement base to meet the needs of the Saudi and Gulf markets with maximum efficiency.",
+            "description": "We place customer satisfaction and quality of work at the core of our work. We not only provide the best products at the best prices, but also deliver a reliable experience that begins at the factory and ends at the project site, with Saudi quality worthy of national projects."
         },
         "ourculture": {
-            "title": "Our Culture",
-            "content": "Innovation and collaboration are at the core of our work",
-            "description": "Our culture is built on the values ​​of integrity, creativity, and teamwork. We believe in empowering our employees and fostering a positive work environment that supports innovation and contributes to achieving our vision of developing the construction industry in the region."
+            "title": "Our Values",
+            "content": "At BSCO, we believe that true success is built on a foundation of solid values ​​that we adhere to at every stage of our work, most notably:",
+            "description": "Professionalism and Integrity. We operate to the highest standards of professionalism, and we deal with transparency and ethics in all our internal and external dealings. We are committed to quality and precision in delivery, and we believe that achievement is achieved through a team spirit."
         },
         "ourstyle": {
-            "title": "Our Style",
+            "title": "Our Vision at BSCO",
             "content": "Quality and Sustainability in Every Detail",
-            "description": "We are distinguished by a work style that combines high craftsmanship with advanced technology. We aim to provide products and services that reflect our commitment to sustainability and excellence, with innovative designs that meet the aspirations of our customers in the Middle East and North Africa."
+            "description": "To be the leading Saudi company in the field of pre-mixed building materials and finishing materials, and the premier provider of high-quality solutions in the Kingdom and the Gulf countries, through continuous innovation and technological development, keeping pace with the requirements of today's projects and creating a more efficient infrastructure for the nation's future."
         }
     },
     "reciveupdate": {
@@ -206,10 +208,10 @@
         "search-latest": "Recent searches",
         "search-btn": "Search"
     },
-    "brand":{
-        "allproduct" : "All Product",
-        "otherbrands" : "Other Brands",
-        "catalog" : "Download catalog brand"
+    "brand": {
+        "allproduct": "All Product",
+        "otherbrands": "Other Brands",
+        "catalog": "Download catalog brand"
     },
     "footer": {
         "description": "The largest local manufacturer of global products and solutions in the Middle East and North Africa region.",

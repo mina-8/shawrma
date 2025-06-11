@@ -47,7 +47,7 @@ class OurCulterController extends Controller
             'title' => $ourculter->getTranslation('title' , $appLang),
             'description' => $ourculter->getTranslation('description' , $appLang),
             'content' => $ourculter->getTranslation('content' , $appLang),
-            'banner' => Storage::url($ourculter->banner),
+            'banner' => $ourculter->banner === null ? null : Storage::url($ourculter->banner),
             'image' => Storage::url($ourculter->image),
             'corevesions' => $corevesions,
             'corestations' => $corestations

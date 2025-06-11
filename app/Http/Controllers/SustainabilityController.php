@@ -47,7 +47,7 @@ class SustainabilityController extends Controller
             'id' => $Sustainability->id,
             'title' => $Sustainability->getTranslation('title' , $appLang),
             'content' => $Sustainability->getTranslation('content' , $appLang),
-            'banner' => Storage::url($Sustainability->banner),
+            'banner' => $Sustainability->banner === null ? null : Storage::url($Sustainability->banner),
             'image' => Storage::url($Sustainability->image),
             'pdf' => Storage::url($Sustainability->pdf),
             'corestations' => $corestations,

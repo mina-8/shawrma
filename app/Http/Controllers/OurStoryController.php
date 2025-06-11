@@ -65,7 +65,7 @@ class OurStoryController extends Controller
             'title' => $ourstory->getTranslation('title', $appLang),
             'description' => $ourstory->getTranslation('description', $appLang),
             'content' => $ourstory->getTranslation('content', $appLang),
-            'banner' => Storage::url($ourstory->banner),
+            'banner' => $ourstory->banner === null ? null : Storage::url($ourstory->banner),
             'image' => Storage::url($ourstory->image),
             'possibilty' => $factsandnumbers,
             'corestations' => $corestations,

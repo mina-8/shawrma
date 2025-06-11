@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
-import img1 from '../../../../../public/ournews/live-uni.jpg';
-import img2 from '../../../../../public/ournews/live1_0.jpg';
-import img3 from '../../../../../public/ournews/live3_0.jpg';
-import img4 from '../../../../../public/ournews/live4_0.jpg';
+import img1 from '../../../../../public/ournews/news (1).webp';
+import img2 from '../../../../../public/ournews/news (2).webp';
+import img3 from '../../../../../public/ournews/news (3).webp';
+import img4 from '../../../../../public/ournews/news (4).webp';
 import { Link } from '@inertiajs/react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { useState } from 'react';

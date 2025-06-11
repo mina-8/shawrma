@@ -76,6 +76,7 @@ export default function AuthWelcome({
                                 <Dropdown.Trigger>
                                     <span className="inline-flex rounded-md">
                                         <button
+                                        name='lang'
                                             type="button"
                                             className="inline-flex items-center rounded-md border border-transparent text-white px-3 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none"
                                         >
@@ -169,6 +170,7 @@ export default function AuthWelcome({
                                 </div>
                                 <div className="relative ms-3">
                                     <button
+                                    name='search'
                                         type="button"
                                         className="inline-flex items-center rounded-full bg-yellow-original hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
                                         onClick={() => setShowSearch(true)}

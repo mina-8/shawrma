@@ -59,7 +59,7 @@ const Index = ({ ourpromise }: Props) => {
                             backgroundRepeat: 'no-repeat'
                         }}
                     />
-
+<div className='absolute w-full h-full bg-black top-0 right-0 opacity-50'></div>
                     <h2
                         className={`relative flex w-full  items-center  mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-6xl text-white font-medium`}
                     >

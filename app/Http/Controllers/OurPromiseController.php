@@ -63,7 +63,7 @@ class OurPromiseController extends Controller
             'id' => $ourpromise->id,
             'title' => $ourpromise->getTranslation('title' , $appLang),
             'content' => $ourpromise->getTranslation('content' , $appLang),
-            'banner' => Storage::url($ourpromise->banner),
+            'banner' => $ourpromise->banner === null ? null : Storage::url($ourpromise->banner),
             'image' => Storage::url($ourpromise->image),
             'corevesions' => $corevesions,
             'corestations' => $corestations,

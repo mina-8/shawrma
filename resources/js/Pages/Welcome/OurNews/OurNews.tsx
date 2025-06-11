@@ -1,12 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import img1 from '../../../../../public/ournews/live-uni.jpg';
-import img2 from '../../../../../public/ournews/live1_0.jpg';
-import img3 from '../../../../../public/ournews/live3_0.jpg';
-import img4 from '../../../../../public/ournews/live4_0.jpg';
+
 import { Link } from '@inertiajs/react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import ReactMarkdown from 'react-markdown';
 import useInView from '@/Components/useInView ';
 
 interface NewsItems {
@@ -21,7 +17,7 @@ interface Props {
     news: NewsItems[]
 }
 
-const staticNews = [img1, img2, img3, img4];
+import newsone from '@/../../public/ournews/news (1).webp'
 const OurNews = ({ news }: Props) => {
 
     const { t, i18n } = useTranslation();
@@ -81,49 +77,56 @@ const OurNews = ({ news }: Props) => {
                             </div>
                         ))
                     ) : (
-                        staticNews.map((item, index) => (
-                            <div
-                                key={index}
+                        // staticNews.map((item, index) => (
+                        //     <div
+                        //         key={index}
+                        //         ref={ref}
+                        //         className={`flex flex-col items-center justify-center gap-6 bg-gray-50 shadow w-full min-w-[250px] md:min-w-[300px] h-full transition-all duration-700 ease-in-out transform ${isVisible ? 'animate-fadeup opacity-100' : 'opacity-0'
+                        //             }`}
+                        //     >
+
+                        //         <>
+                        //             <img src={item} alt={`Static News ${index + 1}`} className='w-full h-full object-cover ' />
+                        //             <div className='px-4'>
+                        //                 <h3 className='text-lg'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia, nesciunt sit. Ducimus sit architecto sequi consectetur beatae rem, corrupti impedit nulla laboriosam earum quae, reiciendis quidem? Beatae laboriosam illum neque! {index + 1}</h3>
+                        //                 <p className='text-sm '>This is a static news item.</p>
+                        //                 <Link
+                        //                     href={route('welcome', { lang: i18n.language })}
+                        //                     className='text-md text-sky-500 hover:text-sky-700 flex  items-center py-4 gap-2'
+                        //                 >
+                        //                     {t('ournews.readmore')}
+                        //                     {i18n.language === 'ar' ? (<IoIosArrowBack />) : (<IoIosArrowForward />)}
+
+                        //                 </Link>
+                        //             </div>
+                        //         </>
+
+                        //     </div>
+                        // ))
+<div
+
                                 ref={ref}
                                 className={`flex flex-col items-center justify-center gap-6 bg-gray-50 shadow w-full min-w-[250px] md:min-w-[300px] h-full transition-all duration-700 ease-in-out transform ${isVisible ? 'animate-fadeup opacity-100' : 'opacity-0'
                                     }`}
                             >
-                                {index % 2 === 0 ? (
-                                    <>
-                                        <img src={item} alt={`Static News ${index + 1}`} className='w-full h-full object-cover ' />
-                                        <div className='px-4'>
-                                            <h3 className='text-lg'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia, nesciunt sit. Ducimus sit architecto sequi consectetur beatae rem, corrupti impedit nulla laboriosam earum quae, reiciendis quidem? Beatae laboriosam illum neque! {index + 1}</h3>
-                                            <p className='text-sm '>This is a static news item.</p>
-                                            <Link
-                                                href={route('welcome', { lang: i18n.language })}
-                                                className='text-md text-sky-500 hover:text-sky-700 flex  items-center py-4 gap-2'
-                                            >
-                                                {t('ournews.readmore')}
-                                                {i18n.language === 'ar' ? (<IoIosArrowBack />) : (<IoIosArrowForward />)}
 
-                                            </Link>
-                                        </div>
-                                    </>
-                                ) : (
-                                    <>
-                                        <div className='px-4'>
-                                            <h3 className='text-lg'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia, nesciunt sit. Ducimus sit architecto sequi consectetur beatae rem, corrupti impedit nulla laboriosam earum quae, reiciendis quidem? Beatae laboriosam illum neque! {index + 1}</h3>
-                                            <p className='text-sm '>This is a static news item.</p>
-                                            <Link
-                                                href={route('welcome', { lang: i18n.language })}
-                                                className='text-md text-sky-500 hover:text-sky-700 flex  items-center py-4 gap-2'
-                                            >
-                                                {t('ournews.readmore')}
-                                                {i18n.language === 'ar' ? (<IoIosArrowBack />) : (<IoIosArrowForward />)}
+                                <>
+                                    <img src={newsone} alt={`Static News ${'index' + 1}`} className='w-full h-full object-cover ' />
+                                    <div className='px-4'>
+                                        <h3 className='text-lg'>{t('ournews.title-news')}</h3>
+                                        <p className='text-sm '>{t('ournews.content-news')}</p>
+                                        <Link
+                                            href={route('welcome', { lang: i18n.language })}
+                                            className='text-md text-sky-500 hover:text-sky-700 flex  items-center py-4 gap-2'
+                                        >
+                                            {t('ournews.readmore')}
+                                            {i18n.language === 'ar' ? (<IoIosArrowBack />) : (<IoIosArrowForward />)}
 
-                                            </Link>
-                                        </div>
-                                        <img src={item} alt={`Static News ${index + 1}`} className='w-full h-full object-cover ' />
-                                    </>
-                                )}
+                                        </Link>
+                                    </div>
+                                </>
+
                             </div>
-                        ))
-
                     )}
                 </div>
             </div>

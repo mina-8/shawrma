@@ -120,18 +120,15 @@ class CreateOurStory extends CreateRecord
                         ->schema([
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
-                                    ->label(__('filament-panels::resources/pages/ourstory.fields.create_story.title'))
-                                    ->required(),
+                                    ->label(__('filament-panels::resources/pages/ourstory.fields.create_story.title')),
                             ]),
                             Components\TextInput::make('youtube_link')
                                 ->label(__('filament-panels::resources/pages/ourstory.fields.create_story.video'))
-                                ->required()
                                 ->url(),
                         ])
                         ->addActionLabel(__('filament-panels::resources/pages/ourstory.fields.create_story.add_video'))
                         ->collapsible()
-                        ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null)
-                        ->required(),
+                        ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null),
                 ])
         ];
     }
@@ -152,16 +149,16 @@ class CreateOurStory extends CreateRecord
     {
         // create core station
         $CreateCoreStation = $this->form->getState()['create_core_station'] ?? [];
-        if(!empty($CreateCoreStation) && $this->record){
-        foreach($CreateCoreStation as $corestation){
-            CoreStation::create([
-                'title'=> $corestation['title'],
-                'content' => $corestation['content'],
-                'image' => $corestation['image'],
-                'stationable_id' => $this->record->id,
-                'stationable_type' => OurStory::class
-            ]);
-        }
+        if (!empty($CreateCoreStation) && $this->record) {
+            foreach ($CreateCoreStation as $corestation) {
+                CoreStation::create([
+                    'title' => $corestation['title'],
+                    'content' => $corestation['content'],
+                    'image' => $corestation['image'],
+                    'stationable_id' => $this->record->id,
+                    'stationable_type' => OurStory::class
+                ]);
+            }
         }
         // create core story
         $CreateCoreStory = $this->form->getState()['create_core_story'] ?? [];

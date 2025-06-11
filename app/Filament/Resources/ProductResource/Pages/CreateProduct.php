@@ -74,8 +74,7 @@ class CreateProduct extends CreateRecord
                             $extension = $file->getClientOriginalExtension();
                             return Str::uuid() . '.' . $extension;
                         })
-                        ->acceptedFileTypes(['application/pdf'])
-                        ->required(),
+                        ->acceptedFileTypes(['application/pdf']),
                 ]),
 
             Step::make(__('filament-panels::resources/pages/product.fields.Usage_Instructions'))

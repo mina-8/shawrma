@@ -29,7 +29,7 @@ const Footer = () => {
     const { t, i18n } = useTranslation();
     const currentYear = new Date().getFullYear();
     const { Brands, socialicons, solvebrands } = usePage<CustomBrand>().props;
-    console.log(socialicons)
+    
     const AboutLinks = [
         {
             href: 'projects',

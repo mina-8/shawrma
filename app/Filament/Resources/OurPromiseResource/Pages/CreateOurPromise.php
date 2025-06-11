@@ -148,17 +148,17 @@ class CreateOurPromise extends CreateRecord
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
                                     ->label(__('filament-panels::resources/pages/ourpromise.fields.create_story.title'))
-                                    ->required(),
+                                    ,
                             ]),
                             Components\TextInput::make('youtube_link')
                                 ->label(__('filament-panels::resources/pages/ourpromise.fields.create_story.video'))
-                                ->required()
+
                                 ->url(),
                         ])
                         ->addActionLabel(__('filament-panels::resources/pages/ourpromise.fields.create_story.add_video'))
                         ->collapsible()
                         ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null)
-                        ->required(),
+                        ,
                 ])
         ];
     }

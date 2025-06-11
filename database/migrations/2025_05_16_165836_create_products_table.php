@@ -18,7 +18,7 @@ return new class extends Migration
             $table->json('description');
             $table->json('content');
             $table->string('image');
-            $table->string('pdf');
+            $table->string('pdf')->nullable();
             $table->json('uses');
             $table->json('advantages');
             $table->string('color')->nullable();
