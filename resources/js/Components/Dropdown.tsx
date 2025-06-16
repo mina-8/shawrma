@@ -59,7 +59,7 @@ const Trigger = ({ children, className = '' }: PropsWithChildren<{ className?: s
 const Content = ({
     align = 'left',
     width = '48',
-    contentClasses = 'py-1 bg-white',
+    contentClasses = 'py-1 bg-white/50',
     className = '',
     children,
 }: PropsWithChildren<{
