@@ -31,7 +31,7 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
     return (
         <>
             <Head title={mainproduct.title} />
-            <div className="bg-gray-50 flex flex-col">
+            <div className="bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100">
                 {/* Top Banner */}
                 <div className="w-full h-96 flex relative overflow-hidden">
                     <div className='absolute w-full h-full bg-black top-0 right-0 opacity-50'></div>
@@ -69,7 +69,7 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
                                     <Link
                                         key={product.id}
                                         href={route('product.show', { lang: i18n.language, slug: product.slug })}
-                                        className="flex bg-white shadow-lg p-2 overflow-hidden"
+                                        className="flex bg-white shadow-lg p-2 overflow-hidden dark:bg-gray-600 dark:text-gray-100"
                                     >
                                         <div className="w-1/2">
                                             <img
@@ -80,7 +80,7 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
                                         </div>
                                         <div className="w-1/2 p-4 flex flex-col">
                                             <h4 className="text-lg font-semibold mb-2 text-yellow-original">{product.title}</h4>
-                                            <p className="text-sm text-gray-600">{product.description}</p>
+                                            <p className="text-sm text-gray-600 dark:text-white">{product.description}</p>
                                         </div>
                                     </Link>
                                 ))}
@@ -102,7 +102,7 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
                                     <Link
                                         key={product.id}
                                         href={route('product.show', { lang: i18n.language, slug: product.slug })}
-                                        className="flex bg-white shadow-lg p-2 overflow-hidden group"
+                                        className="flex bg-white shadow-lg p-2 overflow-hidden group dark:bg-gray-600 dark:text-gray-100"
                                     >
                                         <div className="w-1/2 overflow-hidden">
                                             <img
@@ -113,7 +113,7 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
                                         </div>
                                         <div className="w-1/2 p-4 flex flex-col">
                                             <h4 className="text-lg font-semibold mb-2 text-yellow-original">{product.title}</h4>
-                                            <p className="text-sm text-gray-600">{product.description}</p>
+                                            <p className="text-sm text-gray-600 dark:text-white">{product.description}</p>
                                         </div>
                                     </Link>
                                 ))}

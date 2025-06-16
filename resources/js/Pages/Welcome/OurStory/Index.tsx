@@ -29,6 +29,7 @@ interface FactsNumber {
     id: number;
     title: string;
     number: number;
+    mark_number: string;
     image: string;
 }
 interface OurStory {
@@ -54,7 +55,7 @@ const Index = ({ ourstory }: Props) => {
         <>
             <Head title={t('ourstory.title')} />
             <div
-                className="bg-gray-50 flex flex-col"
+                className="bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100"
             >
                 {/* top banner */}
                 <div
@@ -95,7 +96,7 @@ const Index = ({ ourstory }: Props) => {
                 </div>
                 {/* content */}
                 <div
-                    className='flex justify-between items-center w-full bg-slate-200 mx-0 px-0'
+                    className='flex justify-between items-center w-full bg-slate-200 mx-0 px-0 dark:bg-gray-900 dark:text-gray-100'
                 >
                     <img
                         src={ourstory?.image}
@@ -165,7 +166,7 @@ const Index = ({ ourstory }: Props) => {
 
                 {/* facts and numbers */}
                 <div
-                    className='flex flex-col justify-center items-center bg-gray-200 py-8'
+                    className='flex flex-col justify-center items-center bg-gray-200 py-8 dark:bg-gray-900 dark:text-gray-100'
                 >
                     <h3
                         className='text-3xl font-semibold text-yellow-original border-b-4 border-yellow-original pb-4'
@@ -181,16 +182,17 @@ const Index = ({ ourstory }: Props) => {
                                     <div className='px-4'>
                                         <div className='flex gap-2 items-center'>
                                             {
-                                                i18n.language === 'en' && (<span className='text-4xl font-bold text-yellow-400'>+</span>)
+                                                i18n.language === 'en' && (
+                                            <span className='text-3xl font-bold text-yellow-original whitespace-nowrap'>{item.mark_number}</span>
+                                            )
                                             }
-                                            {index + 1 === 5 && (
-                                                <span className='text-4xl font-bold text-yellow-original'>M</span>)}
-                                            {/* <CountNumber number={parseInt(t(`possibilty.number_${index + 1}`))} /> */}
                                             <CountNumber number={item.number} />
 
 
                                             {
-                                                i18n.language === 'ar' && (<span className='text-4xl font-bold text-yellow-original'>+</span>)
+                                                i18n.language === 'ar' && (
+                                            <span className='text-3xl font-bold text-yellow-original whitespace-nowrap'>{item.mark_number}</span>
+                                            )
                                             }
                                         </div>
                                         <p className='text-lg '>{item.title}</p>

@@ -139,7 +139,7 @@ const Search = ({ searchmainproducts, searchproducts , resultproduct}: Props) =>
                         <Link
                             key={item.id}
                             href={route('product.show', { lang: i18n.language, slug: item.slug })}
-                            className="flex bg-white shadow-lg p-2 overflow-hidden group"
+                            className="flex bg-white shadow-lg p-2 overflow-hidden group dark:bg-gray-600 dark:text-gray-100"
                         >
                             <div className="w-1/2 overflow-hidden">
                                 <img
@@ -150,7 +150,7 @@ const Search = ({ searchmainproducts, searchproducts , resultproduct}: Props) =>
                             </div>
                             <div className="w-1/2 p-4 flex flex-col">
                                 <h4 className="text-lg font-semibold mb-2 text-yellow-original">{item.title}</h4>
-                                <p className="text-sm text-gray-600">{item.description}</p>
+                                <p className="text-sm text-gray-600 dark:text-white">{item.description}</p>
                             </div>
                         </Link>
                     ))}

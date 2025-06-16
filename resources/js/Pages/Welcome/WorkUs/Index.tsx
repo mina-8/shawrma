@@ -40,7 +40,7 @@ const Index = ({ workus }: Props) => {
         <>
             <Head title={workus.header_title} />
             <div
-                className='bg-gray-50 flex flex-col'
+                className='bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100'
             >
                 {/* top banner */}
                 <div
@@ -76,10 +76,10 @@ const Index = ({ workus }: Props) => {
                 </div>
                 {/* content */}
                 <div
-                    className="flex flex-col justify-center items-center my-8 px-4"
+                    className="flex flex-col justify-center items-center my-8 px-4 "
                 >
                     <div
-                        className='flex flex-col justify-center items-center'
+                        className='flex flex-col justify-center items-center '
                     >
                         <h3
                             className='text-3xl font-semibold text-yellow-original border-b-4 border-yellow-original pb-4'
@@ -94,7 +94,7 @@ const Index = ({ workus }: Props) => {
                 </div>
                 {/* vesions */}
                 <div
-                    className='flex justify-between items-center w-full bg-slate-200 mx-0 px-0'
+                    className='flex justify-between items-center w-full bg-slate-200 mx-0 px-0 dark:bg-gray-900 dark:text-gray-100'
                 >
                     {workus?.corevesions.map((item, index) =>
                         <div
@@ -131,7 +131,7 @@ const Index = ({ workus }: Props) => {
                     {workus.corestations.map((item)=>(
                         <div
                         key={item.id}
-                        className="flex flex-col justify-center items-center gap-4 py-12 bg-yellow-original p-4 rounded-br-3xl rounded-tl-3xl group"
+                        className="flex flex-col justify-center items-center gap-4 py-12 bg-yellow-original p-4 rounded-br-3xl rounded-tl-3xl group dark:bg-gray-600 dark:text-gray-100"
                         >
                             <div
                             className="h-16 "

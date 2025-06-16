@@ -147,11 +147,11 @@ class EditOurGoal extends EditRecord
             ->where('productvideoable_type', OurGoal::class)
             ->get()
             ->map(function ($corstory) {
-                $title = $corstory->getTranslations('title');
+                $image = $corstory->getTranslations('image');
 
                 return [
                     'id' => $corstory->id,
-                    'title' => $title,
+                    'image' => $image,
                     'youtube_link' => $corstory->youtube_link,
                 ];
             })

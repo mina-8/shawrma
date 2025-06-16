@@ -8,14 +8,14 @@ const Collapse = ({ title, children }: { title: string, children: React.ReactNod
     };
 
     return (
-        <div className="border shadow-lg overflow-hidden">
+        <div className="border shadow-lg overflow-hidden ">
             <div
-                className="p-4 flex justify-between items-center cursor-pointer bg-white hover:bg-yellow-original hover:text-white group"
+                className="p-4 flex justify-between items-center cursor-pointer bg-white hover:bg-yellow-original hover:text-white group dark:bg-gray-600 dark:text-gray-100"
                 onClick={toggleCollapse}
             >
                 <span className='group-hover:text-white text-lg '>{title}</span>
                 <svg
-                    className={`w-6 h-6 transform transition-transform group-hover:text-white text-sky-500 ${isOpen ? 'rotate-180' : ''}`}
+                    className={`w-6 h-6 transform transition-transform group-hover:text-white text-yellow-original ${isOpen ? 'rotate-180' : ''}`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -28,7 +28,7 @@ const Collapse = ({ title, children }: { title: string, children: React.ReactNod
                 className={`transition-all duration-500 ease-in-out overflow-hidden ${isOpen ? 'max-h-96' : 'max-h-0'
                     }`}
             >
-                <div className="p-4 bg-white">{children}</div>
+                <div className="p-4 bg-white dark:bg-gray-900 dark:text-gray-100">{children}</div>
             </div>
         </div>
     )

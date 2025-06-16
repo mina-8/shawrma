@@ -1,1 +1,0 @@
-import{j as e}from"./app-C_TFH-e0.js";const t=({pdf:s})=>e.jsxs("div",{className:"p-4",children:[e.jsx("h1",{className:"text-xl font-bold mb-4",children:"PDF Viewer"}),e.jsx("iframe",{src:s,width:"100%",height:"800px",className:"border rounded",title:"PDF Preview"})]});export{t as default};

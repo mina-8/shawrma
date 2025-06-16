@@ -20,7 +20,7 @@ interface Props {
 }
 
 const Show = ({ blog  , otherblogs}: Props) => {
-    
+
     const { t, i18n } = useTranslation()
     const CustomArrow = ({ direction, onClick }: any) => {
         const ArrowIcon = direction === 'prev' ? FaArrowLeft : FaArrowRight;
@@ -46,7 +46,7 @@ const Show = ({ blog  , otherblogs}: Props) => {
     return (
         <>
             <Head title={blog.title} />
-            <div className="flex min-h-screen flex-col items-center justify-start bg-gray-50">
+            <div className="flex min-h-screen flex-col items-center justify-start bg-gray-50 dark:bg-gray-900 dark:text-gray-100">
                 {/* Header Image */}
                 <div className="w-full h-20 bg-yellow-original bg-cover bg-center" />
 
@@ -102,7 +102,7 @@ const Show = ({ blog  , otherblogs}: Props) => {
                             ]}
                         >
                             {otherblogs.map((item, index) => (
-                                <div key={index} className="px-2">
+                                <div key={index} className="px-2 ">
                                     <BlogCards item={item} />
                                 </div>
                             ))}

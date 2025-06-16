@@ -35,7 +35,7 @@ const ProductNav = () => {
             <div className='flex flex-col w-60 '>
                 {/* header title */}
                 <NavLink
-                    className='!text-sky-500 pb-1 pt-0 border-b-2 border-yellow-original hover:!bg-yellow-original hover:!text-white flex justify-start'
+                    className='!text-black justify-center pb-1 pt-0 border-b-2 border-yellow-original hover:!bg-yellow-original  flex'
                     href={route('mainproduct', { lang: i18n.language })}
                     active={route().current('mainproduct')}
                 >
@@ -59,7 +59,7 @@ const ProductNav = () => {
                         item.title?.trim() || item.slug?.trim() ? (
                             <NavLink
                                 key={item.id}
-                                className='!text-sky-500 hover:!text-white hover:!bg-yellow-original !pt-2 !pb-2 mt-2'
+                                className='!text-black justify-center  hover:!bg-yellow-original !pt-2 !pb-2 mt-2'
                                 href={route('mainproduct.show', { lang: i18n.language, slug: item.slug })}
                                 active={route().current('mainproduct.show')}
                             >
@@ -78,7 +78,7 @@ const ProductNav = () => {
                     >
                         <NavLink
                             key={brand.id}
-                            className='!text-sky-500 pb-1 pt-0 border-b-2 border-yellow-original hover:!bg-yellow-original hover:!text-white flex justify-start'
+                            className='!text-black justify-center pb-1 pt-0 border-b-2 border-yellow-original hover:!bg-yellow-original '
                             href={route('solve-brand', { lang: i18n.language  , slug:brand.slug})}
                             active={route().current('mainproduct')}
                         >
@@ -103,7 +103,7 @@ const ProductNav = () => {
                                 product.title?.trim() || product.slug?.trim() ? (
                                     <NavLink
                                         key={product.id}
-                                        className='!text-sky-500 hover:!text-white hover:!bg-yellow-original !pt-2 !pb-2 mt-2'
+                                        className='!text-black justify-center hover:!bg-yellow-original !pt-2 !pb-2 mt-2'
                                         href={route('mainproduct.show', {
                                             lang: i18n.language,
                                             slug: product.slug
@@ -126,7 +126,7 @@ const ProductNav = () => {
             <div className='flex flex-col w-60'>
                 {/* header title */}
                 <NavLink
-                    className='!text-sky-500 pb-1 pt-0 border-b-2 border-yellow-original hover:!bg-yellow-original hover:!text-white flex justify-start'
+                    className='!text-black justify-center pb-1 pt-0 border-b-2 border-yellow-original hover:!bg-yellow-original '
                     href={route('product-search', { lang: i18n.language })}
                     active={route().current('product-search')}
                 >
@@ -146,14 +146,14 @@ const ProductNav = () => {
                 </NavLink>
                 {/* products */}
                 <NavLink
-                    className='!text-sky-500 hover:!text-white hover:!bg-yellow-original !pt-2 !pb-2 mt-2 '
+                    className='!text-black justify-center hover:!bg-yellow-original !pt-2 !pb-2 mt-2 '
                     href={route('product-search', { lang: i18n.language })}
                     active={route().current('product-search')}
                 >
                     {t('products.products-search')}
                 </NavLink>
                 <NavLink
-                    className='!text-sky-500 hover:!text-white hover:!bg-yellow-original !pt-2 !pb-2 mt-2 '
+                    className='!text-black justify-center hover:!bg-yellow-original !pt-2 !pb-2 mt-2 '
                     href={route('product-video', { lang: i18n.language })}
                     active={route().current('product-video')}
                 >

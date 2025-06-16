@@ -61,7 +61,7 @@ const Index = ({ ourculture }: Props) => {
         <>
             <Head title={t('ourculture.title')} />
             <div
-                className='bg-gray-50 flex flex-col'
+                className='bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100'
             >
                 {/* top banner */}
                 <div
@@ -86,7 +86,7 @@ const Index = ({ ourculture }: Props) => {
                 </div>
             </div>
             {/* content grid*/}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4 w-full max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4 w-full max-w-7xl mx-auto ">
                 {/* Main Content */}
                 <div>
                     <h3 className="text-4xl font-semibold mb-4">{ourculture?.title}</h3>
@@ -99,7 +99,7 @@ const Index = ({ ourculture }: Props) => {
                     ourculture.corevesions.map((vision) => (
                         <div
                             key={vision.id}
-                            className="w-full aspect-[3/4] perspective group"
+                            className="w-full aspect-[3/4] perspective group "
                         >
                             <div className="relative w-full h-full transition-transform duration-700 preserve-3d rotate-card group-hover:rotate-y-180">
 
@@ -132,7 +132,7 @@ const Index = ({ ourculture }: Props) => {
             </div>
             {/* content */}
             <div
-                className='flex justify-between items-center w-full bg-slate-200 mx-0 px-0'
+                className='flex justify-between items-center w-full bg-slate-200 mx-0 px-0 dark:bg-gray-900 dark:text-gray-100'
             >
                 <img
                     src={ourculture?.image}
@@ -145,7 +145,7 @@ const Index = ({ ourculture }: Props) => {
                 </div>
             </div>
             {/* stations */}
-            <div className="py-12 bg-gray-100">
+            <div className="py-12 bg-gray-100 dark:bg-gray-900 dark:text-gray-100">
                 {/* Section Heading */}
                 <div className="text-center mb-8 px-4">
                     <h2 className="text-2xl sm:text-3xl text-yellow-original font-semibold border-b-2 border-yellow-original inline-block pb-2">
@@ -191,7 +191,7 @@ const Index = ({ ourculture }: Props) => {
                         >
                             {ourculture.corestations.map((item, index) => (
                                 <div key={index} className="px-4">
-                                    <div className="bg-white my-12 shadow-md p-6 pt-16 relative ">
+                                    <div className="bg-white my-12 shadow-md p-6 pt-16 relative dark:bg-gray-900 dark:text-gray-100">
                                         <img
                                             src={item.image}
                                             alt={item.title}

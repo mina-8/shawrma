@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->json('title');
             $table->integer('number');
+            $table->string('mark_number');
             $table->string('image');
             $table->unsignedBigInteger('factable_id')->nullable();
             $table->string('factable_type')->nullable();

@@ -83,16 +83,20 @@ class FactNumberResource extends Resource
                             ->visible(fn(callable $get) => filled($get('factable_type'))),
                         LanguageTabs::make([
                             Forms\Components\TextInput::make('title')
-                                ->label(__('filament-panels::resources/pages/blog.fields.title'))
+                                ->label(__('filament-panels::resources/pages/activity.fields.title'))
                                 ->required(),
                         ]),
                         Forms\Components\TextInput::make('number')
-                            ->label(__('filament-panels::resources/pages/blog.fields.title'))
-                            ->numeric()            
+                            ->label(__('filament-panels::resources/pages/activity.fields.number'))
+                            ->numeric()
+                            ->maxLength(11)
+                            ->required(),
+                        Forms\Components\TextInput::make('mark_number')
+                            ->label(__('filament-panels::resources/pages/activity.fields.mark'))
                             ->maxLength(11)
                             ->required(),
                         Forms\Components\FileUpload::make('image')
-                            ->label(__('filament-panels::resources/pages/blog.fields.image'))
+                            ->label(__('filament-panels::resources/pages/activity.fields.image'))
                             ->image()
                             ->disk('public')
                             ->directory('uploads/factsnumber')

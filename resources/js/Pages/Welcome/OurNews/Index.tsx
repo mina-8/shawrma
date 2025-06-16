@@ -22,7 +22,7 @@ const Index = ({ blogs }: Props) => {
     return (
         <>
             <Head title={t('ourstory.title')} />
-            <div className="bg-gray-50 flex flex-col">
+            <div className="bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100">
                 {/* Top Banner */}
                 <div className="w-full h-[500px] flex relative overflow-hidden">
                     <div

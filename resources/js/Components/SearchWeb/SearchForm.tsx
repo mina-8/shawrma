@@ -41,7 +41,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onClose }) => {
     // search-web this is route
     return (
         <div className="fixed left-0 right-0 top-16 w-full bg-black bg-opacity-40 z-50 flex justify-center">
-            <div className="bg-white rounded-b-lg shadow-lg p-6 w-full max-w-full relative">
+            <div className="bg-white rounded-b-lg shadow-lg p-6 w-full max-w-full relative dark:bg-gray-800 dark:text-white">
                 <button
                     className="absolute top-2 right-2 text-white hover:bg-yellow-700 text-2xl rounded-full bg-yellow-original"
                     onClick={onClose}
@@ -74,7 +74,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onClose }) => {
                             {LinksSearch.map((item, index) => (
                                 <li
                                     key={index}
-                                    className='flex items-center gap-2'
+                                    className='flex items-center gap-2 hover:text-yellow-original transition'
                                 >
                                     <IoMdCheckmark className='text-yellow-original' />
                                     <Link
@@ -93,7 +93,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onClose }) => {
                             {LinksSearch.map((item, index) => (
                                 <li
                                     key={index}
-                                    className='flex items-center gap-2'
+                                    className='flex items-center gap-2 hover:text-yellow-original transition'
                                 >
                                     <IoMdCheckmark className='text-yellow-original' />
                                     <Link

@@ -24,7 +24,7 @@ const ServiceNav = () => {
 
             {AboutLinks.map((item , index)=>(
                 <NavLink
-                className='!text-yellow-original hover:!text-white hover:!bg-yellow-original !pt-2 !pb-2 mt-2 border-b w-40 last:border-b-0'
+                className='!text-black justify-center hover:!bg-yellow-original !pt-2 !pb-2 mt-2 border-b w-40 last:border-b-0'
                 key={index}
                 href={route(item.href , {lang:i18n.language})}
                 active={route().current(item.href)}

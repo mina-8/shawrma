@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import ChangeLang from '@/Components/ChangeLang/ChangeLang';
 import { AiOutlineGlobal } from 'react-icons/ai';
 import { FaArrowUp } from 'react-icons/fa';
-import { IoSearch } from 'react-icons/io5';
+import { IoMoon, IoSearch } from 'react-icons/io5';
 import SearchForm from '@/Components/SearchWeb/SearchForm';
 import Footer from './Footer';
 import ProductNav from '@/Components/ProductsNav/ProductNav';
@@ -19,6 +19,8 @@ import ServiceNav from '@/Components/NavList/ServiceNav';
 import BrandNav from '@/Components/NavList/BrandNav';
 import SpotlightNav from '@/Components/NavList/SpotlightNav';
 import WorkusNav from '@/Components/NavList/WorkusNav';
+import { useTheme } from './ThemeContext';
+import { MdOutlineWbSunny } from 'react-icons/md';
 
 export default function AuthWelcome({
     header,
@@ -31,7 +33,7 @@ export default function AuthWelcome({
     const [isScrolled, setIsScrolled] = useState(false);
     const [isnavbar, setIsnavbar] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
-
+    const { theme, toggleTheme } = useTheme()
     const { t, i18n } = useTranslation();
 
     useEffect(() => {
@@ -59,14 +61,14 @@ export default function AuthWelcome({
                 >
                     {!isnavbar && (
                         <div
-                        className='flex items-center w-full max-w-7xl mx-auto  justify-end'
+                            className='flex items-center w-full max-w-7xl mx-auto  justify-end'
                         >
 
                             <Link
                                 className='text-white cursor-pointer'
 
                                 href={route('contact-us', { lang: i18n.language })}
-                                // active={route().current('contact-us')}
+                            // active={route().current('contact-us')}
                             >
 
                                 {t('navbar-links.contact-us')}
@@ -76,7 +78,7 @@ export default function AuthWelcome({
                                 <Dropdown.Trigger>
                                     <span className="inline-flex rounded-md">
                                         <button
-                                        name='lang'
+                                            name='lang'
                                             type="button"
                                             className="inline-flex items-center rounded-md border border-transparent text-white px-3 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none"
                                         >
@@ -86,6 +88,10 @@ export default function AuthWelcome({
                                 </Dropdown.Trigger>
                                 <ChangeLang />
                             </Dropdown>
+
+                            <button onClick={toggleTheme}
+                                className='text-2xl '
+                            >{theme === 'dark' ? <IoMoon className='text-white' /> : <MdOutlineWbSunny className='text-white' />}</button>
                         </div>
                     )}
                     <div className={`mx-auto  px-4 sm:px-6 lg:px-8 ${i18n.language === 'ar' ? 'max-w-7xl' : 'max-w-fit'} `}>
@@ -146,8 +152,9 @@ export default function AuthWelcome({
                                         <Dropdown.Trigger>
                                             {t('home.bulidinus')}
                                         </Dropdown.Trigger>
-                                        <Dropdown.Content align='right'
-                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[-25%]' : 'translate-x-[25%]'} `}
+                                        <Dropdown.Content
+                                            align='right'
+                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[-25%]' : 'translate-x-[0%]'} `}
 
                                         >
                                             <WorkusNav />
@@ -170,7 +177,7 @@ export default function AuthWelcome({
                                 </div>
                                 <div className="relative ms-3">
                                     <button
-                                    name='search'
+                                        name='search'
                                         type="button"
                                         className="inline-flex items-center rounded-full bg-yellow-original hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
                                         onClick={() => setShowSearch(true)}
@@ -209,6 +216,7 @@ export default function AuthWelcome({
                                     </Dropdown.Trigger>
                                     <ChangeLang />
                                 </Dropdown>
+
                                 <button
                                     onClick={() =>
                                         setShowingNavigationDropdown(
@@ -252,90 +260,90 @@ export default function AuthWelcome({
                     </div>
 
                     <div
-    className={`sm:hidden ${showingNavigationDropdown ? 'block' : 'hidden'} bg-white text-black px-4 py-4 shadow-md z-50`}
->
-    <div className="space-y-1">
-        <ResponsiveNavLink
-            href={route('welcome', { lang: i18n.language })}
-            active={route().current('welcome')}
-        >
-            {t('home.home')}
-        </ResponsiveNavLink>
+                        className={`sm:hidden ${showingNavigationDropdown ? 'block' : 'hidden'} bg-white text-black px-4 py-4 shadow-md z-50`}
+                    >
+                        <div className="space-y-1">
+                            <ResponsiveNavLink
+                                href={route('welcome', { lang: i18n.language })}
+                                active={route().current('welcome')}
+                            >
+                                {t('home.home')}
+                            </ResponsiveNavLink>
 
-        <ResponsiveNavLink
-            href={route('contact-us', { lang: i18n.language })}
-            active={route().current('contact-us')}
-        >
-            {t('home.contact')}
-        </ResponsiveNavLink>
+                            <ResponsiveNavLink
+                                href={route('contact-us', { lang: i18n.language })}
+                                active={route().current('contact-us')}
+                            >
+                                {t('home.contact')}
+                            </ResponsiveNavLink>
 
-        <Dropdown>
-            <Dropdown.Trigger>
-                <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
-                    {t('home.about')}
-                </span>
-            </Dropdown.Trigger>
-            <Dropdown.Content>
-                <AboutNav />
-            </Dropdown.Content>
-        </Dropdown>
+                            <Dropdown>
+                                <Dropdown.Trigger>
+                                    <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
+                                        {t('home.about')}
+                                    </span>
+                                </Dropdown.Trigger>
+                                <Dropdown.Content>
+                                    <AboutNav />
+                                </Dropdown.Content>
+                            </Dropdown>
 
-        <Dropdown>
-            <Dropdown.Trigger>
-                <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
-                    {t('home.brands')}
-                </span>
-            </Dropdown.Trigger>
-            <Dropdown.Content>
-                <BrandNav />
-            </Dropdown.Content>
-        </Dropdown>
+                            <Dropdown>
+                                <Dropdown.Trigger>
+                                    <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
+                                        {t('home.brands')}
+                                    </span>
+                                </Dropdown.Trigger>
+                                <Dropdown.Content>
+                                    <BrandNav />
+                                </Dropdown.Content>
+                            </Dropdown>
 
-        <Dropdown>
-            <Dropdown.Trigger>
-                <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
-                    {t('home.services')}
-                </span>
-            </Dropdown.Trigger>
-            <Dropdown.Content>
-                <ServiceNav />
-            </Dropdown.Content>
-        </Dropdown>
+                            <Dropdown>
+                                <Dropdown.Trigger>
+                                    <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
+                                        {t('home.services')}
+                                    </span>
+                                </Dropdown.Trigger>
+                                <Dropdown.Content>
+                                    <ServiceNav />
+                                </Dropdown.Content>
+                            </Dropdown>
 
-        <Dropdown>
-            <Dropdown.Trigger>
-                <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
-                    {t('home.products')}
-                </span>
-            </Dropdown.Trigger>
-            <Dropdown.Content>
-                <ProductNav />
-            </Dropdown.Content>
-        </Dropdown>
+                            <Dropdown>
+                                <Dropdown.Trigger>
+                                    <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
+                                        {t('home.products')}
+                                    </span>
+                                </Dropdown.Trigger>
+                                <Dropdown.Content>
+                                    <ProductNav />
+                                </Dropdown.Content>
+                            </Dropdown>
 
-        <Dropdown>
-            <Dropdown.Trigger>
-                <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
-                    {t('home.bulidinus')}
-                </span>
-            </Dropdown.Trigger>
-            <Dropdown.Content>
-                <WorkusNav />
-            </Dropdown.Content>
-        </Dropdown>
+                            <Dropdown>
+                                <Dropdown.Trigger>
+                                    <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
+                                        {t('home.bulidinus')}
+                                    </span>
+                                </Dropdown.Trigger>
+                                <Dropdown.Content>
+                                    <WorkusNav />
+                                </Dropdown.Content>
+                            </Dropdown>
 
-        <Dropdown>
-            <Dropdown.Trigger>
-                <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
-                    {t('home.spotlight')}
-                </span>
-            </Dropdown.Trigger>
-            <Dropdown.Content>
-                <SpotlightNav />
-            </Dropdown.Content>
-        </Dropdown>
-    </div>
-</div>
+                            <Dropdown>
+                                <Dropdown.Trigger>
+                                    <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
+                                        {t('home.spotlight')}
+                                    </span>
+                                </Dropdown.Trigger>
+                                <Dropdown.Content>
+                                    <SpotlightNav />
+                                </Dropdown.Content>
+                            </Dropdown>
+                        </div>
+                    </div>
 
                 </nav>
                 {showSearch && <SearchForm onClose={() => setShowSearch(false)} />}

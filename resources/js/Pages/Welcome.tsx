@@ -27,12 +27,12 @@ export default function Welcome({
 
     const { t, i18n } = useTranslation();
     const { applang } = usePage().props;
-    
+
     return (
         <>
             <Head title="Home" />
             <Sliders slides={slides} />
-        <div className=" flex min-h-screen flex-col items-center justify-start">
+        <div className=" flex min-h-screen flex-col items-center justify-start dark:bg-gray-900 dark:text-gray-100 text-gray-900 bg-white ">
             <OurNews news={blogs}/>
 
             <OurMainPlairs about={ourmainplair}/>

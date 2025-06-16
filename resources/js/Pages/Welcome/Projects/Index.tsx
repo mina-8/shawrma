@@ -43,7 +43,7 @@ const Index = ({ projects, projectLoactions }: Props) => {
         <>
             <Head title={t('projects.title')} />
             <div
-                className="bg-gray-50 flex flex-col"
+                className="bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100"
             >
                 {/* top banner */}
                 <div
@@ -85,17 +85,17 @@ const Index = ({ projects, projectLoactions }: Props) => {
                 </div>
 
                 {/* projects */}
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 dark:bg-gray-900 dark:text-gray-100">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {Projects?.map((project) => (
                             <div key={project.id} className="bg-white shadow-md  overflow-hidden">
                                 <div
-                                    className="h-96 overflow-hidden group"
+                                    className="h-96 overflow-hidden group "
                                 >
 
                                     <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-125 group-hover:rotate-12 duration-500" />
                                 </div>
-                                <div className="p-4 bg-slate-200">
+                                <div className="p-4 bg-slate-200 dark:bg-gray-900 dark:text-gray-100">
                                     <p className="text-gray-800 font-medium flex items-center gap-2 text-xl">
                                         <IoLocationOutline />
                                         {project.location}</p>

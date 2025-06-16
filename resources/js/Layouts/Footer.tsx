@@ -8,6 +8,8 @@ import { PageProps } from '@/types';
 
 import { SolveBrand } from '@/Components/ProductsNav/ProductNav';
 import DynamicIcon from '@/Components/DynamicIcon/DynamicIcon';
+import { FaFacebook, FaInstagram, FaLinkedin, FaTiktok } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 interface Brands {
     id: number;
     header_title: string;
@@ -29,7 +31,7 @@ const Footer = () => {
     const { t, i18n } = useTranslation();
     const currentYear = new Date().getFullYear();
     const { Brands, socialicons, solvebrands } = usePage<CustomBrand>().props;
-    
+
     const AboutLinks = [
         {
             href: 'projects',
@@ -84,7 +86,7 @@ const Footer = () => {
                     </p>
                     <div className="flex gap-4 flex-wrap justify-center md:justify-start">
 
-                        {socialicons.map((social) => (
+                        {socialicons.length > 0 ? socialicons.map((social) => (
                             <a
                                 key={social.id}
                                 href={social.link}
@@ -94,7 +96,50 @@ const Footer = () => {
                             >
                                 <DynamicIcon iconPath={social.icon_path} />
                             </a>
-                        ))}
+                        )) : (
+                            <>
+                            <a
+                            href='https://www.linkedin.com/company/bscosa/'
+                            target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-full bg-gray-500 hover:bg-yellow-original p-2"
+                            >
+                                <FaLinkedin />
+                            </a>
+                            <a
+                            href='https://x.com/BscoCom'
+                            target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-full bg-gray-500 hover:bg-yellow-original p-2"
+                            >
+                                <FaXTwitter  />
+                            </a>
+                            <a
+                            href='https://www.facebook.com/profile.php?id=61558624079654'
+                            target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-full bg-gray-500 hover:bg-yellow-original p-2"
+                            >
+                                <FaFacebook   />
+                            </a>
+                            <a
+                            href='https://www.instagram.com/bsco_sa_com/'
+                            target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-full bg-gray-500 hover:bg-yellow-original p-2"
+                            >
+                                <FaInstagram />
+                            </a>
+                            <a
+                            href='https://www.tiktok.com/@bsco.sa?lang=en'
+                            target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-full bg-gray-500 hover:bg-yellow-original p-2"
+                            >
+                                <FaTiktok />
+                            </a>
+                            </>
+                        )}
 
 
                     </div>
@@ -115,7 +160,7 @@ const Footer = () => {
                     {/* Section: Brand */}
                     <div className="flex flex-col gap-4">
                         <h2 className="text-xl text-yellow-original">{t('footer.brand')}</h2>
-                        <ul className="space-y-1">
+                        <ul className="space-y-1 whitespace-nowrap">
                             {Brands.map((item, index) => (
 
                                 <li
@@ -129,7 +174,7 @@ const Footer = () => {
                     {/* Section: Products */}
                     <div className="flex flex-col gap-4">
                         <h2 className="text-xl text-yellow-original">{t('footer.services')}</h2>
-                        <ul className="space-y-1">
+                        <ul className="space-y-1 whitespace-nowrap">
                             {AboutLinks.map((item, index) => (
 
                                 <li
@@ -143,7 +188,7 @@ const Footer = () => {
                     {/* Section: Build */}
                     <div className="flex flex-col gap-4">
                         <h2 className="text-xl text-yellow-original">{t('footer.products')}</h2>
-                        <ul className="space-y-1">
+                        <ul className="space-y-1 whitespace-nowrap">
                             <li><Link href={route('mainproduct', { lang: i18n.language })} className="hover:text-yellow-original">
                                 {t('mainproduct.title')}
                             </Link></li>
@@ -161,7 +206,7 @@ const Footer = () => {
                     {/* Section: Quick Links */}
                     <div className="flex flex-col gap-4">
                         <h2 className="text-xl text-yellow-original">{t('footer.quick_link')}</h2>
-                        <ul className="space-y-1">
+                        <ul className="space-y-1 whitespace-nowrap">
                             {Spotlight.map((item, index) => (
 
                                 <li
@@ -179,13 +224,20 @@ const Footer = () => {
                 <div className="text-gray-400 text-sm text-center md:text-left">
                     {t('footer.copyright')} © {currentYear}
                 </div>
+                <div>
+                   <a href="https://maps.app.goo.gl/vepPfgHWTj1e4L5z7?g_st=ic" rel="noopener noreferrer" target='__blank' className='hover:text-yellow-original'>
+                   {t('footer.maplocation')}
+                   </a>
+                </div>
                 <div className="flex items-center gap-2 text-xs text-gray-400 text-center">
                     <a href="https://direct.me/dmcreators" target="_blank" rel="noopener noreferrer">
                         <img loading="lazy" src={mobawon} className="object-cover h-8" alt="Mobdwon" />
                     </a>
                     <span>
                         {t('footer.mobdwon')}
-                        <a href="https://direct.me/dmcreators" target="_blank" rel="noopener noreferrer" className="hover:text-custom-dark-blue ml-1">{t('footer.mobdwon_link')}</a>
+                        <a href="https://maps.app.goo.gl/vepPfgHWTj1e4L5z7?g_st=ic" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-original ml-1 ">
+                        {t('footer.mobdwon_link')}
+                        </a>
                     </span>
                 </div>
             </div>

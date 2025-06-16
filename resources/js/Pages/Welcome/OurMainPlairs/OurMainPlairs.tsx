@@ -60,10 +60,10 @@ const OurMainPlairs = ({ about }: Props) => {
     ];
     return (
         <div
-            className='py-12 flex flex-col items-center justify-center gap-4 min-h-screen bg-white w-full'
+            className='py-12 flex flex-col items-center justify-center gap-4 min-h-screen  w-full dark:bg-gray-900 dark:text-gray-100 text-gray-900 bg-white '
         >
             <div className='p-4 mx-auto w-full max-w-7xl flex flex-col items-center justify-center gap-8'>
-                <h2 className='text-3xl border-b-2 border-sky-500 pb-2 mb-4 text-center'>{t('aboutus.title')}</h2>
+                <h2 className='text-3xl border-b-2 border-yellow-original pb-2 mb-4 text-center'>{t('aboutus.title')}</h2>
                 <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 w-full'>
                     {about.length > 0 ? (
                         about.map((item, index) => (
@@ -72,7 +72,7 @@ const OurMainPlairs = ({ about }: Props) => {
                                 ref={ref}
                                 style={{ animationDelay: `${index * 0.2}s` }}
                                 className={`transition-all duration-700 ease-in-out transform ${isVisible ? 'animate-fadeup opacity-100' : 'opacity-0'
-                                    } bg-gray-50 shadow w-full min-w-[250px] md:min-w-[300px] h-[550px] flex flex-col justify-between`}
+                                    } bg-gray-50 shadow w-full min-w-[250px] md:min-w-[300px] h-[550px] flex flex-col justify-between dark:bg-gray-900 dark:text-gray-100 text-gray-900 `}
 
                             >
 
@@ -95,7 +95,7 @@ const OurMainPlairs = ({ about }: Props) => {
                                     </div>
                                     <Link
                                         href={route(item.link, { lang: i18n.language })}
-                                        className='text-md text-sky-500 hover:text-sky-700 flex items-center gap-2 mt-4'
+                                        className='text-md text-yellow-original dark:hover:text-white flex items-center gap-2 mt-4'
                                     >
                                         {t('aboutus.readmore')}
                                         {i18n.language === 'ar' ? (<IoIosArrowBack />) : (<IoIosArrowForward />)}
@@ -110,7 +110,7 @@ const OurMainPlairs = ({ about }: Props) => {
                                 ref={ref}
                                 style={{ animationDelay: `${index * 0.2}s` }}
                                 className={`transition-all duration-700 ease-in-out transform ${isVisible ? 'animate-fadeup opacity-100' : 'opacity-0'
-                                    } bg-gray-50 shadow w-full min-w-[250px] md:min-w-[300px] h-[550px] flex flex-col justify-between`}
+                                    } bg-gray-50 shadow w-full min-w-[250px] md:min-w-[300px] h-[550px] flex flex-col justify-between dark:bg-gray-900 dark:text-gray-100 text-gray-900 `}
 
                             >
 
@@ -129,7 +129,7 @@ const OurMainPlairs = ({ about }: Props) => {
                                     </div>
                                     <Link
                                         href={route(item.href, { lang: i18n.language })}
-                                        className='text-md text-sky-500 hover:text-sky-700 flex items-center gap-2 mt-4'
+                                        className='text-md text-yellow-original dark:hover:text-white flex items-center gap-2 mt-4'
                                     >
                                         {t('aboutus.readmore')}
                                         {i18n.language === 'ar' ? (<IoIosArrowBack />) : (<IoIosArrowForward />)}

@@ -41,7 +41,7 @@ const Index = ({ sustainability }: Props) => {
         <>
             <Head title={t('Sustainability.title')} />
             <div
-                className="bg-gray-50 flex flex-col"
+                className="bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100"
             >
                 {/* top banner */}
 
@@ -79,7 +79,7 @@ const Index = ({ sustainability }: Props) => {
                 </div>
                 {/* content */}
                 <div
-                    className='flex justify-between items-center w-full bg-slate-200 mx-0 px-0'
+                    className='flex justify-between items-center w-full bg-slate-200 mx-0 px-0 dark:bg-gray-900 dark:text-gray-100'
                 >
                     <img
                         src={sustainability?.image}
@@ -93,7 +93,7 @@ const Index = ({ sustainability }: Props) => {
                 </div>
                 {/* coresvesion */}
                 <div
-                    className='py-12 flex flex-col justify-center items-center gap-8 '
+                    className='py-12 flex flex-col justify-center items-center gap-8  '
                 >
                     <h3
                         className='text-3xl font-semibold text-yellow-original border-b-4 border-yellow-original pb-4'
@@ -106,7 +106,7 @@ const Index = ({ sustainability }: Props) => {
                                 sustainability.corevesions.map((item, index) => (
                                     <div
                                         key={item.id}
-                                        className={`flex flex-col justify-center items-center gap-4 bg-white shadow-md ${index === 0 ? 'col-span-2' : ''} p-4 group hover:shadow-none`}
+                                        className={`flex flex-col justify-center items-center gap-4 bg-white shadow-md ${index === 0 ? 'col-span-2' : ''} p-4 group hover:shadow-none dark:bg-gray-600 dark:text-gray-100`}
                                     >
                                         <div
                                             className='h-10'
@@ -181,7 +181,7 @@ const Index = ({ sustainability }: Props) => {
                         >
                             <Carousel
                                 // arrows
-                                // autoplay
+                                autoplay
                                 infinite
 
                                 className="custom-carousel-dots"

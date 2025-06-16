@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('build_information', function (Blueprint $table) {
             $table->id();
-            $table->string('banner');
+            $table->string('banner')->nullable();
             $table->json('title');
             $table->json('content');
             $table->timestamps();

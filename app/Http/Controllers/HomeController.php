@@ -67,6 +67,7 @@ class HomeController extends Controller
                     'id' => $factnumber->id,
                     'title' => $factnumber->getTranslation('title', $appLang),
                     'number' => $factnumber->number,
+                    'mark_number' => $factnumber->mark_number,
                     'image' => Storage::url($factnumber->image)
                 ];
             });

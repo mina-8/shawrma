@@ -10,6 +10,7 @@ class FactNumber extends Model
     protected $fillable = [
         'title',
         'number',
+        'mark_number',
         'image',
         'factable_id',
         'factable_type'

@@ -6,7 +6,7 @@ const BuildingBest = () => {
     const {t , i18n} = useTranslation();
     const { ref, isVisible } = useInView();
     return (
-        <div className='flex justify-center items-center flex-col w-full  bg-gray-100'>
+        <div className='flex justify-center items-center flex-col w-full  bg-gray-100 dark:bg-gray-900 dark:text-gray-100'>
             {/* <h2
             ref={ref}
                 className={`text-3xl border-b-2 border-yellow-original pb-2 mb-4 text-center transition-all duration-700 ease-in-out transform ${isVisible ? 'animate-fadeup opacity-100' : 'opacity-0'}`}

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('work_us', function (Blueprint $table) {
             $table->id();
-            $table->string('banner');
+            $table->string('banner')->nullable();
             $table->json('header_title');
             $table->json('header_content');
             $table->json('title');

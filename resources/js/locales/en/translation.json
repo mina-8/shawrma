@@ -26,12 +26,14 @@
         "title_1": "Welcome to Our Site",
         "title_2": "We Offer the Best Services",
         "title_3": "Contact Us Today",
+        "title_4" : "Discover Our Products",
         "description_1": "We are here to help you achieve your goals",
         "description_2": "We offer a variety of services to meet your needs",
         "description_3": "Contact us for a free consultation",
         "button_1": "Learn More",
         "button_2": "Get a Quote",
-        "button_3": "Contact Us"
+        "button_3": "Contact Us",
+        "button_4" : "View Products"
     },
     "ournews": {
         "title": "Latest News",
@@ -136,18 +138,22 @@
     },
     "possibilty": {
         "title": "Facts and Figures",
-        "number_1": "100",
-        "number_2": "200",
-        "number_3": "300",
-        "number_4": "400",
-        "number_5": "500",
-        "number_6": "600",
-        "name_1": "Satisfied Clients",
-        "name_2": "Completed Projects",
-        "name_3": "Hours Worked",
-        "name_4": "Team Members",
-        "name_5": "Awards",
-        "name_6": "Certificates"
+        "number_1": "5000/+",
+        "number_2": "310/+",
+        "number_3": "270/+",
+        "number_4": "7/M",
+        "number_5": "500/+",
+        "number_6": "9/M tons/year ",
+        "number_7": "435/+ TCM",
+        "number_8": "885/+ TCM",
+        "name_1": "Clients",
+        "name_2": "Employees",
+        "name_3": "Products",
+        "name_4": "Production Lines",
+        "name_5": "Projects",
+        "name_6": "Dry Mix Factory Production",
+        "name_7": "White Brick Factory Production",
+        "name_8": "Factory Production Interlock"
     },
     "login": {
         "title": "Login",
@@ -184,7 +190,7 @@
     "navbar-links": {
         "latest-news": "Latest News",
         "latest-project": "Latest Projects",
-        "sustainability-report": "Sustainability Report",
+        "sustainability-report": "Sustainability ",
         "contact-us": "Contact us"
     },
     "contact": {
@@ -221,7 +227,7 @@
         "products": "Products and Solutions",
         "quick_link": "Quick Links",
         "work-us": "Join Bisco",
-        "bulidinfo": "Building Information Modeling",
+        "bulidinfo": "BIM",
         "contact-us": "Contact Us",
         "ourstory": "Our Story",
         "ourteam": "Our Team",
@@ -244,7 +250,8 @@
         "copyright": "All rights reserved",
         "policy": "Privacy Policy",
         "contactus": "You can contact us 24 hours a day",
-        "mobdwon": "This website was developed with creativity and passion by the Al-Mubdi'un Digital Marketing team. Click here to contact us",
-        "mobdwon_link": "(Al-Mubdi'un Digital Marketing Company)"
+        "maploaction": "Map Location",
+        "mobdwon": "This website was developed with creativity and passion by DMC team.",
+        "mobdwon_link": " Click here to contact us (DMC)"
     }
 }

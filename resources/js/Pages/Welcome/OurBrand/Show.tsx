@@ -11,6 +11,7 @@ interface FactNumber {
     id: number;
     title: string;
     number: number;
+    mark_number: string;
     image: string;
 }
 
@@ -57,7 +58,7 @@ const Show = ({ brand, otherbrand, mainproducts }: Props) => {
 
 
             <div
-                className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-yellow-original text-yellow-original shadow-lg cursor-pointer transition hover:bg-custom-dark-blue group"
+                className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-yellow-original text-yellow-original shadow-lg cursor-pointer transition hover:bg-custom-dark-blue group "
                 style={{
                     position: 'absolute',
                     top: '50%',
@@ -76,7 +77,7 @@ const Show = ({ brand, otherbrand, mainproducts }: Props) => {
         <>
             <Head title={brand.header_title} />
             <div
-                className="bg-gray-50 flex flex-col"
+                className="bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100"
             >
                 {/* top banner */}
                 <div
@@ -133,7 +134,9 @@ const Show = ({ brand, otherbrand, mainproducts }: Props) => {
                                     <div className='px-4'>
                                         <div className='flex gap-2 items-center'>
                                             {
-                                                i18n.language === 'en' && (<span className='text-4xl font-bold text-yellow-400'>+</span>)
+                                                i18n.language === 'en' && (
+                                            <span className='text-3xl font-bold text-yellow-original whitespace-nowrap'>{item.mark_number}</span>
+                                            )
                                             }
                                             {index + 1 === 5 && (
                                                 <span className='text-4xl font-bold text-yellow-original'>M</span>)}
@@ -141,9 +144,11 @@ const Show = ({ brand, otherbrand, mainproducts }: Props) => {
                                             <CountNumber number={item.number} />
 
 
-                                            {
-                                                i18n.language === 'ar' && (<span className='text-4xl font-bold text-yellow-original'>+</span>)
-                                            }
+                                        {
+                                            i18n.language === 'ar' && (
+                                                <span className='text-3xl font-bold text-yellow-original whitespace-nowrap'>{item.mark_number}</span>
+                                            )
+                                        }
                                         </div>
                                         <p className='text-lg '>{item.title}</p>
 

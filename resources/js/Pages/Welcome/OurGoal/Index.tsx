@@ -54,7 +54,7 @@ const Index = ({ ourgoal }: Props) => {
         <>
             <Head title={ourgoal.title} />
             <div
-                className="bg-gray-50 flex flex-col"
+                className="bg-gray-50 flex flex-col dark:bg-gray-900 text-gray-800 dark:text-gray-200"
                 style={{
                     backgroundColor: `${ourgoal.color}`
                 }}

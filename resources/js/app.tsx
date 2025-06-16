@@ -6,6 +6,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
 import AuthLayout from './Layouts/AuthLayout';
 import LanguageContext from './Layouts/LanguageContext';
+import ThemeProvider from './Layouts/ThemeContext';
 
 
 const appName = import.meta.env.VITE_APP_NAME || 'BSCO';
@@ -26,9 +27,12 @@ createInertiaApp({
         const root = createRoot(el);
 
         root.render(
-            <LanguageContext>
-                <App {...props} />
-            </LanguageContext>
+            <ThemeProvider>
+                <LanguageContext>
+                    <App {...props} />
+                </LanguageContext>
+            </ThemeProvider>
+
         );
     },
     progress: {

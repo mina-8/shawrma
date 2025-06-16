@@ -7,7 +7,7 @@ const BlogCards = ({ item }: any) => {
     return (
         <div
             key={item.id}
-            className="bg-gray-200 shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+            className="bg-gray-200 shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 dark:bg-gray-900 dark:text-gray-100"
         >
             <div className="overflow-hidden">
                 <img src={item.image} className=" hover:scale-125 hover:rotate-12 duration-500" />

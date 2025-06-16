@@ -22,7 +22,7 @@ class BuildInformationController extends Controller
             'id' => $buildinfo->id,
             'title' => $buildinfo->getTranslation('title' , $appLang),
             'content' => $buildinfo->getTranslation('content' , $appLang),
-            'banner' => Storage::url($buildinfo->banner)
+            'banner' => $buildinfo->banner === null ? null : Storage::url($buildinfo->banner)
         ];
 
         return Inertia::render('Welcome/BuildInformation/Index' , ['buildinforamtion'=>$dataBuildInfo]);

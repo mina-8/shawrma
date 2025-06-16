@@ -52,7 +52,7 @@ const Show = ({ project, otherProjects }: Props) => {
         <>
             <Head title={project.title} />
             <div
-                className=" bg-gray-50 flex flex-col"
+                className=" bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100"
             >
                 {/* Top Banner */}
                 <div className="w-full h-24 bg-yellow-original bg-cover bg-center" />
@@ -145,10 +145,10 @@ const Show = ({ project, otherProjects }: Props) => {
                                     <div key={index} className="px-2">
                                         <div
                                             key={item.id}
-                                            className="bg-gray-200 shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                                            className="bg-gray-200 shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 dark:bg-gray-900 dark:text-gray-100"
                                         >
                                             <div className="overflow-hidden">
-                                                <img src={item.image} className=" hover:scale-125 hover:rotate-12 duration-500" />
+                                                <img src={item.image} className=" hover:scale-125 hover:rotate-12 duration-500 w-full" />
                                             </div>
                                             <div className="p-4">
                                                 <p className="text-gray-800 font-medium flex flex-row-reverse items-center gap-2 text-xl">

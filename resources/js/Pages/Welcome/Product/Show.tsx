@@ -1,6 +1,6 @@
 import Collapse from '@/Components/Collapse';
 
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 
 import { useTranslation } from 'react-i18next';
 import { FaRegFilePdf, FaStar } from 'react-icons/fa';
@@ -24,7 +24,8 @@ interface Product {
     color : string;
     image: string;
     pdf: string;
-    usageproduct: UsageProducts[]
+    usageproduct: UsageProducts[];
+    slug: string;
 }
 
 interface Props {
@@ -37,7 +38,7 @@ const Show = ({ product  , otherproducts}: Props) => {
     return (
         <>
             <Head title={product.title} />
-            <div className=" bg-gray-50 flex flex-col">
+            <div className=" bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100">
                 {/* Top Banner */}
                 <div className="w-full h-24 bg-yellow-original bg-cover bg-center" />
 
@@ -76,7 +77,7 @@ const Show = ({ product  , otherproducts}: Props) => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="flex flex-col items-center">
                                 <div
-                                    className='border-b-2 border-sky-500 pb-2 text-4xl font-medium mb-4'
+                                    className='border-b-2 border-gray-600 pb-2 text-4xl font-medium mb-4'
                                 >
                                     {t('products.uses')}
                                 </div>
@@ -99,7 +100,7 @@ const Show = ({ product  , otherproducts}: Props) => {
                             </div>
                             <div className="flex flex-col items-center">
                                 <div
-                                    className='border-b-2 border-sky-500 pb-2 text-4xl font-medium mb-4'
+                                    className='border-b-2 border-gray-600 pb-2 text-4xl font-medium mb-4'
                                 >
                                     {t('products.advantages')}
                                 </div>
@@ -158,13 +159,13 @@ const Show = ({ product  , otherproducts}: Props) => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="flex justify-evenly items-center">
                                 <div
-                                    className='border-b-2 border-sky-500 text-2xl font-medium mb-2'
+                                    className='border-b-2 border-gray-500 text-2xl font-medium mb-2'
                                 >
                                     {t('products.downloadpdf')}
                                 </div>
                                 <a
                                     href={product.pdf}
-                                    className='border-2 border-white p-4 text-lg flex justify-center items-center gap-2 hover:bg-white hover:text-sky-500 group'
+                                    className='border-2 border-white p-4 text-lg flex justify-center items-center gap-2 hover:bg-white dark:hover:bg-gray-900 hover:text-yellow-original group'
                                 >
                                     <FaRegFilePdf size={32} className='group-hover:animate-scaleup transition-transform duration-300' />
                                     {t('products.pdf-file')}
@@ -186,7 +187,9 @@ const Show = ({ product  , otherproducts}: Props) => {
 
                         {otherproducts.length > 0 && otherproducts.map((item) => (
 
-                            <div className="flex bg-white shadow-lg p-2 overflow-hidden">
+                            <Link
+                            href={route('product.show', { lang: i18n.language, slug: item.slug })}
+                            className="flex bg-white shadow-lg p-2 overflow-hidden dark:bg-gray-600 dark:text-gray-100">
                                 <div className="w-1/2">
                                     <img
                                         src={item.image}
@@ -195,10 +198,10 @@ const Show = ({ product  , otherproducts}: Props) => {
                                     />
                                 </div>
                                 <div className="w-1/2 p-4 flex flex-col">
-                                    <h4 className="text-lg font-semibold mb-2 text-sky-500">{item.title}</h4>
-                                    <p className="text-sm text-gray-600">{item.description}</p>
+                                    <h4 className="text-lg font-semibold mb-2 text-yellow-original">{item.title}</h4>
+                                    <p className="text-sm text-gray-600 dark:text-white">{item.description}</p>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
 
                     </div>

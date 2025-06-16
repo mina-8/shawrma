@@ -17,7 +17,7 @@ const Index = ({ buildinforamtion }: Props) => {
         <>
             <Head title={buildinforamtion.title} />
             <div
-                className='bg-gray-50 flex flex-col'
+                className='bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100'
             >
                 {/* top banner */}
                 <div
