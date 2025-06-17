@@ -44,7 +44,7 @@ const Dropdown = ({ children, className = '' }: PropsWithChildren<{ className?: 
                 Wrap with div to track mouse enter/leave for hover behavior
                 We'll pass openMenu/closeMenu handlers as props for Trigger and Content
              */}
-            <div className={`relative ${className}`} onMouseLeave={closeMenu} onMouseEnter={openMenu}>
+            <div className={`relative ${className} rounded-t-lg`} onMouseLeave={closeMenu} onMouseEnter={openMenu}>
                 {children}
             </div>
         </DropDownContext.Provider>
@@ -59,7 +59,7 @@ const Trigger = ({ children, className = '' }: PropsWithChildren<{ className?: s
 const Content = ({
     align = 'left',
     width = '48',
-    contentClasses = 'py-1 bg-white/50',
+    contentClasses = 'py-1 bg-white/50 rounded-b-lg',
     className = '',
     children,
 }: PropsWithChildren<{

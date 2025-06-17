@@ -7,7 +7,7 @@ export default function ApplicationLogo(props: SVGAttributes<SVGElement>) {
     return (
         <svg
             {...props}
-            viewBox="0 0 200 60"
+            viewBox="0 0 600 150"
             xmlns="http://www.w3.org/2000/svg"
         >
 
@@ -16,7 +16,7 @@ export default function ApplicationLogo(props: SVGAttributes<SVGElement>) {
                 y="60%"
                 textAnchor="middle"
                 dominantBaseline="middle"
-                fontSize="70"
+                fontSize="150"
                 fill="#EEE"
                 fontFamily={fontFamily}
                 fontWeight="bold"

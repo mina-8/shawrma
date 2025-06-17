@@ -1,54 +1,56 @@
-import ChangeLang from '@/Components/ChangeLang/ChangeLang';
-import LangWraper from '@/Layouts/LangWraper';
+
 import { PageProps } from '@/types';
-import { Head, Link, usePage } from '@inertiajs/react';
-import { useTranslation } from 'react-i18next';
-import { AiOutlineGlobal } from 'react-icons/ai';
+import { Head } from '@inertiajs/react';
 
-import OurNews from './Welcome/OurNews/OurNews';
+import React, { Suspense } from 'react';
 
-import Possibilty from './Welcome/Possibilty/Possibilty';
-import Sliders from './Welcome/Sliders/Sliders';
-import OurMainPlairs from './Welcome/OurMainPlairs/OurMainPlairs';
-import Sustainability from './Welcome/Sustainability/Sustainability';
-import ReciveUpdate from '@/Components/ReciveUpdate';
-import OurImapct from './Welcome/OurImpact/OurImapct';
-import BuildingBest from './Welcome/BuildingBest/BuildingBest';
-import OurBrand from './Welcome/OurBrand/OurBrand';
 
+const OurNews = React.lazy(() => import('./Welcome/OurNews/OurNews'))
+const Possibilty = React.lazy(() => import('./Welcome/Possibilty/Possibilty'));
+const Sliders = React.lazy(() => import('./Welcome/Sliders/Sliders'));
+const OurMainPlairs = React.lazy(() => import('./Welcome/OurMainPlairs/OurMainPlairs'));
+const Sustainability = React.lazy(() => import('./Welcome/Sustainability/Sustainability'));
+const ReciveUpdate = React.lazy(() => import('@/Components/ReciveUpdate'));
+const OurImapct = React.lazy(() => import('./Welcome/OurImpact/OurImapct'));
+const BuildingBest = React.lazy(() => import('./Welcome/BuildingBest/BuildingBest'));
+const OurBrand = React.lazy(() => import('./Welcome/OurBrand/OurBrand'));
 export default function Welcome({
-  blogs = [],
-  slides = [],
-  factnumbers = [],
-  ourimpacts = [],
-  brands = [],
-  ourmainplair = []
-}: PageProps<{ blogs?: [] , slides?:[] , factnumbers?:[] , ourimpacts?:[] , brands?:[] , ourmainplair?:[]}>) {
+    blogs = [],
+    slides = [],
+    factnumbers = [],
+    ourimpacts = [],
+    brands = [],
+    ourmainplair = []
+}: PageProps<{ blogs?: [], slides?: [], factnumbers?: [], ourimpacts?: [], brands?: [], ourmainplair?: [] }>) {
 
-    const { t, i18n } = useTranslation();
-    const { applang } = usePage().props;
 
     return (
         <>
             <Head title="Home" />
-            <Sliders slides={slides} />
-        <div className=" flex min-h-screen flex-col items-center justify-start dark:bg-gray-900 dark:text-gray-100 text-gray-900 bg-white ">
-            <OurNews news={blogs}/>
+            <Suspense fallback={
+                <div className="flex justify-center items-center h-screen">
+                    <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-blue-500"></div>
+                </div>}>
+                <Sliders slides={slides} />
+                <div className=" flex min-h-screen flex-col items-center justify-start dark:bg-gray-900 dark:text-gray-100 text-gray-900 bg-white ">
+                    <OurNews news={blogs} />
 
-            <OurMainPlairs about={ourmainplair}/>
 
-            <Possibilty possibilty={factnumbers}/>
+                    <OurMainPlairs about={ourmainplair} />
 
-            <Sustainability/>
+                    <Possibilty possibilty={factnumbers} />
 
-            <BuildingBest/>
+                    <Sustainability />
 
-            <OurImapct ourimpact={ourimpacts} />
+                    <BuildingBest />
 
-            <OurBrand brands={brands}/>
+                    <OurImapct ourimpact={ourimpacts} />
 
-        </div>
-            <ReciveUpdate/>
+                    <OurBrand brands={brands} />
+
+                </div>
+                <ReciveUpdate />
+            </Suspense>
         </>
     );
 }

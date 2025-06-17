@@ -49,7 +49,7 @@ interface Props {
 }
 const Index = ({ ourstory }: Props) => {
     const { t, i18n } = useTranslation();
-    const staticPossibilty = [img1, img2, img3, img4, img5, img6];
+    const staticPossibilty = [img1, img2, img3, img4, img5, img6 ,img6, img6, img6];
 
     return (
         <>
@@ -211,16 +211,19 @@ const Index = ({ ourstory }: Props) => {
                                     <img src={item} alt={`Static News ${index + 1}`} className='h-14 object-cover  group-hover:animate-scaleup transition-transform duration-300' />
                                     <div className='px-4'>
                                         <div className='flex gap-2 items-center'>
+
                                             {
-                                                i18n.language === 'en' && (<span className='text-4xl font-bold text-yellow-original'>+</span>)
-                                            }
-                                            {index + 1 === 5 && (
-                                                <span className='text-4xl font-bold text-yellow-original'>M</span>)}
+                                            i18n.language === 'en' && (
+                                             <span className='lg:text-3xl text-2xl font-bold text-yellow-original  whitespace-nowrap'>{t(`possibilty.number_${index + 1}`).split('/')[1]}</span>
+                                        )
+                                        }
                                             <CountNumber number={parseInt(t(`possibilty.number_${index + 1}`))} />
 
 
                                             {
-                                                i18n.language === 'ar' && (<span className='text-4xl font-bold text-yellow-original'>+</span>)
+                                                i18n.language === 'ar' && (
+                                             <span className='lg:text-3xl text-2xl font-bold text-yellow-original  whitespace-nowrap'>{t(`possibilty.number_${index + 1}`).split('/')[1]}</span>
+                                            )
                                             }
                                         </div>
                                         <p className='text-lg '>{t(`possibilty.name_${index + 1}`)}</p>

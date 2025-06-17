@@ -60,7 +60,7 @@ const Index = ({ ourgoal }: Props) => {
                 }}
             >
                 <div
-                    className="w-full h-24 bg-yellow-original bg-cover bg-center"
+                    className="w-full h-28 bg-yellow-original bg-cover bg-center"
                     style={{
                         backgroundColor: `${ourgoal.color}`
                     }}

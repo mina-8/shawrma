@@ -138,9 +138,7 @@ const Show = ({ brand, otherbrand, mainproducts }: Props) => {
                                             <span className='text-3xl font-bold text-yellow-original whitespace-nowrap'>{item.mark_number}</span>
                                             )
                                             }
-                                            {index + 1 === 5 && (
-                                                <span className='text-4xl font-bold text-yellow-original'>M</span>)}
-                                            {/* <CountNumber number={parseInt(t(`possibilty.number_${index + 1}`))} /> */}
+                                            
                                             <CountNumber number={item.number} />
 
 

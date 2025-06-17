@@ -14,7 +14,7 @@ const NotFound = () => {
             >
                 {/* Top Banner */}
                 <div
-                    className="w-full h-24 bg-yellow-original bg-cover bg-center"
+                    className="w-full h-28 bg-yellow-original bg-cover bg-center"
                 />
             </div>
             <div

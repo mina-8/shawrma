@@ -99,7 +99,9 @@ export default function AuthWelcome({
                             <div className="flex relative">
                                 <div className="flex shrink-0 items-center">
                                     <Link href={route('welcome', { lang: i18n.language })}>
-                                        <ApplicationLogo className="block h-9 w-auto fill-current text-white" />
+                                        <ApplicationLogo
+                                        className="block h-20 w-auto fill-current text-white"
+                                         />
                                     </Link>
                                 </div>
                             </div>
@@ -107,11 +109,13 @@ export default function AuthWelcome({
                             <div className="hidden sm:ms-6 sm:flex sm:items-center relative">
                                 <div className="hidden gap-1 sm:-my-px sm:ms-10 sm:flex">
 
-                                    <Dropdown className='hover:bg-white hover:text-yellow-original px-4 py-6 cursor-pointer text-white'>
+                                    <Dropdown className='hover:bg-white  hover:text-yellow-original px-4 py-6 cursor-pointer text-white'>
                                         <Dropdown.Trigger>
                                             {t('home.about')}
                                         </Dropdown.Trigger>
-                                        <Dropdown.Content className='mt-6 ' >
+                                        <Dropdown.Content
+                                        className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[15%]' : 'translate-x-[0%] w-full'} `}
+                                         >
                                             <AboutNav />
                                         </Dropdown.Content>
                                     </Dropdown>
@@ -120,7 +124,9 @@ export default function AuthWelcome({
                                         <Dropdown.Trigger>
                                             {t('home.brands')}
                                         </Dropdown.Trigger>
-                                        <Dropdown.Content className='mt-6 ' >
+                                        <Dropdown.Content
+                                         className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[12%]' : 'translate-x-[0%] '} `}
+                                         >
                                             <BrandNav />
                                         </Dropdown.Content>
                                     </Dropdown>
@@ -129,7 +135,9 @@ export default function AuthWelcome({
                                         <Dropdown.Trigger>
                                             {t('home.services')}
                                         </Dropdown.Trigger>
-                                        <Dropdown.Content className='mt-6 ' >
+                                        <Dropdown.Content
+                                         className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[12%]' : 'translate-x-[0%] w-full'} `}
+                                          >
                                             <ServiceNav />
                                         </Dropdown.Content>
                                     </Dropdown>
@@ -153,8 +161,8 @@ export default function AuthWelcome({
                                             {t('home.bulidinus')}
                                         </Dropdown.Trigger>
                                         <Dropdown.Content
-                                            align='right'
-                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[-25%]' : 'translate-x-[0%]'} `}
+
+                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[25%]' : 'translate-x-[0%] w-full'}  `}
 
                                         >
                                             <WorkusNav />
@@ -165,8 +173,9 @@ export default function AuthWelcome({
                                         <Dropdown.Trigger>
                                             {t('home.spotlight')}
                                         </Dropdown.Trigger>
-                                        <Dropdown.Content align='right'
-                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[-25%]' : 'translate-x-[25%]'} `}
+                                        <Dropdown.Content
+                                        // align='right'
+                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[15%]' : 'translate-x-[-20%]'} `}
 
                                         >
                                             <SpotlightNav />

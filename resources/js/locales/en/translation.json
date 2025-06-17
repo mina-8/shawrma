@@ -30,6 +30,7 @@
         "description_1": "We are here to help you achieve your goals",
         "description_2": "We offer a variety of services to meet your needs",
         "description_3": "Contact us for a free consultation",
+        "description_4": "Explore our wide range of products designed for your projects",
         "button_1": "Learn More",
         "button_2": "Get a Quote",
         "button_3": "Contact Us",
@@ -146,6 +147,7 @@
         "number_6": "9/M tons/year ",
         "number_7": "435/+ TCM",
         "number_8": "885/+ TCM",
+        "number_9" : "10/+ LRA",
         "name_1": "Clients",
         "name_2": "Employees",
         "name_3": "Products",
@@ -153,7 +155,8 @@
         "name_5": "Projects",
         "name_6": "Dry Mix Factory Production",
         "name_7": "White Brick Factory Production",
-        "name_8": "Factory Production Interlock"
+        "name_8": "Factory Production Interlock",
+        "name_9" : "Strong presence in "
     },
     "login": {
         "title": "Login",
@@ -226,7 +229,7 @@
         "services": "Building the Future",
         "products": "Products and Solutions",
         "quick_link": "Quick Links",
-        "work-us": "Join Bisco",
+        "work-us": "Join Bsco",
         "bulidinfo": "BIM",
         "contact-us": "Contact Us",
         "ourstory": "Our Story",
@@ -250,7 +253,7 @@
         "copyright": "All rights reserved",
         "policy": "Privacy Policy",
         "contactus": "You can contact us 24 hours a day",
-        "maploaction": "Map Location",
+        "maplocation": "Map Location",
         "mobdwon": "This website was developed with creativity and passion by DMC team.",
         "mobdwon_link": " Click here to contact us (DMC)"
     }

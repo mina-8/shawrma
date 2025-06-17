@@ -225,7 +225,7 @@ const Footer = () => {
                     {t('footer.copyright')} © {currentYear}
                 </div>
                 <div>
-                   <a href="https://maps.app.goo.gl/vepPfgHWTj1e4L5z7?g_st=ic" rel="noopener noreferrer" target='__blank' className='hover:text-yellow-original'>
+                   <a href="https://www.google.com/maps/place/%D8%A7%D9%84%D8%B4%D8%B1%D9%83%D8%A9+%D8%A7%D9%84%D8%AB%D9%86%D8%A7%D8%A6%D9%8A%D8%A9+(+%D8%A8%D9%8A%D8%B3%D9%83%D9%88+)%E2%80%AD/@28.402489,46.0605261,774m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3fd7375f26d0fcc1:0xa31931d439938402!8m2!3d28.402489!4d46.0605261!16s%2Fg%2F11t0md03qc?entry=ttu&g_ep=EgoyMDI1MDYxMS4wIKXMDSoASAFQAw%3D%3D" rel="noopener noreferrer" target='__blank' className='hover:text-yellow-original'>
                    {t('footer.maplocation')}
                    </a>
                 </div>

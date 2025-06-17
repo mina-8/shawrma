@@ -25,7 +25,7 @@ interface Props {
 const Possibilty = ({ possibilty }: Props) => {
     const { ref, isVisible } = useInView();
     const { t, i18n } = useTranslation();
-    const staticPossibilty = [img1, img2, img3, img4, img5, img6, img6, img6];
+    const staticPossibilty = [img1, img2, img3, img4, img5, img6, img6, img6 , img6];
     console.log(t('possibilty.number_1').split('/')[0]);
     return (
         <div
