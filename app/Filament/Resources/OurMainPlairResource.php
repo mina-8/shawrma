@@ -78,7 +78,7 @@ class OurMainPlairResource extends Resource
                                 'innovation' => 'innovation',
                                 'contact-us' => 'contact-us',
                                 'mainproduct' => 'mainproduct',
-                                'products' => 'products',
+                                'product-search' => 'product',
                                 'news' => 'news',
                                 'work-us' => 'work-us',
                                 'build-information' => 'build information',

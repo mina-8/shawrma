@@ -72,7 +72,7 @@ Route::group(
         Route::get('mainproduct/{slug}' , [MainProductController::class , 'show'])->name('mainproduct.show');
 
         // products
-        Route::get('Products', [ProductController::class, 'index'])->name('products');
+        // Route::get('Products', [ProductController::class, 'index'])->name('products');
         Route::get('product/{slug}' , [ProductController::class , 'show'])->name('product.show');
         Route::get('product-search' , [ProductController::class , 'search'])->name('product-search');
         Route::get('product-video' , [ProductController::class , 'video'])->name('product-video');

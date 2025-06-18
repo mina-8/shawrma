@@ -40,7 +40,7 @@ const Show = ({ product  , otherproducts}: Props) => {
             <Head title={product.title} />
             <div className=" bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100">
                 {/* Top Banner */}
-                <div className="w-full h-28 bg-yellow-original bg-cover bg-center" />
+                <div className="w-full h-32 bg-yellow-original bg-cover bg-center" />
 
                 {/* Main Content */}
                 <div className="container mx-auto px-4 py-8">

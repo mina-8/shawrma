@@ -109,11 +109,11 @@ class CreateOurGoal extends CreateRecord
                                     return Str::uuid() . '.' . $extension;
                                 })
                                 ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp'])
-                                ->required(),
+                                ,
                             ]),
                             Components\TextInput::make('youtube_link')
                                 ->label(__('filament-panels::resources/pages/ourgoal.fields.create_story.video'))
-                                ->required()
+                                
                                 ->url(),
                         ])
                         ->addActionLabel(__('filament-panels::resources/pages/ourgoal.fields.create_story.add_video'))

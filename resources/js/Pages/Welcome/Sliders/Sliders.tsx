@@ -106,7 +106,7 @@ export default function Sliders({ slides }: Props) {
 
                                             <div className='absolute w-full h-full bg-black top-0 right-0 opacity-50'></div>
 
-                                            <p className={`pt-20 text-6xl  text-white drop-shadow-3xl xs:text-xl ${AcitveIndex === index ? 'animate-fadeup' : ''} `}>{item.title}</p>
+                                            <p className={`pt-20 text-6xl  text-white drop-shadow-3xl xs:text-xl ${AcitveIndex === index ? 'animate-fadeup' : ''} ${i18n.language === 'ar' ? 'text-end' : ''}`}>{item.title}</p>
 
                                             <div className={`py-5 text-3xl  font-bold text-white drop-shadow-3xl xs:text-base xs:text-center ${AcitveIndex === index ? 'animate-fadeup' : ''}`}
                                                 style={{

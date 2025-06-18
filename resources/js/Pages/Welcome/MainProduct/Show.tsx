@@ -31,16 +31,21 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
     return (
         <>
             <Head title={mainproduct.title} />
-            <div className="bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100">
+            <div className="bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100 ">
                 {/* Top Banner */}
-                <div className="w-full h-96 flex relative overflow-hidden">
+                <div className="w-full flex relative overflow-hidden ">
                     <div className='absolute w-full h-full bg-black top-0 right-0 opacity-50'></div>
 
                     {/* Right Half */}
-                    <div className={`w-1/2 h-full bg-yellow-original relative after:content-[''] after:absolute after:top-0 after:right-[-40px] after:w-[120%] after:h-full after:bg-yellow-original ${
-                        i18n.language === 'ar' ? 'after:skew-x-[-390deg]' : 'after:skew-x-[190deg]'
-                    }`}>
-                        <div className='flex flex-col items-center justify-center gap-8 h-full z-50 relative'>
+                    <div className={`w-1/2 h-auto bg-yellow-original relative after:content-[''] after:z-10 after:absolute after:top-0 after:right-[-40px] after:w-[120%] after:h-full after:bg-yellow-original
+                    ${
+                        i18n.language === 'ar' ? 'after:skew-x-[-350deg]' : 'after:skew-x-[170deg]'
+                    }
+                    `}>
+                        <div className='flex flex-col items-center justify-center gap-8 h-auto z-20 relative'
+                        style={{ paddingTop: '176px' }}
+                        >
+
                             <h2 className='text-4xl font-medium text-white'>{mainproduct.title}</h2>
                             <div className='mx-12 text-white text-lg prose prose-invert max-w-none'>
                                 <ReactMarkdown>{mainproduct.content}</ReactMarkdown>
@@ -50,7 +55,7 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
 
                     {/* Left Half */}
                     <div
-                        className="w-1/2 h-full bg-cover bg-center"
+                        className="w-1/2  bg-cover bg-center"
                         style={{ backgroundImage: `url('${mainproduct.image}')` }}
                     />
                 </div>

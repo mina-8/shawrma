@@ -7,7 +7,7 @@ import { PropsWithChildren, ReactNode, useEffect, useState } from 'react';
 import LangWraper from './LangWraper';
 import { User } from '@/types';
 import { useTranslation } from 'react-i18next';
-import ChangeLang from '@/Components/ChangeLang/ChangeLang';
+
 import { AiOutlineGlobal } from 'react-icons/ai';
 import { FaArrowUp } from 'react-icons/fa';
 import { IoMoon, IoSearch } from 'react-icons/io5';
@@ -21,6 +21,7 @@ import SpotlightNav from '@/Components/NavList/SpotlightNav';
 import WorkusNav from '@/Components/NavList/WorkusNav';
 import { useTheme } from './ThemeContext';
 import { MdOutlineWbSunny } from 'react-icons/md';
+import ChangeLang from '@/Components/ChangeLang/ChangeLang';
 
 export default function AuthWelcome({
     header,
@@ -61,19 +62,20 @@ export default function AuthWelcome({
                 >
                     {!isnavbar && (
                         <div
-                            className='flex items-center w-full max-w-7xl mx-auto  justify-end'
+                            className='flex items-center w-full max-w-7xl mx-auto  justify-end py-4'
                         >
 
                             <Link
                                 className='text-white cursor-pointer'
 
                                 href={route('contact-us', { lang: i18n.language })}
-                            // active={route().current('contact-us')}
                             >
 
                                 {t('navbar-links.contact-us')}
                             </Link>
+                            <ChangeLang />
 
+                            {/*
                             <Dropdown>
                                 <Dropdown.Trigger>
                                     <span className="inline-flex rounded-md">
@@ -87,11 +89,11 @@ export default function AuthWelcome({
                                     </span>
                                 </Dropdown.Trigger>
                                 <ChangeLang />
-                            </Dropdown>
-
+                            </Dropdown> */}
                             <button onClick={toggleTheme}
                                 className='text-2xl '
                             >{theme === 'dark' ? <IoMoon className='text-white' /> : <MdOutlineWbSunny className='text-white' />}</button>
+
                         </div>
                     )}
                     <div className={`mx-auto  px-4 sm:px-6 lg:px-8 ${i18n.language === 'ar' ? 'max-w-7xl' : 'max-w-fit'} `}>
@@ -100,8 +102,8 @@ export default function AuthWelcome({
                                 <div className="flex shrink-0 items-center">
                                     <Link href={route('welcome', { lang: i18n.language })}>
                                         <ApplicationLogo
-                                        className="block h-20 w-auto fill-current text-white"
-                                         />
+                                            className="block h-20 w-auto fill-current text-white"
+                                        />
                                     </Link>
                                 </div>
                             </div>
@@ -114,8 +116,8 @@ export default function AuthWelcome({
                                             {t('home.about')}
                                         </Dropdown.Trigger>
                                         <Dropdown.Content
-                                        className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[15%]' : 'translate-x-[0%] w-full'} `}
-                                         >
+                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[15%]' : 'translate-x-[0%] w-full'} `}
+                                        >
                                             <AboutNav />
                                         </Dropdown.Content>
                                     </Dropdown>
@@ -125,8 +127,8 @@ export default function AuthWelcome({
                                             {t('home.brands')}
                                         </Dropdown.Trigger>
                                         <Dropdown.Content
-                                         className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[12%]' : 'translate-x-[0%] '} `}
-                                         >
+                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[12%]' : 'translate-x-[0%] '} `}
+                                        >
                                             <BrandNav />
                                         </Dropdown.Content>
                                     </Dropdown>
@@ -136,8 +138,8 @@ export default function AuthWelcome({
                                             {t('home.services')}
                                         </Dropdown.Trigger>
                                         <Dropdown.Content
-                                         className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[12%]' : 'translate-x-[0%] w-full'} `}
-                                          >
+                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[12%]' : 'translate-x-[0%] w-full'} `}
+                                        >
                                             <ServiceNav />
                                         </Dropdown.Content>
                                     </Dropdown>
@@ -174,7 +176,7 @@ export default function AuthWelcome({
                                             {t('home.spotlight')}
                                         </Dropdown.Trigger>
                                         <Dropdown.Content
-                                        // align='right'
+                                            // align='right'
                                             className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[15%]' : 'translate-x-[-20%]'} `}
 
                                         >
@@ -212,7 +214,7 @@ export default function AuthWelcome({
                                     </Dropdown.Trigger>
 
                                 </Dropdown>
-                                <Dropdown>
+                                {/* <Dropdown>
                                     <Dropdown.Trigger>
                                         <span className="inline-flex rounded-md">
                                             <button
@@ -224,8 +226,8 @@ export default function AuthWelcome({
                                         </span>
                                     </Dropdown.Trigger>
                                     <ChangeLang />
-                                </Dropdown>
-
+                                </Dropdown> */}
+                                <ChangeLang />
                                 <button
                                     onClick={() =>
                                         setShowingNavigationDropdown(

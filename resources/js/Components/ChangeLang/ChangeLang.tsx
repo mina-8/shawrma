@@ -1,13 +1,13 @@
 import React from 'react'
-import Dropdown from '../Dropdown'
-import { usePage } from '@inertiajs/react'
+import { Link, usePage } from '@inertiajs/react'
 import { PageProps } from '@/types';
+import { AiOutlineGlobal } from 'react-icons/ai';
 interface Props extends PageProps {
-    currentRoute : string;
+    currentRoute: string;
     slugs?: Record<string, string>
 }
 const ChangeLang = () => {
-    const { currentRoute, slugs }: Props  = usePage<Props>().props;
+    const { currentRoute, slugs }: Props = usePage<Props>().props;
     const { lang, ...restParams } = route().params;
 
     const createLangUrl = (targetLang: string) => {
@@ -15,12 +15,13 @@ const ChangeLang = () => {
 
         return route(currentRoute, { ...restParams, slug: newSlug, lang: targetLang });
     };
-
     return (
-        <Dropdown.Content>
-            <Dropdown.Link href={createLangUrl('en')}>English</Dropdown.Link>
-            <Dropdown.Link href={createLangUrl('ar')}>عربي</Dropdown.Link>
-        </Dropdown.Content>
+        <Link href={createLangUrl(lang === 'en' ? 'ar' : 'en')}
+         className="flex justify-center items-center px-4 text-white "
+         >
+            <AiOutlineGlobal size={24} />
+            {lang === 'en' ? 'عربي' : 'English'}
+        </Link>
     )
 }
 

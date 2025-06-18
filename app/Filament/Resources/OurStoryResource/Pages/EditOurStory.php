@@ -57,8 +57,7 @@ class EditOurStory extends EditRecord
                             $extension = $file->getClientOriginalExtension();
                             return Str::uuid() . '.' . $extension;
                         })
-                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp'])
-                        ,
+                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp']),
                     Components\Group::make([
                         LanguageTabs::make([
                             Components\TextInput::make('title')
@@ -127,8 +126,7 @@ class EditOurStory extends EditRecord
                         ->schema([
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
-                                    ->label(__('filament-panels::resources/pages/ourstory.fields.create_story.title'))
-                                    ,
+                                    ->label(__('filament-panels::resources/pages/ourstory.fields.create_story.title')),
                             ]),
                             Components\TextInput::make('youtube_link')
                                 ->label(__('filament-panels::resources/pages/ourstory.fields.create_story.video'))
@@ -137,8 +135,7 @@ class EditOurStory extends EditRecord
                         ])
                         ->addActionLabel(__('filament-panels::resources/pages/ourstory.fields.create_story.add_video'))
                         ->collapsible()
-                        ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null)
-                        ,
+                        ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null),
                 ])
         ];
     }

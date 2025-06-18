@@ -24,7 +24,7 @@ const Index = ({ results, query }: Props) => {
             <Head title="Search" />
             <div className=" bg-gray-50 flex flex-col" >
                 {/* Top Banner */}
-                <div className="w-full h-28 bg-yellow-original bg-cover bg-center" />
+                <div className="w-full h-32 bg-yellow-original bg-cover bg-center" />
                 <div
                     className='w-full max-w-7xl mx-auto my-12 flex flex-col justify-center items-center gap-4'
                 >

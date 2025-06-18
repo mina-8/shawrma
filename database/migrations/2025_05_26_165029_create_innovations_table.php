@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->json('title')->comment('Innovation title');
             $table->json('content')->comment('Innovation content');
-            $table->string('banner')->comment('Innovation image');
+            $table->string('banner')->nullable()->comment('Innovation image');
             $table->timestamps();
         });
     }
