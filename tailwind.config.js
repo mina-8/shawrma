@@ -13,6 +13,9 @@ export default {
 
     theme: {
         extend: {
+            screens: {
+                'xl': '1440px',
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 english: ['Poppins', 'Roboto', ...defaultTheme.fontFamily.sans],

@@ -28,7 +28,7 @@ export default function AuthWelcome({
     children,
 }: PropsWithChildren<{ header?: ReactNode }>) {
     const { currentRoute }: string | any = usePage().props;
-
+const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
@@ -52,7 +52,10 @@ export default function AuthWelcome({
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('scroll', handlnav);
         };
+
+
     }, []);
+
 
     return (
         <LangWraper>
@@ -91,12 +94,12 @@ export default function AuthWelcome({
                                 <ChangeLang />
                             </Dropdown> */}
                             <button onClick={toggleTheme}
-                                className='text-2xl '
+                                className='text-2xl px-4 '
                             >{theme === 'dark' ? <IoMoon className='text-white' /> : <MdOutlineWbSunny className='text-white' />}</button>
 
                         </div>
                     )}
-                    <div className={`mx-auto  px-4 sm:px-6 lg:px-8 ${i18n.language === 'ar' ? 'max-w-7xl' : 'max-w-fit'} `}>
+                    <div className={`mx-auto  px-4 sm:px-6 lg:px-8 ${i18n.language === 'ar' ? 'max-w-7xl' : 'max-w-fit'}  `}>
                         <div className="flex h-16 justify-between">
                             <div className="flex relative">
                                 <div className="flex shrink-0 items-center">
@@ -108,10 +111,10 @@ export default function AuthWelcome({
                                 </div>
                             </div>
 
-                            <div className="hidden sm:ms-6 sm:flex sm:items-center relative">
+                            <div className="hidden xl:ms-6 xl:flex xl:items-center relative">
                                 <div className="hidden gap-1 sm:-my-px sm:ms-10 sm:flex">
 
-                                    <Dropdown className='hover:bg-white  hover:text-yellow-original px-4 py-6 cursor-pointer text-white'>
+                                    <Dropdown className='hover:bg-white  hover:text-yellow-original px-4 py-6 cursor-pointer text-white '>
                                         <Dropdown.Trigger>
                                             {t('home.about')}
                                         </Dropdown.Trigger>
@@ -199,8 +202,9 @@ export default function AuthWelcome({
 
                             </div>
 
-                            <div className="-me-2 flex items-center sm:hidden relative">
-                                <Dropdown>
+                            <div className="-me-2 flex items-center xl:hidden relative">
+
+                                {/* <Dropdown>
                                     <Dropdown.Trigger>
                                         <span className="inline-flex rounded-md">
                                             <button
@@ -213,21 +217,9 @@ export default function AuthWelcome({
                                         </span>
                                     </Dropdown.Trigger>
 
-                                </Dropdown>
-                                {/* <Dropdown>
-                                    <Dropdown.Trigger>
-                                        <span className="inline-flex rounded-md">
-                                            <button
-                                                type="button"
-                                                className="inline-flex items-center rounded-md border border-transparent text-white px-3 py-2 text-sm font-medium leading-4  transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none"
-                                            >
-                                                <AiOutlineGlobal size={24} />
-                                            </button>
-                                        </span>
-                                    </Dropdown.Trigger>
-                                    <ChangeLang />
                                 </Dropdown> */}
-                                <ChangeLang />
+
+
                                 <button
                                     onClick={() =>
                                         setShowingNavigationDropdown(
@@ -271,7 +263,7 @@ export default function AuthWelcome({
                     </div>
 
                     <div
-                        className={`sm:hidden ${showingNavigationDropdown ? 'block' : 'hidden'} bg-white text-black px-4 py-4 shadow-md z-50`}
+                        className={`xl:hidden ${showingNavigationDropdown ? 'block' : 'hidden'} bg-white text-black px-4 py-4 shadow-md z-50`}
                     >
                         <div className="space-y-1">
                             <ResponsiveNavLink
@@ -353,6 +345,16 @@ export default function AuthWelcome({
                                     <SpotlightNav />
                                 </Dropdown.Content>
                             </Dropdown>
+
+                            <span className="inline-flex rounded-md">
+                                <button
+                                    type="button"
+                                    className="inline-flex items-center rounded-full bg-yellow-original hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
+                                    onClick={() => setShowSearch(true)}
+                                >
+                                    <IoSearch size={24} />
+                                </button>
+                            </span>
                         </div>
                     </div>
 
