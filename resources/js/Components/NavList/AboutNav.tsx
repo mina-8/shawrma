@@ -18,6 +18,10 @@ const AboutNav = () => {
             title: t('footer.ourculture')
         },
         {
+            href:'our-team',
+            title: t('ourteam.title')
+        },
+        {
             href:'building-best',
             title: t('footer.ourgoal')
         },

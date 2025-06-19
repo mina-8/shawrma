@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JobAd;
 use App\Models\WorkUs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -18,9 +19,9 @@ class WorkUsController extends Controller
         }
 
         $corevesion = [];
-        $corestation = [];
 
-        //station
+
+
         // vesions
         if($workus && $workus->corevesion !== null ){
             $corevesions = $workus->corevesion->map(function ($corevesion) use($appLang){
@@ -33,17 +34,16 @@ class WorkUsController extends Controller
             });
         }
 
-        // stations
-        if($workus && $workus->corestation !== null ){
-            $corestations =  $workus->corestation->map(function ($corestation) use($appLang){
-                return [
-                    'id' => $corestation->id,
-                    'title' => $corestation->getTranslation('title' , $appLang),
-                    'content' => $corestation->getTranslation('content' , $appLang),
-                    'image' => Storage::url($corestation->image)
-                ];
-            });
-        }
+        $jobads = JobAd::latest()->get()->map(function ($jobad) use($appLang){
+            return [
+                'id' => $jobad->id,
+                'title' => $jobad->getTranslation('title', $appLang),
+                'content' => $jobad->getTranslation('content', $appLang),
+                'image' => Storage::url($jobad->image),
+                'slug' => $jobad->slug,
+            ];
+        });
+
         $dataWorkUs = [
             'id' => $workus->id,
             'banner' => Storage::url($workus->banner),
@@ -52,8 +52,28 @@ class WorkUsController extends Controller
             'content' => $workus->getTranslation('content' , $appLang),
             'title' => $workus->getTranslation('title' , $appLang),
             'corevesions' => $corevesions,
-            'corestations' => $corestations
+            'jobads' => $jobads,
         ];
         return Inertia::render('Welcome/WorkUs/Index' , ['workus'=>$dataWorkUs]);
+    }
+
+    public function show(string $lang , string $slug){
+
+        $jobad = JobAd::where("slug->$lang", $slug)->first();
+
+        if(!$jobad){
+            return Inertia::render('Welcome/NotFound/NotFound');
+        }
+
+        $slugs = $jobad->getTranslations('slug');
+
+        $dataJobAd = [
+            'title' => $jobad->getTranslation('title', $lang),
+            'content' => $jobad->getTranslation('content', $lang),
+            'image' => $jobad->image === null ? null : Storage::url($jobad->image),
+            'slug' => $jobad->slug,
+        ];
+
+        return Inertia::render('Welcome/WorkUs/Show', ['jobad' => $dataJobAd , 'slugs' => $slugs]);
     }
 }

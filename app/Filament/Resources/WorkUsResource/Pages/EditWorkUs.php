@@ -5,6 +5,7 @@ namespace App\Filament\Resources\WorkUsResource\Pages;
 use App\Filament\Resources\WorkUsResource;
 use App\Models\CoreStation;
 use App\Models\CoreVesion;
+use App\Models\WorkAd;
 use App\Models\WorkUs;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
@@ -95,36 +96,7 @@ class EditWorkUs extends EditRecord
                         ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null)
                         ->required(),
                 ]),
-            Step::make(__('filament-panels::resources/pages/ourculter.fields.create_station.header'))
-                ->description(__('filament-panels::resources/pages/ourculter.fields.create_station.description'))
-                ->schema([
-                    Components\Repeater::make('edit_core_station')
-                        ->label(__('filament-panels::resources/pages/ourculter.fields.create_station.description'))
-                        ->schema([
-                            LanguageTabs::make([
-                                Components\TextInput::make('title')
-                                    ->label(__('filament-panels::resources/pages/ourculter.fields.create_station.title')),
-                                Components\MarkdownEditor::make('content')
-                                    ->label(__('filament-panels::resources/pages/ourculter.fields.create_station.content')),
-                            ]),
-                            Components\FileUpload::make('image')
-                                ->label(__('filament-panels::resources/pages/ourculter.fields.image'))
-                                ->disk('public')
-                                ->directory('uploads/stations')
-                                ->visibility('public')
-                                ->maxSize(4096)
-                                ->getUploadedFileNameForStorageUsing(function ($file) {
-                                    $extension = $file->getClientOriginalExtension();
-                                    return Str::uuid() . '.' . $extension;
-                                })
-                                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp' , 'image/svg+xml'])
-                                ->required(),
-                        ])
-                        ->addActionLabel(__('filament-panels::resources/pages/ourculter.fields.create_station.add_station'))
-                        ->collapsible()
-                        ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null)
-                        ->required(),
-                ]),
+            
 
         ];
     }
@@ -146,27 +118,11 @@ class EditWorkUs extends EditRecord
             })->toArray();
     }
 
-    protected function getDefaultCoreStations(): array
-    {
-        return CoreStation::where('stationable_id', $this->record->id)
-            ->where('stationable_type', WorkUs::class) // Assuming you're using a 'type' column to distinguish them
-            ->get()
-            ->map(function ($station) {
-                $title = $station->getTranslations('title');
-                $content = $station->getTranslations('content');
-                return [
-                    'id' => $station->id,
-                    'title' => $title,
-                    'content' => $content,
-                    'image' => $station->image,
-                ];
-            })->toArray();
-    }
+
 
     protected function mutateFormDataBeforeFill(array $data): array
     {
         $data['edit_core_vesion'] = $this->getDefaultCoreVesion();
-        $data['edit_core_station'] = $this->getDefaultCoreStations();
         return $data;
     }
     protected function mutateFormDataBeforeSave(array $data): array
@@ -224,42 +180,7 @@ class EditWorkUs extends EditRecord
             }
         }
 
-        // handel core station
-        $EditCoreStation = $this->form->getState()['edit_core_station'] ?? [];
-        $ExistCoreStation = CoreStation::where('stationable_id', $this->record->id)
-            ->where('stationable_type', WorkUs::class)
-            ->pluck('id')->toArray();
-
-        $submitedStationId = array_filter(array_column($EditCoreStation, 'id'));
-
-        // Identify and delete removed stations (including their images)
-        foreach ($ExistCoreStation as $deleteStationId) {
-            if (!in_array($deleteStationId, $submitedStationId)) {
-                $deletestation = CoreStation::find($deleteStationId);
-
-                if ($deletestation && !empty($deletestation->image) && Storage::disk('public')->exists($deletestation->image)) {
-                    Storage::disk('public')->delete($deletestation->image);
-                }
-
-                $deletestation?->delete();
-            }
-        }
 
 
-        foreach ($EditCoreStation as $coreStation) {
-            $dataStation = [
-                'title' => $coreStation['title'],
-                'content' => $coreStation['content'],
-                'image' => $coreStation['image'],
-                'stationable_id' => $this->record->id,
-                'stationable_type' => WorkUs::class
-            ];
-
-            if (!empty($coreStation['id'])) {
-                CoreStation::where('id', $coreStation['id'])->update($dataStation);
-            } else {
-                CoreStation::create($dataStation);
-            }
-        }
     }
 }

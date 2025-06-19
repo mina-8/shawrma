@@ -7,17 +7,18 @@ import ReactMarkdown from 'react-markdown'
 interface Product {
     id: number
     title: string;
-    description:string;
+    description: string;
     slug: string
     image: string
     special: boolean
 }
 
 interface MainProduct {
-    title: string
-    content: string
-    image: string
-    products: Product[]
+    title: string;
+    content: string;
+    image: string;
+    color: string
+    products: Product[];
 }
 
 interface ShowProps {
@@ -37,13 +38,20 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
                     <div className='absolute w-full h-full bg-black top-0 right-0 opacity-50'></div>
 
                     {/* Right Half */}
-                    <div className={`w-1/2 h-auto bg-yellow-original relative after:content-[''] after:z-10 after:absolute after:top-0 after:right-[-40px] after:w-[120%] after:h-full after:bg-yellow-original
-                    ${
-                        i18n.language === 'ar' ? 'after:skew-x-[-350deg]' : 'after:skew-x-[170deg]'
-                    }
-                    `}>
+                    <div className={`w-1/2 h-auto bg-yellow-original relative after:content-[''] after:z-10 after:absolute after:top-0 after:right-[-40px] after:w-[120%] after:h-full 
+                    ${i18n.language === 'ar' ? 'after:skew-x-[-350deg]' : 'after:skew-x-[170deg]'
+                        }
+                    after:bg-[var(--after-bg)]
+
+                    `}
+                        style={{
+                            backgroundColor: mainproduct.color,
+                            // @ts-ignore
+                            '--after-bg': mainproduct.color || '#facc15'
+                        } as React.CSSProperties}
+                    >
                         <div className='flex flex-col items-center justify-center gap-8 h-auto z-20 relative'
-                        style={{ paddingTop: '176px' }}
+                            style={{ paddingTop: '176px' }}
                         >
 
                             <h2 className='text-4xl font-medium text-white'>{mainproduct.title}</h2>
@@ -62,7 +70,11 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
 
                 {/* Featured Products */}
                 <div className="flex flex-col justify-center items-center my-8 px-4">
-                    <h3 className="text-4xl font-medium border-b-4 pb-4 border-yellow-original text-center">
+                    <h3 className="text-4xl font-medium border-b-4 pb-4 border-yellow-original text-center"
+                    style={{
+                        borderColor: mainproduct.color || '#facc15',
+                    }}
+                    >
                         {t('mainproduct.featured-products')}
                     </h3>
 
@@ -95,7 +107,11 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
 
                 {/* All Products */}
                 <div className="flex flex-col justify-center items-center my-8 px-4">
-                    <h3 className="text-4xl font-medium border-b-4 pb-4 border-yellow-original text-center">
+                    <h3 className="text-4xl font-medium border-b-4 pb-4 border-yellow-original text-center"
+                    style={{
+                        borderColor: mainproduct.color || '#facc15',
+                    }}
+                    >
                         {t('mainproduct.all-products')}
                     </h3>
 
@@ -126,7 +142,7 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
                     )}
                 </div>
             </div>
-            <ReciveUpdate />
+            <ReciveUpdate color={mainproduct.color} />
         </>
     )
 }

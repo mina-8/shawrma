@@ -40,7 +40,11 @@ const Show = ({ product  , otherproducts}: Props) => {
             <Head title={product.title} />
             <div className=" bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100">
                 {/* Top Banner */}
-                <div className="w-full h-32 bg-yellow-original bg-cover bg-center" />
+                <div className="w-full h-32 bg-yellow-original bg-cover bg-center"
+                style={{
+                    backgroundColor : product.color
+                }}
+                />
 
                 {/* Main Content */}
                 <div className="container mx-auto px-4 py-8">
@@ -132,6 +136,9 @@ const Show = ({ product  , otherproducts}: Props) => {
                     >
                         <h3
                             className='text-4xl font-medium border-b-4 pb-4 border-yellow-original'
+                            style={{
+                    backgroundColor : product.color
+                }}
                         >
                             {t('products.instruction-uses')}
                         </h3>
@@ -179,7 +186,11 @@ const Show = ({ product  , otherproducts}: Props) => {
                 {/* explore more */}
 
                 <div className="flex flex-col justify-center items-center my-8 px-4">
-                    <h3 className="text-4xl font-medium border-b-4 pb-4 border-yellow-original text-center">
+                    <h3 className="text-4xl font-medium border-b-4 pb-4 border-yellow-original text-center"
+                    style={{
+                    backgroundColor : product.color
+                }}
+                    >
                         {t('products.explore-more')}
                     </h3>
 
@@ -209,7 +220,7 @@ const Show = ({ product  , otherproducts}: Props) => {
 
             </div>
 
-            <ReciveUpdate/>
+            <ReciveUpdate color={product.color}/>
         </>
     );
 };

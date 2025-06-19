@@ -5,6 +5,7 @@ namespace App\Filament\Resources\WorkUsResource\Pages;
 use App\Filament\Resources\WorkUsResource;
 use App\Models\CoreStation;
 use App\Models\CoreVesion;
+use App\Models\WorkAd;
 use App\Models\WorkUs;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
@@ -104,36 +105,7 @@ class CreateWorkUs extends CreateRecord
                         ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null)
                         ->required(),
                 ]),
-            Step::make(__('filament-panels::resources/pages/ourculter.fields.create_station.header'))
-                ->description(__('filament-panels::resources/pages/ourculter.fields.create_station.description'))
-                ->schema([
-                    Components\Repeater::make('create_core_station')
-                        ->label(__('filament-panels::resources/pages/ourculter.fields.create_station.description'))
-                        ->schema([
-                            LanguageTabs::make([
-                                Components\TextInput::make('title')
-                                    ->label(__('filament-panels::resources/pages/ourculter.fields.create_station.title')),
-                                Components\MarkdownEditor::make('content')
-                                    ->label(__('filament-panels::resources/pages/ourculter.fields.create_station.content')),
-                            ]),
-                            Components\FileUpload::make('image')
-                                ->label(__('filament-panels::resources/pages/ourculter.fields.image'))
-                                ->disk('public')
-                                ->directory('uploads/stations')
-                                ->visibility('public')
-                                ->maxSize(4096)
-                                ->getUploadedFileNameForStorageUsing(function ($file) {
-                                    $extension = $file->getClientOriginalExtension();
-                                    return Str::uuid() . '.' . $extension;
-                                })
-                                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp', 'image/svg+xml'])
-                                ->required(),
-                        ])
-                        ->addActionLabel(__('filament-panels::resources/pages/ourculter.fields.create_station.add_station'))
-                        ->collapsible()
-                        ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null)
-                        ->required(),
-                ]),
+            
 
         ];
     }
@@ -153,18 +125,6 @@ class CreateWorkUs extends CreateRecord
                 ]);
             }
         }
-        // create core station
-        $CreateCoreStation = $this->form->getState()['create_core_station'] ?? [];
-        if (!empty($CreateCoreStation) && $this->record) {
-            foreach ($CreateCoreStation as $corestation) {
-                CoreStation::create([
-                    'title' => $corestation['title'],
-                    'content' => $corestation['content'],
-                    'image' => $corestation['image'],
-                    'stationable_id' => $this->record->id,
-                    'stationable_type' => WorkUs::class
-                ]);
-            }
-        }
+
     }
 }

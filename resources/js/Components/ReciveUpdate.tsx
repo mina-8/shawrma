@@ -10,7 +10,7 @@ interface FlashMessages {
 interface Customflash extends PageProps {
   flash?: FlashMessages;
 }
-const ReciveUpdate = () => {
+const ReciveUpdate = ({color = ''}:{color?:string}) => {
     const { t, i18n } = useTranslation();
     const { props } = usePage<Customflash>();
         const [showSuccess, setShowSuccess] = useState<boolean>(!!props?.flash?.success);
@@ -26,7 +26,9 @@ const ReciveUpdate = () => {
                 }
             }, [SuccessMessage]);
     return (
-        <div className="bg-yellow-original py-12 px-4">
+        <div className="bg-yellow-original py-12 px-4"
+        style={{ backgroundColor: color || '#facc15' }}
+        >
             {showSuccess && (
                 <div className="fixed top-4 left-4 z-50 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded shadow-lg transition duration-500">
                     {SuccessMessage}

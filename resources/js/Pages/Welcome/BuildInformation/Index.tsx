@@ -3,6 +3,8 @@ import { Head } from '@inertiajs/react'
 import banner from '@/../../public/aboutus/our-story.jpg'
 import ReactMarkdown from 'react-markdown';
 import { IoMdCheckmark } from 'react-icons/io';
+import rehypeRaw from 'rehype-raw';
+import rehypeColorCodeToParent from '@/Components/rehypeColorCodeToParent';
 interface BuildInformation {
     id: number;
     banner: string;
@@ -46,21 +48,23 @@ const Index = ({ buildinforamtion }: Props) => {
                     className='w-full max-w-7xl mx-auto my-12 leading-10 text-xl'
                 >
                     <ReactMarkdown
-                        components={{
-                            img: ({ ...props }) => <img {...props} className="bg-transparent h-16 my-2 inline-flex mx-4" />,
-                            li({ children, ...props }) {
-                                return (
-                                    <li className="flex items-center gap-2" {...props}>
-                                        <IoMdCheckmark className="text-yellow-original mt-1" />
-                                        <span>{children}</span>
-                                    </li>
-                                );
-                            },
-                        }}
-
-                    >
-                        {buildinforamtion.content}
-                    </ReactMarkdown>
+  rehypePlugins={[rehypeRaw, rehypeColorCodeToParent]}
+  components={{
+    img: ({ ...props }) => (
+      <img {...props} className="bg-transparent h-16 my-2 inline-flex mx-4" />
+    ),
+    li({ children, ...props }) {
+      return (
+        <li className="flex items-center gap-2" {...props}>
+          <IoMdCheckmark className="text-yellow-original mt-1" />
+          <span>{children}</span>
+        </li>
+      );
+    },
+  }}
+>
+  {buildinforamtion.content}
+</ReactMarkdown>
 
                 </div>
 

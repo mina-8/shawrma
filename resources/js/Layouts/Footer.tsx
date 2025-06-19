@@ -154,6 +154,7 @@ const Footer = () => {
                             <li><Link href={route('our-story', { lang: i18n.language })} className="hover:text-yellow-original">{t('footer.ourstory')}</Link></li>
                             <li><Link href={route('our-promise', { lang: i18n.language })} className="hover:text-yellow-original">{t('footer.ourpromise')}</Link></li>
                             <li><Link href={route('our-culture', { lang: i18n.language })} className="hover:text-yellow-original">{t('footer.ourculture')}</Link></li>
+                            <li><Link href={route('our-team', { lang: i18n.language })} className="hover:text-yellow-original">{t('ourteam.title')}</Link></li>
                         </ul>
                     </div>
 

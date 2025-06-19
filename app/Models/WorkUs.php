@@ -16,7 +16,7 @@ class WorkUs extends Model
         'content'
     ];
 
-    public $translatable = ['header_title' , 'header_content', 'title', 'content'];
+    public $translatable = ['header_title', 'header_content', 'title', 'content'];
 
     protected $casts = [
         'header_title' => 'array',
@@ -25,15 +25,11 @@ class WorkUs extends Model
         'content' => 'array',
     ];
 
-        protected $guarded = ['id'];
+    protected $guarded = ['id'];
 
-        public function corestation()
-    {
-        return $this->morphMany(CoreStation::class , 'stationable');
-    }
-
+    
     public function corevesion()
     {
-        return $this->morphMany(CoreVesion::class , 'vesionable');
+        return $this->morphMany(CoreVesion::class, 'vesionable');
     }
 }

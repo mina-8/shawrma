@@ -10,6 +10,7 @@ use App\Http\Controllers\OurBrandController;
 use App\Http\Controllers\OurCulterController;
 use App\Http\Controllers\OurGoalController;
 use App\Http\Controllers\OurPromiseController;
+use App\Http\Controllers\OurTeamController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CotactUsController;
 use App\Http\Controllers\InnovationController;
@@ -50,6 +51,8 @@ Route::group(
         Route::get('our-promise' , [OurPromiseController::class , 'index'])->name('our-promise');
         // our culter
         Route::get('our-culture' , [OurCulterController::class , 'index'])->name('our-culture');
+        // our team
+        Route::get('our-team' , [OurTeamController::class , 'index'])->name('our-team');
         // builiding best
         Route::get('building-best'  , [OurGoalController::class , 'index'])->name('building-best');
 
@@ -97,6 +100,7 @@ Route::group(
         Route::post('contact-form' , [ContactformController::class , 'store'])->name('contact-form');
         // work us
         Route::get('work-us' , [WorkUsController::class , 'index'])->name('work-us');
+        Route::get('jobads/{slug}' , [WorkUsController::class , 'show'])->name('work-us.jobads.show');
 
         // build information
         Route::get('build-information' , [BuildInformationController::class , 'index'])->name('build-information');

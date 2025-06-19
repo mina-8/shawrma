@@ -56,6 +56,7 @@ class MainProductController extends Controller
                 'description' => $product->getTranslation('description' , $lang),
                 'slug' => $product->getTranslation('slug', $lang),
                 'image' => Storage::url($product->image),
+
                 'special' => $product->special
             ];
         });
@@ -66,6 +67,7 @@ class MainProductController extends Controller
             'content' => $mainContent,
             'slug' => $mainSlug,
             'image' => $mainImage,
+            'color'=> $mainProduct->color,
             'products' => $products,
         ];
 

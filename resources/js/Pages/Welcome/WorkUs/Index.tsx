@@ -1,5 +1,5 @@
 import ReciveUpdate from "@/Components/ReciveUpdate";
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import banner from '@/../../public/aboutus/our-story.jpg'
 import ReactMarkdown from "react-markdown";
@@ -10,11 +10,12 @@ interface CoreVesions {
     content: string;
     image: string;
 }
-interface CoreStations {
+interface jobads {
     id: number;
     title: string;
     content: string;
     image: string;
+    slug: string;
 }
 
 interface WorkUs {
@@ -26,7 +27,7 @@ interface WorkUs {
     content: string;
 
     corevesions: CoreVesions[];
-    corestations: CoreStations[];
+    jobads: jobads[];
 
 }
 
@@ -128,8 +129,9 @@ const Index = ({ workus }: Props) => {
                 <div
                 className="my-12 w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
                 >
-                    {workus.corestations.map((item)=>(
-                        <div
+                    {workus.jobads.map((item)=>(
+                        <Link
+                        href={route('work-us.jobads.show',{lang:i18n.language , slug:item.slug})}
                         key={item.id}
                         className="flex flex-col justify-center items-center gap-4 py-12 bg-yellow-original p-4 rounded-br-3xl rounded-tl-3xl group dark:bg-gray-600 dark:text-gray-100"
                         >
@@ -143,7 +145,7 @@ const Index = ({ workus }: Props) => {
                             >
                                 {item?.title}
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>
