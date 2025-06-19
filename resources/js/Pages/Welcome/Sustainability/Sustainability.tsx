@@ -9,7 +9,7 @@ const Sustainability = () => {
     const { ref, isVisible } = useInView();
     return (
         <div
-            className='flex flex-col justify-center items-center py-12 w-full h-[500px] gap-12 bg-fixed bg-center'
+            className='flex flex-col justify-center items-center py-12 w-full h-[500px] gap-12 bg-fixed bg-center bg-cover'
             style={{
                 backgroundImage: `url('${sustainbilityImage}')`,
                 // backgroundPosition:'center',
