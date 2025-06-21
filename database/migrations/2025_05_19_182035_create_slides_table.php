@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('slides', function (Blueprint $table) {
             $table->id();
             $table->json('title');
-            $table->json('content');
+            $table->json('content')->nullable();
             $table->string('image');
             $table->json('str_btn')->nullable();
             $table->string('link')->default('welcome');

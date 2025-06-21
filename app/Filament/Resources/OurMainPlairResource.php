@@ -84,7 +84,8 @@ class OurMainPlairResource extends Resource
                                 'build-information' => 'build information',
 
                             ])
-                            ->searchable(),
+                            ->searchable()
+                            ->required(),
 
 
 

@@ -62,7 +62,8 @@ class SlideResource extends Resource
                             Forms\Components\MarkdownEditor::make('content')
                                 ->label(__('filament-panels::resources/pages/blog.fields.content')),
                             Forms\Components\TextInput::make('str_btn')
-                                ->label(__('filament-panels::resources/pages/blog.fields.str_btn')),
+                                ->label(__('filament-panels::resources/pages/blog.fields.str_btn'))
+                                ->required(),
 
                         ]),
 
@@ -86,8 +87,8 @@ class SlideResource extends Resource
                                 'build-information' => 'build information',
 
                             ])
-                            ->searchable(),
-
+                            ->searchable()
+                            ->required(),
 
 
                         Forms\Components\FileUpload::make('image')
