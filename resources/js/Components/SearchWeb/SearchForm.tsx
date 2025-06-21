@@ -24,7 +24,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onClose }) => {
             title: t('footer.ourculture')
         },
         {
-            href: 'building-best',
+            href: 'our-goal',
             title: t('footer.ourgoal')
         },
 

@@ -54,7 +54,7 @@ Route::group(
         // our team
         Route::get('our-team' , [OurTeamController::class , 'index'])->name('our-team');
         // builiding best
-        Route::get('building-best'  , [OurGoalController::class , 'index'])->name('building-best');
+        Route::get('our-goal'  , [OurGoalController::class , 'index'])->name('our-goal');
 
         // impact
         Route::get('leading-impact/{slug}' , [OurImpactController::class , 'show'])->name('leading-impact.show');

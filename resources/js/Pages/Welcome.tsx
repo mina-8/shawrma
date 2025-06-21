@@ -14,6 +14,7 @@ const ReciveUpdate = React.lazy(() => import('@/Components/ReciveUpdate'));
 const OurImapct = React.lazy(() => import('./Welcome/OurImpact/OurImapct'));
 const BuildingBest = React.lazy(() => import('./Welcome/BuildingBest/BuildingBest'));
 const OurBrand = React.lazy(() => import('./Welcome/OurBrand/OurBrand'));
+
 export default function Welcome({
     blogs = [],
     slides = [],

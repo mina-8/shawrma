@@ -119,7 +119,7 @@ const [windowWidth, setWindowWidth] = useState(window.innerWidth);
                                             {t('home.about')}
                                         </Dropdown.Trigger>
                                         <Dropdown.Content
-                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[15%]' : 'translate-x-[0%] w-full'} `}
+                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[15%]' : 'translate-x-[0%] '} `}
                                         >
                                             <AboutNav />
                                         </Dropdown.Content>
