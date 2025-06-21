@@ -111,7 +111,7 @@ const [windowWidth, setWindowWidth] = useState(window.innerWidth);
                                 </div>
                             </div>
 
-                            <div className="hidden xl:ms-6 xl:flex xl:items-center relative">
+                            <div className={`hidden xl:ms-6 xl:flex xl:items-center relative ${i18n.language === 'en' ? 'xl:text-sm' : ''} `}>
                                 <div className="hidden gap-1 sm:-my-px sm:ms-10 sm:flex">
 
                                     <Dropdown className='hover:bg-white  hover:text-yellow-original px-4 py-6 cursor-pointer text-white '>
