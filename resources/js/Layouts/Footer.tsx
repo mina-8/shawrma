@@ -92,7 +92,7 @@ const Footer = () => {
                                 href={social.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="rounded-full bg-gray-500 hover:bg-yellow-original p-2"
+                                className="rounded-full bg-gray-500 hover:bg-primary-color p-2"
                             >
                                 <DynamicIcon iconPath={social.icon_path} />
                             </a>
@@ -102,7 +102,7 @@ const Footer = () => {
                             href='https://www.linkedin.com/company/bscosa/'
                             target="_blank"
                                 rel="noopener noreferrer"
-                                className="rounded-full bg-gray-500 hover:bg-yellow-original p-2"
+                                className="rounded-full bg-gray-500 hover:bg-primary-color p-2"
                             >
                                 <FaLinkedin />
                             </a>
@@ -110,7 +110,7 @@ const Footer = () => {
                             href='https://x.com/BscoCom'
                             target="_blank"
                                 rel="noopener noreferrer"
-                                className="rounded-full bg-gray-500 hover:bg-yellow-original p-2"
+                                className="rounded-full bg-gray-500 hover:bg-primary-color p-2"
                             >
                                 <FaXTwitter  />
                             </a>
@@ -118,7 +118,7 @@ const Footer = () => {
                             href='https://www.facebook.com/profile.php?id=61558624079654'
                             target="_blank"
                                 rel="noopener noreferrer"
-                                className="rounded-full bg-gray-500 hover:bg-yellow-original p-2"
+                                className="rounded-full bg-gray-500 hover:bg-primary-color p-2"
                             >
                                 <FaFacebook   />
                             </a>
@@ -126,7 +126,7 @@ const Footer = () => {
                             href='https://www.instagram.com/bsco_sa_com/'
                             target="_blank"
                                 rel="noopener noreferrer"
-                                className="rounded-full bg-gray-500 hover:bg-yellow-original p-2"
+                                className="rounded-full bg-gray-500 hover:bg-primary-color p-2"
                             >
                                 <FaInstagram />
                             </a>
@@ -134,7 +134,7 @@ const Footer = () => {
                             href='https://www.tiktok.com/@bsco.sa?lang=en'
                             target="_blank"
                                 rel="noopener noreferrer"
-                                className="rounded-full bg-gray-500 hover:bg-yellow-original p-2"
+                                className="rounded-full bg-gray-500 hover:bg-primary-color p-2"
                             >
                                 <FaTiktok />
                             </a>
@@ -149,24 +149,24 @@ const Footer = () => {
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
                     {/* Section: About */}
                     <div className="flex flex-col gap-4">
-                        <h2 className="text-xl text-yellow-original">{t('footer.about_us')}</h2>
+                        <h2 className="text-xl text-primary-color">{t('footer.about_us')}</h2>
                         <ul className="space-y-1">
-                            <li><Link href={route('our-story', { lang: i18n.language })} className="hover:text-yellow-original">{t('footer.ourstory')}</Link></li>
-                            <li><Link href={route('our-promise', { lang: i18n.language })} className="hover:text-yellow-original">{t('footer.ourpromise')}</Link></li>
-                            <li><Link href={route('our-culture', { lang: i18n.language })} className="hover:text-yellow-original">{t('footer.ourculture')}</Link></li>
-                            <li><Link href={route('our-team', { lang: i18n.language })} className="hover:text-yellow-original">{t('ourteam.title')}</Link></li>
+                            <li><Link href={route('our-story', { lang: i18n.language })} className="hover:text-primary-color">{t('footer.ourstory')}</Link></li>
+                            <li><Link href={route('our-promise', { lang: i18n.language })} className="hover:text-primary-color">{t('footer.ourpromise')}</Link></li>
+                            <li><Link href={route('our-culture', { lang: i18n.language })} className="hover:text-primary-color">{t('footer.ourculture')}</Link></li>
+                            <li><Link href={route('our-team', { lang: i18n.language })} className="hover:text-primary-color">{t('ourteam.title')}</Link></li>
                         </ul>
                     </div>
 
                     {/* Section: Brand */}
                     <div className="flex flex-col gap-4">
-                        <h2 className="text-xl text-yellow-original">{t('footer.brand')}</h2>
+                        <h2 className="text-xl text-primary-color">{t('footer.brand')}</h2>
                         <ul className="space-y-1 whitespace-nowrap">
                             {Brands.map((item, index) => (
 
                                 <li
                                     key={index}
-                                ><Link href={route('brand-show', { lang: i18n.language, slug: item.slug })} className="hover:text-yellow-original">{item.header_title}</Link></li>
+                                ><Link href={route('brand-show', { lang: i18n.language, slug: item.slug })} className="hover:text-primary-color">{item.header_title}</Link></li>
                             ))}
 
                         </ul>
@@ -174,13 +174,13 @@ const Footer = () => {
 
                     {/* Section: Products */}
                     <div className="flex flex-col gap-4">
-                        <h2 className="text-xl text-yellow-original">{t('footer.services')}</h2>
+                        <h2 className="text-xl text-primary-color">{t('footer.services')}</h2>
                         <ul className="space-y-1 whitespace-nowrap">
                             {AboutLinks.map((item, index) => (
 
                                 <li
                                     key={index}
-                                ><Link href={route(item.href, { lang: i18n.language })} className="hover:text-yellow-original">{item.title}</Link></li>
+                                ><Link href={route(item.href, { lang: i18n.language })} className="hover:text-primary-color">{item.title}</Link></li>
                             ))}
 
                         </ul>
@@ -188,31 +188,31 @@ const Footer = () => {
 
                     {/* Section: Build */}
                     <div className="flex flex-col gap-4">
-                        <h2 className="text-xl text-yellow-original">{t('footer.products')}</h2>
+                        <h2 className="text-xl text-primary-color">{t('footer.products')}</h2>
                         <ul className="space-y-1 whitespace-nowrap">
-                            <li><Link href={route('mainproduct', { lang: i18n.language })} className="hover:text-yellow-original">
+                            <li><Link href={route('mainproduct', { lang: i18n.language })} className="hover:text-primary-color">
                                 {t('mainproduct.title')}
                             </Link></li>
-                            <li><Link href={route('product-search', { lang: i18n.language })} className="hover:text-yellow-original">
+                            <li><Link href={route('product-search', { lang: i18n.language })} className="hover:text-primary-color">
                                 {t('products.ourproducts')}
                             </Link></li>
                             {solvebrands.map((item) => (
 
                                 <li key={item.id}><Link href={route('solve-brand', { lang: i18n.language, slug: item.slug })}
-                                    className="hover:text-yellow-original">{item.title}</Link></li>
+                                    className="hover:text-primary-color">{item.title}</Link></li>
                             ))}
                         </ul>
                     </div>
 
                     {/* Section: Quick Links */}
                     <div className="flex flex-col gap-4">
-                        <h2 className="text-xl text-yellow-original">{t('footer.quick_link')}</h2>
+                        <h2 className="text-xl text-primary-color">{t('footer.quick_link')}</h2>
                         <ul className="space-y-1 whitespace-nowrap">
                             {Spotlight.map((item, index) => (
 
                                 <li
                                     key={index}
-                                ><Link href={route(item.href, { lang: i18n.language })} className="hover:text-yellow-original">{item.title}</Link></li>
+                                ><Link href={route(item.href, { lang: i18n.language })} className="hover:text-primary-color">{item.title}</Link></li>
                             ))}
 
                         </ul>
@@ -226,7 +226,7 @@ const Footer = () => {
                     {t('footer.copyright')} © {currentYear}
                 </div>
                 <div>
-                   <a href="https://www.google.com/maps/place/%D8%A7%D9%84%D8%B4%D8%B1%D9%83%D8%A9+%D8%A7%D9%84%D8%AB%D9%86%D8%A7%D8%A6%D9%8A%D8%A9+(+%D8%A8%D9%8A%D8%B3%D9%83%D9%88+)%E2%80%AD/@28.402489,46.0605261,774m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3fd7375f26d0fcc1:0xa31931d439938402!8m2!3d28.402489!4d46.0605261!16s%2Fg%2F11t0md03qc?entry=ttu&g_ep=EgoyMDI1MDYxMS4wIKXMDSoASAFQAw%3D%3D" rel="noopener noreferrer" target='__blank' className='hover:text-yellow-original'>
+                   <a href="https://www.google.com/maps/place/%D8%A7%D9%84%D8%B4%D8%B1%D9%83%D8%A9+%D8%A7%D9%84%D8%AB%D9%86%D8%A7%D8%A6%D9%8A%D8%A9+(+%D8%A8%D9%8A%D8%B3%D9%83%D9%88+)%E2%80%AD/@28.402489,46.0605261,774m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3fd7375f26d0fcc1:0xa31931d439938402!8m2!3d28.402489!4d46.0605261!16s%2Fg%2F11t0md03qc?entry=ttu&g_ep=EgoyMDI1MDYxMS4wIKXMDSoASAFQAw%3D%3D" rel="noopener noreferrer" target='__blank' className='hover:text-primary-color'>
                    {t('footer.maplocation')}
                    </a>
                 </div>
@@ -236,7 +236,7 @@ const Footer = () => {
                     </a>
                     <span>
                         {t('footer.mobdwon')}
-                        <a href="https://maps.app.goo.gl/vepPfgHWTj1e4L5z7?g_st=ic" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-original ml-1 ">
+                        <a href="https://maps.app.goo.gl/vepPfgHWTj1e4L5z7?g_st=ic" target="_blank" rel="noopener noreferrer" className="hover:text-primary-color ml-1 ">
                         {t('footer.mobdwon_link')}
                         </a>
                     </span>

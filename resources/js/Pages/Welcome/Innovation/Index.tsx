@@ -145,7 +145,7 @@ const Index = ({ innovation }: Props) => {
                     className={`flex justify-center items-center flex-col w-full py-12 max-w-7xl mx-auto `}
                 >
                     <h2
-                        className='text-3xl border-b-2 border-yellow-original pb-2 mb-4 text-center '
+                        className='text-3xl border-b-2 border-primary-color pb-2 mb-4 text-center '
                     >{t('innovation.descover')}</h2>
 
                     <div className='flex justify-center items-center flex-col w-full'>
@@ -187,7 +187,7 @@ const Index = ({ innovation }: Props) => {
                                                         <img src={item.image} className=" hover:scale-125 hover:rotate-12 duration-500" />
                                                     </div>
                                                     <div className="p-4 absolute top-0 right-0 ">
-                                                        <h3 className="text-lg font-medium text-yellow-original  mb-2">
+                                                        <h3 className="text-lg font-medium text-primary-color  mb-2">
                                                             {item.title}
                                                         </h3>
 

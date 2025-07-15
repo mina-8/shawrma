@@ -33,7 +33,7 @@ const Show = ({ project, otherProjects }: Props) => {
 
 
             <div
-                className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-yellow-original text-yellow-original shadow-lg cursor-pointer transition hover:bg-custom-dark-blue group"
+                className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-primary-color text-primary-color shadow-lg cursor-pointer transition hover:bg-custom-dark-blue group"
                 style={{
                     position: 'absolute',
                     top: '50%',
@@ -55,7 +55,7 @@ const Show = ({ project, otherProjects }: Props) => {
                 className=" bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100"
             >
                 {/* Top Banner */}
-                <div className="w-full h-32 bg-yellow-original bg-cover bg-center" />
+                <div className="w-full h-32 bg-primary-color bg-cover bg-center" />
                 {/* project */}
                 <div
                     className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 w-full max-w-7xl mx-auto'
@@ -65,7 +65,7 @@ const Show = ({ project, otherProjects }: Props) => {
                         className='flex flex-col  gap-4 my-12'
                     >
                         <h3
-                            className='text-3xl text-yellow-original font-semibold'
+                            className='text-3xl text-primary-color font-semibold'
                         >{project.title}</h3>
                         <div
                             className='leading-8 text-lg'
@@ -77,14 +77,14 @@ const Show = ({ project, otherProjects }: Props) => {
                         className='flex flex-col gap-8 my-12'
                     >
                         <h3
-                            className='text-xl border-b-2 pb-4 border-yellow-original'
+                            className='text-xl border-b-2 pb-4 border-primary-color'
                         >{t('projects.details')}</h3>
                         <p
                             className='flex items-center gap-4 text-2xl border-2 p-4 group'
                         >
                             <BsBuildings
 
-                                className='group-hover:animate-scaleup transition-transform duration-300 text-yellow-original'
+                                className='group-hover:animate-scaleup transition-transform duration-300 text-primary-color'
                             />
                             {t('projects.project_name')} :
                             {project.project_name}</p>
@@ -92,7 +92,7 @@ const Show = ({ project, otherProjects }: Props) => {
                             className='flex items-center gap-4 text-2xl border-2 p-4 group'
                         >
                             <TbUserSquareRounded
-                                className='group-hover:animate-scaleup transition-transform duration-300 text-yellow-original'
+                                className='group-hover:animate-scaleup transition-transform duration-300 text-primary-color'
                             />
                             {t('projects.project_client')} :
                             {project.client_name}</p>
@@ -100,7 +100,7 @@ const Show = ({ project, otherProjects }: Props) => {
                             className='flex items-center gap-4 text-2xl border-2 p-4 group'
                         >
                             <IoLocationOutline
-                                className='group-hover:animate-scaleup transition-transform duration-300 text-yellow-original'
+                                className='group-hover:animate-scaleup transition-transform duration-300 text-primary-color'
                             />
                             {t('projects.project_location')} :
                             {project.location}</p>
@@ -116,7 +116,7 @@ const Show = ({ project, otherProjects }: Props) => {
                     {/* other projects */}
                     {otherProjects.length > 0 &&
                         <div className="mt-12 text-center">
-                            <h2 className="text-2xl text-yellow-original font-semibold  mb-6 border-b-2 border-yellow-original pb-2">{t('blogcards.otherblogs')}</h2>
+                            <h2 className="text-2xl text-primary-color font-semibold  mb-6 border-b-2 border-primary-color pb-2">{t('blogcards.otherblogs')}</h2>
                             <Carousel
                                 arrows
                                 dots={false}
@@ -162,14 +162,14 @@ const Show = ({ project, otherProjects }: Props) => {
                                                     >
                                                         <div className='text-xl text-white flex items-center justify-center flex-row-reverse gap-2 p-2 relative group'>
                                                             {/* Animated background circle that expands on hover */}
-                                                            <div className={`rounded-full w-10 h-10 border-2 border-yellow-original absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-yellow-original z-0`}></div>
+                                                            <div className={`rounded-full w-10 h-10 border-2 border-primary-color absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-primary-color z-0`}></div>
                                                             {/* Content above the background */}
                                                             <div className={`flex items-center justify-center ${i18n.language === 'ar' ? 'flex-row' : 'flex-row-reverse'} w-full relative z-10`}>
-                                                                <div className={`flex items-center text-yellow-original group-hover:text-white w-10 h-10 ${i18n.language === 'ar' ? '' : 'justify-end'}`}>
+                                                                <div className={`flex items-center text-primary-color group-hover:text-white w-10 h-10 ${i18n.language === 'ar' ? '' : 'justify-end'}`}>
                                                                     {i18n.language === 'ar' ? <FaArrowLeft /> : <FaArrowRight />}
 
                                                                 </div>
-                                                                <div className='text-yellow-original group-hover:text-white'>{t('blogcards.readmore')}</div>
+                                                                <div className='text-primary-color group-hover:text-white'>{t('blogcards.readmore')}</div>
                                                             </div>
                                                         </div>
                                                     </Link>

@@ -9,7 +9,7 @@ import LanguageContext from './Layouts/LanguageContext';
 import ThemeProvider from './Layouts/ThemeContext';
 
 
-const appName = import.meta.env.VITE_APP_NAME || 'BSCO';
+const appName = import.meta.env.VITE_APP_NAME || 'Orca';
 
 createInertiaApp({
     title: (title) => `${appName} - ${title}`,

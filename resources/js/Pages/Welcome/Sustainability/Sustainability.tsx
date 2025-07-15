@@ -43,7 +43,7 @@ const Sustainability = () => {
                 >
                     <div className='text-xl text-white flex items-center justify-center flex-row-reverse gap-2 p-2 relative group'>
                         {/* Animated background circle that expands on hover */}
-                        <div className={`rounded-full w-10 h-10 border-2 border-white absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-yellow-original z-0`}></div>
+                        <div className={`rounded-full w-10 h-10 border-2 border-white absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-primary-color z-0`}></div>
                         {/* Content above the background */}
                         <div className={`flex items-center justify-center flex-row-reverse  w-full relative z-10`}>
                             <div className={`flex items-center w-10 h-10 justify-end `}>

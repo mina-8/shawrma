@@ -43,7 +43,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onClose }) => {
         <div className="fixed left-0 right-0 top-16 w-full bg-black bg-opacity-40 z-50 flex justify-center">
             <div className="bg-white rounded-b-lg shadow-lg p-6 w-full max-w-full relative dark:bg-gray-800 dark:text-white">
                 <button
-                    className="absolute top-2 right-2 text-white hover:bg-yellow-700 text-2xl rounded-full bg-yellow-original"
+                    className="absolute top-2 right-2 text-white hover:bg-yellow-700 text-2xl rounded-full bg-primary-color"
                     onClick={onClose}
                     aria-label="Close search"
                 >
@@ -62,21 +62,21 @@ const SearchForm: React.FC<SearchFormProps> = ({ onClose }) => {
                     <button
                         disabled={Loading}
                         type="submit"
-                        className={`${i18n.language === 'ar' ? 'rounded-bl-3xl' : 'rounded-br-3xl'} bg-yellow-original  text-white  px-4 py-2 hover:bg-yellow-700 transition`}
+                        className={`${i18n.language === 'ar' ? 'rounded-bl-3xl' : 'rounded-br-3xl'} bg-primary-color  text-white  px-4 py-2 hover:bg-yellow-700 transition`}
                     >
                         {t('search-form.search-btn')}
                     </button>
                 </form>
                 <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 w-full'>
                     <div>
-                        <h2 className='text-2xl font-bold text-yellow-original'>{t('search-form.search-latest')}</h2>
+                        <h2 className='text-2xl font-bold text-primary-color'>{t('search-form.search-latest')}</h2>
                         <ul>
                             {LinksSearch.map((item, index) => (
                                 <li
                                     key={index}
-                                    className='flex items-center gap-2 hover:text-yellow-original transition'
+                                    className='flex items-center gap-2 hover:text-primary-color transition'
                                 >
-                                    <IoMdCheckmark className='text-yellow-original' />
+                                    <IoMdCheckmark className='text-primary-color' />
                                     <Link
                                         href={route(item.href, { lang: i18n.language })}
                                     >
@@ -88,14 +88,14 @@ const SearchForm: React.FC<SearchFormProps> = ({ onClose }) => {
                         </ul>
                     </div>
                     <div>
-                        <h2 className='text-2xl font-bold text-yellow-original'>{t('search-form.search-fastlink')}</h2>
+                        <h2 className='text-2xl font-bold text-primary-color'>{t('search-form.search-fastlink')}</h2>
                         <ul>
                             {LinksSearch.map((item, index) => (
                                 <li
                                     key={index}
-                                    className='flex items-center gap-2 hover:text-yellow-original transition'
+                                    className='flex items-center gap-2 hover:text-primary-color transition'
                                 >
-                                    <IoMdCheckmark className='text-yellow-original' />
+                                    <IoMdCheckmark className='text-primary-color' />
                                     <Link
                                         href={route(item.href, { lang: i18n.language })}
                                     >

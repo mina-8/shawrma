@@ -14,13 +14,13 @@ const NotFound = () => {
             >
                 {/* Top Banner */}
                 <div
-                    className="w-full h-32 bg-yellow-original bg-cover bg-center"
+                    className="w-full h-32 bg-primary-color bg-cover bg-center"
                 />
             </div>
             <div
                 className=' w-full max-w-7xl container mx-auto'
             >
-                <div className='text-yellow-original text-4xl font-semibold py-8 text-center'>NOT FOUND THIS PAGE</div>
+                <div className='text-primary-color text-4xl font-semibold py-8 text-center'>NOT FOUND THIS PAGE</div>
             </div>
                 <div>
                     <img src={bsco} alt={'notfound'} />

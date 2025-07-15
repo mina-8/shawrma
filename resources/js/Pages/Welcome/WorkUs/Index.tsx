@@ -83,7 +83,7 @@ const Index = ({ workus }: Props) => {
                         className='flex flex-col justify-center items-center '
                     >
                         <h3
-                            className='text-3xl font-semibold text-yellow-original border-b-4 border-yellow-original pb-4'
+                            className='text-3xl font-semibold text-primary-color border-b-4 border-primary-color pb-4'
                         >{workus?.title}</h3>
                         <div
                             className='mx-12 my-12 text-lg flex justify-center items-center w-1/2'
@@ -113,7 +113,7 @@ const Index = ({ workus }: Props) => {
                                         li({ children, ...props }) {
                                             return (
                                                 <li className="flex items-start gap-2" {...props}>
-                                                    <IoMdCheckmark className="text-yellow-original mt-1" />
+                                                    <IoMdCheckmark className="text-primary-color mt-1" />
                                                     <span>{children}</span>
                                                 </li>
                                             );
@@ -133,7 +133,7 @@ const Index = ({ workus }: Props) => {
                         <Link
                         href={route('work-us.jobads.show',{lang:i18n.language , slug:item.slug})}
                         key={item.id}
-                        className="flex flex-col justify-center items-center gap-4 py-12 bg-yellow-original p-4 rounded-br-3xl rounded-tl-3xl group dark:bg-gray-600 dark:text-gray-100"
+                        className="flex flex-col justify-center items-center gap-4 py-12 bg-primary-color p-4 rounded-br-3xl rounded-tl-3xl group dark:bg-gray-600 dark:text-gray-100"
                         >
                             <div
                             className="h-16 "

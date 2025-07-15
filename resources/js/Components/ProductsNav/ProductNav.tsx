@@ -35,7 +35,7 @@ const ProductNav = () => {
             <div className='flex flex-col w-60 '>
                 {/* header title */}
                 <NavLink
-                    className='!text-black justify-center pb-1 pt-0 border-b-2 border-yellow-original hover:!bg-yellow-original  flex'
+                    className='!text-black justify-center pb-1 pt-0 border-b-2 border-primary-color hover:!bg-primary-color  flex'
                     href={route('mainproduct', { lang: i18n.language })}
                     active={route().current('mainproduct')}
                 >
@@ -59,7 +59,7 @@ const ProductNav = () => {
                         item.title?.trim() || item.slug?.trim() ? (
                             <NavLink
                                 key={item.id}
-                                className='!text-black justify-center  hover:!bg-yellow-original !pt-2 !pb-2 mt-2'
+                                className='!text-black justify-center  hover:!bg-primary-color !pt-2 !pb-2 mt-2'
                                 href={route('mainproduct.show', { lang: i18n.language, slug: item.slug })}
                                 active={route().current('mainproduct.show')}
                             >
@@ -78,7 +78,7 @@ const ProductNav = () => {
                     >
                         <NavLink
                             key={brand.id}
-                            className='!text-black justify-center pb-1 pt-0 border-b-2 border-yellow-original hover:!bg-yellow-original '
+                            className='!text-black justify-center pb-1 pt-0 border-b-2 border-primary-color hover:!bg-primary-color '
                             href={route('solve-brand', { lang: i18n.language  , slug:brand.slug})}
                             active={route().current('mainproduct')}
                         >
@@ -103,7 +103,7 @@ const ProductNav = () => {
                                 product.title?.trim() || product.slug?.trim() ? (
                                     <NavLink
                                         key={product.id}
-                                        className='!text-black justify-center hover:!bg-yellow-original !pt-2 !pb-2 mt-2'
+                                        className='!text-black justify-center hover:!bg-primary-color !pt-2 !pb-2 mt-2'
                                         href={route('mainproduct.show', {
                                             lang: i18n.language,
                                             slug: product.slug
@@ -126,7 +126,7 @@ const ProductNav = () => {
             <div className='flex flex-col w-60'>
                 {/* header title */}
                 <NavLink
-                    className='!text-black justify-center pb-1 pt-0 border-b-2 border-yellow-original hover:!bg-yellow-original '
+                    className='!text-black justify-center pb-1 pt-0 border-b-2 border-primary-color hover:!bg-primary-color '
                     href={route('product-search', { lang: i18n.language })}
                     active={route().current('product-search')}
                 >
@@ -146,14 +146,14 @@ const ProductNav = () => {
                 </NavLink>
                 {/* products */}
                 <NavLink
-                    className='!text-black justify-center hover:!bg-yellow-original !pt-2 !pb-2 mt-2 '
+                    className='!text-black justify-center hover:!bg-primary-color !pt-2 !pb-2 mt-2 '
                     href={route('product-search', { lang: i18n.language })}
                     active={route().current('product-search')}
                 >
                     {t('products.products-search')}
                 </NavLink>
                 <NavLink
-                    className='!text-black justify-center hover:!bg-yellow-original !pt-2 !pb-2 mt-2 '
+                    className='!text-black justify-center hover:!bg-primary-color !pt-2 !pb-2 mt-2 '
                     href={route('product-video', { lang: i18n.language })}
                     active={route().current('product-video')}
                 >

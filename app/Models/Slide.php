@@ -11,6 +11,7 @@ class Slide extends Model
         'title',
         'content',
         'image',
+        'active_btn',
         'str_btn',
         'link'
     ];
@@ -19,6 +20,7 @@ class Slide extends Model
     protected $casts = [
         'title' => 'array',
         'content' => 'array',
+        'active_btn'=> 'boolean',
         'str_btn' => 'array'
     ];
 

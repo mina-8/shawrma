@@ -27,7 +27,7 @@ const OurNews = ({ news }: Props) => {
             className='py-12 flex flex-col items-center justify-center gap-4 min-h-screen bg-gray-200 w-full dark:bg-gray-900 dark:text-gray-100 text-gray-900  '
         >
             <div className='p-4 mx-auto w-full max-w-7xl flex flex-col items-center justify-center gap-8 '>
-                <h2 className='text-3xl border-b-2 border-yellow-original pb-2 mb-4 text-center '>{t('ournews.title')}</h2>
+                <h2 className='text-3xl border-b-2 border-primary-color pb-2 mb-4 text-center '>{t('ournews.title')}</h2>
                 <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 w-full'>
                     {news.length > 0 ? (
                         news.map((item, index) => (
@@ -47,7 +47,7 @@ const OurNews = ({ news }: Props) => {
                                             {/* <ReactMarkdown>{item.content}</ReactMarkdown> */}
                                             <Link
                                                 href={route('news.show', { lang: i18n.language, slug: item.slug })}
-                                                className='text-md text-yellow-original dark:hover:text-white flex  items-center py-4 gap-2'
+                                                className='text-md text-primary-color dark:hover:text-white flex  items-center py-4 gap-2'
                                             >
                                                 {t('ournews.readmore')}
                                                 {i18n.language === 'ar' ? (<IoIosArrowBack />) : (<IoIosArrowForward />)}
@@ -64,7 +64,7 @@ const OurNews = ({ news }: Props) => {
                                             {/* <ReactMarkdown>{item.content}</ReactMarkdown> */}
                                             <Link
                                                 href={route('news.show', { lang: i18n.language, slug: item.slug })}
-                                                className='text-md text-yellow-original dark:hover:text-white flex  items-center py-4 gap-2'
+                                                className='text-md text-primary-color dark:hover:text-white flex  items-center py-4 gap-2'
                                             >
                                                 {t('ournews.readmore')}
                                                 {i18n.language === 'ar' ? (<IoIosArrowBack />) : (<IoIosArrowForward />)}
@@ -92,7 +92,7 @@ const OurNews = ({ news }: Props) => {
                                     <p className='text-sm '>{t('ournews.content-news')}</p>
                                     <Link
                                         href={route('welcome', { lang: i18n.language })}
-                                        className='text-md text-yellow-original hover:text-white flex  items-center py-4 gap-2'
+                                        className='text-md text-primary-color hover:text-white flex  items-center py-4 gap-2'
                                     >
                                         {t('ournews.readmore')}
                                         {i18n.language === 'ar' ? (<IoIosArrowBack />) : (<IoIosArrowForward />)}

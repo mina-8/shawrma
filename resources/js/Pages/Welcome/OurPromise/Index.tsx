@@ -71,7 +71,7 @@ const Index = ({ ourpromise }: Props) => {
             {/* <div className="flex flex-col md:flex-row justify-center items-start max-w-7xl mx-auto gap-12 px-4 py-8">
 
                 <div className="w-full md:w-1/2 flex flex-col items-center text-center">
-                    <h3 className="text-3xl font-semibold text-yellow-original border-b-4 border-yellow-original pb-4 mb-6">
+                    <h3 className="text-3xl font-semibold text-primary-color border-b-4 border-primary-color pb-4 mb-6">
                         {ourpromise.title}
                     </h3>
                     <div className="text-lg leading-10 mx-4 md:mx-12 my-6 md:my-12">
@@ -123,7 +123,7 @@ const Index = ({ ourpromise }: Props) => {
                             key={story.id}
                             className="flex flex-col justify-center items-center w-full max-w-6xl mb-12"
                         >
-                            <h3 className="text-2xl sm:text-3xl font-semibold text-yellow-original border-b-4 border-yellow-original pb-4 text-center">
+                            <h3 className="text-2xl sm:text-3xl font-semibold text-primary-color border-b-4 border-primary-color pb-4 text-center">
                                 {story.title}
                             </h3>
 
@@ -146,7 +146,7 @@ const Index = ({ ourpromise }: Props) => {
                 className='py-12 flex flex-col justify-center items-center gap-8 '
             >
                 <h3
-                    className='text-3xl font-semibold text-yellow-original border-b-4 border-yellow-original pb-4'
+                    className='text-3xl font-semibold text-primary-color border-b-4 border-primary-color pb-4'
                 >{t('ourpromise.ourvalues')}</h3>
                 <div
                     className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-4 max-w-7xl w-full"
@@ -168,7 +168,7 @@ const Index = ({ ourpromise }: Props) => {
                                 >
                                     <h3 className="text-white text-2xl font-semibold">{station.title}</h3>
                                 </div>
-                                <div className="absolute  p-4 w-full h-full flex flex-col bg-yellow-original -top-full group-hover:top-0 transition-all duration-500">
+                                <div className="absolute  p-4 w-full h-full flex flex-col bg-primary-color -top-full group-hover:top-0 transition-all duration-500">
                                     <h3 className="text-white text-2xl ">{station.title}</h3>
                                     <div className="text-white text-2xl leading-10 ">
                                         <ReactMarkdown>{station.content}</ReactMarkdown>

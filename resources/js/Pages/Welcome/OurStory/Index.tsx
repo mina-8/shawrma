@@ -84,7 +84,7 @@ const Index = ({ ourstory }: Props) => {
                         className='flex flex-col justify-center items-center'
                     >
                         <h3
-                            className='text-3xl font-semibold text-yellow-original border-b-4 border-yellow-original pb-4'
+                            className='text-3xl font-semibold text-primary-color border-b-4 border-primary-color pb-4'
                         >{ourstory?.title}</h3>
                         <div
                             className='mx-12 my-12 text-lg leading-8 w-1/2'
@@ -122,7 +122,7 @@ const Index = ({ ourstory }: Props) => {
                                 }}
                             >
                                 <h3
-                                    className='text-3xl font-semibold text-yellow-original border-b-4 border-yellow-original pb-4'
+                                    className='text-3xl font-semibold text-primary-color border-b-4 border-primary-color pb-4'
                                 >{corestation.title}</h3>
                                 <div
                                     className='mx-4 text-xl text-white leading-10'
@@ -145,7 +145,7 @@ const Index = ({ ourstory }: Props) => {
                                 className="flex flex-col justify-center items-center w-full max-w-6xl mb-12"
                             >
                                 <h3
-                                    className="text-2xl sm:text-3xl font-semibold text-yellow-original border-b-4 border-yellow-original pb-4 text-center"
+                                    className="text-2xl sm:text-3xl font-semibold text-primary-color border-b-4 border-primary-color pb-4 text-center"
                                 >{corestory.title}</h3>
 
 
@@ -169,7 +169,7 @@ const Index = ({ ourstory }: Props) => {
                     className='flex flex-col justify-center items-center bg-gray-200 py-8 dark:bg-gray-900 dark:text-gray-100'
                 >
                     <h3
-                        className='text-3xl font-semibold text-yellow-original border-b-4 border-yellow-original pb-4'
+                        className='text-3xl font-semibold text-primary-color border-b-4 border-primary-color pb-4'
                     >{t('possibilty.title')}</h3>
                     <div className='grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 my-8 w-full max-w-7xl'>
                         {ourstory.possibilty.length > 0 ? (
@@ -183,7 +183,7 @@ const Index = ({ ourstory }: Props) => {
                                         <div className='flex gap-2 items-center'>
                                             {
                                                 i18n.language === 'en' && (
-                                            <span className='text-3xl font-bold text-yellow-original whitespace-nowrap'>{item.mark_number}</span>
+                                            <span className='text-3xl font-bold text-primary-color whitespace-nowrap'>{item.mark_number}</span>
                                             )
                                             }
                                             <CountNumber number={item.number} />
@@ -191,7 +191,7 @@ const Index = ({ ourstory }: Props) => {
 
                                             {
                                                 i18n.language === 'ar' && (
-                                            <span className='text-3xl font-bold text-yellow-original whitespace-nowrap'>{item.mark_number}</span>
+                                            <span className='text-3xl font-bold text-primary-color whitespace-nowrap'>{item.mark_number}</span>
                                             )
                                             }
                                         </div>
@@ -214,7 +214,7 @@ const Index = ({ ourstory }: Props) => {
 
                                             {
                                             i18n.language === 'en' && (
-                                             <span className='lg:text-3xl text-2xl font-bold text-yellow-original  whitespace-nowrap'>{t(`possibilty.number_${index + 1}`).split('/')[1]}</span>
+                                             <span className='lg:text-3xl text-2xl font-bold text-primary-color  whitespace-nowrap'>{t(`possibilty.number_${index + 1}`).split('/')[1]}</span>
                                         )
                                         }
                                             <CountNumber number={parseInt(t(`possibilty.number_${index + 1}`))} />
@@ -222,7 +222,7 @@ const Index = ({ ourstory }: Props) => {
 
                                             {
                                                 i18n.language === 'ar' && (
-                                             <span className='lg:text-3xl text-2xl font-bold text-yellow-original  whitespace-nowrap'>{t(`possibilty.number_${index + 1}`).split('/')[1]}</span>
+                                             <span className='lg:text-3xl text-2xl font-bold text-primary-color  whitespace-nowrap'>{t(`possibilty.number_${index + 1}`).split('/')[1]}</span>
                                             )
                                             }
                                         </div>

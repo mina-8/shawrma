@@ -71,12 +71,12 @@ const Index = ({ projects, projectLoactions }: Props) => {
                     <div className="flex justify-center items-center gap-4">
                         <Link
                         href={route('projects' , {lang:i18n.language})}
-                            className="text-lg font-semibold cursor-pointer text-white hover:shadow-none transition-colors bg-yellow-original p-4 shadow-md"
+                            className="text-lg font-semibold cursor-pointer text-white hover:shadow-none transition-colors bg-primary-color p-4 shadow-md"
                         >{t('projects.all')}</Link>
                         {projectLoactions.map((location) => (
                             <div key={location.id}
                             onClick={() => HandelFilter(location.id)}
-                                className="text-lg font-semibold cursor-pointer text-white hover:shadow-none transition-colors bg-yellow-original p-4 shadow-md"
+                                className="text-lg font-semibold cursor-pointer text-white hover:shadow-none transition-colors bg-primary-color p-4 shadow-md"
                             >
                                 {location.location}
                             </div>
@@ -111,9 +111,9 @@ const Index = ({ projects, projectLoactions }: Props) => {
                                                 animationDelay: "1.5s"
                                             }}
                                         >
-                                            <div className='text-xl text-yellow-original flex items-center justify-center flex-row-reverse gap-2 p-2 relative group'>
+                                            <div className='text-xl text-primary-color flex items-center justify-center flex-row-reverse gap-2 p-2 relative group'>
                                                 {/* Animated background circle that expands on hover */}
-                                                <div className={`rounded-full w-10 h-10 border-2 border-yellow-original absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-yellow-original z-0`}></div>
+                                                <div className={`rounded-full w-10 h-10 border-2 border-primary-color absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-primary-color z-0`}></div>
                                                 {/* Content above the background */}
                                                 <div className={`flex items-center justify-center flex-row-reverse  w-full relative z-10`}>
                                                     <div className={`flex items-center w-10 h-10 justify-end group-hover:text-white`}>

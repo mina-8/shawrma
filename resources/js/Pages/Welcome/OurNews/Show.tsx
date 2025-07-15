@@ -28,7 +28,7 @@ const Show = ({ blog  , otherblogs}: Props) => {
 
 
             <div
-                className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-yellow-original text-yellow-original shadow-lg cursor-pointer transition hover:bg-custom-dark-blue group"
+                className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-primary-color text-primary-color shadow-lg cursor-pointer transition hover:bg-custom-dark-blue group"
                 style={{
                     position: 'absolute',
                     top: '50%',
@@ -48,14 +48,14 @@ const Show = ({ blog  , otherblogs}: Props) => {
             <Head title={blog.title} />
             <div className="flex min-h-screen flex-col items-center justify-start bg-gray-50 dark:bg-gray-900 dark:text-gray-100">
                 {/* Header Image */}
-                <div className="w-full h-20 bg-yellow-original bg-cover bg-center" />
+                <div className="w-full h-20 bg-primary-color bg-cover bg-center" />
 
                 {/* Blog Content */}
                 <div className="max-w-7xl w-full px-4 py-8 md:px-6 lg:px-8">
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                         {/* Text */}
                         <div className="p-4">
-                            <h1 className="text-3xl font-bold mb-4 text-yellow-original md:text-4xl">
+                            <h1 className="text-3xl font-bold mb-4 text-primary-color md:text-4xl">
                                 {blog.title}
                             </h1>
                             <div className="prose prose-sky max-w-none">
@@ -76,7 +76,7 @@ const Show = ({ blog  , otherblogs}: Props) => {
                     {/* Other Blogs Carousel */}
                     {otherblogs.length > 0 &&
                     <div className="mt-12 text-center">
-                        <h2 className="text-2xl text-yellow-original font-semibold  mb-6 border-b-2 border-yellow-original pb-2">{t('blogcards.otherblogs')}</h2>
+                        <h2 className="text-2xl text-primary-color font-semibold  mb-6 border-b-2 border-primary-color pb-2">{t('blogcards.otherblogs')}</h2>
                         <Carousel
                             arrows
                             dots={false}

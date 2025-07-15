@@ -40,7 +40,7 @@ const Show = ({ product  , otherproducts}: Props) => {
             <Head title={product.title} />
             <div className=" bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100">
                 {/* Top Banner */}
-                <div className="w-full h-32 bg-yellow-original bg-cover bg-center"
+                <div className="w-full h-32 bg-primary-color bg-cover bg-center"
                 style={{
                     backgroundColor : product.color
                 }}
@@ -51,7 +51,7 @@ const Show = ({ product  , otherproducts}: Props) => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                         {/* Text Section */}
                         <div className="flex flex-col justify-center items-center text-center px-4">
-                            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-yellow-original">
+                            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary-color">
                                 {product.title}
                             </h2>
                             <p className='py-4'>{product.description}</p>
@@ -72,7 +72,7 @@ const Show = ({ product  , otherproducts}: Props) => {
                 </div>
 
                 {/* Uses and Advantages Section */}
-                <div className="bg-yellow-original text-white py-8"
+                <div className="bg-primary-color text-white py-8"
                 style={{
                     backgroundColor : product.color
                 }}
@@ -135,7 +135,7 @@ const Show = ({ product  , otherproducts}: Props) => {
                         className='flex flex-col justify-center items-center my-8'
                     >
                         <h3
-                            className='text-4xl font-medium border-b-4 pb-4 border-yellow-original'
+                            className='text-4xl font-medium border-b-4 pb-4 border-primary-color'
                             style={{
                     backgroundColor : product.color
                 }}
@@ -157,7 +157,7 @@ const Show = ({ product  , otherproducts}: Props) => {
                 )}
 
                 {/* download pdf */}
-                <div className="bg-yellow-original text-white py-8"
+                <div className="bg-primary-color text-white py-8"
                 style={{
                     backgroundColor : product.color
                 }}
@@ -172,7 +172,7 @@ const Show = ({ product  , otherproducts}: Props) => {
                                 </div>
                                 <a
                                     href={product.pdf}
-                                    className='border-2 border-white p-4 text-lg flex justify-center items-center gap-2 hover:bg-white dark:hover:bg-gray-900 hover:text-yellow-original group'
+                                    className='border-2 border-white p-4 text-lg flex justify-center items-center gap-2 hover:bg-white dark:hover:bg-gray-900 hover:text-primary-color group'
                                 >
                                     <FaRegFilePdf size={32} className='group-hover:animate-scaleup transition-transform duration-300' />
                                     {t('products.pdf-file')}
@@ -186,7 +186,7 @@ const Show = ({ product  , otherproducts}: Props) => {
                 {/* explore more */}
 
                 <div className="flex flex-col justify-center items-center my-8 px-4">
-                    <h3 className="text-4xl font-medium border-b-4 pb-4 border-yellow-original text-center"
+                    <h3 className="text-4xl font-medium border-b-4 pb-4 border-primary-color text-center"
                     style={{
                     backgroundColor : product.color
                 }}
@@ -209,7 +209,7 @@ const Show = ({ product  , otherproducts}: Props) => {
                                     />
                                 </div>
                                 <div className="w-1/2 p-4 flex flex-col">
-                                    <h4 className="text-lg font-semibold mb-2 text-yellow-original">{item.title}</h4>
+                                    <h4 className="text-lg font-semibold mb-2 text-primary-color">{item.title}</h4>
                                     <p className="text-sm text-gray-600 dark:text-white">{item.description}</p>
                                 </div>
                             </Link>

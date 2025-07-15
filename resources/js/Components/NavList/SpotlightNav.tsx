@@ -29,7 +29,7 @@ const SpotlightNav = () => {
 
             {Spotlight.map((item, index) => (
                 <NavLink
-                    className='!text-black justify-center hover:!bg-yellow-original !pt-2 !pb-2 mt-2 border-b w-40 last:border-b-0'
+                    className='!text-black justify-center hover:!bg-primary-color !pt-2 !pb-2 mt-2 border-b w-40 last:border-b-0'
                     key={index}
                     href={route(item.href, { lang: i18n.language })}
                     active={route().current(item.href)}
@@ -40,7 +40,7 @@ const SpotlightNav = () => {
             ))}
 
             <a
-            className='!text-black text-center hover:!bg-yellow-original !pt-2 !pb-2 mt-2 border-b w-40 last:border-b-0 px-4'
+            className='!text-black text-center hover:!bg-primary-color !pt-2 !pb-2 mt-2 border-b w-40 last:border-b-0 px-4'
             href={route('pdf-review')}
             target='_blank'
             >

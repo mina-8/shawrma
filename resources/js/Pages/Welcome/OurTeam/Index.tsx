@@ -39,7 +39,7 @@ const CustomArrow = ({ direction, onClick }: any) => {
 
 
             <div
-                className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-yellow-original text-yellow-original shadow-lg cursor-pointer transition hover:bg-custom-dark-blue group"
+                className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-primary-color text-primary-color shadow-lg cursor-pointer transition hover:bg-custom-dark-blue group"
                 style={{
                     position: 'absolute',
                     top: '50%',
@@ -88,7 +88,7 @@ const CustomArrow = ({ direction, onClick }: any) => {
                         className='flex flex-col justify-center items-center'
                     >
                         <h3
-                            className='text-3xl font-semibold text-yellow-original border-b-4 border-yellow-original pb-4'
+                            className='text-3xl font-semibold text-primary-color border-b-4 border-primary-color pb-4'
                         >{ourteam?.title}</h3>
                         <div
                             className='mx-12 my-12 text-lg leading-8 w-1/2'
@@ -147,7 +147,7 @@ const CustomArrow = ({ direction, onClick }: any) => {
                                             alt={item.title}
                                             className="w-24 h-24 rounded-full object-cover mb-4 absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-4 border-white shadow-md"
                                         />
-                                        <h3 className="text-lg font-semibold text-yellow-original mb-4  text-center">
+                                        <h3 className="text-lg font-semibold text-primary-color mb-4  text-center">
                                             {item.title}
                                         </h3>
                                         <div className="text-sm text-gray-700 text-center">

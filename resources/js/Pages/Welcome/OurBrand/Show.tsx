@@ -58,7 +58,7 @@ const Show = ({ brand, otherbrand, mainproducts }: Props) => {
 
 
             <div
-                className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-yellow-original text-yellow-original shadow-lg cursor-pointer transition hover:bg-custom-dark-blue group "
+                className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-primary-color text-primary-color shadow-lg cursor-pointer transition hover:bg-custom-dark-blue group "
                 style={{
                     position: 'absolute',
                     top: '50%',
@@ -106,7 +106,7 @@ const Show = ({ brand, otherbrand, mainproducts }: Props) => {
                         className='flex flex-col justify-center items-center'
                     >
                         <h3
-                            className='text-3xl font-semibold  border-b-4 border-yellow-original pb-4'
+                            className='text-3xl font-semibold  border-b-4 border-primary-color pb-4'
                         >{brand?.title}</h3>
                         <div
                             className=' my-12 text-lg  w-3/4'
@@ -135,16 +135,16 @@ const Show = ({ brand, otherbrand, mainproducts }: Props) => {
                                         <div className='flex gap-2 items-center'>
                                             {
                                                 i18n.language === 'en' && (
-                                            <span className='text-3xl font-bold text-yellow-original whitespace-nowrap'>{item.mark_number}</span>
+                                            <span className='text-3xl font-bold text-primary-color whitespace-nowrap'>{item.mark_number}</span>
                                             )
                                             }
-                                            
+
                                             <CountNumber number={item.number} />
 
 
                                         {
                                             i18n.language === 'ar' && (
-                                                <span className='text-3xl font-bold text-yellow-original whitespace-nowrap'>{item.mark_number}</span>
+                                                <span className='text-3xl font-bold text-primary-color whitespace-nowrap'>{item.mark_number}</span>
                                             )
                                         }
                                         </div>
@@ -173,7 +173,7 @@ const Show = ({ brand, otherbrand, mainproducts }: Props) => {
                                 }}
                             >
                                 <h3
-                                    className='text-3xl font-semibold text-yellow-original border-b-4 border-yellow-original pb-4'
+                                    className='text-3xl font-semibold text-primary-color border-b-4 border-primary-color pb-4'
                                 >{corestation.title}</h3>
                                 <div
                                     className='mx-4 text-xl text-white leading-10'
@@ -193,7 +193,7 @@ const Show = ({ brand, otherbrand, mainproducts }: Props) => {
                             className="flex justify-center items-center"
                         >
 
-                            <h2 className=" text-2xl text-yellow-original font-semibold  mb-6 border-b-2 border-yellow-original pb-2">{t('blogcards.otherblogs')}</h2>
+                            <h2 className=" text-2xl text-primary-color font-semibold  mb-6 border-b-2 border-primary-color pb-2">{t('blogcards.otherblogs')}</h2>
                         </div>
                         <Carousel
                             arrows
@@ -253,7 +253,7 @@ const Show = ({ brand, otherbrand, mainproducts }: Props) => {
                     </div>
                 }
                 <div
-                    className="bg-yellow-original py-8 flex justify-center items-center my-12"
+                    className="bg-primary-color py-8 flex justify-center items-center my-12"
                     style={{
                         backgroundColor: `${brand.color}`
                     }}
@@ -268,7 +268,7 @@ const Show = ({ brand, otherbrand, mainproducts }: Props) => {
                     >
                         <div className='text-xl text-white flex items-center justify-center flex-row-reverse gap-2 p-2 relative group'>
                             {/* Animated background circle that expands on hover */}
-                            <div className={`rounded-full w-10 h-10 border-2 border-white absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-yellow-original z-0`}
+                            <div className={`rounded-full w-10 h-10 border-2 border-white absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-primary-color z-0`}
                                 style={{
                                     backgroundColor: `${brand.color}`
                                 }}
@@ -288,7 +288,7 @@ const Show = ({ brand, otherbrand, mainproducts }: Props) => {
                 {/* other brands */}
                 <div className="w-full max-w-7xl mx-auto my-8 px-4">
                     <div className="flex flex-col justify-center items-center">
-                        <h3 className="text-3xl font-semibold border-b-4 border-yellow-original pb-4">
+                        <h3 className="text-3xl font-semibold border-b-4 border-primary-color pb-4">
                             {t('brand.otherbrands')}
                         </h3>
 
@@ -315,7 +315,7 @@ const Show = ({ brand, otherbrand, mainproducts }: Props) => {
 
                 {/* download pdf */}
                 <div
-                    className="bg-yellow-original py-8 flex justify-center items-center my-12"
+                    className="bg-primary-color py-8 flex justify-center items-center my-12"
                     style={{
                         backgroundColor: `${brand.color}`
                     }}
@@ -332,7 +332,7 @@ const Show = ({ brand, otherbrand, mainproducts }: Props) => {
                     >
                         <div className='text-xl text-white flex items-center justify-center flex-row-reverse gap-2 p-2 relative group'>
                             {/* Animated background circle that expands on hover */}
-                            <div className={`rounded-full w-10 h-10 border-2 border-white absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-yellow-original z-0`}
+                            <div className={`rounded-full w-10 h-10 border-2 border-white absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-primary-color z-0`}
                                 style={{
                                     backgroundColor: `${brand.color}`
                                 }}

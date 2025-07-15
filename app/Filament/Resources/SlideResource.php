@@ -16,6 +16,7 @@ use Illuminate\Support\Str;
 use Pixelpeter\FilamentLanguageTabs\Forms\Components\LanguageTabs;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
+use function PHPUnit\Framework\callback;
 
 class SlideResource extends Resource
 {
@@ -57,19 +58,26 @@ class SlideResource extends Resource
                     ->schema([
                         LanguageTabs::make([
                             Forms\Components\TextInput::make('title')
-                                ->label(__('filament-panels::resources/pages/blog.fields.title'))
+                                ->label(__('filament-panels::resources/pages/slide.fields.title'))
                                 ->required(),
                             Forms\Components\MarkdownEditor::make('content')
-                                ->label(__('filament-panels::resources/pages/blog.fields.content')),
-                            Forms\Components\TextInput::make('str_btn')
-                                ->label(__('filament-panels::resources/pages/blog.fields.str_btn'))
-                                ->required(),
+                                ->label(__('filament-panels::resources/pages/slide.fields.content')),
 
                         ]),
 
+                        Forms\Components\Toggle::make('active_btn')
+                            ->label(__('filament-panels::resources/pages/slide.fields.active_btn'))
+                            ->default(false)
+                            ->reactive(),
+                        LanguageTabs::make([
+                            Forms\Components\TextInput::make('str_btn')
+                                ->label(__('filament-panels::resources/pages/slide.fields.str_btn'))
+                                ->disabled(fn(callable $get) => !$get('active_btn')),
+
+                        ]),
 
                         Forms\Components\Select::make('link')
-                            ->label(__('filament-panels::resources/pages/blog.fields.link'))
+                            ->label(__('filament-panels::resources/pages/slide.fields.link'))
                             ->options([
                                 'welcome' => 'Home',
                                 'our-story' => 'our story',
@@ -88,11 +96,12 @@ class SlideResource extends Resource
 
                             ])
                             ->searchable()
-                            ->required(),
+                            ->default('welcome')
+                            ->disabled(fn(callable $get) => !$get('active_btn')),
 
 
                         Forms\Components\FileUpload::make('image')
-                            ->label(__('filament-panels::resources/pages/blog.fields.image'))
+                            ->label(__('filament-panels::resources/pages/slide.fields.image'))
                             ->image()
                             ->disk('public')
                             ->directory('uploads/slides')

@@ -23,7 +23,7 @@ export default {
 
             },
             colors: {
-                'yellow-original': '#ffc50f'
+                'primary-color': '#df1111'
             },
             animation: {
                 'fadeup': 'fadeup 1s 0s both',

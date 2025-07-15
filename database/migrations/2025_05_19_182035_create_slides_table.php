@@ -16,6 +16,7 @@ return new class extends Migration
             $table->json('title');
             $table->json('content')->nullable();
             $table->string('image');
+            $table->boolean('active_btn')->default(false);
             $table->json('str_btn')->nullable();
             $table->string('link')->default('welcome');
             $table->timestamps();

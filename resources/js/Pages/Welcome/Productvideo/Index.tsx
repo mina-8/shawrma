@@ -27,14 +27,14 @@ const Index = ({ productvideo }: Props) => {
             <Head title={t('productvideo.header')} />
             <div className=" bg-gray-50 flex flex-col">
                 {/* Top Banner */}
-                <div className="w-full h-32 bg-yellow-original bg-cover bg-center" />
+                <div className="w-full h-32 bg-primary-color bg-cover bg-center" />
             </div>
             {/* content */}
             <div
                 className='flex flex-col justify-center items-center w-full max-w-7xl mx-auto my-12'
             >
                 <h2
-                    className='text-2xl font-semibold pb-2 border-b-2 border-b-yellow-original'
+                    className='text-2xl font-semibold pb-2 border-b-2 border-b-primary-color'
                 >{t('productvideo.title')}</h2>
                 <p
                     className='w-3/4 text-xl py-4 text-center'
@@ -56,7 +56,7 @@ const Index = ({ productvideo }: Props) => {
                             />
                             <div
                                 onClick={() => ShowVideo(item.youtube_link)}
-                                className='absolute bottom-0 left-0 bg-yellow-original p-4 cursor-pointer'
+                                className='absolute bottom-0 left-0 bg-primary-color p-4 cursor-pointer'
                             >
                                 <FaPlay className="text-white text-2xl" />
                             </div>

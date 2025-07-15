@@ -121,7 +121,7 @@ const Index = ({ ourregionalOffice }: Props) => {
                                         key={option.value}
                                         className={`px-6 py-3 border cursor-pointer font-medium text-center transition-all
           ${formData.type === option.value
-                                                ? 'border-yellow-original bg-yellow-original text-white'
+                                                ? 'border-primary-color bg-primary-color text-white'
                                                 : 'border-gray-300 bg-white text-gray-700'
                                             }`}
                                     >
@@ -171,7 +171,7 @@ const Index = ({ ourregionalOffice }: Props) => {
                         </div>
                         <button type='submit'
                         disabled = {Loading}
-                            className={`p-4 ${Loading ? 'bg-gray-200' : 'bg-yellow-original'}  text-white font-semibold text-lg shadow-md hover:shadow-none cursor-pointer`}
+                            className={`p-4 ${Loading ? 'bg-gray-200' : 'bg-primary-color'}  text-white font-semibold text-lg shadow-md hover:shadow-none cursor-pointer`}
                         >{t('contact.submit')}</button>
                     </form>
 
@@ -188,7 +188,7 @@ const Index = ({ ourregionalOffice }: Props) => {
                             className='flex justify-center items-center'
                         >
                             <h3
-                                className='text-2xl font-semibold border-b-2 pb-2 border-yellow-original mb-4'
+                                className='text-2xl font-semibold border-b-2 pb-2 border-primary-color mb-4'
                             >{t('ourregional.title')}</h3>
                         </div>
                         <div

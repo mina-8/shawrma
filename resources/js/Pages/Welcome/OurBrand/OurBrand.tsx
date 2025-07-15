@@ -16,7 +16,7 @@ const OurBrand = ({ brands }: Props) => {
     return (
         <div className="w-full max-w-7xl mx-auto my-8 px-4">
             <div className="flex flex-col justify-center items-center">
-                <h3 className="text-3xl font-semibold border-b-4 border-yellow-original pb-4">
+                <h3 className="text-3xl font-semibold border-b-4 border-primary-color pb-4">
                     {t('home.brands')}
                 </h3>
 

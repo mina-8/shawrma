@@ -56,7 +56,7 @@ const Index = ({ buildinforamtion }: Props) => {
     li({ children, ...props }) {
       return (
         <li className="flex items-center gap-2" {...props}>
-          <IoMdCheckmark className="text-yellow-original mt-1" />
+          <IoMdCheckmark className="text-primary-color mt-1" />
           <span>{children}</span>
         </li>
       );

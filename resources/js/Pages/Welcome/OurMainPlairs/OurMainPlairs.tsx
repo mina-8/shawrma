@@ -63,7 +63,7 @@ const OurMainPlairs = ({ about }: Props) => {
             className='py-12 flex flex-col items-center justify-center gap-4 min-h-screen  w-full dark:bg-gray-900 dark:text-gray-100 text-gray-900 bg-white '
         >
             <div className='p-4 mx-auto w-full max-w-7xl flex flex-col items-center justify-center gap-8'>
-                <h2 className='text-3xl border-b-2 border-yellow-original pb-2 mb-4 text-center'>{t('aboutus.title')}</h2>
+                <h2 className='text-3xl border-b-2 border-primary-color pb-2 mb-4 text-center'>{t('aboutus.title')}</h2>
                 <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 w-full'>
                     {about.length > 0 ? (
                         about.map((item, index) => (
@@ -95,7 +95,7 @@ const OurMainPlairs = ({ about }: Props) => {
                                     </div>
                                     <Link
                                         href={route(item.link, { lang: i18n.language })}
-                                        className='text-md text-yellow-original dark:hover:text-white flex items-center gap-2 mt-4'
+                                        className='text-md text-primary-color dark:hover:text-white flex items-center gap-2 mt-4'
                                     >
                                         {t('aboutus.readmore')}
                                         {i18n.language === 'ar' ? (<IoIosArrowBack />) : (<IoIosArrowForward />)}
@@ -129,7 +129,7 @@ const OurMainPlairs = ({ about }: Props) => {
                                     </div>
                                     <Link
                                         href={route(item.href, { lang: i18n.language })}
-                                        className='text-md text-yellow-original dark:hover:text-white flex items-center gap-2 mt-4'
+                                        className='text-md text-primary-color dark:hover:text-white flex items-center gap-2 mt-4'
                                     >
                                         {t('aboutus.readmore')}
                                         {i18n.language === 'ar' ? (<IoIosArrowBack />) : (<IoIosArrowForward />)}

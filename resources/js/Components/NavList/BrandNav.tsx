@@ -19,7 +19,7 @@ const BrandNav = () => {
 
             {Brands.map((item, index) => (
                 <NavLink
-                    className='!text-black justify-center hover:!bg-yellow-original !pt-2 !pb-2 mt-2 border-b w-40 last:border-b-0'
+                    className='!text-black justify-center hover:!bg-primary-color !pt-2 !pb-2 mt-2 border-b w-40 last:border-b-0'
                     key={index}
                     href={route('brand-show', { lang: i18n.language , slug:item.slug })}
                     active={route().current('brand-show')}

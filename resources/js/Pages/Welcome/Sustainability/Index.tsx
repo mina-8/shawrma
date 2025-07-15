@@ -71,7 +71,7 @@ const Index = ({ sustainability }: Props) => {
                         className='flex flex-col justify-center items-center'
                     >
                         <h3
-                            className='text-3xl font-semibold text-yellow-original border-b-4 border-yellow-original pb-4'
+                            className='text-3xl font-semibold text-primary-color border-b-4 border-primary-color pb-4'
                         >{sustainability?.title}</h3>
 
                     </div>
@@ -96,7 +96,7 @@ const Index = ({ sustainability }: Props) => {
                     className='py-12 flex flex-col justify-center items-center gap-8  '
                 >
                     <h3
-                        className='text-3xl font-semibold text-yellow-original border-b-4 border-yellow-original pb-4'
+                        className='text-3xl font-semibold text-primary-color border-b-4 border-primary-color pb-4'
                     >{t('ourpromise.ourvalues')}</h3>
                     <div
                         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 p-4 max-w-7xl w-full"
@@ -135,7 +135,7 @@ const Index = ({ sustainability }: Props) => {
                 </div>
                 {/* pdf file */}
                 <div
-                    className='flex justify-center items-center my-12 p-8 bg-yellow-original'
+                    className='flex justify-center items-center my-12 p-8 bg-primary-color'
                 >
                     <a
                         href={sustainability.pdf}
@@ -146,7 +146,7 @@ const Index = ({ sustainability }: Props) => {
                     >
                         <div className='text-xl text-white flex items-center justify-center flex-row-reverse gap-2 p-2 relative group'>
                             {/* Animated background circle that expands on hover */}
-                            <div className={`rounded-full w-10 h-10 border-2 border-white absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-yellow-original z-0`}></div>
+                            <div className={`rounded-full w-10 h-10 border-2 border-white absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-primary-color z-0`}></div>
                             {/* Content above the background */}
                             <div className={`flex items-center justify-center flex-row-reverse  w-full relative z-10`}>
                                 <div className={`flex items-center w-10 h-10 justify-end `}>
@@ -204,7 +204,7 @@ const Index = ({ sustainability }: Props) => {
                                                 className={`absolute bottom-0 right-0 m-4 z-10 flex flex-col gap-4 w-[40%]  bg-black/50 px-2 md:px-4 py-8 md:py-8 ${i18n.language === 'ar' ? 'items-end text-right' : 'items-start text-left'
                                                     }`}
                                             >
-                                                <p className={`text-xl sm:text-xl md:text-xl font-bold text-yellow-original drop-shadow-3xl `}>
+                                                <p className={`text-xl sm:text-xl md:text-xl font-bold text-primary-color drop-shadow-3xl `}>
                                                     {item.title}
                                                 </p>
 

@@ -52,7 +52,7 @@ const { ref, isVisible } = useInView();
         className={`flex justify-center items-center flex-col w-full py-12 transition-all duration-700 ease-in-out transform ${isVisible ? 'animate-fadeup opacity-100' : 'opacity-0'}`}
         >
             <h2
-                className='text-3xl border-b-2 border-yellow-original pb-2 mb-4 text-center '
+                className='text-3xl border-b-2 border-primary-color pb-2 mb-4 text-center '
             >{t('ourimpact.title')}</h2>
 
             <div className='flex justify-center items-center flex-col w-full'>
@@ -99,7 +99,7 @@ const { ref, isVisible } = useInView();
                                                 className={`relative z-10 flex flex-col gap-4 w-[40%] h-full bg-black/50 px-2 md:px-4 py-8 md:py-8 ${i18n.language === 'ar' ? 'items-end text-right' : 'items-start text-left'
                                                     }`}
                                             >
-                                                <p className={`text-xl sm:text-xl md:text-xl font-bold text-yellow-original drop-shadow-3xl ${AcitveIndex === index ? 'animate-fadeup' : ''}`}>
+                                                <p className={`text-xl sm:text-xl md:text-xl font-bold text-primary-color drop-shadow-3xl ${AcitveIndex === index ? 'animate-fadeup' : ''}`}>
                                                     {item.title}
                                                 </p>
 
@@ -126,7 +126,7 @@ const { ref, isVisible } = useInView();
                                                             <div className="text-lg sm:text-xl text-white flex items-center justify-center flex-row-reverse gap-2 p-2 relative group">
                                                                 <div
                                                                     className={`rounded-full w-10 h-10 border-2 border-white absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'
-                                                                        } top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-yellow-original z-0`}
+                                                                        } top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-primary-color z-0`}
                                                                 ></div>
                                                                 <div
                                                                     className={`flex items-center ${i18n.language === 'ar' ? 'flex-row' : 'flex-row-reverse'

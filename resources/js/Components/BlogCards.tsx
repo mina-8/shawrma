@@ -13,7 +13,7 @@ const BlogCards = ({ item }: any) => {
                 <img src={item.image} className=" hover:scale-125 hover:rotate-12 duration-500" />
             </div>
             <div className="p-4">
-                <h3 className="text-lg font-medium text-yellow-original mb-2">
+                <h3 className="text-lg font-medium text-primary-color mb-2">
                     {item.title}
                 </h3>
                 <div className={`flex ${i18n.language === 'ar' ? 'justify-end' : 'justify-start'} items-center gap-4 mt-12 xs:flex-col`}>
@@ -22,7 +22,7 @@ const BlogCards = ({ item }: any) => {
                     >
                         <div className='text-xl text-white flex items-center justify-center flex-row-reverse gap-2 p-2 relative group'>
                             {/* Animated background circle that expands on hover */}
-                            <div className={`rounded-full w-10 h-10 border-2 border-white absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-yellow-original z-0`}></div>
+                            <div className={`rounded-full w-10 h-10 border-2 border-white absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-primary-color z-0`}></div>
                             {/* Content above the background */}
                             <div className={`flex items-center justify-center ${i18n.language === 'ar' ? 'flex-row' : 'flex-row-reverse'} w-full relative z-10`}>
                                 <div className={`flex items-center w-10 h-10 ${i18n.language === 'ar' ? '' : 'justify-end'}`}>

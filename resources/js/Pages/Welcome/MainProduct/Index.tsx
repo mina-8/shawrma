@@ -88,7 +88,7 @@ const Index = ({ mainproduct, product }: Props) => {
                 {/* search */}
                 <div className='w-full max-w-7xl container mx-auto'>
                     {/* search */}
-                    <div className='my-12 bg-yellow-original flex justify-center lg:justify-start items-center p-8'>
+                    <div className='my-12 bg-primary-color flex justify-center lg:justify-start items-center p-8'>
                         <form className='flex flex-col lg:flex-row items-center w-full' onSubmit={HandelSubmitForm}>
                             <div
                                 className={`relative w-3/4 ${i18n.language === 'en' && 'mr-4'}`}
@@ -108,7 +108,7 @@ const Index = ({ mainproduct, product }: Props) => {
                                         {FilterProduct.map((item: any) => (
                                             <div
                                                 key={item.id}
-                                                className='hover:text-yellow-original'
+                                                className='hover:text-primary-color'
                                             >
                                                 <Link
                                                     href={route('product.show', { lang: i18n.language, slug: item.slug })}
@@ -155,7 +155,7 @@ const Index = ({ mainproduct, product }: Props) => {
                     {mainproduct.map((item) => (
                         <div
                             key={item.id}
-                            className='pr-[40px] bg-yellow-original'
+                            className='pr-[40px] bg-primary-color'
                             style={{
                                 backgroundColor: item.color,
                                 backgroundImage: `url('${themecard}')`,
@@ -165,7 +165,7 @@ const Index = ({ mainproduct, product }: Props) => {
                             }}
                         >
                             <div
-                                className='flex flex-col justify-center items-center bg-yellow-original'
+                                className='flex flex-col justify-center items-center bg-primary-color'
                                 style={{
                                     backgroundColor: item.color
                                 }}

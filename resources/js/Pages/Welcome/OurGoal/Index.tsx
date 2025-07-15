@@ -85,7 +85,7 @@ const Index = ({ ourgoal }: Props) => {
                 }}
             >
                 <div
-                    className="w-full h-32 bg-yellow-original bg-cover bg-center"
+                    className="w-full h-32 bg-primary-color bg-cover bg-center"
                     style={{
                         backgroundColor: `${ourgoal.color}`
                     }}
@@ -147,7 +147,7 @@ const Index = ({ ourgoal }: Props) => {
                                 />
                                 <div
                                     onClick={() => ShowVideo(item.youtube_link)}
-                                    className="absolute bottom-0 left-0 bg-yellow-original p-4 cursor-pointer"
+                                    className="absolute bottom-0 left-0 bg-primary-color p-4 cursor-pointer"
                                 >
                                     <FaPlay className="text-white text-2xl" />
                                 </div>
@@ -216,7 +216,7 @@ const Index = ({ ourgoal }: Props) => {
                                 />
                                 <div
                                     onClick={() => ShowVideo(item.youtube_link)}
-                                    className='absolute bottom-0 left-0 bg-yellow-original p-4 cursor-pointer'
+                                    className='absolute bottom-0 left-0 bg-primary-color p-4 cursor-pointer'
                                 >
                                     <FaPlay className="text-white text-2xl" />
                                 </div>
@@ -241,7 +241,7 @@ const Index = ({ ourgoal }: Props) => {
                                 />
                                 <div
                                     onClick={() => ShowVideo(item.youtube_link)}
-                                    className='absolute bottom-0 left-0 bg-yellow-original p-4 cursor-pointer'
+                                    className='absolute bottom-0 left-0 bg-primary-color p-4 cursor-pointer'
                                 >
                                     <FaPlay className="text-white text-2xl" />
                                 </div>

@@ -63,7 +63,7 @@ const Search = ({ searchmainproducts, searchproducts , resultproduct}: Props) =>
             >
                 {/* Top Banner */}
                 <div
-                    className="w-full h-32 bg-yellow-original bg-cover bg-center"
+                    className="w-full h-32 bg-primary-color bg-cover bg-center"
                 />
             </div>
             <div
@@ -72,7 +72,7 @@ const Search = ({ searchmainproducts, searchproducts , resultproduct}: Props) =>
                 {/* search */}
                 <div className='w-full max-w-7xl container mx-auto'>
                     {/* search */}
-                    <div className='my-12 bg-yellow-original flex justify-center lg:justify-start items-center p-8'>
+                    <div className='my-12 bg-primary-color flex justify-center lg:justify-start items-center p-8'>
                         <form className='flex flex-col lg:flex-row items-center w-full' onSubmit={HandelSubmitForm}>
                             <div
                                 className='relative w-3/4'
@@ -92,7 +92,7 @@ const Search = ({ searchmainproducts, searchproducts , resultproduct}: Props) =>
                                         {FilterProduct.map((item: any) => (
                                             <div
                                                 key={item.id}
-                                                className='hover:text-yellow-original'
+                                                className='hover:text-primary-color'
                                             >
                                                 <Link
                                                     href={route('product.show', { lang: i18n.language, slug: item.slug })}
@@ -149,7 +149,7 @@ const Search = ({ searchmainproducts, searchproducts , resultproduct}: Props) =>
                                 />
                             </div>
                             <div className="w-1/2 p-4 flex flex-col">
-                                <h4 className="text-lg font-semibold mb-2 text-yellow-original">{item.title}</h4>
+                                <h4 className="text-lg font-semibold mb-2 text-primary-color">{item.title}</h4>
                                 <p className="text-sm text-gray-600 dark:text-white">{item.description}</p>
                             </div>
                         </Link>

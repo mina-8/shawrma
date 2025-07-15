@@ -43,7 +43,7 @@ const Index = ({solvebrand}:any) => {
                     {solvebrand.mainproducts.map((item:any) => (
                         <div
                             key={item.id}
-                            className=' bg-yellow-original'
+                            className=' bg-primary-color'
                             style={{
                                 backgroundColor: item.color,
                                 // backgroundImage: `url('${item.image}')`,
@@ -53,7 +53,7 @@ const Index = ({solvebrand}:any) => {
                             }}
                         >
                             <div
-                                className='flex flex-col justify-center items-center bg-yellow-original '
+                                className='flex flex-col justify-center items-center bg-primary-color '
                                 style={{
                                     backgroundColor: item.color
                                 }}

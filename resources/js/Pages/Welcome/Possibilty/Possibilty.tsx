@@ -37,7 +37,7 @@ const Possibilty = ({ possibilty }: Props) => {
                 className={`p-4 mx-auto w-full max-w-7xl flex flex-col items-center justify-center gap-8 transition-all duration-700 ease-in-out transform ${isVisible ? 'animate-fadeup opacity-100' : 'opacity-0'
                     }`}
             >
-                <h2 className='text-3xl border-b-2 border-yellow-original pb-2 mb-4 text-center'>{t('possibilty.title')}</h2>
+                <h2 className='text-3xl border-b-2 border-primary-color pb-2 mb-4 text-center'>{t('possibilty.title')}</h2>
                 <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 w-full'>
                     {possibilty.length > 0 ? (
                         possibilty.map((item, index) => (
@@ -52,7 +52,7 @@ const Possibilty = ({ possibilty }: Props) => {
 
                                         {
                                             i18n.language === 'en' && (
-                                                <span className='lg:text-3xl text-2xl font-bold text-yellow-original whitespace-nowrap'>{item.mark_number}</span>
+                                                <span className='lg:text-3xl text-2xl font-bold text-primary-color whitespace-nowrap'>{item.mark_number}</span>
                                             )
                                         }
 
@@ -63,7 +63,7 @@ const Possibilty = ({ possibilty }: Props) => {
 
                                         {
                                             i18n.language === 'ar' && (
-                                                <span className='lg:text-3xl text-2xl font-bold text-yellow-original whitespace-nowrap'>{item.mark_number}</span>
+                                                <span className='lg:text-3xl text-2xl font-bold text-primary-color whitespace-nowrap'>{item.mark_number}</span>
                                             )
                                         }
 
@@ -87,7 +87,7 @@ const Possibilty = ({ possibilty }: Props) => {
 
                                         {
                                             i18n.language === 'en' && (
-                                             <span className='lg:text-3xl text-2xl font-bold text-yellow-original  whitespace-nowrap'>{t(`possibilty.number_${index + 1}`).split('/')[1]}</span>
+                                             <span className='lg:text-3xl text-2xl font-bold text-primary-color  whitespace-nowrap'>{t(`possibilty.number_${index + 1}`).split('/')[1]}</span>
                                         )
                                         }
 
@@ -98,7 +98,7 @@ const Possibilty = ({ possibilty }: Props) => {
 
                                             {
                                                 i18n.language === 'ar' && (
-                                             <span className='lg:text-3xl text-2xl font-bold text-yellow-original  whitespace-nowrap'>{t(`possibilty.number_${index + 1}`).split('/')[1]}</span>
+                                             <span className='lg:text-3xl text-2xl font-bold text-primary-color  whitespace-nowrap'>{t(`possibilty.number_${index + 1}`).split('/')[1]}</span>
                                             )
                                             }
                                     </div>

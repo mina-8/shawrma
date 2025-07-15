@@ -42,7 +42,7 @@ const Index = ({ ourculture }: Props) => {
 
 
             <div
-                className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-yellow-original text-yellow-original shadow-lg cursor-pointer transition hover:bg-custom-dark-blue group"
+                className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-primary-color text-primary-color shadow-lg cursor-pointer transition hover:bg-custom-dark-blue group"
                 style={{
                     position: 'absolute',
                     top: '50%',
@@ -121,7 +121,7 @@ const Index = ({ ourculture }: Props) => {
                                 </div>
 
                                 {/* Back Side */}
-                                <div className="absolute w-full h-full backface-hidden bg-yellow-original text-white p-4 transform rotate-y-180 flex flex-col justify-start items-center">
+                                <div className="absolute w-full h-full backface-hidden bg-primary-color text-white p-4 transform rotate-y-180 flex flex-col justify-start items-center">
                                     <h3 className="text-xl font-bold">{vision.title}</h3>
                                     <p className="mt-2 text-center">{vision.content}</p>
                                 </div>
@@ -148,7 +148,7 @@ const Index = ({ ourculture }: Props) => {
             <div className="py-12 bg-gray-100 dark:bg-gray-900 dark:text-gray-100">
                 {/* Section Heading */}
                 <div className="text-center mb-8 px-4">
-                    <h2 className="text-2xl sm:text-3xl text-yellow-original font-semibold border-b-2 border-yellow-original inline-block pb-2">
+                    <h2 className="text-2xl sm:text-3xl text-primary-color font-semibold border-b-2 border-primary-color inline-block pb-2">
                         {t('ourculture.stories')}
                     </h2>
                 </div>
@@ -197,7 +197,7 @@ const Index = ({ ourculture }: Props) => {
                                             alt={item.title}
                                             className="w-24 h-24 rounded-full object-cover mb-4 absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-4 border-white shadow-md"
                                         />
-                                        <h3 className="text-lg font-semibold text-yellow-original mb-4  text-center">
+                                        <h3 className="text-lg font-semibold text-primary-color mb-4  text-center">
                                             {item.title}
                                         </h3>
                                         <div className="text-sm text-gray-700 text-center">

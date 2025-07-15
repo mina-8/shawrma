@@ -38,7 +38,7 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
                     <div className='absolute w-full h-full bg-black top-0 right-0 opacity-50'></div>
 
                     {/* Right Half */}
-                    <div className={`w-1/2 h-auto bg-yellow-original relative after:content-[''] after:z-10 after:absolute after:top-0 after:right-[-40px] after:w-[120%] after:h-full 
+                    <div className={`w-1/2 h-auto bg-primary-color relative after:content-[''] after:z-10 after:absolute after:top-0 after:right-[-40px] after:w-[120%] after:h-full
                     ${i18n.language === 'ar' ? 'after:skew-x-[-350deg]' : 'after:skew-x-[170deg]'
                         }
                     after:bg-[var(--after-bg)]
@@ -70,7 +70,7 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
 
                 {/* Featured Products */}
                 <div className="flex flex-col justify-center items-center my-8 px-4">
-                    <h3 className="text-4xl font-medium border-b-4 pb-4 border-yellow-original text-center"
+                    <h3 className="text-4xl font-medium border-b-4 pb-4 border-primary-color text-center"
                     style={{
                         borderColor: mainproduct.color || '#facc15',
                     }}
@@ -96,7 +96,7 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
                                             />
                                         </div>
                                         <div className="w-1/2 p-4 flex flex-col">
-                                            <h4 className="text-lg font-semibold mb-2 text-yellow-original">{product.title}</h4>
+                                            <h4 className="text-lg font-semibold mb-2 text-primary-color">{product.title}</h4>
                                             <p className="text-sm text-gray-600 dark:text-white">{product.description}</p>
                                         </div>
                                     </Link>
@@ -107,7 +107,7 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
 
                 {/* All Products */}
                 <div className="flex flex-col justify-center items-center my-8 px-4">
-                    <h3 className="text-4xl font-medium border-b-4 pb-4 border-yellow-original text-center"
+                    <h3 className="text-4xl font-medium border-b-4 pb-4 border-primary-color text-center"
                     style={{
                         borderColor: mainproduct.color || '#facc15',
                     }}
@@ -133,7 +133,7 @@ const Show: React.FC<ShowProps> = ({ mainproduct }) => {
                                             />
                                         </div>
                                         <div className="w-1/2 p-4 flex flex-col">
-                                            <h4 className="text-lg font-semibold mb-2 text-yellow-original">{product.title}</h4>
+                                            <h4 className="text-lg font-semibold mb-2 text-primary-color">{product.title}</h4>
                                             <p className="text-sm text-gray-600 dark:text-white">{product.description}</p>
                                         </div>
                                     </Link>

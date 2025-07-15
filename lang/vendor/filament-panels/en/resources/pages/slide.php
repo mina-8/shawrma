@@ -17,6 +17,7 @@ return [
         'title' => 'Title',
         'content' => 'Content',
         'str_btn' => 'Button Content',
+        'active_btn' => 'Activate Button',
         'link' => 'Button Link',
         'image' => 'Image',
         'created_at' => 'Created At',

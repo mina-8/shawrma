@@ -26,7 +26,7 @@ const ReciveUpdate = ({color = ''}:{color?:string}) => {
                 }
             }, [SuccessMessage]);
     return (
-        <div className="bg-yellow-original py-12 px-4"
+        <div className="bg-primary-color py-12 px-4"
         style={{ backgroundColor: color || '#facc15' }}
         >
             {showSuccess && (

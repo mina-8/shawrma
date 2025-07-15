@@ -114,7 +114,7 @@ const [windowWidth, setWindowWidth] = useState(window.innerWidth);
                             <div className={`hidden xl:ms-6 xl:flex xl:items-center relative ${i18n.language === 'en' ? 'xl:text-sm' : ''} `}>
                                 <div className="hidden gap-1 sm:-my-px sm:ms-10 sm:flex">
 
-                                    <Dropdown className='hover:bg-white  hover:text-yellow-original px-4 py-6 cursor-pointer text-white '>
+                                    <Dropdown className='hover:bg-white  hover:text-primary-color px-4 py-6 cursor-pointer text-white '>
                                         <Dropdown.Trigger>
                                             {t('home.about')}
                                         </Dropdown.Trigger>
@@ -125,7 +125,7 @@ const [windowWidth, setWindowWidth] = useState(window.innerWidth);
                                         </Dropdown.Content>
                                     </Dropdown>
 
-                                    <Dropdown className='hover:bg-white hover:text-yellow-original px-4 py-6 cursor-pointer text-white'>
+                                    <Dropdown className='hover:bg-white hover:text-primary-color px-4 py-6 cursor-pointer text-white'>
                                         <Dropdown.Trigger>
                                             {t('home.brands')}
                                         </Dropdown.Trigger>
@@ -136,7 +136,7 @@ const [windowWidth, setWindowWidth] = useState(window.innerWidth);
                                         </Dropdown.Content>
                                     </Dropdown>
 
-                                    <Dropdown className='hover:bg-white hover:text-yellow-original px-4 py-6 cursor-pointer text-white'>
+                                    <Dropdown className='hover:bg-white hover:text-primary-color px-4 py-6 cursor-pointer text-white'>
                                         <Dropdown.Trigger>
                                             {t('home.services')}
                                         </Dropdown.Trigger>
@@ -148,7 +148,7 @@ const [windowWidth, setWindowWidth] = useState(window.innerWidth);
                                     </Dropdown>
 
 
-                                    <Dropdown className='hover:bg-white hover:text-yellow-original px-4 py-6 cursor-pointer text-white '>
+                                    <Dropdown className='hover:bg-white hover:text-primary-color px-4 py-6 cursor-pointer text-white '>
                                         <Dropdown.Trigger>
                                             {t('home.products')}
                                         </Dropdown.Trigger>
@@ -161,7 +161,7 @@ const [windowWidth, setWindowWidth] = useState(window.innerWidth);
                                     </Dropdown>
 
 
-                                    <Dropdown className='hover:bg-white hover:text-yellow-original px-4 py-6 cursor-pointer text-white '>
+                                    <Dropdown className='hover:bg-white hover:text-primary-color px-4 py-6 cursor-pointer text-white '>
                                         <Dropdown.Trigger>
                                             {t('home.bulidinus')}
                                         </Dropdown.Trigger>
@@ -174,7 +174,7 @@ const [windowWidth, setWindowWidth] = useState(window.innerWidth);
                                         </Dropdown.Content>
                                     </Dropdown>
 
-                                    <Dropdown className='hover:bg-white hover:text-yellow-original px-4 py-6 cursor-pointer text-white '>
+                                    <Dropdown className='hover:bg-white hover:text-primary-color px-4 py-6 cursor-pointer text-white '>
                                         <Dropdown.Trigger>
                                             {t('home.spotlight')}
                                         </Dropdown.Trigger>
@@ -193,7 +193,7 @@ const [windowWidth, setWindowWidth] = useState(window.innerWidth);
                                     <button
                                         name='search'
                                         type="button"
-                                        className="inline-flex items-center rounded-full bg-yellow-original hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
+                                        className="inline-flex items-center rounded-full bg-primary-color hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
                                         onClick={() => setShowSearch(true)}
                                     >
                                         <IoSearch size={24} />
@@ -209,7 +209,7 @@ const [windowWidth, setWindowWidth] = useState(window.innerWidth);
                                         <span className="inline-flex rounded-md">
                                             <button
                                                 type="button"
-                                                className="inline-flex items-center rounded-full bg-yellow-original hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
+                                                className="inline-flex items-center rounded-full bg-primary-color hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
                                                 onClick={() => setShowSearch(true)}
                                             >
                                                 <IoSearch size={24} />
@@ -349,7 +349,7 @@ const [windowWidth, setWindowWidth] = useState(window.innerWidth);
                             <span className="inline-flex rounded-md">
                                 <button
                                     type="button"
-                                    className="inline-flex items-center rounded-full bg-yellow-original hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
+                                    className="inline-flex items-center rounded-full bg-primary-color hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
                                     onClick={() => setShowSearch(true)}
                                 >
                                     <IoSearch size={24} />
@@ -372,7 +372,7 @@ const [windowWidth, setWindowWidth] = useState(window.innerWidth);
                 {isScrolled && (
                     <div className='fixed bottom-4 right-4 z-50'>
                         <div
-                            className='bg-yellow-original text-white p-4 rounded-full shadow-lg cursor-pointer hover:bg-gray-700 transition duration-300 animate-bounce'
+                            className='bg-primary-color text-white p-4 rounded-full shadow-lg cursor-pointer hover:bg-gray-700 transition duration-300 animate-bounce'
                             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                         >
                             <FaArrowUp />
