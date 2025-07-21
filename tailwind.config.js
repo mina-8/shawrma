@@ -3,7 +3,7 @@ import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: "class",
+    darkMode: 'class',
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
@@ -13,6 +13,9 @@ export default {
 
     theme: {
         extend: {
+            textshadow:{
+                'lg' : '2px 1px 2px rgba(0,0,0,0.3)'
+            },
             screens: {
                 'xl': '1440px',
             },
@@ -27,6 +30,8 @@ export default {
             },
             animation: {
                 'fadeup': 'fadeup 1s 0s both',
+                'fadeleft': 'fadeleft 2s 1s both',
+                'faderight': 'faderight 2s 1s both',
                 'scaleup': 'scaleUp  0.8s ease-in-out infinite alternate',
             },
             keyframes: {
@@ -34,6 +39,26 @@ export default {
                     '0%': {
                         opacity: '0',
                         transform: 'translate3d(0, 100%, 0)',
+                    },
+                    '100%': {
+                        opacity: '1',
+                        transform: 'translateZ(0)',
+                    },
+                },
+                fadeleft: {
+                    '0%': {
+                        opacity: '0',
+                        transform: 'translate3d(-100% , 0 , 0)'
+                    },
+                    '100%': {
+                        opacity: '1',
+                        transform: 'translateZ(0)',
+                    }
+                },
+                faderight: {
+                    '0%': {
+                        opacity: '0',
+                        transform: 'translate3d(100%, 0, 0)',
                     },
                     '100%': {
                         opacity: '1',

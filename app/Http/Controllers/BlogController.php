@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\OurBlog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
@@ -10,18 +11,37 @@ use Inertia\Inertia;
 class BlogController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         $appLang = app()->getLocale();
-        $blogs = Blog::latest()->get()->map(function ($blog) use($appLang){
+
+        $ourteam = OurBlog::first();
+
+        if(!$ourteam) {
+            return inertia('Welcome/NotFound/NotFound');
+        }
+
+        $blogs = Blog::paginate(5);
+
+        $blogs->getCollection()->transform(function ($blog) use ($appLang){
             return [
-                'id'=>$blog->id,
-                'title' => $blog->getTranslation('title' , $appLang),
-                'content' => $blog->getTranslation('content' , $appLang),
+                'id' => $blog->id,
+                'title' => $blog->getTranslation('title', $appLang),
+                'content' => $blog->getTranslation('content', $appLang),
+                'youtube_link' => $blog->youtube_link,
                 'image' => Storage::url($blog->image),
-                'slug' => $blog->getTranslation('slug' , $appLang)
             ];
         });
-        return Inertia::render('Welcome/OurNews/Index' , ['blogs'=>$blogs]);
+
+        $dataourteam = [
+            'id' => $ourteam->id,
+            'title' => $ourteam->getTranslation('title', $appLang),
+            'content' => $ourteam->getTranslation('content', $appLang),
+            'image' => Storage::url($ourteam->image),
+            'news' => $blogs,
+        ];
+
+        return inertia('Welcome/OurNews/Index', ['ourblog' => $dataourteam]);
     }
     public function show(string $lang, string $slug)
     {
@@ -34,55 +54,18 @@ class BlogController extends Controller
 
         $slugs = $blog->getTranslations('slug');
 
-        $otherblogs = Blog::whereNot('id' , $blog->id)
-        ->latest()
-        ->get()
 
-                            ->take(6)
-                            ->map(function ($blog) use($lang){
-                                return [
-                                    'id' => $blog->id,
-                                    'title' => $blog->getTranslation('title' , $lang),
-                                    'content' => $blog->getTranslation('content' , $lang),
-                                    'image' => Storage::url($blog->image),
-                                    'slug' => $blog->getTranslation('slug' , $lang)
-                                ];
-                            });
-        // Step 4: Prepare translated blog data
         $blogData = [
             'id' => $blog->id,
             'title' => $blog->getTranslation('title', $lang),
             'content' => $blog->getTranslation('content', $lang),
+            'youtube_link' => $blog->youtube_link,
             'image' => Storage::url($blog->image),
             'created_at' => $blog->created_at,
             'updated_at' => $blog->updated_at,
         ];
 
-        return Inertia::render('Welcome/OurNews/Show', ['blog' => $blogData , 'otherblogs'=>$otherblogs, 'slugs' => $slugs]);
+        return Inertia::render('Welcome/OurNews/Show', ['blog' => $blogData , 'slugs' => $slugs]);
     }
 
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

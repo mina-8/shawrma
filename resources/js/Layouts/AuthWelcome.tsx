@@ -13,28 +13,29 @@ import { FaArrowUp } from 'react-icons/fa';
 import { IoMoon, IoSearch } from 'react-icons/io5';
 import SearchForm from '@/Components/SearchWeb/SearchForm';
 import Footer from './Footer';
-import ProductNav from '@/Components/ProductsNav/ProductNav';
+
 import AboutNav from '@/Components/NavList/AboutNav';
 import ServiceNav from '@/Components/NavList/ServiceNav';
-import BrandNav from '@/Components/NavList/BrandNav';
+
 import SpotlightNav from '@/Components/NavList/SpotlightNav';
 import WorkusNav from '@/Components/NavList/WorkusNav';
-import { useTheme } from './ThemeContext';
+
 import { MdOutlineWbSunny } from 'react-icons/md';
 import ChangeLang from '@/Components/ChangeLang/ChangeLang';
+
 
 export default function AuthWelcome({
     header,
     children,
 }: PropsWithChildren<{ header?: ReactNode }>) {
     const { currentRoute }: string | any = usePage().props;
-const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    const [isnavbar, setIsnavbar] = useState(false);
+
     const [showSearch, setShowSearch] = useState(false);
-    const { theme, toggleTheme } = useTheme()
+
     const { t, i18n } = useTranslation();
 
     useEffect(() => {
@@ -42,15 +43,12 @@ const [windowWidth, setWindowWidth] = useState(window.innerWidth);
             setIsScrolled(window.scrollY > 500);
         };
 
-        const handlnav = () => {
-            setIsnavbar(window.scrollY > 100);
-        }
 
         window.addEventListener('scroll', handleScroll);
-        window.addEventListener('scroll', handlnav);
+
         return () => {
             window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('scroll', handlnav);
+
         };
 
 
@@ -61,207 +59,212 @@ const [windowWidth, setWindowWidth] = useState(window.innerWidth);
         <LangWraper>
             <div className="min-h-screen " dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}>
                 <nav
-                    className={` fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${isnavbar ? 'bg-black bg-opacity-50' : 'bg-transparent'} `}
+                    className={`${isScrolled ? 'fixed' : ''}  top-0 left-0 w-full z-50 transition-colors duration-300 `}
                 >
-                    {!isnavbar && (
+                    <div
+                        className='bg-primary-color '
+                    >
+                        {/* top bar */}
                         <div
-                            className='flex items-center w-full max-w-7xl mx-auto  justify-end py-4'
+                            className='flex items-center justify-between max-w-7xl mx-auto px-4 py-4'
                         >
+                            <div>
+                                <Link
+                                    className='text-white cursor-pointer'
 
-                            <Link
-                                className='text-white cursor-pointer'
+                                    href={route('contact-us', { lang: i18n.language })}
+                                >
 
-                                href={route('contact-us', { lang: i18n.language })}
-                            >
+                                    {t('navbar-links.contact-us')}
+                                </Link>
 
-                                {t('navbar-links.contact-us')}
-                            </Link>
-                            <ChangeLang />
 
-                            {/*
-                            <Dropdown>
-                                <Dropdown.Trigger>
-                                    <span className="inline-flex rounded-md">
-                                        <button
-                                            name='lang'
-                                            type="button"
-                                            className="inline-flex items-center rounded-md border border-transparent text-white px-3 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none"
-                                        >
-                                            <AiOutlineGlobal size={24} />
-                                        </button>
-                                    </span>
-                                </Dropdown.Trigger>
-                                <ChangeLang />
-                            </Dropdown> */}
-                            <button onClick={toggleTheme}
-                                className='text-2xl px-4 '
-                            >{theme === 'dark' ? <IoMoon className='text-white' /> : <MdOutlineWbSunny className='text-white' />}</button>
-
-                        </div>
-                    )}
-                    <div className={`mx-auto  px-4 sm:px-6 lg:px-8 ${i18n.language === 'ar' ? 'max-w-7xl' : 'max-w-fit'}  `}>
-                        <div className="flex h-16 justify-between">
-                            <div className="flex relative">
-                                <div className="flex shrink-0 items-center">
-                                    <Link href={route('welcome', { lang: i18n.language })}>
-                                        <ApplicationLogo
-                                            className="block h-20 w-auto fill-current text-white"
-                                        />
-                                    </Link>
-                                </div>
                             </div>
+                            <ChangeLang />
+                        </div>
+                    </div>
+                    {/* navbar */}
+                    <div
+                        className='bg-white'
+                    >
+                        <div className={`mx-auto py-4  px-4 sm:px-6 lg:px-8  max-w-7xl `}>
+                            <div className="flex h-16 ">
+                                <div className="flex relative">
+                                    <div className="flex shrink-0 items-center">
+                                        <Link href={route('welcome', { lang: i18n.language })}>
+                                            <ApplicationLogo
+                                                className="block h-20 w-auto fill-current "
+                                            />
+                                        </Link>
+                                    </div>
+                                </div>
 
-                            <div className={`hidden xl:ms-6 xl:flex xl:items-center relative ${i18n.language === 'en' ? 'xl:text-sm' : ''} `}>
-                                <div className="hidden gap-1 sm:-my-px sm:ms-10 sm:flex">
+                                <div className={`hidden xl:ms-6 xl:flex xl:items-center relative justify-between w-full`}>
+                                    <div className="hidden gap-1 sm:-my-px sm:ms-10 sm:flex">
 
-                                    <Dropdown className='hover:bg-white  hover:text-primary-color px-4 py-6 cursor-pointer text-white '>
-                                        <Dropdown.Trigger>
-                                            {t('home.about')}
-                                        </Dropdown.Trigger>
-                                        <Dropdown.Content
-                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[15%]' : 'translate-x-[0%] '} `}
+                                        <NavLink
+                                            href={route('welcome', { lang: i18n.language })}
+                                            active={currentRoute === 'welcome'}
+                                            className='uppercase inline-flex items-center '
                                         >
-                                            <AboutNav />
-                                        </Dropdown.Content>
-                                    </Dropdown>
+                                            {t('home.home')}
+                                        </NavLink>
 
-                                    <Dropdown className='hover:bg-white hover:text-primary-color px-4 py-6 cursor-pointer text-white'>
-                                        <Dropdown.Trigger>
-                                            {t('home.brands')}
-                                        </Dropdown.Trigger>
-                                        <Dropdown.Content
-                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[12%]' : 'translate-x-[0%] '} `}
+                                        <Dropdown>
+                                            <NavLink
+                                                href={route('about-us', { lang: i18n.language })}
+                                                active={currentRoute === 'about-us'}>
+                                                {t('home.about')}
+                                                <svg
+                                                    className="-me-0.5 ms-2 h-4 w-4"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20"
+                                                    fill="currentColor"
+                                                >
+                                                    <path
+                                                        fillRule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clipRule="evenodd"
+                                                    />
+                                                </svg>
+                                            </NavLink>
+                                            <Dropdown.Content
+                                                align='center'
+                                            >
+                                                <AboutNav />
+
+                                            </Dropdown.Content>
+                                        </Dropdown>
+
+                                        <Dropdown>
+                                            <NavLink
+                                                href={route('how-make', { lang: i18n.language })}
+                                                active={currentRoute === 'how-make'}
+                                            >
+                                                {t('home.how_build')}
+                                                <svg
+                                                    className="-me-0.5 ms-2 h-4 w-4"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20"
+                                                    fill="currentColor"
+                                                >
+                                                    <path
+                                                        fillRule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clipRule="evenodd"
+                                                    />
+                                                </svg>
+                                            </NavLink>
+                                            <Dropdown.Content
+                                                align='center'
+                                            >
+                                                <ServiceNav />
+                                            </Dropdown.Content>
+                                        </Dropdown>
+
+
+                                        <Dropdown>
+                                            <NavLink
+                                                href={route('contact-us', { lang: i18n.language })}
+                                                active={currentRoute === 'contact-us'}
+                                            >
+                                                {t('home.products')}
+                                                <svg
+                                                    className="-me-0.5 ms-2 h-4 w-4"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20"
+                                                    fill="currentColor"
+                                                >
+                                                    <path
+                                                        fillRule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clipRule="evenodd"
+                                                    />
+                                                </svg>
+                                            </NavLink>
+                                            <Dropdown.Content
+                                            align='center'
+                                            >
+                                                {/* <ProductNav /> */}
+                                            </Dropdown.Content>
+                                        </Dropdown>
+
+
+                                        <NavLink
+                                            href={route('work-us', { lang: i18n.language })}
+                                            active={currentRoute === 'work-us'}
+                                            className='uppercase'
                                         >
-                                            <BrandNav />
-                                        </Dropdown.Content>
-                                    </Dropdown>
+                                            {t('home.carreer')}
+                                        </NavLink>
 
-                                    <Dropdown className='hover:bg-white hover:text-primary-color px-4 py-6 cursor-pointer text-white'>
-                                        <Dropdown.Trigger>
-                                            {t('home.services')}
-                                        </Dropdown.Trigger>
-                                        <Dropdown.Content
-                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[12%]' : 'translate-x-[0%] w-full'} `}
+                                        <NavLink
+                                            href={route('contact-us', { lang: i18n.language })}
+                                            active={currentRoute === 'contact-us'}
+                                            className='uppercase'
                                         >
-                                            <ServiceNav />
-                                        </Dropdown.Content>
-                                    </Dropdown>
+                                            {t('home.contact_us')}
+                                        </NavLink>
 
-
-                                    <Dropdown className='hover:bg-white hover:text-primary-color px-4 py-6 cursor-pointer text-white '>
-                                        <Dropdown.Trigger>
-                                            {t('home.products')}
-                                        </Dropdown.Trigger>
-                                        <Dropdown.Content align='right'
-                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[-25%]' : 'translate-x-[25%]'} `}
-
+                                    </div>
+                                    <div className="relative ms-3">
+                                        <button
+                                            name='search'
+                                            type="button"
+                                            className="inline-flex items-center rounded-full bg-primary-color hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
+                                            onClick={() => setShowSearch(true)}
                                         >
-                                            <ProductNav />
-                                        </Dropdown.Content>
-                                    </Dropdown>
-
-
-                                    <Dropdown className='hover:bg-white hover:text-primary-color px-4 py-6 cursor-pointer text-white '>
-                                        <Dropdown.Trigger>
-                                            {t('home.bulidinus')}
-                                        </Dropdown.Trigger>
-                                        <Dropdown.Content
-
-                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[25%]' : 'translate-x-[0%] w-full'}  `}
-
-                                        >
-                                            <WorkusNav />
-                                        </Dropdown.Content>
-                                    </Dropdown>
-
-                                    <Dropdown className='hover:bg-white hover:text-primary-color px-4 py-6 cursor-pointer text-white '>
-                                        <Dropdown.Trigger>
-                                            {t('home.spotlight')}
-                                        </Dropdown.Trigger>
-                                        <Dropdown.Content
-                                            // align='right'
-                                            className={`mt-6 ${i18n.language === 'ar' ? 'translate-x-[15%]' : 'translate-x-[-20%]'} `}
-
-                                        >
-                                            <SpotlightNav />
-                                        </Dropdown.Content>
-                                    </Dropdown>
-
+                                            <IoSearch size={24} />
+                                        </button>
+                                    </div>
 
                                 </div>
-                                <div className="relative ms-3">
+
+                                <div className="-me-2 flex items-center xl:hidden relative">
+
+
                                     <button
-                                        name='search'
-                                        type="button"
-                                        className="inline-flex items-center rounded-full bg-primary-color hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
-                                        onClick={() => setShowSearch(true)}
+                                        onClick={() =>
+                                            setShowingNavigationDropdown(
+                                                (previousState) => !previousState,
+                                            )
+                                        }
+                                        className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition duration-150 ease-in-out hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none"
                                     >
-                                        <IoSearch size={24} />
+                                        <svg
+                                            className="h-6 w-6"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                className={
+                                                    !showingNavigationDropdown
+                                                        ? 'inline-flex'
+                                                        : 'hidden'
+                                                }
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M4 6h16M4 12h16M4 18h16"
+                                            />
+                                            <path
+                                                className={
+                                                    showingNavigationDropdown
+                                                        ? 'inline-flex'
+                                                        : 'hidden'
+                                                }
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M6 18L18 6M6 6l12 12"
+                                            />
+                                        </svg>
                                     </button>
                                 </div>
-
-                            </div>
-
-                            <div className="-me-2 flex items-center xl:hidden relative">
-
-                                {/* <Dropdown>
-                                    <Dropdown.Trigger>
-                                        <span className="inline-flex rounded-md">
-                                            <button
-                                                type="button"
-                                                className="inline-flex items-center rounded-full bg-primary-color hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
-                                                onClick={() => setShowSearch(true)}
-                                            >
-                                                <IoSearch size={24} />
-                                            </button>
-                                        </span>
-                                    </Dropdown.Trigger>
-
-                                </Dropdown> */}
-
-
-                                <button
-                                    onClick={() =>
-                                        setShowingNavigationDropdown(
-                                            (previousState) => !previousState,
-                                        )
-                                    }
-                                    className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition duration-150 ease-in-out hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none"
-                                >
-                                    <svg
-                                        className="h-6 w-6"
-                                        stroke="currentColor"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            className={
-                                                !showingNavigationDropdown
-                                                    ? 'inline-flex'
-                                                    : 'hidden'
-                                            }
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="M4 6h16M4 12h16M4 18h16"
-                                        />
-                                        <path
-                                            className={
-                                                showingNavigationDropdown
-                                                    ? 'inline-flex'
-                                                    : 'hidden'
-                                            }
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="M6 18L18 6M6 6l12 12"
-                                        />
-                                    </svg>
-                                </button>
                             </div>
                         </div>
                     </div>
-
                     <div
                         className={`xl:hidden ${showingNavigationDropdown ? 'block' : 'hidden'} bg-white text-black px-4 py-4 shadow-md z-50`}
                     >
@@ -291,21 +294,11 @@ const [windowWidth, setWindowWidth] = useState(window.innerWidth);
                                 </Dropdown.Content>
                             </Dropdown>
 
-                            <Dropdown>
-                                <Dropdown.Trigger>
-                                    <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
-                                        {t('home.brands')}
-                                    </span>
-                                </Dropdown.Trigger>
-                                <Dropdown.Content>
-                                    <BrandNav />
-                                </Dropdown.Content>
-                            </Dropdown>
 
                             <Dropdown>
                                 <Dropdown.Trigger>
                                     <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
-                                        {t('home.services')}
+                                        {t('home.how_build')}
                                     </span>
                                 </Dropdown.Trigger>
                                 <Dropdown.Content>
@@ -320,7 +313,7 @@ const [windowWidth, setWindowWidth] = useState(window.innerWidth);
                                     </span>
                                 </Dropdown.Trigger>
                                 <Dropdown.Content>
-                                    <ProductNav />
+                                    {/* <ProductNav /> */}
                                 </Dropdown.Content>
                             </Dropdown>
 
@@ -349,7 +342,7 @@ const [windowWidth, setWindowWidth] = useState(window.innerWidth);
                             <span className="inline-flex rounded-md">
                                 <button
                                     type="button"
-                                    className="inline-flex items-center rounded-full bg-primary-color hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
+                                    className="inline-flex items-center rounded-full bg-yellow-original hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
                                     onClick={() => setShowSearch(true)}
                                 >
                                     <IoSearch size={24} />

@@ -7,6 +7,7 @@ use App\Models\OurPromise;
 use App\Models\CoreVesion;
 use App\Models\CoreStation;
 use App\Models\CoreStory;
+use App\Models\CoreSustainability;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Storage;
@@ -33,10 +34,28 @@ class EditOurPromise extends EditRecord
             Step::make(__('filament-panels::resources/pages/ourpromise.fields.header'))
                 ->description(__('filament-panels::resources/pages/ourpromise.fields.description'))
                 ->schema([
-                    Components\FileUpload::make('banner')
-                        ->label(__('filament-panels::resources/pages/ourpromise.fields.banner'))
+
+                    Components\Group::make([
+                        LanguageTabs::make([
+                            Components\TextInput::make('title')
+                                ->label(__('filament-panels::resources/pages/ourpromise.fields.title')),
+
+                            Components\MarkdownEditor::make('content')
+                                ->label(__('filament-panels::resources/pages/ourpromise.fields.content')),
+                            Components\MarkdownEditor::make('description')
+                                ->label(__('filament-panels::resources/pages/ourpromise.fields.description')),
+                            Components\MarkdownEditor::make('footer_title')
+                                ->label(__('filament-panels::resources/pages/ourpromise.fields.footer_title')),
+
+
+                            Components\Hidden::make('slug')
+                                ->label('Slug'),
+                        ]),
+                    ]),
+                    Components\FileUpload::make('image')
+                        ->label(__('filament-panels::resources/pages/ourpromise.fields.image'))
                         ->disk('public')
-                        ->directory('uploads/aboutus/banner')
+                        ->directory('uploads/aboutus')
                         ->visibility('public')
                         ->maxSize(4096)
                         ->getUploadedFileNameForStorageUsing(function ($file) {
@@ -44,33 +63,67 @@ class EditOurPromise extends EditRecord
                             return Str::uuid() . '.' . $extension;
                         })
                         ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp']),
-                    // Components\Group::make([
-                    //     LanguageTabs::make([
-                    //         Components\TextInput::make('title')
-                    //             ->label(__('filament-panels::resources/pages/ourpromise.fields.title'))
-                    //             ,
-
-
-                    //         Components\MarkdownEditor::make('content')
-                    //             ->label(__('filament-panels::resources/pages/ourpromise.fields.content')),
-
-
-                    //         Components\Hidden::make('slug')
-                    //             ->label('Slug'),
-                    //     ]),
-                    // ]),
-                    // Components\FileUpload::make('image')
-                    //     ->label(__('filament-panels::resources/pages/ourpromise.fields.image'))
-                    //     ->disk('public')
-                    //     ->directory('uploads/aboutus')
-                    //     ->visibility('public')
-                    //     ->maxSize(4096)
-                    //     ->getUploadedFileNameForStorageUsing(function ($file) {
-                    //         $extension = $file->getClientOriginalExtension();
-                    //         return Str::uuid() . '.' . $extension;
-                    //     })
-                    //     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp'])
-                    //     ,
+                ]),
+            Step::make(__('filament-panels::resources/pages/ourpromise.fields.create_story.header'))
+                ->description(__('filament-panels::resources/pages/ourpromise.fields.create_story.description'))
+                ->schema([
+                    Components\Repeater::make('edit_core_story')
+                        ->label(__('filament-panels::resources/pages/ourpromise.fields.create_story.description'))
+                        ->schema([
+                            LanguageTabs::make([
+                                Components\TextInput::make('title')
+                                    ->label(__('filament-panels::resources/pages/ourpromise.fields.create_story.title')),
+                                // Components\MarkdownEditor::make('content')
+                                //     ->label(__('filament-panels::resources/pages/ourpromise.fields.create_story.content')),
+                            ]),
+                            Components\FileUpload::make('image')
+                                ->label(__('filament-panels::resources/pages/ourpromise.fields.create_story.image'))
+                                ->disk('public')
+                                ->directory('uploads/vesion')
+                                ->visibility('public')
+                                ->maxSize(4096)
+                                ->getUploadedFileNameForStorageUsing(function ($file) {
+                                    $extension = $file->getClientOriginalExtension();
+                                    return Str::uuid() . '.' . $extension;
+                                })
+                                ->acceptedFileTypes(['application/pdf'])
+                                ->required(),
+                        ])
+                        ->addActionLabel(__('filament-panels::resources/pages/ourpromise.fields.create_story.add_station'))
+                        ->collapsible()
+                        ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null)
+                        ->required(),
+                ]),
+                Step::make(__('filament-panels::resources/pages/ourpromise.fields.create_sustainable.header'))
+                ->description(__('filament-panels::resources/pages/ourpromise.fields.create_sustainable.description'))
+                ->schema([
+                    Components\Repeater::make('edit_core_sustainability')
+                        ->label(__('filament-panels::resources/pages/ourpromise.fields.create_sustainable.description'))
+                        ->schema([
+                            LanguageTabs::make([
+                                Components\TextInput::make('title')
+                                    ->label(__('filament-panels::resources/pages/ourpromise.fields.create_sustainable.title')),
+                                Components\MarkdownEditor::make('content')
+                                    ->label(__('filament-panels::resources/pages/ourpromise.fields.create_sustainable.content')),
+                            ]),
+                            Components\ColorPicker::make('color'),
+                            Components\FileUpload::make('image')
+                                ->label(__('filament-panels::resources/pages/ourpromise.fields.image'))
+                                ->disk('public')
+                                ->directory('uploads/vesion')
+                                ->visibility('public')
+                                ->maxSize(4096)
+                                ->getUploadedFileNameForStorageUsing(function ($file) {
+                                    $extension = $file->getClientOriginalExtension();
+                                    return Str::uuid() . '.' . $extension;
+                                })
+                                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp'])
+                                ->required(),
+                        ])
+                        ->addActionLabel(__('filament-panels::resources/pages/ourpromise.fields.create_station.add_station'))
+                        ->collapsible()
+                        ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null)
+                        ->required(),
                 ]),
             Step::make(__('filament-panels::resources/pages/ourpromise.fields.create_vesion.header'))
                 ->description(__('filament-panels::resources/pages/ourpromise.fields.create_vesion.description'))
@@ -132,28 +185,45 @@ class EditOurPromise extends EditRecord
                         ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null)
                         ->required(),
                 ]),
-            Step::make(__('filament-panels::resources/pages/ourpromise.fields.create_story.header'))
-                ->description(__('filament-panels::resources/pages/ourpromise.fields.create_story.description'))
-                ->schema([
-                    Components\Repeater::make('edit_core_story')
-                        ->label(__('filament-panels::resources/pages/ourpromise.fields.create_story.description'))
-                        ->schema([
-                            LanguageTabs::make([
-                                Components\TextInput::make('title')
-                                    ->label(__('filament-panels::resources/pages/ourpromise.fields.create_story.title')),
-                            ]),
-                            Components\TextInput::make('youtube_link')
-                                ->label(__('filament-panels::resources/pages/ourpromise.fields.create_story.video'))
 
-                                ->url(),
-                        ])
-                        ->addActionLabel(__('filament-panels::resources/pages/ourpromise.fields.create_story.add_video'))
-                        ->collapsible()
-                        ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null),
-                ])
         ];
     }
 
+    protected function getDefaultCoreStory(): array
+    {
+        // Load existing usage instructions for the product
+        return CoreStory::where('storyable_id', $this->record->id)
+            ->where('storyable_type', OurPromise::class)
+            ->get()
+            ->map(function ($corstory) {
+
+                $title = $corstory->getTranslations('title');
+                return [
+                    'id' => $corstory->id,
+                    'title' => $title,
+                    'image' => $corstory->image
+                ];
+            })
+            ->toArray();
+    }
+
+    protected function getDefaultCoreSustainability():array
+    {
+        return CoreSustainability::where('sustainable_id' , $this->record->id)
+        ->where('sustainable_type' , OurPromise::class)
+        ->get()
+        ->map(function ($sustainabil){
+            $title = $sustainabil->getTranslations('title');
+            $content = $sustainabil->getTranslations('content');
+            return [
+                'id' => $sustainabil->id,
+                'title' => $title,
+                'content' => $content,
+                'color' => $sustainabil->color,
+                'image' => $sustainabil->image
+            ];
+        })->toArray();
+    }
     protected function getDefaultCoreVesion(): array
     {
         return CoreVesion::where('vesionable_id', $this->record->id)
@@ -188,30 +258,14 @@ class EditOurPromise extends EditRecord
             })->toArray();
     }
 
-    protected function getDefaultCoreStory(): array
-    {
-        // Load existing usage instructions for the product
-        return CoreStory::where('storyable_id', $this->record->id)
-            ->where('storyable_type', OurPromise::class)
-            ->get()
-            ->map(function ($corstory) {
 
-                $title = $corstory->getTranslations('title');
-
-                return [
-                    'id' => $corstory->id,
-                    'title' => $title,
-                    'youtube_link' => $corstory->youtube_link,
-                ];
-            })
-            ->toArray();
-    }
 
     protected function mutateFormDataBeforeFill(array $data): array
     {
+        $data['edit_core_story'] = $this->getDefaultCoreStory();
+        $data['edit_core_sustainability'] = $this->getDefaultCoreSustainability();
         $data['edit_core_vesion'] = $this->getDefaultCoreVesion();
         $data['edit_core_station'] = $this->getDefaultCoreStations();
-        $data['edit_core_story'] = $this->getDefaultCoreStory();
         return $data;
     }
 
@@ -219,13 +273,6 @@ class EditOurPromise extends EditRecord
     {
 
         $record = $this->record;
-
-        // Handle banner file replacement
-        if (isset($data['banner']) && $data['banner'] !== $record->banner) {
-            if (!empty($record->banner) && Storage::disk('public')->exists($record->banner)) {
-                Storage::disk('public')->delete($record->banner);
-            }
-        }
 
         // Handle image file replacement
         if (isset($data['image']) && $data['image'] !== $record->image) {
@@ -247,23 +294,96 @@ class EditOurPromise extends EditRecord
         return $data;
     }
 
-    protected function convertToEmbedLink(string $url): string
-    {
-        if (preg_match('/youtube\.com\/embed\/([a-zA-Z0-9_-]+)/', $url, $match)) {
-            return "https://www.youtube.com/embed/{$match[1]}";
+    protected function corestory(){
+        // handel core story
+        $EditCoreStory = $this->form->getState()['edit_core_story'] ?? [];
+        $ExistingIds = CoreStory::where('storyable_id', $this->record->id)
+            ->where('storyable_type', OurPromise::class)
+            ->pluck('id')->toArray();
+        $submittedIds = array_filter(array_column($EditCoreStory, 'id'));
+
+        // delete remove useage core story
+        foreach($ExistingIds as $deletestory){
+            if(!in_array($deletestory , $submittedIds)){
+                $deleteId = CoreStory::find($deletestory);
+
+                if($deleteId && !empty($deleteId->image) && Storage::disk('public')->exists($deleteId->image)){
+                    Storage::disk('public')->delete($deleteId->image);
+                }
+
+                $deleteId?->delete();
+            }
         }
 
-        if (preg_match('/(youtu\.be\/|youtube\.com\/watch\?v=)([a-zA-Z0-9_-]+)/', $url, $match)) {
-            return "https://www.youtube.com/embed/{$match[2]}";
+        // create or update core story
+        foreach ($EditCoreStory as $corestory) {
+
+            if (isset($corestory['id']) && in_array($corestory['id'], $ExistingIds)) {
+                CoreStory::where('id', $corestory['id'])
+                    ->update([
+                        'title' => $corestory['title'],
+                        'image' => $corestory['image'],
+                        'storyable_id' => $this->record->id,
+                        'storyable_type' => OurPromise::class
+                    ]);
+            } else {
+
+                CoreStory::create([
+                    'title' => $corestory['title'],
+                    'image' => $corestory['image'],
+                    'storyable_id' => $this->record->id,
+                    'storyable_type' => OurPromise::class
+                ]);
+            }
+        }
+    }
+
+    protected function coresustainability(){
+        $EditCoreSustainability = $this->form->getState()['edit_core_sustainability'] ?? [];
+        $ExistCoreSustainabillity = CoreSustainability::where('sustainable_id' , $this->record->id)
+        ->where('sustainable_type' , OurPromise::class)
+        ->pluck('id')->toArray();
+        $SubmitedSustainability = array_filter(array_column($EditCoreSustainability , 'id'));
+
+        // Identify and delete removed stations (including their images)
+        foreach($ExistCoreSustainabillity as $deletedId){
+            if(!in_array($deletedId , $SubmitedSustainability)){
+                $deletedSustainabilID = CoreSustainability::find($deletedId);
+
+                if($deletedSustainabilID && !empty($deletedSustainabilID->image) && Storage::disk('public')->exists($deletedSustainabilID->image)){
+                    Storage::disk('public')->delete($deletedSustainabilID->image);
+                }
+
+                $deletedSustainabilID->delete();
+            }
         }
 
-        throw \Illuminate\Validation\ValidationException::withMessages([
-            'edit_core_story' => ['One or more YouTube URLs are invalid.'],
-        ]);
+        foreach($EditCoreSustainability as $coresustainbility){
+            $dataSustainability = [
+                'title' => $coresustainbility['title'],
+                'content' => $coresustainbility['content'],
+                'image' => $coresustainbility['image'],
+                'color' => $coresustainbility['color'],
+                'sustainable_id' => $this->record->id,
+                'sustainable_type' => OurPromise::class
+            ];
+
+            if(!empty($coresustainbility['id'])){
+                CoreSustainability::where('id' , $coresustainbility['id'])->update($dataSustainability);
+            }else{
+                CoreSustainability::create($dataSustainability);
+            }
+        }
     }
 
     protected function afterSave(): void
     {
+
+        // handel core story
+        $this->corestory();
+
+        // handel core sustainability
+        $this->coresustainability();
 
         // handel core vesion
         $EditCoreVesion = $this->form->getState()['edit_core_vesion'] ?? [];
@@ -340,40 +460,6 @@ class EditOurPromise extends EditRecord
             }
         }
 
-        // handel core story
-        $EditCoreStory = $this->form->getState()['edit_core_story'] ?? [];
-        $ExistingIds = CoreStory::where('storyable_id', $this->record->id)
-            ->where('storyable_type', OurPromise::class)
-            ->pluck('id')->toArray();
-        $submittedIds = array_filter(array_column($EditCoreStory, 'id'));
 
-        // delete remove useage core story
-        $idsStoryToDelete = array_diff($ExistingIds, $submittedIds);
-        if (!empty($idsStoryToDelete)) {
-            CoreStory::whereIn('id', $idsStoryToDelete)->delete();
-        }
-
-        // create or update core story
-        foreach ($EditCoreStory as $corestory) {
-            $embedLink = $this->convertToEmbedLink($corestory['youtube_link']);
-
-            if (isset($corestory['id']) && in_array($corestory['id'], $ExistingIds)) {
-                CoreStory::where('id', $corestory['id'])
-                    ->update([
-                        'title' => $corestory['title'],
-                        'youtube_link' => $embedLink,
-                        'storyable_id' => $this->record->id,
-                        'storyable_type' => OurPromise::class
-                    ]);
-            } else {
-
-                CoreStory::create([
-                    'title' => $corestory['title'],
-                    'youtube_link' => $embedLink,
-                    'storyable_id' => $this->record->id,
-                    'storyable_type' => OurPromise::class
-                ]);
-            }
-        }
     }
 }

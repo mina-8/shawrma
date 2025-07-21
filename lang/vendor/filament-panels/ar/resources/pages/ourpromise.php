@@ -1,6 +1,6 @@
 <?php
 return [
-    'title' => 'التزامنا',
+    'title' => 'التزامنا ',
     'breadcrumb' => 'التزامنا',
     'actions' => [
         'create' => [
@@ -19,13 +19,29 @@ return [
     ],
     'fields' => [
         'header' => 'انشاء التزامنا',
-        'description' => 'الوصف ',
+        'description' => 'وصف الاستدامة',
+        'footer_title' => 'كلمة الاستدامة ',
         'mainproduct' => 'قائمة المتجات الرئيسية',
         'title' => 'عنوان التزامنا',
         'story_description' => 'الوصف',
         'content' => 'المحتوي',
         'image' => 'الصورة',
         'banner' => 'الصورة الرئيسية',
+        'create_story'=>[
+            'header'=>'انشاء ملف الاستدامة',
+            'description' => 'اضافة ملف الاستدامة',
+            'title' => 'عنوان',
+            'content' => 'محتوي',
+            'image'=> 'رفع ملف ',
+            'add_station' => 'اضف اخر'
+        ],
+        'create_sustainable' =>[
+            'header' => 'انشاء قسم الاستدامة',
+            'description' => 'اضافة اقسام للاستدامة',
+            'title' => 'عنوان',
+            'content' => 'محتوي',
+            'add_other' => 'اضف اخر'
+        ],
         'create_vesion'=>[
             'header'=> 'انشاء مبادئنا',
             'description' => 'محتوي تعريفي لاضافة المبادئ',
@@ -34,19 +50,13 @@ return [
             'add_station' => 'اضف مبدئ اخر'
         ],
         'create_station'=>[
-            'header'=> 'انشاء قيمنا',
-            'description' => 'محتوي تعريفي لاضافة قيمنا',
-            'title' => 'عنوان قيمنا',
-            'content' => 'محتوي قيمنا',
-            'add_station' => 'اضف قيم اخري'
+            'header'=> 'انشاء كلمة المدير التنفيذي',
+            'description' => 'محتوي كلمة المدير التنفيذي',
+            'title' => 'عنوان ',
+            'content' => 'محتوي ',
+            'add_station' => 'اضف اخر'
         ],
-        'create_story'=>[
-            'header'=>'انشاء محتوي لالتزامنا',
-            'description' => 'اضافة قصة تعريفية تحتوي علي عنوان و فيديو',
-            'title' => 'عنوان الفيديو',
-            'video' => 'رابط الفيديو الخاص باليوتيوب',
-            'add_video' => 'اضف فيديو تعريفي اخر'
-        ],
+
         'created_at' => 'تاريخ الإنشاء',
     ],
 ];

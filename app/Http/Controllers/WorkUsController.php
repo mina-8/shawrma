@@ -18,9 +18,7 @@ class WorkUsController extends Controller
             return Inertia::render('Welcome/NotFound/NotFound');
         }
 
-        $corevesion = [];
-
-
+        $corevesions = [];
 
         // vesions
         if($workus && $workus->corevesion !== null ){
@@ -34,25 +32,16 @@ class WorkUsController extends Controller
             });
         }
 
-        $jobads = JobAd::latest()->get()->map(function ($jobad) use($appLang){
-            return [
-                'id' => $jobad->id,
-                'title' => $jobad->getTranslation('title', $appLang),
-                'content' => $jobad->getTranslation('content', $appLang),
-                'image' => Storage::url($jobad->image),
-                'slug' => $jobad->slug,
-            ];
-        });
 
         $dataWorkUs = [
             'id' => $workus->id,
-            'banner' => Storage::url($workus->banner),
-            'header_title' => $workus->getTranslation('header_title' , $appLang),
-            'header_content' => $workus->getTranslation('header_content' , $appLang),
-            'content' => $workus->getTranslation('content' , $appLang),
             'title' => $workus->getTranslation('title' , $appLang),
+            'content' => $workus->getTranslation('content' , $appLang),
+            'image' => Storage::url($workus->image),
+            'content_title' => $workus->getTranslation('content_title' , $appLang),
+            'footer_content' => $workus->getTranslation('footer_content' , $appLang),
             'corevesions' => $corevesions,
-            'jobads' => $jobads,
+
         ];
         return Inertia::render('Welcome/WorkUs/Index' , ['workus'=>$dataWorkUs]);
     }

@@ -24,7 +24,7 @@ class OurPromiseResource extends Resource
         return __('filament-panels::layout.webist.about_us');
     }
 
-        public static function getModelLabel(): string
+    public static function getModelLabel(): string
     {
         return __('filament-panels::resources/pages/ourpromise.title');
     }
@@ -36,7 +36,10 @@ class OurPromiseResource extends Resource
     {
         return __('filament-panels::resources/pages/ourpromise.title');
     }
-
+    public static function getNavigationSort(): ?int
+    {
+        return 2;
+    }
 
     public static function form(Form $form): Form
     {

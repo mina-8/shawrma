@@ -30,13 +30,34 @@ class EditWorkUs extends EditRecord
     protected function getSteps(): array
     {
         return [
-            Step::make(__('filament-panels::resources/pages/ourculter.fields.header'))
-                ->description(__('filament-panels::resources/pages/ourculter.fields.description'))
+            Step::make(__('filament-panels::resources/pages/workus.fields.header'))
+                ->description(__('filament-panels::resources/pages/workus.fields.description'))
                 ->schema([
-                    Components\FileUpload::make('banner')
-                        ->label(__('filament-panels::resources/pages/ourculter.fields.banner'))
+
+                    Components\Group::make([
+                        LanguageTabs::make([
+                            Components\TextInput::make('title')
+                                ->label(__('filament-panels::resources/pages/workus.fields.title'))
+                                ->required(),
+
+                            Components\MarkdownEditor::make('content')
+                                ->label(__('filament-panels::resources/pages/workus.fields.content'))
+                                ->required(),
+
+                            Components\TextInput::make('content_title')
+                                ->label(__('filament-panels::resources/pages/workus.fields.content_title'))
+                                ->required(),
+
+                            Components\MarkdownEditor::make('footer_content')
+                                ->label(__('filament-panels::resources/pages/workus.fields.footer_content'))
+                                ->required(),
+
+
+                        ]),
+                        Components\FileUpload::make('image')
+                        ->label(__('filament-panels::resources/pages/workus.fields.image'))
                         ->disk('public')
-                        ->directory('uploads/aboutus/banner')
+                        ->directory('uploads/workus')
                         ->visibility('public')
                         ->maxSize(4096)
                         ->getUploadedFileNameForStorageUsing(function ($file) {
@@ -44,42 +65,23 @@ class EditWorkUs extends EditRecord
                             return Str::uuid() . '.' . $extension;
                         })
                         ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp']),
-                    Components\Group::make([
-                        LanguageTabs::make([
-                            Components\TextInput::make('header_title')
-                                ->label(__('filament-panels::resources/pages/ourculter.fields.title'))
-                                ->required(),
-
-                            Components\TextInput::make('header_content')
-                                ->label(__('filament-panels::resources/pages/ourculter.fields.title'))
-                                ->required(),
-
-                            Components\TextInput::make('title')
-                                ->label(__('filament-panels::resources/pages/ourculter.fields.title'))
-                                ->required(),
-
-                            Components\MarkdownEditor::make('content')
-                                ->label(__('filament-panels::resources/pages/ourculter.fields.content')),
-
-
-                        ]),
                     ]),
 
                 ]),
-            Step::make(__('filament-panels::resources/pages/ourculter.fields.create_vesion.header'))
-                ->description(__('filament-panels::resources/pages/ourculter.fields.create_vesion.description'))
+            Step::make(__('filament-panels::resources/pages/workus.fields.create_vesion.header'))
+                ->description(__('filament-panels::resources/pages/workus.fields.create_vesion.description'))
                 ->schema([
                     Components\Repeater::make('edit_core_vesion')
-                        ->label(__('filament-panels::resources/pages/ourculter.fields.create_vesion.description'))
+                        ->label(__('filament-panels::resources/pages/workus.fields.create_vesion.description'))
                         ->schema([
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
-                                    ->label(__('filament-panels::resources/pages/ourculter.fields.create_vesion.title')),
+                                    ->label(__('filament-panels::resources/pages/workus.fields.create_vesion.title')),
                                 Components\MarkdownEditor::make('content')
-                                    ->label(__('filament-panels::resources/pages/ourculter.fields.create_vesion.content')),
+                                    ->label(__('filament-panels::resources/pages/workus.fields.create_vesion.content')),
                             ]),
                             Components\FileUpload::make('image')
-                                ->label(__('filament-panels::resources/pages/ourculter.fields.image'))
+                                ->label(__('filament-panels::resources/pages/workus.fields.image'))
                                 ->disk('public')
                                 ->directory('uploads/vesion')
                                 ->visibility('public')
@@ -91,12 +93,12 @@ class EditWorkUs extends EditRecord
                                 ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp'])
                                 ->required(),
                         ])
-                        ->addActionLabel(__('filament-panels::resources/pages/ourculter.fields.create_station.add_station'))
+                        ->addActionLabel(__('filament-panels::resources/pages/workus.fields.create_vesion.add_station'))
                         ->collapsible()
                         ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null)
                         ->required(),
                 ]),
-            
+
 
         ];
     }

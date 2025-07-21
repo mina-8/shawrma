@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('contact_us', function (Blueprint $table) {
             $table->id();
-            $table->enum('type' , ['inquiry' , 'complaint' , 'comments']);
-            $table->string('name');
-            $table->string('email');
+            $table->string('banner');
+            $table->json('title');
+            $table->string('addres');
             $table->string('phone');
-            $table->string('country');
-            $table->string('message');
+            $table->string('fax');
+            $table->text('map');
             $table->timestamps();
         });
     }

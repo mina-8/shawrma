@@ -35,84 +35,16 @@ class HomeController extends Controller
                     'title' => $title,
                     'content' => $content,
                     'image' => $image,
+                    'active_btn' => $slide->active_btn,
                     'str_btn' => $str_btn,
                     'link' => $slide->link
                 ];
             });
 
-        // Blogs
-        $blogs = Blog::latest()
-            ->take(4)
-            ->get()
-            ->map(function ($blog) use ($appLang) {
-                $title = $blog->getTranslation('title', $appLang);
-                $content = $blog->getTranslation('content', $appLang);
-                $slug = $blog->getTranslation('slug', $appLang);
-                $image = Storage::url($blog->image);
-
-                return [
-                    'id' => $blog->id,
-                    'title' => $title,
-                    'content' => $content,
-                    'image' => $image,
-                    'slug' => $slug
-                ];
-            });
-
-        // facts and number
-        $factsandnumber = FactNumber::whereNull('factable_type')
-            ->get()
-            ->map(function ($factnumber) use ($appLang) {
-                return [
-                    'id' => $factnumber->id,
-                    'title' => $factnumber->getTranslation('title', $appLang),
-                    'number' => $factnumber->number,
-                    'mark_number' => $factnumber->mark_number,
-                    'image' => Storage::url($factnumber->image)
-                ];
-            });
-        // our impact
-        $ourimpacts = OurImpact::latest()
-            ->take(5)
-            ->get()
-            ->map(function ($ourimpact) use ($appLang) {
-                return [
-                    'id' => $ourimpact->id,
-                    'title' => $ourimpact->getTranslation('title', $appLang),
-                    'content' => $ourimpact->getTranslation('content', $appLang),
-                    'image' => Storage::url($ourimpact->image),
-                    'slug' => $ourimpact->getTranslation('slug', $appLang)
-                ];
-            });
-
-            $brands = OurBrand::latest()
-            ->get()
-            ->map(function ($brand) use($appLang){
-                return [
-                    'id' => $brand->id,
-                    'header_title' => $brand->getTranslation('header_title' , $appLang),
-                    'image' => Storage::url($brand->image),
-                    'slug' => $brand->getTranslation('slug' , $appLang)
-                ];
-            });
-
-        // our main plair
-        $ourmainplairs = OurMainPlair::get()->map(fn($ourmainplair) =>[
-            'id' => $ourmainplair->id,
-            'header_title' => $ourmainplair->getTranslation('header_title' , $appLang),
-            'title' => $ourmainplair->getTranslation('title' , $appLang),
-            'content' => $ourmainplair->getTranslation('content' , $appLang),
-            'image' => Storage::url($ourmainplair->image),
-            'link' => $ourmainplair->link
-        ]);
 
         return Inertia::render('Welcome', [
             'slides' => $slides,
-            'blogs' => $blogs,
-            'ourmainplair' => $ourmainplairs,
-            'factnumbers' => $factsandnumber,
-            'ourimpacts' => $ourimpacts,
-            'brands' => $brands
+
         ]);
     }
 }

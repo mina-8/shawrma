@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('our_stories', function (Blueprint $table) {
             $table->id();
-            $table->string('banner')->nullable();
             $table->json('title');
-            $table->json('description');
             $table->json('content');
             $table->string('image')->nullable();
             $table->json('slug');

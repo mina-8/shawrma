@@ -1,4 +1,4 @@
-import ReciveUpdate from '@/Components/ReciveUpdate';
+
 import { Head } from '@inertiajs/react';
 import React from 'react'
 import { useTranslation } from 'react-i18next';
@@ -9,14 +9,7 @@ const NotFound = () => {
       return (
           <>
             <Head title={t('notfound')} />
-            <div
-                className="bg-gray-50 flex flex-col"
-            >
-                {/* Top Banner */}
-                <div
-                    className="w-full h-32 bg-primary-color bg-cover bg-center"
-                />
-            </div>
+            
             <div
                 className=' w-full max-w-7xl container mx-auto'
             >
@@ -25,7 +18,7 @@ const NotFound = () => {
                 <div>
                     <img src={bsco} alt={'notfound'} />
                 </div>
-            <ReciveUpdate/>
+
         </>
       );
 }

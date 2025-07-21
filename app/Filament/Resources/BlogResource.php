@@ -57,6 +57,10 @@ class BlogResource extends Resource
                             Forms\Components\Hidden::make('slug')
                                 ->label('slug'),
                         ]),
+                        Forms\Components\TextInput::make('youtube_link')
+                            ->label(__('filament-panels::resources/pages/ourstory.fields.create_story.video'))
+                            // ->required()
+                            ->url(),
                         Forms\Components\FileUpload::make('image')
                             ->label(__('filament-panels::resources/pages/blog.fields.image'))
                             ->image()
@@ -82,7 +86,7 @@ class BlogResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->label(__('filament-panels::resources/pages/blog.fields.title'))
                     ->searchable(),
-                
+
                 Tables\Columns\ImageColumn::make('image')
                     ->label(__('filament-panels::resources/pages/blog.fields.image'))
                     ->disk('public')

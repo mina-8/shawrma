@@ -1,4 +1,4 @@
-import ReciveUpdate from '@/Components/ReciveUpdate'
+
 import { Head } from '@inertiajs/react'
 import banner from '@/../../public/aboutus/our-story.jpg'
 import ReactMarkdown from 'react-markdown';
@@ -69,7 +69,7 @@ const Index = ({ buildinforamtion }: Props) => {
                 </div>
 
             </div>
-            <ReciveUpdate />
+            
         </>
     )
 }

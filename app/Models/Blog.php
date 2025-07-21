@@ -11,6 +11,7 @@ class Blog extends Model
         'title',
         'content',
         'image',
+        'youtube_link',
         'slug'
     ];
     public $translatable = ['title', 'content', 'slug'];

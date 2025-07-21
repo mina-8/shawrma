@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Redirect;
 class CreateOurStory extends CreateRecord
 {
     use CreateRecord\Concerns\HasWizard;
+
+    protected static bool $canCreateAnother = false;
     protected static string $resource = OurStoryResource::class;
 
     public function mount(): void
@@ -41,25 +43,12 @@ class CreateOurStory extends CreateRecord
             Step::make(__('filament-panels::resources/pages/ourstory.fields.header'))
                 ->description(__('filament-panels::resources/pages/ourstory.fields.description'))
                 ->schema([
-                    Components\FileUpload::make('banner')
-                        ->label(__('filament-panels::resources/pages/ourstory.fields.banner'))
-                        ->disk('public')
-                        ->directory('uploads/aboutus/banner')
-                        ->visibility('public')
-                        ->maxSize(4096)
-                        ->getUploadedFileNameForStorageUsing(function ($file) {
-                            $extension = $file->getClientOriginalExtension();
-                            return Str::uuid() . '.' . $extension;
-                        })
-                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp']),
+
                     Components\Group::make([
                         LanguageTabs::make([
                             Components\TextInput::make('title')
                                 ->label(__('filament-panels::resources/pages/ourstory.fields.title'))
                                 ->required(),
-
-                            Components\MarkdownEditor::make('description')
-                                ->label(__('filament-panels::resources/pages/ourstory.fields.description')),
 
                             Components\MarkdownEditor::make('content')
                                 ->label(__('filament-panels::resources/pages/ourstory.fields.content')),
@@ -112,24 +101,7 @@ class CreateOurStory extends CreateRecord
                         ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null)
                         ->required(),
                 ]),
-            Step::make(__('filament-panels::resources/pages/ourstory.fields.create_story.header'))
-                ->description(__('filament-panels::resources/pages/ourstory.fields.create_story.description'))
-                ->schema([
-                    Components\Repeater::make('create_core_story')
-                        ->label(__('filament-panels::resources/pages/ourstory.fields.create_story.description'))
-                        ->schema([
-                            LanguageTabs::make([
-                                Components\TextInput::make('title')
-                                    ->label(__('filament-panels::resources/pages/ourstory.fields.create_story.title')),
-                            ]),
-                            Components\TextInput::make('youtube_link')
-                                ->label(__('filament-panels::resources/pages/ourstory.fields.create_story.video'))
-                                ->url(),
-                        ])
-                        ->addActionLabel(__('filament-panels::resources/pages/ourstory.fields.create_story.add_video'))
-                        ->collapsible()
-                        ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null),
-                ])
+
         ];
     }
     protected function mutateFormDataBeforeCreate(array $data): array
@@ -160,30 +132,6 @@ class CreateOurStory extends CreateRecord
                 ]);
             }
         }
-        // create core story
-        $CreateCoreStory = $this->form->getState()['create_core_story'] ?? [];
 
-        if (!empty($CreateCoreStory) && $this->record) {
-            foreach ($CreateCoreStory as $corestory) {
-
-                $youtubeLink = $corestory['youtube_link'];
-
-                if (preg_match('/(youtu\.be\/|youtube\.com\/(watch\?v=|embed\/))([a-zA-Z0-9_-]+)/', $youtubeLink, $matches)) {
-                    $videoId = $matches[3];
-                    $embedLink = "https://www.youtube.com/embed/{$videoId}";
-                } else {
-                    throw \Illuminate\Validation\ValidationException::withMessages([
-                        'create_core_story' => ['One or more YouTube URLs are invalid.'],
-                    ]);
-                }
-
-                CoreStory::create([
-                    'title' => $corestory['title'],
-                    'youtube_link' => $embedLink,
-                    'storyable_id' => $this->record->id,
-                    'storyable_type' => OurStory::class
-                ]);
-            }
-        }
     }
 }

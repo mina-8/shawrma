@@ -25,6 +25,8 @@ class EditBlog extends EditRecord
         ];
     }
 
+
+
     protected function mutateFormDataBeforeSave(array $data): array
     {
         $record = $this->record;
@@ -48,6 +50,8 @@ class EditBlog extends EditRecord
         if (!empty($data['title']['en']) && (!isset($recordTitle['en']) || $data['title']['en'] !== $recordTitle['en'])) {
             $dataSlug['en'] = str_replace(' ', '-', $data['title']['en']);
         }
+
+        
 
         $data['slug'] = $dataSlug;
 

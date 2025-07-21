@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
+use App\Models\CoreStory;
 use App\Models\FactNumber;
 use App\Models\OurPromise;
 use Illuminate\Http\Request;
@@ -19,10 +21,36 @@ class OurPromiseController extends Controller
             return Inertia::render('Welcome/NotFound/NotFound');
         }
 
+        $corestories = [];
+        $coresustainability = [];
         $corevesions = [];
         $corestations = [];
-        $corestories = [];
 
+
+        // core story
+        if($ourpromise && $ourpromise->corestory !== null){
+            $corestories = $ourpromise->corestory->map(function ($corestory) use($appLang){
+                return[
+                    'id' => $corestory->id,
+                    'title'=> $corestory->getTranslation('title' , $appLang),
+                    // 'image' => Storage::url($corestory->image)
+                    'image' => $corestory->image
+                ];
+            });
+        }
+
+        // core sustainability
+        if($ourpromise && $ourpromise->coresustainability !== null){
+            $coresustainability = $ourpromise->coresustainability->map(function ($coresustain) use($appLang){
+                return[
+                    'id' => $coresustain->id,
+                    'title'=> $coresustain->getTranslation('title' , $appLang),
+                    'content' => $coresustain->getTranslation('content' , $appLang),
+                    'color' => $coresustain->color,
+                    'image' => Storage::url($coresustain->image)
+                ];
+            });
+        }
 
         // vesions
         if($ourpromise && $ourpromise->corevesion !== null ){
@@ -48,28 +76,43 @@ class OurPromiseController extends Controller
             });
         }
 
-        // core story
-        if($ourpromise && $ourpromise->corestory !== null){
-            $corestories = $ourpromise->corestory->map(function ($corestory) use($appLang){
-                return[
-                    'id' => $corestory->id,
-                    'title'=> $corestory->getTranslation('title' , $appLang),
-                    'youtube_link' => $corestory->youtube_link
-                ];
-            });
-        }
+        $ourNews = Blog::latest()
+                    ->limit(3)
+                    ->get()
+                    ->map(function ($news) use($appLang){
+                        return [
+                            'id' => $news->id,
+                            'title' => $news->getTranslation('title' , $appLang),
+                            'image' => Storage::url($news->image),
+                            'slug' => $news->getTranslation('slug' , $appLang)
+                        ];
+                    });
+
 
         $dataOurPromise = [
             'id' => $ourpromise->id,
             'title' => $ourpromise->getTranslation('title' , $appLang),
+            'description' => $ourpromise->getTranslation('description' , $appLang),
             'content' => $ourpromise->getTranslation('content' , $appLang),
-            'banner' => $ourpromise->banner === null ? null : Storage::url($ourpromise->banner),
+            'footer_title' => $ourpromise->getTranslation('footer_title' , $appLang),
             'image' => Storage::url($ourpromise->image),
+            'corestories' => $corestories,
+            'coresustains' => $coresustainability,
             'corevesions' => $corevesions,
             'corestations' => $corestations,
-            'corestories' => $corestories
+            'news' => $ourNews
         ];
 
         return Inertia::render('Welcome/OurPromise/Index' , ['ourpromise'=>$dataOurPromise]);
+    }
+
+
+    public function show(string $lang , string $id){
+        $pdf = CoreStory::find($id);
+        if(!$pdf){
+            return Inertia::render('Welcome/NotFound/NotFound');
+        }
+
+        return response()->file(Storage::disk('public')->path($pdf->image));
     }
 }

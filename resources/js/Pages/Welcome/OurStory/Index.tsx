@@ -1,23 +1,8 @@
 import { Head } from '@inertiajs/react';
 import React from 'react'
 import { useTranslation } from 'react-i18next';
+import { FaRegCalendarAlt } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
-import banner from '@/../../public/aboutus/our-story.jpg'
-import img1 from '../../../../../public/possibility/figures-customers.svg';
-import img2 from '../../../../../public/possibility/figures-employees.svg';
-import img3 from '../../../../../public/possibility/figures-products.svg';
-import img4 from '../../../../../public/possibility/figures-tons.svg';
-import img5 from '../../../../../public/possibility/poduction-lines.svg';
-import img6 from '../../../../../public/possibility/figures-projects.svg';
-import CountNumber from "@/Components/CountNumber";
-import ReciveUpdate from '@/Components/ReciveUpdate';
-import isInLastRow from '@/Components/IsinLastRow/IsinLastRow';
-
-interface CoreStories {
-    id: number;
-    title: string;
-    youtube_link: string;
-}
 
 interface CoreStations {
     id: number;
@@ -25,23 +10,14 @@ interface CoreStations {
     content: string;
     image: string;
 }
-interface FactsNumber {
-    id: number;
-    title: string;
-    number: number;
-    mark_number: string;
-    image: string;
-}
+
 interface OurStory {
     id: number;
     title: string;
     image: string;
-    banner: string;
     content: string;
-    description: string;
-    possibilty: FactsNumber[];
     corestations: CoreStations[];
-    corestories: CoreStories[];
+
 }
 
 interface Props {
@@ -49,197 +25,76 @@ interface Props {
 }
 const Index = ({ ourstory }: Props) => {
     const { t, i18n } = useTranslation();
-    const staticPossibilty = [img1, img2, img3, img4, img5, img6 ,img6, img6, img6];
+
 
     return (
         <>
             <Head title={t('ourstory.title')} />
-            <div
-                className="bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100"
-            >
-                {/* top banner */}
-                <div
-                    className="w-full h-[500px] flex relative overflow-hidden"
-                >
-                    <div
-                        className="w-full h-full bg-cover  absolute"
-                        style={{
-                            backgroundImage: `url('${ourstory.banner ? ourstory.banner : banner}')`,
-                            backgroundPosition: 'center center',
-                            backgroundRepeat: 'no-repeat'
-                        }}
-                    />
-                    <div className='absolute w-full h-full bg-black top-0 right-0 opacity-50'></div>
-                    <h2
-                        className={`relative flex w-full  items-center  mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-6xl text-white font-medium`}
-                    >
-                        {t('ourstory.title')}
-                    </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 mx-auto min-h-screen">
+                {/* Text Content */}
+                <div className="px-12 text-xl leading-10 flex flex-col justify-center">
+                    <h3 className="text-4xl font-semibold mb-4">{ourstory?.title}</h3>
+                    <ReactMarkdown>{ourstory?.content}</ReactMarkdown>
                 </div>
-                {/* description */}
-                <div
-                    className="flex flex-col justify-center items-center my-8 px-4"
-                >
-                    <div
-                        className='flex flex-col justify-center items-center'
-                    >
-                        <h3
-                            className='text-3xl font-semibold text-primary-color border-b-4 border-primary-color pb-4'
-                        >{ourstory?.title}</h3>
-                        <div
-                            className='mx-12 my-12 text-lg leading-8 w-1/2'
-                        >
-                            <ReactMarkdown>{ourstory?.description}</ReactMarkdown>
-                        </div>
-                    </div>
 
-                </div>
-                {/* content */}
-                <div
-                    className='flex justify-between items-center w-full bg-slate-200 mx-0 px-0 dark:bg-gray-900 dark:text-gray-100'
-                >
+                {/* Image */}
+                <div className="flex justify-center items-center">
                     <img
                         src={ourstory?.image}
-                        className='w-1/2'
+                        alt={ourstory?.title}
+                        className="w-full h-full object-cover"
                     />
-                    <div
-                        className='mx-4 text-xl leading-10'
-                    >
-                        <ReactMarkdown>{ourstory?.content}</ReactMarkdown>
-                    </div>
-                </div>
-                {/* core stations */}
-                {ourstory.corestations.length > 0 && (
-                    <div
-                        className='flex flex-col '
-                    >
-                        {ourstory.corestations.map((corestation) => (
-                            <div
-                                key={corestation.id}
-                                className='bg-cover bg-center bg-no-repeat flex flex-col justify-center items-center gap-4 py-8 px-12 '
-                                style={{
-                                    backgroundImage: `url('${corestation.image}')`
-                                }}
-                            >
-                                <h3
-                                    className='text-3xl font-semibold text-primary-color border-b-4 border-primary-color pb-4'
-                                >{corestation.title}</h3>
-                                <div
-                                    className='mx-4 text-xl text-white leading-10'
-                                >
-                                    <ReactMarkdown>{corestation?.content}</ReactMarkdown>
-                                </div>
-
-                            </div>
-                        ))}
-                    </div>
-                )}
-                {/* core stories */}
-                {ourstory.corestories.length > 0 && (
-                    <div
-                        className="flex flex-col justify-center items-center w-full py-12 bg-gray-100 px-4 sm:px-6 lg:px-8"
-                    >
-                        {ourstory.corestories.map((corestory) => (
-                            <div
-                                key={corestory.id}
-                                className="flex flex-col justify-center items-center w-full max-w-6xl mb-12"
-                            >
-                                <h3
-                                    className="text-2xl sm:text-3xl font-semibold text-primary-color border-b-4 border-primary-color pb-4 text-center"
-                                >{corestory.title}</h3>
-
-
-                                <div className="w-full aspect-video mt-6">
-                                    <iframe
-                                        className="w-full h-full rounded-md shadow-md"
-                                        src={corestory.youtube_link}
-                                        title="YouTube video player"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
-                                        allowFullScreen
-                                    ></iframe>
-                                </div>
-
-                            </div>
-                        ))}
-                    </div>
-                )}
-
-                {/* facts and numbers */}
-                <div
-                    className='flex flex-col justify-center items-center bg-gray-200 py-8 dark:bg-gray-900 dark:text-gray-100'
-                >
-                    <h3
-                        className='text-3xl font-semibold text-primary-color border-b-4 border-primary-color pb-4'
-                    >{t('possibilty.title')}</h3>
-                    <div className='grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 my-8 w-full max-w-7xl'>
-                        {ourstory.possibilty.length > 0 ? (
-                            ourstory.possibilty.map((item, index) => (
-                                <div key={index}
-                                    className={`flex items-center p-8  border-gray-400  group relative before:absolute before:content-[''] before:top-1/2 before:-translate-y-1/2  before:right-0 before:w-[1px] before:h-1/2 before:bg-gray-400 after:absolute after:content-[''] ${isInLastRow(index , ourstory.possibilty.length , 3) ? '' : 'after:w-1/2'} after:h-[1px] after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-gray-400`}
-                                >
-
-                                    <img src={item.image} alt={item.title} className='h-14 object-cover  group-hover:animate-scaleup transition-transform duration-300' />
-                                    <div className='px-4'>
-                                        <div className='flex gap-2 items-center'>
-                                            {
-                                                i18n.language === 'en' && (
-                                            <span className='text-3xl font-bold text-primary-color whitespace-nowrap'>{item.mark_number}</span>
-                                            )
-                                            }
-                                            <CountNumber number={item.number} />
-
-
-                                            {
-                                                i18n.language === 'ar' && (
-                                            <span className='text-3xl font-bold text-primary-color whitespace-nowrap'>{item.mark_number}</span>
-                                            )
-                                            }
-                                        </div>
-                                        <p className='text-lg '>{item.title}</p>
-
-
-                                    </div>
-
-                                </div>
-                            ))
-                        ) : (
-                            staticPossibilty.map((item, index) => (
-                                <div key={index}
-                                    className={`flex items-center p-8  border-gray-400  group relative before:absolute before:content-[''] before:top-1/2 before:-translate-y-1/2  before:right-0 before:w-[1px] before:h-1/2 before:bg-gray-400 after:absolute after:content-[''] ${isInLastRow(index , staticPossibilty.length , 3) ? '' : 'after:w-1/2'} after:h-[1px] after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-gray-400`}
-                                >
-
-                                    <img src={item} alt={`Static News ${index + 1}`} className='h-14 object-cover  group-hover:animate-scaleup transition-transform duration-300' />
-                                    <div className='px-4'>
-                                        <div className='flex gap-2 items-center'>
-
-                                            {
-                                            i18n.language === 'en' && (
-                                             <span className='lg:text-3xl text-2xl font-bold text-primary-color  whitespace-nowrap'>{t(`possibilty.number_${index + 1}`).split('/')[1]}</span>
-                                        )
-                                        }
-                                            <CountNumber number={parseInt(t(`possibilty.number_${index + 1}`))} />
-
-
-                                            {
-                                                i18n.language === 'ar' && (
-                                             <span className='lg:text-3xl text-2xl font-bold text-primary-color  whitespace-nowrap'>{t(`possibilty.number_${index + 1}`).split('/')[1]}</span>
-                                            )
-                                            }
-                                        </div>
-                                        <p className='text-lg '>{t(`possibilty.name_${index + 1}`)}</p>
-
-
-                                    </div>
-
-                                </div>
-                            ))
-                        )}
-                    </div>
                 </div>
             </div>
 
-            {/* recive updates */}
-            <ReciveUpdate />
+            {/* time line */}
+            <div
+                className='flex flex-col gap-6 w-full max-w-7xl mx-auto my-12 relative py-12'
+            >
+                <span
+                    className='hidden md:block w-1 bg-gray-200 h-full absolute top-0 left-1/2 -translate-x-1/2 after:bottom-0 after:rounded-full after:left-1/2 after:-translate-x-1/2 after:absolute after:w-3 after:h-3 after:bg-gray-200
+                    before:absolute before:rounded-full before:w-3 before:h-3 before:top-0 before:left-1/2 before:-translate-x-1/2 before:bg-gray-200
+                    '
+                ></span>
+                {ourstory.corestations.length > 0 && (
+                    ourstory.corestations.map((item, index) =>
+                        <div
+                            key={index}
+                            className={`flex flex-col ${index % 2 ? 'md:flex-row' : 'md:flex-row-reverse'}  items-start relative gap-4`}
+                        >
+
+                            <div
+                                className='w-full md:w-1/2 my-4 flex-col flex gap-6'
+                            >
+                                <div
+                                    className={`${index % 2 ? 'text-end' : 'text-start'} text-xl text-primary-color font-bold`}
+                                >{item.title}</div>
+                                <img src={item.image} alt={item.title} className='object-cover  overflow-clip h-[430px]' />
+                            </div>
+
+                            <div
+                            className='bg-primary-color rounded-full p-2 border-4 border-gray-200 z-10 mt-4 text-xl ml-2 mr-2'
+                            >
+                                <FaRegCalendarAlt className='text-gray-200'/>
+                            </div>
+
+                            {/* title */}
+                            <div
+                                className={`w-full md:w-1/2 h-[500px]  my-4 shadow-lg rounded-lg p-8 bg-[#f2f2f2] flex flex-col gap-6 relative after:absolute after:w-5 after:h-5 after:bg-[#f2f2f2] after:rotate-45 after:top-4 ${index % 2 ? 'border-r-2 after:-right-2.5 after:border-t-2 after:border-r-2' : 'border-l-2 after:-left-2.5 after:border-l-2 after:border-b-2 '} after:border-primary-color border-primary-color`}
+                            >
+                                <div
+                                    className={`text-7xl font-bold text-[#e9e9e9] ${index % 2 ? 'text-start' : 'text-end'}`}
+                                >{item.title}</div>
+                                <div
+                                    className={`text-[#7a7a7a] text-2xl ${index % 2 ? 'text-start' : 'text-end'}`}
+                                ><ReactMarkdown>{item.content}</ReactMarkdown></div>
+
+                            </div>
+
+                        </div>
+                    )
+                )}
+            </div>
         </>
     )
 }

@@ -1,5 +1,5 @@
 import { Button, Carousel, ConfigProvider } from 'antd'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import slideone from '../../../../../public/sliders/slide (1).webp'
 import slidetow from '../../../../../public/sliders/slide (2).webp'
@@ -10,14 +10,16 @@ import { Link } from '@inertiajs/react'
 
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import ReactMarkdown from 'react-markdown'
+import { MdOutlineArrowCircleLeft, MdOutlineArrowCircleRight } from 'react-icons/md'
 
 interface Slides {
     id: number;
     title: string;
     content: string;
     image: string;
-    str_btn:string;
-    link:string;
+    active_btn: boolean
+    str_btn: string;
+    link: string;
 }
 
 interface Props {
@@ -25,34 +27,38 @@ interface Props {
 }
 export default function Sliders({ slides }: Props) {
 
-
     const { t, i18n } = useTranslation();
 
-    const [AcitveIndex, setActiveIndex] = useState(0);
+    const [visibleSlides , setVisibleSlides] = useState<boolean[]>(
+        Array(slides.length).fill(false)
+    )
 
-    const HandelActiveIndex = (current: number, next: number) => {
-        setActiveIndex(next)
-    }
+    const slideRefs = useRef<(HTMLDivElement | null)[]>([])
 
+    useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = Number(entry.target.getAttribute('data-index'))
+          if (!isNaN(index)) {
+            setVisibleSlides((prev) => {
+              const updated = [...prev]
+              updated[index] = entry.isIntersecting
+              return updated
+            })
+          }
+        })
+      },
+      { threshold: 0.1 } // يبدأ الأنيميشن لما يظهر 30% من العنصر
+    )
 
-    const CustomArrow = ({ direction, onClick }: any) => {
-        const ArrowIcon = direction === 'prev' ? FaArrowLeft : FaArrowRight;
-        return (
-            <div
-                className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-white shadow-lg cursor-pointer transition hover:bg-custom-dark-blue group"
-                style={{
-                    position: 'absolute',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    zIndex: 1,
-                    [direction === 'prev' ? 'left' : 'right']: '10px',
-                }}
-                onClick={onClick}
-            >
-                <ArrowIcon className="text-custom-dark-blue group-hover:text-white text-2xl text-primary-color" />
-            </div>
-        );
-    };
+    slideRefs.current.forEach((el) => {
+      if (el) observer.observe(el)
+    })
+
+    return () => observer.disconnect()
+
+  }, [slides.length]);
 
     const images = [
         slideone,
@@ -65,251 +71,62 @@ export default function Sliders({ slides }: Props) {
         <div className='flex justify-center items-center flex-col '>
             <div className='w-full'>
                 {slides?.length > 0 ?
-                    <ConfigProvider
-                        theme={{
-                            components: {
-                                Carousel: {
-                                    dotHeight: 20,
-                                    dotWidth: 20,
-                                    dotActiveWidth: 20,
-
-                                },
-                            },
-                        }}
-                    >
-                        <Carousel
-                            arrows
-                            autoplay
-                            infinite
-                            className="custom-carousel-dots"
-                            beforeChange={HandelActiveIndex}
-                            prevArrow={<CustomArrow direction="prev" />}
-                            nextArrow={<CustomArrow direction="next" />}
+                    slides.map((item, index) =>
+                        <div
+                        key={index}
+                            className='w-full h-screen bg-center bg-cover '
+                            data-index={index}
+                            ref={(el)=>(slideRefs.current[index] = el)}
+                            style={{ backgroundImage: `url('${item.image}')` }}
                         >
+                            {index === 0 ?
+                                <div
+                                    className='flex justify-center items-center h-full flex-col'
+                                >
 
-                            {slides.map((item, index) =>
-                                <div key={item.id}
-                                className='relative'
+                                    <p className='text-white text-[45px] font-bold'
+                                        style={{ textShadow: '2px 1px 2px rgba(0,0,0,0.3)' }}
+                                    >{item.title}</p>
+                                    <div className='text-white font-bold text-4xl'
+                                        style={{ textShadow: '2px 1px 2px rgba(0,0,0,0.3)' }}
+                                    ><ReactMarkdown>{item.content}</ReactMarkdown></div>
+                                </div>
+                                :
+
+                                <div
+                                    className={`flex mx-auto max-w-7xl h-full  w-full overflow-hidden ${index % 2 ? 'justify-start' : 'justify-end'}`}
                                 >
                                     <div
-                                        style={{
-                                            height: '700px',
-                                            backgroundImage: `url('${item.image}')`,
-                                            backgroundSize: 'cover',
-                                            backgroundPosition: 'center',
-                                        }}
-                                        className='relative'
-                                        >
-                                        <div
-                                         className={`flex flex-col ${i18n.language === 'ar' ? 'items-end' : 'items-start'} px-24 justify-center gap-2 h-full overflow-hidden`}
-                                        >
 
-                                            <div className='absolute w-full h-full bg-black top-0 right-0 opacity-50'></div>
+                                        className={`flex flex-col justify-center items-start ${visibleSlides[index] ? index % 2 ? ' animate-faderight' : ' animate-fadeleft' : "opacity-0"} `}
+                                    >
 
-                                            <p className={`pt-20 text-6xl  text-white drop-shadow-3xl xs:text-xl ${AcitveIndex === index ? 'animate-fadeup' : ''} ${i18n.language === 'ar' ? 'text-end' : ''}`}>{item.title}</p>
-
-                                            <div className={`py-5 text-3xl  font-bold text-white drop-shadow-3xl xs:text-base xs:text-center ${AcitveIndex === index ? 'animate-fadeup' : ''}`}
-                                                style={{
-                                                    animationDuration: "1s",
-                                                    animationDelay: "0.75s"
-                                                }}
+                                        <p className='text-white text-[45px] font-bold'
+                                            style={{ textShadow: '2px 1px 2px rgba(0,0,0,0.3)' }}
+                                        >{item.title}</p>
+                                        <div className='text-white font-bold text-xl'
+                                            style={{ textShadow: '2px 1px 2px rgba(0,0,0,0.3)' }}
+                                        ><ReactMarkdown>{item.content}</ReactMarkdown></div>
+                                        {item.active_btn &&
+                                            <Link
+                                                className='px-4 py-2 rounded my-4 font-semibold bg-primary-color text-white flex items-center gap-3'
+                                                href={route(item.link)}
                                             >
-                                                <ReactMarkdown>{item.content}</ReactMarkdown>
-                                            </div>
-
-                                            {
-                                                AcitveIndex === index &&
-
-                                                    <div className='flex justify-between items-center gap-4 mt-12 xs:flex-col'>
-                                                        <Link
-                                                        href={route(`${item.link}`, { lang: i18n.language })}
-                                                            className={`${AcitveIndex === index ? 'animate-fadeup' : ''} `}
-                                                            style={{
-                                                                animationDuration: "1s",
-                                                                animationDelay: "1.5s"
-                                                            }}
-                                                        >
-                                                            <div className='text-xl text-white flex items-center justify-center flex-row-reverse gap-2 p-2 relative group'>
-                                                                {/* Animated background circle that expands on hover */}
-                                                                <div className={`rounded-full w-10 h-10 border-2 border-white absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-primary-color z-0`}></div>
-                                                                {/* Content above the background */}
-                                                                <div className={`flex items-center justify-center ${i18n.language === 'ar' ? 'flex-row' : 'flex-row-reverse'} w-full relative z-10`}>
-                                                                    <div className={`flex items-center w-10 h-10 ${i18n.language === 'ar' ? '' : 'justify-end'}`}>
-                                                                        {i18n.language === 'ar' ? <FaArrowLeft /> : <FaArrowRight />}
-
-                                                                    </div>
-                                                                    <div className='ml-2 text-xl'>{item.str_btn}</div>
-                                                                </div>
-                                                            </div>
-                                                        </Link>
-
-                                                    </div>
-
-                                            }
-                                        </div>
+                                                {item.str_btn}
+                                                {i18n.language == 'ar' ? <MdOutlineArrowCircleLeft /> : <MdOutlineArrowCircleRight />}
+                                            </Link>
+                                        }
                                     </div>
                                 </div>
-                            )}
-                        </Carousel>
-                    </ConfigProvider>
+
+                            }
+                        </div>
+                    )
                     :
+                    images.map((item, index) =>
+                        <div></div>
+                    )
 
-                    <ConfigProvider
-                        theme={{
-                            components: {
-                                Carousel: {
-                                    dotHeight: 20,
-                                    dotWidth: 20,
-                                    dotActiveWidth: 20,
-
-                                },
-                            },
-                        }}
-                    >
-                        <Carousel
-                            arrows
-                            infinite
-                            autoplay
-                            beforeChange={HandelActiveIndex}
-                            prevArrow={<CustomArrow direction="prev" />}
-                            nextArrow={<CustomArrow direction="next" />}
-                        >
-
-                            {images.map((item, index) =>
-                                <div key={index} className='relative'>
-                                    <div
-                                        style={{
-                                            height: '700px',
-                                            backgroundImage: `url('${item}')`,
-                                            backgroundSize: 'cover',
-                                            backgroundPosition: 'center',
-                                        }}
-                                        className='relative'
-                                        >
-                                            <div className='absolute w-full h-full bg-black top-0 right-0 opacity-50'></div>
-                                        <div className={`flex flex-col ${i18n.language === 'ar' ? 'items-end' : 'items-start'} px-24 justify-center gap-2 h-full overflow-hidden`}>
-                                            <p className={`pt-20 text-6xl text-white drop-shadow-3xl xs:text-xl ${AcitveIndex === index ? 'animate-fadeup' : ''} `}>
-                                                {t(`slides.title_${index + 1}`)}
-                                            </p>
-
-                                            <p className={`py-5 text-3xl  font-bold text-white drop-shadow-3xl xs:text-base xs:text-center ${AcitveIndex === index ? 'animate-fadeup' : ''}`}
-                                                style={{
-                                                    animationDuration: "1s",
-                                                    animationDelay: "0.75s"
-                                                }}
-                                            >{t(`slides.description_${index + 1}`)}</p>
-
-
-                                            {
-                                                AcitveIndex === 0 ?
-
-                                                    <div className='flex justify-between items-center gap-4 mt-4 xs:flex-col'>
-                                                        <Link href={route('welcome', { lang: i18n.language })}
-                                                            className={`${AcitveIndex === index ? 'animate-fadeup' : ''}`}
-                                                            style={{
-                                                                animationDuration: "1s",
-                                                                animationDelay: "1.5s"
-                                                            }}
-                                                        >
-                                                            <div className='text-xl text-white flex items-center justify-center flex-row-reverse gap-2 p-2 relative group'>
-                                                                {/* Animated background circle that expands on hover */}
-                                                                <div className={`rounded-full w-10 h-10 border-2 border-white absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-primary-color z-0`}></div>
-                                                                {/* Content above the background */}
-                                                                <div className={`flex items-center justify-center ${i18n.language === 'ar' ? 'flex-row' : 'flex-row-reverse'} w-full relative z-10`}>
-                                                                    <div className={`flex items-center w-10 h-10 ${i18n.language === 'ar' ? '' : 'justify-end'}`}>
-                                                                        {i18n.language === 'ar' ? <FaArrowLeft /> : <FaArrowRight />}
-
-                                                                    </div>
-                                                                    <div className='ml-2 text-xl'>{t(`slides.button_${index + 1}`)}</div>
-                                                                </div>
-                                                            </div>
-                                                        </Link>
-
-                                                    </div>
-                                                    : AcitveIndex === 1 ?
-
-                                                        <div className='flex justify-between items-center gap-4 mt-12 xs:flex-col'>
-                                                            <Link href={route('welcome', { lang: i18n.language })}
-                                                                className={`${AcitveIndex === index ? 'animate-fadeup' : ''} `}
-                                                                style={{
-                                                                    animationDuration: "1s",
-                                                                    animationDelay: "1.5s"
-                                                                }}
-                                                            >
-                                                                <div className='text-xl text-white flex items-center justify-center flex-row-reverse gap-2 p-2 relative group'>
-                                                                    {/* Animated background circle that expands on hover */}
-                                                                    <div className={`rounded-full w-10 h-10 border-2 border-white absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-primary-color z-0`}></div>
-                                                                    {/* Content above the background */}
-                                                                    <div className={`flex items-center justify-center ${i18n.language === 'ar' ? 'flex-row' : 'flex-row-reverse'} w-full relative z-10`}>
-                                                                        <div className={`flex items-center w-10 h-10 ${i18n.language === 'ar' ? '' : 'justify-end'}`}>
-                                                                            {i18n.language === 'ar' ? <FaArrowLeft /> : <FaArrowRight />}
-
-                                                                        </div>
-                                                                        <div className='ml-2 text-xl'>{t(`slides.button_${index + 1}`)}</div>
-                                                                    </div>
-                                                                </div>
-                                                            </Link>
-
-                                                        </div>
-
-                                                        : AcitveIndex === 2 ?
-                                                            <div className='flex justify-between items-center gap-4 mt-12 xs:flex-col'>
-                                                                <Link href={route('welcome', { lang: i18n.language })}
-                                                                    className={`${AcitveIndex === index ? 'animate-fadeup' : ''}`}
-                                                                    style={{
-                                                                        animationDuration: "1s",
-                                                                        animationDelay: "1.5s"
-                                                                    }}
-                                                                >
-                                                                    <div className='text-xl text-white flex items-center justify-center flex-row-reverse gap-2 p-2 relative group'>
-                                                                        {/* Animated background circle that expands on hover */}
-                                                                        <div className={`rounded-full w-10 h-10 border-2 border-white absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-primary-color z-0`}></div>
-                                                                        {/* Content above the background */}
-                                                                        <div className={`flex items-center justify-center ${i18n.language === 'ar' ? 'flex-row' : 'flex-row-reverse'} w-full relative z-10`}>
-                                                                            <div className={`flex items-center w-10 h-10 ${i18n.language === 'ar' ? '' : 'justify-end'}`}>
-                                                                                {i18n.language === 'ar' ? <FaArrowLeft /> : <FaArrowRight />}
-
-                                                                            </div>
-                                                                            <div className='ml-2 text-xl'>{t(`slides.button_${index + 1}`)}</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </Link>
-
-                                                            </div>
-
-                                                            : AcitveIndex === 3 &&
-                                                            <div className='flex justify-between items-center gap-4 mt-12 xs:flex-col'>
-                                                                <Link href={route('welcome', { lang: i18n.language })}
-                                                                    className={`${AcitveIndex === index ? 'animate-fadeup' : ''} `}
-                                                                    style={{
-                                                                        animationDuration: "1s",
-                                                                        animationDelay: "1.5s"
-                                                                    }}
-                                                                >
-                                                                    <div className='text-xl text-white flex items-center justify-center flex-row-reverse gap-2 p-2 relative group'>
-                                                                        {/* Animated background circle that expands on hover */}
-                                                                        <div className={`rounded-full w-10 h-10 border-2 border-white absolute ${i18n.language === 'ar' ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:w-full group-hover:bg-sky-500 z-0`}></div>
-                                                                        {/* Content above the background */}
-                                                                        <div className={`flex items-center justify-center ${i18n.language === 'ar' ? 'flex-row' : 'flex-row-reverse'} w-full relative z-10`}>
-                                                                            <div className={`flex items-center w-10 h-10 ${i18n.language === 'ar' ? '' : 'justify-end'}`}>
-                                                                                {i18n.language === 'ar' ? <FaArrowLeft /> : <FaArrowRight />}
-
-                                                                            </div>
-                                                                            <div className='ml-2 text-xl'>{t(`slides.button_${index + 1}`)}</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </Link>
-
-                                                            </div>
-
-                                            }
-
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
-                        </Carousel>
-                    </ConfigProvider>
                 }
             </div>
 

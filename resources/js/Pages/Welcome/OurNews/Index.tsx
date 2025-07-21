@@ -1,83 +1,171 @@
-import ReciveUpdate from '@/Components/ReciveUpdate';
 import { Head, Link } from '@inertiajs/react';
-import React from 'react';
+import React from 'react'
 import { useTranslation } from 'react-i18next';
-import banner from '@/../../public/aboutus/our-story.jpg';
 import ReactMarkdown from 'react-markdown';
+export interface NewsItem {
+    id: number;
+    title: string;
+    content: string;
+    youtube_link: string;
+    image: string;
+}
 
-interface Blog {
+export interface PaginatedNews {
+    current_page: number;
+    data: NewsItem[];
+    first_page_url: string;
+    from: number;
+    last_page: number;
+    last_page_url: string;
+    links: {
+        url: string | null;
+        label: string;
+        active: boolean;
+    }[];
+    next_page_url: string | null;
+    path: string;
+    per_page: number;
+    prev_page_url: string | null;
+    to: number;
+    total: number;
+}
+
+export interface OurBlog {
     id: number;
     title: string;
     content: string;
     image: string;
-    slug: string;
+    news: PaginatedNews;
 }
 
-interface Props {
-    blogs: Blog[];
+export interface Props {
+    ourblog: OurBlog;
 }
 
-const Index = ({ blogs }: Props) => {
+const Index = ({ ourblog }: Props) => {
     const { t, i18n } = useTranslation();
+
     return (
         <>
-            <Head title={t('ourstory.title')} />
-            <div className="bg-gray-50 flex flex-col dark:bg-gray-900 dark:text-gray-100">
-                {/* Top Banner */}
-                <div className="w-full h-[500px] flex relative overflow-hidden">
-                    <div
-                        className="w-full h-full bg-cover absolute"
-                        style={{
-                            backgroundImage: `url('${banner}')`,
-                            backgroundPosition: 'center center',
-                            backgroundRepeat: 'no-repeat',
-                        }}
+            <Head title={t('ourblog.title')} />
+            <section className="grid grid-cols-1 md:grid-cols-2  mx-auto min-h-screen">
+                {/* Text Content */}
+                <div className="px-12 text-xl leading-10 flex flex-col justify-center bg-gray-200">
+                    <h3 className="text-4xl font-semibold mb-4">{ourblog?.title}</h3>
+                    <ReactMarkdown>{ourblog?.content}</ReactMarkdown>
+
+                </div>
+
+                {/* Image */}
+                <div className="flex justify-center items-center">
+                    <img
+                        src={ourblog?.image}
+                        alt={ourblog?.title}
+                        className="w-full h-full object-cover"
                     />
-                    <div className="absolute w-full h-full bg-black top-0 right-0 opacity-50"></div>
-                    <h2 className="relative flex w-full items-center mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-6xl text-white font-medium">
-                        {t('ourstory.title')}
-                    </h2>
                 </div>
+            </section>
 
-                {/* Blog Grid */}
-                <div className="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 my-12">
-                    {blogs.map((item) => (
-                        <Link
-                        href={route('news.show' , {lang:i18n.language , slug:item.slug})}
-                            key={item.id}
-                            className="aspect-[4/3] shadow-md group overflow-hidden relative rounded"
-                        >
-                            {/* Image */}
-                            <div className="h-full w-full overflow-hidden">
-                                <img
-                                    src={item.image}
-                                    alt={item.title}
-                                    className="h-full w-full object-cover group-hover:scale-110 group-hover:rotate-1 duration-500"
-                                />
-                            </div>
+            {/* news */}
+            <section
+                className="grid grid-cols-1 md:grid-cols-2 items-center"
+            >
+                {ourblog.news.data.length > 0 && (
+                    ourblog.news.data.map((item, index) =>
+                        <React.Fragment key={item.id || index}>
+                            {index % 2 ? (
+                                <>
 
-                            {/* Overlay Content */}
-                            <div className="absolute bottom-5 left-1/2 -translate-x-1/2 w-[90%] p-4">
-                                <div className="absolute top-0 left-0 w-full h-full bg-black/70 backdrop-blur-md rounded opacity-80" />
+                                    {/* النص */}
+                                    <div className="mx-4 md:mx-8 text-lg md:text-xl leading-relaxed py-6 md:py-0 flex flex-col gap-6">
+                                        <div
+                                            className='text-4xl font-bold'
+                                        >{item.title}</div>
+                                        <ReactMarkdown>{item?.content}</ReactMarkdown>
+                                        <div
+                                            className='flex '
+                                        >
+                                            {t('ourblog.show_video')}
+                                            <a
+                                                href={item.youtube_link}
+                                                target='_blank'
+                                                className='mx-2 text-primary-color'
+                                            >
+                                                {t('ourblog.here')}
+                                            </a>
+                                        </div>
+                                    </div>
 
-                                <h3 className="text-white relative font-semibold text-lg z-10">
-                                    {item.title}
-                                </h3>
+                                    {/* الصورة */}
+                                    <div className="h-64 md:h-full">
+                                        <img
+                                            src={item?.image}
+                                            alt="About Us"
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
 
-                                <div
-                                    className="opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-[300px] transition-all duration-500 text-white relative z-10"
-                                >
-                                    <ReactMarkdown>{item.content}</ReactMarkdown>
-                                </div>
-                            </div>
-                        </Link>
-                    ))}
-                </div>
-            </div>
+                                </>
+                            ) : (
+                                <>
 
-            <ReciveUpdate />
+                                    {/* الصورة */}
+                                    <div className="h-64 md:h-full">
+                                        <img
+                                            src={item?.image}
+                                            alt="About Us"
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+
+                                    {/* النص */}
+                                    <div className="mx-4 md:mx-8 text-lg md:text-xl leading-relaxed py-6 md:py-0 flex flex-col gap-6">
+                                        <div
+                                            className='text-4xl font-bold'
+                                        >{item.title}</div>
+                                        <ReactMarkdown>{item?.content}</ReactMarkdown>
+                                        <div
+                                            className='flex '
+                                        >
+                                            {t('ourblog.show_video')}
+                                            <a
+                                                href={item.youtube_link}
+                                                target='_blank'
+                                                className='mx-2 text-primary-color'
+                                            >
+                                                {t('ourblog.here')}
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </>
+                            )}
+                        </React.Fragment>
+                    )
+                )}
+
+            </section>
+
+            {/* next page */}
+            <section
+            className='flex justify-center items-start my-4 gap-4'
+            >
+                {ourblog.news.next_page_url && (
+                    <a
+                    href={ourblog.news.next_page_url}
+                    className='bg-primary-color p-4 rounded-lg text-white hover:bg-red-200 hover:text-primary-color'
+                    >{t('ourblog.nextpage')}</a>
+                )}
+                {ourblog.news.prev_page_url && (
+                    <a
+                    href={ourblog.news.prev_page_url}
+                    className='bg-primary-color p-4 rounded-lg text-white hover:bg-red-200 hover:text-primary-color'
+                    >{t('ourblog.prevpage')}</a>
+                )}
+            </section>
+
         </>
-    );
-};
+    )
+}
 
-export default Index;
+export default Index

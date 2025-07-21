@@ -36,6 +36,10 @@ class OurStoryResource extends Resource
         return __('filament-panels::resources/pages/ourstory.title');
     }
 
+    public static function getNavigationSort(): ?int
+    {
+        return 1;
+    }
     public static function form(Form $form): Form
     {
         return $form

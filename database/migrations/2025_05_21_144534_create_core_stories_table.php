@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('core_stories', function (Blueprint $table) {
             $table->id();
-            $table->json('title');
-            $table->string('youtube_link');
+            $table->json('title')->nullable();
+            $table->json('content')->nullable();
+            $table->string('image');
             $table->unsignedBigInteger('storyable_id')->nullable();
             $table->string('storyable_type')->nullable();
             $table->timestamps();

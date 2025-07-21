@@ -65,6 +65,12 @@ class ContactformResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id')->sortable(),
 
+                Tables\Columns\TextColumn::make('first_name')
+                    ->label(__('filament-panels::resources/pages/contactform.fields.email'))
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('last_name')
+                    ->label(__('filament-panels::resources/pages/contactform.fields.email'))
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->label(__('filament-panels::resources/pages/contactform.fields.email'))
                     ->searchable(),
@@ -98,6 +104,7 @@ class ContactformResource extends Resource
     {
         return [
             'index' => Pages\ListContactforms::route('/'),
+            'view' => Pages\ViewContactform::route('/view'),
             // 'create' => Pages\CreateContactform::route('/create'),
             // 'edit' => Pages\EditContactform::route('/{record}/edit'),
         ];

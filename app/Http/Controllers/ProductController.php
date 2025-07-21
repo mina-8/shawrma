@@ -87,19 +87,6 @@ class ProductController extends Controller
     }
 
 
-    public function video(string $lang) {
-        $productvideo = ProductVideo::latest()
-        ->whereNull('productvideoable_id')
-        ->whereNull('productvideoable_type')
-        ->get()->map(function($video){
-            return [
-                'id'=>$video->id,
-                'image' => Storage::url($video->image) ,
-                'youtube_link' => $video->youtube_link
-            ];
-        });
-        return Inertia::render('Welcome/Productvideo/Index' , ['productvideo'=>$productvideo]);
-    }
 
     /**
      * Display the specified resource.

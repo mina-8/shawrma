@@ -6,23 +6,18 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 
 import { PageProps } from '@/types';
 
-import { SolveBrand } from '@/Components/ProductsNav/ProductNav';
 import DynamicIcon from '@/Components/DynamicIcon/DynamicIcon';
 import { FaFacebook, FaInstagram, FaLinkedin, FaTiktok } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-interface Brands {
-    id: number;
-    header_title: string;
-    slug: string;
-}
+
 interface SocialLink {
     id: number;
     link: string;
     icon_path: string;
 }
 interface CustomBrand extends PageProps {
-    Brands: Brands[];
-    solvebrands: SolveBrand[];
+
+
     socialicons: SocialLink[];
 }
 
@@ -30,7 +25,7 @@ interface CustomBrand extends PageProps {
 const Footer = () => {
     const { t, i18n } = useTranslation();
     const currentYear = new Date().getFullYear();
-    const { Brands, socialicons, solvebrands } = usePage<CustomBrand>().props;
+    const { socialicons } = usePage<CustomBrand>().props;
 
     const AboutLinks = [
         {
@@ -56,10 +51,7 @@ const Footer = () => {
             href: 'news',
             title: t('navbar-links.latest-news')
         },
-        {
-            href: 'projects',
-            title: t('navbar-links.latest-project')
-        },
+        
         {
 
             href: 'work-us',
@@ -70,7 +62,7 @@ const Footer = () => {
 
 
     return (
-        <footer className="bg-black text-white w-full">
+        <footer className="bg-wheat  w-full">
             <div className="mx-auto max-w-7xl px-4 py-8 grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8">
 
                 {/* Logo & Description & Social */}
@@ -153,35 +145,20 @@ const Footer = () => {
                         <ul className="space-y-1">
                             <li><Link href={route('our-story', { lang: i18n.language })} className="hover:text-primary-color">{t('footer.ourstory')}</Link></li>
                             <li><Link href={route('our-promise', { lang: i18n.language })} className="hover:text-primary-color">{t('footer.ourpromise')}</Link></li>
-                            <li><Link href={route('our-culture', { lang: i18n.language })} className="hover:text-primary-color">{t('footer.ourculture')}</Link></li>
-                            <li><Link href={route('our-team', { lang: i18n.language })} className="hover:text-primary-color">{t('ourteam.title')}</Link></li>
                         </ul>
                     </div>
 
-                    {/* Section: Brand */}
-                    <div className="flex flex-col gap-4">
-                        <h2 className="text-xl text-primary-color">{t('footer.brand')}</h2>
-                        <ul className="space-y-1 whitespace-nowrap">
-                            {Brands.map((item, index) => (
-
-                                <li
-                                    key={index}
-                                ><Link href={route('brand-show', { lang: i18n.language, slug: item.slug })} className="hover:text-primary-color">{item.header_title}</Link></li>
-                            ))}
-
-                        </ul>
-                    </div>
 
                     {/* Section: Products */}
                     <div className="flex flex-col gap-4">
                         <h2 className="text-xl text-primary-color">{t('footer.services')}</h2>
                         <ul className="space-y-1 whitespace-nowrap">
-                            {AboutLinks.map((item, index) => (
+                            {/* {AboutLinks.map((item, index) => (
 
                                 <li
                                     key={index}
                                 ><Link href={route(item.href, { lang: i18n.language })} className="hover:text-primary-color">{item.title}</Link></li>
-                            ))}
+                            ))} */}
 
                         </ul>
                     </div>
@@ -196,11 +173,7 @@ const Footer = () => {
                             <li><Link href={route('product-search', { lang: i18n.language })} className="hover:text-primary-color">
                                 {t('products.ourproducts')}
                             </Link></li>
-                            {solvebrands.map((item) => (
 
-                                <li key={item.id}><Link href={route('solve-brand', { lang: i18n.language, slug: item.slug })}
-                                    className="hover:text-primary-color">{item.title}</Link></li>
-                            ))}
                         </ul>
                     </div>
 

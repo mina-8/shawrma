@@ -21,6 +21,8 @@ class CreateBlog extends CreateRecord
             $data['slug']['en'] = str_replace(' ', '-', $data['title']['en']);
         }
 
+
+
         return $data;
     }
 }

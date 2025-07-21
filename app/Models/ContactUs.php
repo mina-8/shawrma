@@ -6,12 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class ContactUs extends Model
 {
+    use \Spatie\Translatable\HasTranslations;
     protected $fillable = [
-        'type',
-        'name',
-        'email',
+        'banner',
+        'title',
+        'addres',
         'phone',
-        'country',
-        'message',
+        'fax',
+        'map'
     ];
+    public $translatable = ['title'];
+
+    protected $casts = [
+        'title' => 'array',
+    ];
+
+    protected $guarded = ['id'];
 }

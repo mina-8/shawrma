@@ -39,3 +39,7 @@
   transform: rotateY(180deg);
 }
 
+.ant-drawer-body{
+    padding: 0px !important;
+}
+

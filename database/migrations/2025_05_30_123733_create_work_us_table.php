@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('work_us', function (Blueprint $table) {
             $table->id();
-            $table->string('banner')->nullable();
-            $table->json('header_title');
-            $table->json('header_content');
             $table->json('title');
             $table->json('content');
+            $table->json('content_title');
+            $table->json('footer_content');
+            $table->string('image');
             $table->timestamps();
         });
     }

@@ -1,36 +1,53 @@
-import ReciveUpdate from '@/Components/ReciveUpdate'
+
 import { Head, router, usePage } from '@inertiajs/react'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import banner from '@/../../public/aboutus/our-story.jpg'
+import banner from '@/../../public/aboutus/image (1).jfif'
 import { countries } from '@/Components/AllCountry/countries'
 import { PageProps } from '@/types'
+import { FaExclamationCircle, FaFax, FaHome, FaPhoneAlt } from 'react-icons/fa'
+import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io'
+import { Drawer } from 'antd'
 
 interface FlashMessages {
-  success?: string | null;
-  error?: string | null;
+    success?: string | null;
+    error?: string | null;
 }
 
 interface Customflash extends PageProps {
-  flash?: FlashMessages;
+    flash?: FlashMessages;
 }
-interface OurRegional {
+interface ContactUs {
     id: number;
-    state: string;
-    address: string;
-    mailbox: string;
+
+    banner:string;
+    title: string;
+    addres: string;
     phone: string;
-    email: string;
+    fax: string;
+    map: string;
 }
 interface Props {
-    ourregionalOffice: OurRegional[];
+    contactus: ContactUs;
 }
-const Index = ({ ourregionalOffice }: Props) => {
+const Index = ({ contactus }: Props) => {
     const { t, i18n } = useTranslation();
     const { props } = usePage<Customflash>();
     const [showSuccess, setShowSuccess] = useState<boolean>(!!props?.flash?.success);
-    const SuccessMessage  = props?.flash?.success;
-    const [Loading , setLoading] = useState(false);
+    const SuccessMessage = props?.flash?.success;
+    const { errors } = usePage().props;
+    const [Loading, setLoading] = useState(false);
+
+    const [open, setOpen] = useState(false);
+
+    const showDrawer = () => {
+        setOpen(true);
+    };
+
+    const onClose = () => {
+        setOpen(false);
+    };
+
     useEffect(() => {
         if (SuccessMessage) {
             setShowSuccess(true);
@@ -42,13 +59,15 @@ const Index = ({ ourregionalOffice }: Props) => {
         }
     }, [SuccessMessage]);
     const [formData, setFormData] = useState({
-        type: 'inquiry',
-        name: '',
+        first_name: '',
+        last_name: '',
         email: '',
         phone: '',
+        company_name: '',
         country: '',
         message: '',
     });
+
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -57,19 +76,20 @@ const Index = ({ ourregionalOffice }: Props) => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        router.post(route('contact-us', { lang: i18n.language }), formData , {
-            onSuccess : ()=>{
+        router.post(route('contact-us', { lang: i18n.language }), formData, {
+            onSuccess: () => {
                 setFormData({
-                    type: 'inquiry',
-                name: '',
-                email: '',
-                phone: '',
-                country: '',
-                message: '',
+                    first_name: '',
+                    last_name: '',
+                    email: '',
+                    phone: '',
+                    company_name: '',
+                    country: '',
+                    message: '',
                 })
             },
-            onBefore : ()=> setLoading(true),
-            onFinish : ()=>setLoading(false)
+            onBefore: () => setLoading(true),
+            onFinish: () => setLoading(false)
         })
     };
     return (
@@ -82,7 +102,7 @@ const Index = ({ ourregionalOffice }: Props) => {
 
             <Head title={t('navbar-links.contact-us')} />
             <div
-                className="relative bg-gray-50 flex flex-col"
+                className="relativ flex flex-col"
             >
 
                 {/* top banner */}
@@ -92,139 +112,192 @@ const Index = ({ ourregionalOffice }: Props) => {
                     <div
                         className="w-full h-full bg-cover  absolute"
                         style={{
-                            backgroundImage: `url('${banner}')`,
+                            backgroundImage: `url('${contactus.banner != null ? contactus.banner :  banner}')`,
                             backgroundPosition: 'center center',
                             backgroundRepeat: 'no-repeat'
                         }}
                     />
                     <div className='absolute w-full h-full bg-black top-0 right-0 opacity-50'></div>
-                    <h2
-                        className={`relative flex w-full  items-center  mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-6xl text-white font-medium`}
-                    >
-                        {t('navbar-links.contact-us')}
-                    </h2>
+
                 </div>
                 {/* create form contact us */}
                 <div
-                    className='w-full max-w-7xl mx-auto my-12'
+                    className='w-full max-w-7xl mx-auto my-12 flex flex-col md:flex-row justify-between'
                 >
-                    <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center gap-4'>
-                        <div className='self-start w-full'>
-                            <h3 className='mb-2'>{t('contact.query')}</h3>
-                            <div className='flex flex-col md:flex-row gap-4'>
-                                {[
-                                    { value: 'inquiry', label: t('contact.types.inquiry') },
-                                    { value: 'complaint', label: t('contact.types.complaint') },
-                                    { value: 'comments', label: t('contact.types.comments') },
-                                ].map((option) => (
-                                    <label
-                                        key={option.value}
-                                        className={`px-6 py-3 border cursor-pointer font-medium text-center transition-all
-          ${formData.type === option.value
-                                                ? 'border-primary-color bg-primary-color text-white'
-                                                : 'border-gray-300 bg-white text-gray-700'
-                                            }`}
-                                    >
-                                        <input
-                                            type='radio'
-                                            name='type'
-                                            value={option.value}
-                                            checked={formData.type === option.value}
-                                            onChange={handleChange}
-                                            className='hidden'
-                                        />
-                                        {option.label}
-                                    </label>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div
-                            className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6'
+                    <div
+                        className='flex flex-col  gap-6 bg-white py-6 -top-40 relative px-4 w-[60%]'
+                    >
+                        <h2
+                            className={`px-4 sm:px-6 lg:px-8 text-6xl text-black font-bold`}
                         >
+                            {t('navbar-links.contact-us')}
+                        </h2>
+                        <p
+                            className='text-primary-color px-4 sm:px-6 lg:px-8'
+                        >
+                            {t('contact.required')}
+                        </p>
+                        <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center gap-12'>
                             <div
-
+                                className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4  w-full'
                             >
-                                <input type='text' name='name' placeholder={t('contact.name')} value={formData.name} onChange={handleChange}
-                                    className='w-full border  px-4 py-4 mb-4 rounded-tr-3xl'
+                                <input type='text' name='first_name' placeholder={t('contact.fname')} value={formData.first_name} onChange={handleChange}
+                                    className='w-full border  px-4 py-4 mb-4'
                                     required />
+                                {errors.first_name && <div className="text-red-500 text-sm">{errors.first_name}</div>}
+                                <input type='text' name='last_name' placeholder={t('contact.lname')} value={formData.last_name} onChange={handleChange}
+                                    className='w-full border  px-4 py-4 mb-4 '
+                                    required />
+                                {errors.last_name && <div className="text-red-500 text-sm">{errors.last_name}</div>}
+                            </div>
+                            <div
+                                className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4  w-full'
+                            >
                                 <input type='email' name='email' placeholder={t('contact.email')} value={formData.email} onChange={handleChange}
                                     className='w-full border  px-4 py-4 mb-4'
                                     required />
+                                {errors.email && <div className="text-red-500 text-sm">{errors.email}</div>}
                                 <input type='tel' name='phone' placeholder={t('contact.phone')} value={formData.phone} onChange={handleChange}
-                                    className='w-full border  px-4 py-4 mb-4 rounded-tr-3xl'
+                                    className='w-full border  px-4 py-4 mb-4 '
                                     required />
-                                <select name='country' value={formData.country} onChange={handleChange} style={{ backgroundImage: 'none' }}
-                                    className='w-full border  px-4 py-4 '
-                                    required>
-                                    <option value="">{t('contact.select_country')}</option>
-                                    {countries.map((country) => (
-                                        <option key={country} value={country}>
-                                            {country}
-                                        </option>
-                                    ))}
-                                </select>
+                                {errors.phone && <div className="text-red-500 text-sm">{errors.phone}</div>}
                             </div>
 
+                            <select name='country' value={formData.country} onChange={handleChange} style={{ backgroundImage: 'none' }}
+                                className='w-full border  px-4 py-4 '
+                                required>
+                                <option value="">{t('contact.select_country')}</option>
+                                {countries.map((country) => (
+                                    <option key={country} value={country}>
+                                        {country}
+                                    </option>
+                                ))}
+                            </select>
+                            {errors.country && <div className="text-red-500 text-sm">{errors.country}</div>}
+
                             <textarea name='message' placeholder={t('contact.message')} value={formData.message} onChange={handleChange} className='w-full border  px-4 py-2' rows={4} required />
+                            {errors.message && <div className="text-red-500 text-sm">{errors.message}</div>}
 
-                        </div>
-                        <button type='submit'
-                        disabled = {Loading}
-                            className={`p-4 ${Loading ? 'bg-gray-200' : 'bg-primary-color'}  text-white font-semibold text-lg shadow-md hover:shadow-none cursor-pointer`}
-                        >{t('contact.submit')}</button>
-                    </form>
-
-                </div>
-                {/* our regional */}
-                <div
-                    className='bg-gray-200'
-                >
+                            <button type='submit'
+                                disabled={Loading}
+                                className={`p-4 ${Loading ? 'bg-gray-200' : 'bg-primary-color'}  text-white font-semibold text-lg shadow-md hover:shadow-none cursor-pointer rounded-lg self-start`}
+                            >{t('contact.submit')}</button>
+                        </form>
+                    </div>
 
                     <div
-                        className='flex flex-col  w-full max-w-7xl mx-auto py-12 '
+                        className='w-[40%] flex flex-col px-6  items-center'
                     >
+                        {/* title */}
                         <div
-                            className='flex justify-center items-center'
+                            className='text-primary-color font-bold text-3xl'
                         >
-                            <h3
-                                className='text-2xl font-semibold border-b-2 pb-2 border-primary-color mb-4'
-                            >{t('ourregional.title')}</h3>
+                            {contactus.title}
                         </div>
                         <div
-                            className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 '
+                            className='h-1 bg-black w-1/2 my-6 relative flex justify-center items-center'
                         >
-                            {ourregionalOffice?.map((item) => (
-                                <div
-                                    key={item.id}
-                                    className='bg-white shadow-md p-4 flex flex-col gap-4'
-                                >
-                                    <div>
-                                        {t('ourregional.state')} : {item.state}
-                                    </div>
-                                    <div>
-                                        {t('ourregional.address')} : {item.address}
-                                    </div>
-                                    <div>
-                                        {t('ourregional.mailbox')} : {item.mailbox}
-                                    </div>
-                                    <div>
-                                        {t('ourregional.phone')} : {item.phone}
-                                    </div>
-                                    <div>
-                                        {t('ourregional.email')} : {item.email}
-                                    </div>
+                            <FaExclamationCircle
+                                className='absolute z-20 text-primary-color bg-white text-xl'
+                            />
+                        </div>
 
+                        <div
+                            className='flex flex-col gap-6'
+                        >
+                            {/* home */}
+
+                            <div
+                                className='flex justify-start gap-4'
+                            >
+
+                                <FaHome className='text-primary-color text-3xl ' />
+                                <div>
+
+                                    <div
+                                        className='text-2xl font-bold'
+                                    >
+                                        {t('contact.office')} {contactus.title}
+                                    </div>
+                                    <div>
+                                        {contactus.addres}
+                                    </div>
                                 </div>
-                            ))}
+                            </div>
+                            {/* phone */}
+
+                            <div
+                                className='flex justify-start gap-4'
+                            >
+
+                                <FaPhoneAlt className='text-primary-color text-3xl ' />
+                                <div>
+
+                                    <div
+                                        className='text-2xl font-bold'
+                                    >
+                                        {t('contact.phone')} {contactus.title}
+                                    </div>
+                                    <div>
+                                        {contactus.phone}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* fax */}
+
+                            <div
+                                className='flex justify-start gap-4'
+                            >
+
+                                <FaFax className='text-primary-color text-3xl ' />
+                                <div>
+
+                                    <div
+                                        className='text-2xl font-bold'
+                                    >
+                                        {t('contact.fax')} {contactus.title}
+                                    </div>
+                                    <div>
+                                        {contactus.fax}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                className='self-center'
+                            >
+                                <button
+                                    className='bg-primary-color p-4 rounded-lg text-white font-bold shadow-lg hover:shadow flex items-center gap-2'
+                                    onClick={showDrawer}
+                                >
+                                    {t('contact.map')}
+                                    {i18n.language === 'ar' ? <IoIosArrowDropleft /> : <IoIosArrowDropright />}
+                                </button>
+                            </div>
                         </div>
+
                     </div>
+
                 </div>
+
 
             </div>
 
-            {/* recive updates */}
-            <ReciveUpdate />
+            <Drawer
+
+                title={t('contact.map')}
+                closable={{ 'aria-label': 'Close Button' }}
+                onClose={onClose}
+                open={open}
+            >
+                <iframe
+                    src={contactus.map}
+                    frameBorder="0"
+                    style={{ width: '100%', height: '100%', border: 0 }}
+                />
+            </Drawer>
+
         </>
     )
 }

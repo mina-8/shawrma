@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Models\MainProduct;
 use App\Models\OurBrand;
+use App\Models\ProductInfo;
 use App\Models\SocialLink;
 use App\Models\SolveBrand;
 use App\Models\Sustainability;
@@ -44,45 +45,15 @@ class HandleInertiaRequests extends Middleware
             ],
             'applang' =>  $appLang,
             'currentRoute' => Route::currentRouteName(),
-            'solvebrands' => fn() => SolveBrand::with(['mainproducts:id,solve_brands_id,title,slug'])
-                ->select('id', 'title', 'slug')
-                ->get()
-                ->map(function ($solvebrand) use ($appLang) {
-                    return [
-                        'id' => $solvebrand->id,
-                        'title' => $solvebrand->getTranslation('title', $appLang),
-                        'slug' => $solvebrand->getTranslation('slug', $appLang),
-                        'mainproducts' => $solvebrand->mainproducts->map(function ($product) use ($appLang) {
-                            return [
-                                'id' => $product->id,
-                                'title' => $product->getTranslation('title', $appLang),
-                                'slug' => $product->getTranslation('slug', $appLang),
-                            ];
-                        })
-                    ];
-                }),
-            'mainproducts' => fn() => MainProduct::whereNull('solve_brands_id')
-                ->select('id', 'title', 'slug')
-                ->get()
-                ->map(function ($mainproduct) use ($appLang) {
-
-                    return [
-                        'id' => $mainproduct->id,
-                        'title' => $mainproduct->getTranslation('title', $appLang),
-                        'slug' => $mainproduct->getTranslation('slug', $appLang)
-                    ];
-                }),
-            'Brands' => fn() => OurBrand::select('id', 'header_title', 'slug')
-                ->get()
-                ->map(function ($brands) use ($appLang) {
-
-                    return [
-                        'id' => $brands->id,
-                        'header_title' => $brands->getTranslation('header_title', $appLang),
-                        'slug' => $brands->getTranslation('slug', $appLang)
-                    ];
-                }),
-            
+            'productinfo_nav' => fn()=> ProductInfo::select('id' , 'nav_title' , 'slug')
+                                    ->get()
+                                    ->map(function ($proinfo) use($appLang){
+                                        return [
+                                            'id' => $proinfo->id,
+                                            'nav_title' => $proinfo->nav_title,
+                                            'slug' => $proinfo->slug
+                                        ];
+                                    }),
             'socialicons' => fn()=> SocialLink::get(),
             'flash' => function () {
                 return [

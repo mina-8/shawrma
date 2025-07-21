@@ -9,25 +9,25 @@ class WorkUs extends Model
     use \Spatie\Translatable\HasTranslations;
 
     protected $fillable = [
-        'banner',
-        'header_title',
-        'header_content',
         'title',
-        'content'
+        'content',
+        'content_title',
+        'footer_content',
+        'image',
     ];
 
-    public $translatable = ['header_title', 'header_content', 'title', 'content'];
+    public $translatable = ['title', 'content', 'content_title', 'footer_content'];
 
     protected $casts = [
-        'header_title' => 'array',
-        'header_content' => 'array',
         'title' => 'array',
         'content' => 'array',
+        'content_title' => 'array',
+        'footer_content' => 'array',
     ];
 
     protected $guarded = ['id'];
 
-    
+
     public function corevesion()
     {
         return $this->morphMany(CoreVesion::class, 'vesionable');

@@ -17,6 +17,7 @@ return [
         'title' => 'Title',
         'content' => 'Content',
         'str_btn' => 'Button Content',
+        'youtube_link' => 'youtube link url',
         'link' => 'Button Link',
         'image' => 'Image',
         'created_at' => 'Created At',

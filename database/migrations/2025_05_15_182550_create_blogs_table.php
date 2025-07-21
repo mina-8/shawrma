@@ -16,6 +16,7 @@ return new class extends Migration
             $table->json('title');
             $table->json('content');
             $table->string('image');
+            $table->string('youtube_link')->nullable();
             $table->json('slug');
             $table->timestamps();
         });

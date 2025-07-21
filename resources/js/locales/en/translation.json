@@ -1,15 +1,12 @@
 {
     "home": {
         "home": "Home",
-        "contact": "Contact Us",
-        "about": "Let's build the best",
-        "services": "Let's build the future",
-        "brands": "Our brands",
-        "bulidinus": "Let's build together",
-        "spotlight": "Spotlight",
-        "products": "Products and solutions",
+        "about": "About Orca",
+        "how_build": "How it's made",
+        "contact_us": "Contact Us",
+        "products": "Products",
         "contactform": "Contact form",
-        "portfolio": "Portfolio",
+        "carreer": "Careers",
         "testimonials": "Testimonials",
         "faq": "FAQ",
         "privacy_policy": "Privacy Policy",
@@ -26,7 +23,7 @@
         "title_1": "Welcome to Our Site",
         "title_2": "We Offer the Best Services",
         "title_3": "Contact Us Today",
-        "title_4" : "Discover Our Products",
+        "title_4": "Discover Our Products",
         "description_1": "We are here to help you achieve your goals",
         "description_2": "We offer a variety of services to meet your needs",
         "description_3": "Contact us for a free consultation",
@@ -34,7 +31,7 @@
         "button_1": "Learn More",
         "button_2": "Get a Quote",
         "button_3": "Contact Us",
-        "button_4" : "View Products"
+        "button_4": "View Products"
     },
     "ournews": {
         "title": "Latest News",
@@ -43,8 +40,10 @@
         "content-news": "We manufacture a wide range of cement-based prefabricated products designed to withstand the region's harsh climatic conditions. These products include more than 40 finishing materials, insulation, putties, and ceramic and marble adhesives. We don't just offer building materials... we offer Saudi industry with engineering confidence that keeps pace with the future."
     },
     "aboutus": {
-        "title": "Our Core Values",
-        "readmore": "Read More"
+        "header": "About Orca",
+        "stories": "What our customers are saying (a testimonial we're proud of)",
+        "certifcate": "Testimonials",
+        "readmore": "Read more"
     },
     "blogcards": {
         "readmore": "Read More",
@@ -80,8 +79,12 @@
     "ourstory": {
         "title": "Our Story"
     },
-    "ourteam" :{
-        "title": "Our team"
+    "ourblog": {
+        "title": "Orca News",
+        "show_video": "Watch the short video from",
+        "here": "Here",
+        "nextpage": "Next Page",
+"prevpage": "Previous Page"
     },
     "ourpromise": {
         "title": "Our Commitment",
@@ -150,7 +153,7 @@
         "number_6": "9/M tons/year ",
         "number_7": "435/+ TCM",
         "number_8": "885/+ TCM",
-        "number_9" : "10/+ LRA",
+        "number_9": "10/+ LRA",
         "name_1": "Clients",
         "name_2": "Employees",
         "name_3": "Products",
@@ -159,7 +162,7 @@
         "name_6": "Dry Mix Factory Production",
         "name_7": "White Brick Factory Production",
         "name_8": "Factory Production Interlock",
-        "name_9" : "Strong presence in "
+        "name_9": "Strong presence in "
     },
     "login": {
         "title": "Login",
@@ -236,7 +239,6 @@
         "bulidinfo": "BIM",
         "contact-us": "Contact Us",
         "ourstory": "Our Story",
-        "ourteam": "Our Team",
         "ourgoal": "A Better Life",
         "ourpromise": "Our Promise",
         "ourculture": "Our Culture",

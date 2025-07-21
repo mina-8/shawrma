@@ -20,6 +20,7 @@ return [
     'fields' => [
         'header' => 'Create Our Promise',
         'description' => 'Description',
+        'footer_title' => 'sustainable title',
         'mainproduct' => 'Main Products List',
         'title' => 'Our Promise Title',
         'story_description' => 'Description',

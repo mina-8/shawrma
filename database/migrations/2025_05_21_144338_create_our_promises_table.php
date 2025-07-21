@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('our_promises', function (Blueprint $table) {
             $table->id();
-            $table->string('banner')->nullable();
             $table->json('title')->nullable();
+            $table->json('description')->nullable();
             $table->json('content')->nullable();
+            $table->json('footer_title')->nullable();
             $table->string('image')->nullable();
             $table->json('slug');
             $table->timestamps();

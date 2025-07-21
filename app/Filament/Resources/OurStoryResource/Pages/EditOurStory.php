@@ -47,25 +47,12 @@ class EditOurStory extends EditRecord
             Step::make(__('filament-panels::resources/pages/ourstory.fields.header'))
                 ->description(__('filament-panels::resources/pages/ourstory.fields.description'))
                 ->schema([
-                    Components\FileUpload::make('banner')
-                        ->label(__('filament-panels::resources/pages/ourstory.fields.banner'))
-                        ->disk('public')
-                        ->directory('uploads/aboutus/banner')
-                        ->visibility('public')
-                        ->maxSize(4096)
-                        ->getUploadedFileNameForStorageUsing(function ($file) {
-                            $extension = $file->getClientOriginalExtension();
-                            return Str::uuid() . '.' . $extension;
-                        })
-                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp']),
+
                     Components\Group::make([
                         LanguageTabs::make([
                             Components\TextInput::make('title')
                                 ->label(__('filament-panels::resources/pages/ourstory.fields.title'))
                                 ->required(),
-
-                            Components\MarkdownEditor::make('description')
-                                ->label(__('filament-panels::resources/pages/ourstory.fields.description')),
 
                             Components\MarkdownEditor::make('content')
                                 ->label(__('filament-panels::resources/pages/ourstory.fields.content')),
@@ -118,25 +105,7 @@ class EditOurStory extends EditRecord
                         ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null)
                         ->required(),
                 ]),
-            Step::make(__('filament-panels::resources/pages/ourstory.fields.create_story.header'))
-                ->description(__('filament-panels::resources/pages/ourstory.fields.create_story.description'))
-                ->schema([
-                    Components\Repeater::make('edit_core_story')
-                        ->label(__('filament-panels::resources/pages/ourstory.fields.create_story.description'))
-                        ->schema([
-                            LanguageTabs::make([
-                                Components\TextInput::make('title')
-                                    ->label(__('filament-panels::resources/pages/ourstory.fields.create_story.title')),
-                            ]),
-                            Components\TextInput::make('youtube_link')
-                                ->label(__('filament-panels::resources/pages/ourstory.fields.create_story.video'))
 
-                                ->url(),
-                        ])
-                        ->addActionLabel(__('filament-panels::resources/pages/ourstory.fields.create_story.add_video'))
-                        ->collapsible()
-                        ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null),
-                ])
         ];
     }
 
@@ -157,28 +126,11 @@ class EditOurStory extends EditRecord
             })->toArray();
     }
 
-    protected function getDefaultCoreStory(): array
-    {
-        // Load existing usage instructions for the product
-        return CoreStory::where('storyable_id', $this->record->id)
-            ->where('storyable_type', OurStory::class)
-            ->get()
-            ->map(function ($corstory) {
-                $title = $corstory->getTranslations('title');
 
-                return [
-                    'id' => $corstory->id,
-                    'title' => $title,
-                    'youtube_link' => $corstory->youtube_link,
-                ];
-            })
-            ->toArray();
-    }
 
     protected function mutateFormDataBeforeFill(array $data): array
     {
         $data['edit_core_station'] = $this->getDefaultCoreStations();
-        $data['edit_core_story'] = $this->getDefaultCoreStory();
         return $data;
     }
     protected function mutateFormDataBeforeSave(array $data): array
@@ -186,12 +138,6 @@ class EditOurStory extends EditRecord
 
         $record = $this->record;
 
-        // Handle banner file replacement
-        if (isset($data['banner']) && $data['banner'] !== $record->banner) {
-            if (!empty($record->banner) && Storage::disk('public')->exists($record->banner)) {
-                Storage::disk('public')->delete($record->banner);
-            }
-        }
 
         // Handle image file replacement
         if (isset($data['image']) && $data['image'] !== $record->image) {
@@ -211,21 +157,6 @@ class EditOurStory extends EditRecord
 
 
         return $data;
-    }
-
-    protected function convertToEmbedLink(string $url): string
-    {
-        if (preg_match('/youtube\.com\/embed\/([a-zA-Z0-9_-]+)/', $url, $match)) {
-            return "https://www.youtube.com/embed/{$match[1]}";
-        }
-
-        if (preg_match('/(youtu\.be\/|youtube\.com\/watch\?v=)([a-zA-Z0-9_-]+)/', $url, $match)) {
-            return "https://www.youtube.com/embed/{$match[2]}";
-        }
-
-        throw \Illuminate\Validation\ValidationException::withMessages([
-            'edit_core_story' => ['One or more YouTube URLs are invalid.'],
-        ]);
     }
 
 
@@ -271,40 +202,6 @@ class EditOurStory extends EditRecord
             }
         }
 
-        // handel core story
-        $EditCoreStory = $this->form->getState()['edit_core_story'] ?? [];
-        $ExistingIds = CoreStory::where('storyable_id', $this->record->id)
-            ->where('storyable_type', OurStory::class)
-            ->pluck('id')->toArray();
-        $submittedIds = array_filter(array_column($EditCoreStory, 'id'));
-
-        // delete remove useage core story
-        $idsStoryToDelete = array_diff($ExistingIds, $submittedIds);
-        if (!empty($idsStoryToDelete)) {
-            CoreStory::whereIn('id', $idsStoryToDelete)->delete();
-        }
-
-        // create or update core story
-        foreach ($EditCoreStory as $corestory) {
-            $embedLink = $this->convertToEmbedLink($corestory['youtube_link']);
-
-            if (isset($corestory['id']) && in_array($corestory['id'], $ExistingIds)) {
-                CoreStory::where('id', $corestory['id'])
-                    ->update([
-                        'title' => $corestory['title'],
-                        'youtube_link' => $embedLink,
-                        'storyable_id' => $this->record->id,
-                        'storyable_type' => OurStory::class
-                    ]);
-            } else {
-
-                CoreStory::create([
-                    'title' => $corestory['title'],
-                    'youtube_link' => $embedLink,
-                    'storyable_id' => $this->record->id,
-                    'storyable_type' => OurStory::class
-                ]);
-            }
-        }
+        
     }
 }
