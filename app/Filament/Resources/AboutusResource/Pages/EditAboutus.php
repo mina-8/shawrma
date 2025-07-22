@@ -14,7 +14,7 @@ use Filament\Forms\Components;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Pixelpeter\FilamentLanguageTabs\Forms\Components\LanguageTabs;
-
+use Rawilk\FilamentQuill\Filament\Forms\Components\QuillEditor;
 class EditAboutus extends EditRecord
 {
     use EditRecord\Concerns\HasWizard;
@@ -40,7 +40,7 @@ class EditAboutus extends EditRecord
                                 ->label(__('filament-panels::resources/pages/aboutus.fields.title'))
                                 ->required(),
 
-                            Components\MarkdownEditor::make('content')
+                            QuillEditor::make('content')
                                 ->label(__('filament-panels::resources/pages/aboutus.fields.content')),
 
 
@@ -70,7 +70,7 @@ class EditAboutus extends EditRecord
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
                                     ->label(__('filament-panels::resources/pages/aboutus.fields.create_stories.title')),
-                                Components\MarkdownEditor::make('content')
+                                QuillEditor::make('content')
                                     ->label(__('filament-panels::resources/pages/aboutus.fields.create_stories.content')),
                             ]),
                             Components\FileUpload::make('image')
@@ -100,7 +100,7 @@ class EditAboutus extends EditRecord
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
                                     ->label(__('filament-panels::resources/pages/aboutus.fields.create_vesion.title')),
-                                Components\MarkdownEditor::make('content')
+                                QuillEditor::make('content')
                                     ->label(__('filament-panels::resources/pages/aboutus.fields.create_vesion.content')),
                             ]),
                             Components\FileUpload::make('image')
@@ -130,7 +130,7 @@ class EditAboutus extends EditRecord
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
                                     ->label(__('filament-panels::resources/pages/aboutus.fields.create_station.title')),
-                                Components\MarkdownEditor::make('content')
+                                QuillEditor::make('content')
                                     ->label(__('filament-panels::resources/pages/aboutus.fields.create_station.content')),
                             ]),
                             Components\FileUpload::make('image')

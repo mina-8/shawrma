@@ -10,7 +10,7 @@
 
 /* Active dot */
 .ant-carousel .slick-dots li::after {
-  background-color: #facc15 !important; /* Tailwind's yellow-400 */
+  background-color: #df1111 !important; /* Tailwind's yellow-400 */
   opacity: 1;
 }
 
@@ -41,5 +41,25 @@
 
 .ant-drawer-body{
     padding: 0px !important;
+}
+
+
+/* شيل النقاط الافتراضية */
+.ql-editor ul,
+.ql-editor ol {
+  list-style: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important; /* لو محتوى RTL */
+  margin: 0;
+}
+
+/* مسافات جميلة بين العناصر */
+.ql-editor li {
+  margin: 8px 0;
+}
+
+.ql-editor ul > li::before,
+.ql-editor ol > li::before {
+  content: none !important;
 }
 

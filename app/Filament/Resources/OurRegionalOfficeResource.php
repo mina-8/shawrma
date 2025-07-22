@@ -59,16 +59,18 @@ class OurRegionalOfficeResource extends Resource
                                 ->required(),
 
                         ]),
-                        Forms\Components\TextInput::make('mailbox')
+                        Forms\Components\TextInput::make('fax')
                             ->label(__('filament-panels::resources/pages/ourregionaloffice.fields.mailbox'))
-                            ->numeric()
-                            ->rule('numeric')
-                            ->maxLength(100)
+                            ->maxLength(25)
                             ->required(),
                         Forms\Components\TextInput::make('phone')
                             ->label(__('filament-panels::resources/pages/ourregionaloffice.fields.phone'))
                             ->maxLength(25)
                             ->required(),
+                        Forms\Components\TextInput::make('phone_free')
+                            ->label(__('filament-panels::resources/pages/ourregionaloffice.fields.phone'))
+                            ->maxLength(25)
+                            ,
                         Forms\Components\TextInput::make('email')
                             ->label(__('filament-panels::resources/pages/ourregionaloffice.fields.email'))
                             ->email()
@@ -88,7 +90,7 @@ class OurRegionalOfficeResource extends Resource
                 Tables\Columns\TextColumn::make('state')
                     ->label(__('filament-panels::resources/pages/ourregionaloffice.fields.state'))
                     ->searchable(),
-                
+
                 Tables\Columns\TextColumn::make('address')
                     ->label(__('filament-panels::resources/pages/ourregionaloffice.fields.address'))
                     ->searchable(),

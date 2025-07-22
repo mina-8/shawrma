@@ -3,7 +3,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next';
 import { FaFilePdf } from 'react-icons/fa';
 import triangle from '@/../../public/aboutus/triangle.png'
-import ReactMarkdown from 'react-markdown';
+import ContentRenderer from '@/Components/ContentRenderer';
 
 interface CoreSustains {
     id: number;
@@ -63,7 +63,11 @@ const Index = ({ ourpromise }: Props) => {
                 {/* Text Content */}
                 <div className="px-12 text-xl leading-10 flex flex-col justify-center bg-gray-200">
                     <h3 className="text-4xl font-semibold mb-4">{ourpromise?.title}</h3>
-                    <ReactMarkdown>{ourpromise?.content}</ReactMarkdown>
+                    <div>
+
+                         <ContentRenderer content={ourpromise.content} />
+                    </div>
+
                     <div
                         className='flex flex-col my-4'
                     >
@@ -141,9 +145,8 @@ const Index = ({ ourpromise }: Props) => {
                                 <div
                                     className='w-[80%] text-center'
                                 >
-                                    <ReactMarkdown>
-                                        {item.content}
-                                    </ReactMarkdown>
+
+                                     <ContentRenderer content={item.content} />
                                 </div>
 
                                 <div
@@ -188,14 +191,16 @@ const Index = ({ ourpromise }: Props) => {
 
                                     {/* النص */}
                                     <div className="mx-4 md:mx-8 text-lg md:text-xl leading-relaxed py-6 md:py-0">
-                                        <ReactMarkdown>{item?.content}</ReactMarkdown>
+
+                                         <ContentRenderer content={item.content} />
                                     </div>
                                 </>
                             ) : (
                                 <>
                                     {/* النص */}
                                     <div className="mx-4 md:mx-8 text-lg md:text-xl leading-relaxed py-6 md:py-0">
-                                        <ReactMarkdown>{item?.content}</ReactMarkdown>
+
+                                         <ContentRenderer content={item.content} />
                                     </div>
 
                                     {/* الصورة */}
@@ -235,9 +240,8 @@ const Index = ({ ourpromise }: Props) => {
                             <div
                                 className='flex flex-col justify-center items-center w-1/2 text-center gap-8'
                             >
-                                <ReactMarkdown>
-                                    {item.content}
-                                </ReactMarkdown>
+                                 
+                                 <ContentRenderer content={item.content} />
                             </div>
 
                         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aboutus;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
@@ -56,6 +57,16 @@ class AboutUsController extends Controller
             });
         }
 
+        $products = Product::latest()->get()
+        ->map(function ($product) use($appLang){
+            return [
+                'id' => $product->id,
+                'title' => $product->getTranslation('title', $appLang),
+                'image' => Storage::url($product->image),
+                'link' => $product->link
+            ];
+        });
+
         $dataAboutus = [
             'id' => $aboutus->id,
             'title' => $aboutus->getTranslation('title', $appLang),
@@ -63,7 +74,8 @@ class AboutUsController extends Controller
             'image' => Storage::url($aboutus->image),
             'coresvesions' => $coresvesions,
             'corestations' => $corestations,
-            'corestories' => $corestories
+            'corestories' => $corestories,
+            'products' => $products
         ];
 
         return Inertia::render('Welcome/Aboutus/Index', ['aboutus' => $dataAboutus]);

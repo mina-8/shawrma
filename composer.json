@@ -14,6 +14,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.10.1",
         "pixelpeter/filament-language-tabs": "^2.0",
+        "rawilk/filament-quill": "^1.0",
         "spatie/laravel-translatable": "^6.11",
         "tightenco/ziggy": "^2.0",
         "tomatophp/filament-language-switcher": "^1.0"

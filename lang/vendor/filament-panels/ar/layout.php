@@ -63,6 +63,6 @@ return [
     'webist'=>[
         'control webiste' => "التحكم بالموقع",
         'about_us' => "من نحن",
-        'future' => "نبني المستقبل"
+        'how_make' => "كيف نعمل"
     ]
 ];

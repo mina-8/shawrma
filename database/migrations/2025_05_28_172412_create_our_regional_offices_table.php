@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->json('state');
             $table->json('address');
-            $table->integer('mailbox');
+            $table->string('fax');
             $table->string('phone');
+            $table->string('phone_free')->nullable();
             $table->string('email');
             $table->timestamps();
         });

@@ -26,10 +26,7 @@ class OurCulter extends Model
 
     protected $guarded = ['id'];
 
-    public function factsAndNumbers()
-    {
-        return $this->morphMany(FactNumber::class, 'factable');
-    }
+    
 
     public function corestory()
     {

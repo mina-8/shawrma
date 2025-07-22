@@ -4,7 +4,9 @@ namespace App\Http\Middleware;
 
 use App\Models\MainProduct;
 use App\Models\OurBrand;
+use App\Models\OurRegionalOffice;
 use App\Models\ProductInfo;
+use App\Models\SettingSite;
 use App\Models\SocialLink;
 use App\Models\SolveBrand;
 use App\Models\Sustainability;
@@ -54,7 +56,20 @@ class HandleInertiaRequests extends Middleware
                                             'slug' => $proinfo->slug
                                         ];
                                     }),
+            'office_reginal' => fn() => OurRegionalOffice::get()
+            ->map(function ($office) use($appLang){
+                return [
+                    'id'=> $office->id,
+                    'state' => $office->getTranslation('state' , $appLang),
+                    'address' => $office->getTranslation('address' , $appLang),
+                    'fax' => $office->fax,
+                    'phone' => $office->phone,
+                    'phone_free' => $office->phone_free,
+                    'email' => $office->email
+                ];
+            }),
             'socialicons' => fn()=> SocialLink::get(),
+            'site_setting' => fn() => SettingSite::first(),
             'flash' => function () {
                 return [
                     'success' => session('success'),

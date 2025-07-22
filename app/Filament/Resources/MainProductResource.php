@@ -14,7 +14,7 @@ use Illuminate\Support\Str;
 use Pixelpeter\FilamentLanguageTabs\Forms\Components\LanguageTabs;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
-
+use Rawilk\FilamentQuill\Filament\Forms\Components\QuillEditor;
 class MainProductResource extends Resource
 {
     protected static ?string $model = MainProduct::class;
@@ -45,33 +45,19 @@ class MainProductResource extends Resource
             ->schema([
                 Forms\Components\Grid::make(1)
                     ->schema([
-                        Forms\Components\Select::make('solve_brands_id')
-                            ->label(__('filament-panels::resources/pages/product.fields.mainproduct'))
-                            ->relationship('solvebrand', 'title'),
+
                         LanguageTabs::make([
                             Forms\Components\TextInput::make('title')
                                 ->label(__('filament-panels::resources/pages/mainproduct.fields.title'))
                                 ->required(),
-                            Forms\Components\MarkdownEditor::make('content')
+                            QuillEditor::make('content')
                                 ->label(__('filament-panels::resources/pages/mainproduct.fields.content')),
-                            Forms\Components\Hidden::make('slug')
-                                ->label('slug'),
-                        ]),
-                        Forms\Components\FileUpload::make('icon')
-                            ->label(__('filament-panels::resources/pages/mainproduct.fields.icon'))
-                            ->image()
-                            ->disk('public')
-                            ->directory('uploads/mainproduct')
-                            ->visibility('public')
-                            ->maxSize(4096)
-                            ->getUploadedFileNameForStorageUsing(function ($file) {
-                                $extension = $file->getClientOriginalExtension();
-                                return Str::uuid() . '.' . $extension;
-                            })
-                            ->acceptedFileTypes(['image/svg+xml']),
-                        Forms\Components\TextInput::make('color')
-                            ->label(__('filament-panels::resources/pages/product.fields.color')),
 
+                        ]),
+
+                        Forms\Components\TextInput::make('link')
+                                ->label(__('filament-panels::resources/pages/mainproduct.fields.title'))
+                                ,
                         Forms\Components\FileUpload::make('image')
                             ->label(__('filament-panels::resources/pages/mainproduct.fields.image'))
                             ->image()

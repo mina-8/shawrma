@@ -15,7 +15,7 @@ use Illuminate\Support\Str;
 use Filament\Forms\Components\Wizard\Step;
 use Filament\Forms\Components;
 use Pixelpeter\FilamentLanguageTabs\Forms\Components\LanguageTabs;
-
+use Rawilk\FilamentQuill\Filament\Forms\Components\QuillEditor;
 class CreateAboutus extends CreateRecord
 {
     use CreateRecord\Concerns\HasWizard;
@@ -51,7 +51,7 @@ class CreateAboutus extends CreateRecord
                                 ->required(),
 
 
-                            Components\MarkdownEditor::make('content')
+                            QuillEditor::make('content')
                                 ->label(__('filament-panels::resources/pages/aboutus.fields.content')),
 
 
@@ -81,7 +81,7 @@ class CreateAboutus extends CreateRecord
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
                                     ->label(__('filament-panels::resources/pages/aboutus.fields.create_stories.title')),
-                                Components\MarkdownEditor::make('content')
+                                QuillEditor::make('content')
                                     ->label(__('filament-panels::resources/pages/aboutus.fields.create_stories.content')),
                             ]),
                             Components\FileUpload::make('image')
@@ -111,7 +111,7 @@ class CreateAboutus extends CreateRecord
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
                                     ->label(__('filament-panels::resources/pages/aboutus.fields.create_vesion.title')),
-                                Components\MarkdownEditor::make('content')
+                                QuillEditor::make('content')
                                     ->label(__('filament-panels::resources/pages/aboutus.fields.create_vesion.content')),
                             ]),
                             Components\FileUpload::make('image')
@@ -141,7 +141,7 @@ class CreateAboutus extends CreateRecord
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
                                     ->label(__('filament-panels::resources/pages/aboutus.fields.create_station.title')),
-                                Components\MarkdownEditor::make('content')
+                                QuillEditor::make('content')
                                     ->label(__('filament-panels::resources/pages/aboutus.fields.create_station.content')),
                             ]),
                             Components\FileUpload::make('image')

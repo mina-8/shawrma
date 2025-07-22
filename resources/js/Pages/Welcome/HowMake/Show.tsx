@@ -1,7 +1,8 @@
+import ContentRenderer from '@/Components/ContentRenderer';
 import { Head, Link } from '@inertiajs/react';
 import React from 'react'
 import { useTranslation } from 'react-i18next';
-import ReactMarkdown from 'react-markdown';
+
 interface CoreStations {
     id: number;
     title: string;
@@ -32,16 +33,16 @@ const Show = ({ proinfo }: Props) => {
                 className='w-full min-h-screen bg-center bg-cover p-8 flex relative'
                 style={{ backgroundImage: `url('${proinfo.image}')` }}
             >
-                 <div className='absolute w-full h-full bg-black top-0 right-0 opacity-50'></div>
+                <div className='absolute w-full h-full bg-black top-0 right-0 opacity-50'></div>
                 <div
-                className='mx-auto w-full max-w-7xl flex justify-center  flex-col gap-8 relative'
+                    className='mx-auto w-full max-w-7xl flex justify-center  flex-col gap-8 relative'
                 >
 
-                <h3 className="text-7xl font-semibold mb-4 text-white">{proinfo?.title}</h3>
-                <div className=" text-2xl font-bold leading-10 flex flex-col justify-center text-white">
-                    <ReactMarkdown>{proinfo?.content}</ReactMarkdown>
+                    <h3 className="text-7xl font-semibold mb-4 text-white">{proinfo?.title}</h3>
+                    <div className=" text-2xl font-bold leading-10 flex flex-col justify-center text-white">
 
-                </div>
+                        <ContentRenderer content={proinfo.content} />
+                    </div>
                 </div>
 
             </section>
@@ -60,7 +61,11 @@ const Show = ({ proinfo }: Props) => {
                                         <div
                                             className='text-4xl font-bold'
                                         >{item.title}</div>
-                                        <ReactMarkdown>{item?.content}</ReactMarkdown>
+                                        <div>
+
+                                            <ContentRenderer content={item.content} />
+                                        </div>
+
 
                                     </div>
 
@@ -91,7 +96,11 @@ const Show = ({ proinfo }: Props) => {
                                         <div
                                             className='text-4xl font-bold'
                                         >{item.title}</div>
-                                        <ReactMarkdown>{item?.content}</ReactMarkdown>
+                                        <div>
+
+                                            <ContentRenderer content={item.content} />
+                                        </div>
+
 
                                     </div>
 

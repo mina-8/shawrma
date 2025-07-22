@@ -42,8 +42,9 @@
     "aboutus": {
         "header": "About Orca",
         "stories": "What our customers are saying (a testimonial we're proud of)",
-        "certifcate": "Testimonials",
-        "readmore": "Read more"
+        "products": "Featured Products",
+        "certifcate": "Certificates",
+        "readmore": "Read More"
     },
     "blogcards": {
         "readmore": "Read More",
@@ -84,7 +85,7 @@
         "show_video": "Watch the short video from",
         "here": "Here",
         "nextpage": "Next Page",
-"prevpage": "Previous Page"
+        "prevpage": "Previous Page"
     },
     "ourpromise": {
         "title": "Our Commitment",
@@ -200,8 +201,14 @@
         "latest-news": "Latest News",
         "latest-project": "Latest Projects",
         "sustainability-report": "Sustainability ",
-        "contact-us": "Contact us"
+        "contact-us": "Contact us",
+        "delivery": "Home Delivery",
+        "shop": "Visit Our Shop"
     },
+    "ourdelivery" :{
+"title" : "Delivery Service",
+"shop" : "Visit our website"
+},
     "contact": {
         "query": "Message Purpose",
         "types": {

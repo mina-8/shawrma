@@ -1,6 +1,7 @@
 import '../css/app.css';
 import './bootstrap';
 import '../js/I18n/i18n'
+import 'react-quill/dist/quill.snow.css';
 import { createInertiaApp, router } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';

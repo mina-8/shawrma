@@ -13,7 +13,7 @@ use Filament\Forms\Components\Wizard\Step;
 use Filament\Forms\Components;
 use Illuminate\Support\Str;
 use Pixelpeter\FilamentLanguageTabs\Forms\Components\LanguageTabs;
-
+use Rawilk\FilamentQuill\Filament\Forms\Components\QuillEditor;
 class EditOurStory extends EditRecord
 {
     use EditRecord\Concerns\HasWizard;
@@ -54,7 +54,7 @@ class EditOurStory extends EditRecord
                                 ->label(__('filament-panels::resources/pages/ourstory.fields.title'))
                                 ->required(),
 
-                            Components\MarkdownEditor::make('content')
+                            QuillEditor::make('content')
                                 ->label(__('filament-panels::resources/pages/ourstory.fields.content')),
 
 
@@ -84,7 +84,7 @@ class EditOurStory extends EditRecord
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
                                     ->label(__('filament-panels::resources/pages/ourstory.fields.create_station.title')),
-                                Components\MarkdownEditor::make('content')
+                                QuillEditor::make('content')
                                     ->label(__('filament-panels::resources/pages/ourstory.fields.create_station.content')),
                             ]),
                             Components\FileUpload::make('image')
@@ -202,6 +202,6 @@ class EditOurStory extends EditRecord
             }
         }
 
-        
+
     }
 }

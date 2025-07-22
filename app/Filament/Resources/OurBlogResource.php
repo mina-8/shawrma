@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 use Pixelpeter\FilamentLanguageTabs\Forms\Components\LanguageTabs;
-
+use Rawilk\FilamentQuill\Filament\Forms\Components\QuillEditor;
 class OurBlogResource extends Resource
 {
     protected static ?string $model = OurBlog::class;
@@ -52,7 +52,7 @@ class OurBlogResource extends Resource
                             Forms\Components\TextInput::make('title')
                                 ->label(__('filament-panels::resources/pages/ourblog.fields.title'))
                                 ->required(),
-                            Forms\Components\MarkdownEditor::make('content')
+                            QuillEditor::make('content')
                                 ->label(__('filament-panels::resources/pages/ourblog.fields.content')),
                             Forms\Components\Hidden::make('slug')
                                 ->label('slug'),

@@ -14,7 +14,7 @@ use Illuminate\Support\Str;
 use Pixelpeter\FilamentLanguageTabs\Forms\Components\LanguageTabs;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Redirect;
-
+use Rawilk\FilamentQuill\Filament\Forms\Components\QuillEditor;
 class CreateOurStory extends CreateRecord
 {
     use CreateRecord\Concerns\HasWizard;
@@ -50,7 +50,7 @@ class CreateOurStory extends CreateRecord
                                 ->label(__('filament-panels::resources/pages/ourstory.fields.title'))
                                 ->required(),
 
-                            Components\MarkdownEditor::make('content')
+                            QuillEditor::make('content')
                                 ->label(__('filament-panels::resources/pages/ourstory.fields.content')),
 
 
@@ -80,7 +80,7 @@ class CreateOurStory extends CreateRecord
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
                                     ->label(__('filament-panels::resources/pages/ourstory.fields.create_station.title')),
-                                Components\MarkdownEditor::make('content')
+                                QuillEditor::make('content')
                                     ->label(__('filament-panels::resources/pages/ourstory.fields.create_station.content')),
                             ]),
                             Components\FileUpload::make('image')

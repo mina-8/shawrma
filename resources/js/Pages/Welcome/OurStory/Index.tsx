@@ -1,8 +1,9 @@
+import ContentRenderer from '@/Components/ContentRenderer';
 import { Head } from '@inertiajs/react';
 import React from 'react'
 import { useTranslation } from 'react-i18next';
 import { FaRegCalendarAlt } from 'react-icons/fa';
-import ReactMarkdown from 'react-markdown';
+
 
 interface CoreStations {
     id: number;
@@ -34,7 +35,10 @@ const Index = ({ ourstory }: Props) => {
                 {/* Text Content */}
                 <div className="px-12 text-xl leading-10 flex flex-col justify-center">
                     <h3 className="text-4xl font-semibold mb-4">{ourstory?.title}</h3>
-                    <ReactMarkdown>{ourstory?.content}</ReactMarkdown>
+                    <div>
+                     <ContentRenderer content={ourstory.content} />
+                    </div>
+
                 </div>
 
                 {/* Image */}
@@ -87,7 +91,10 @@ const Index = ({ ourstory }: Props) => {
                                 >{item.title}</div>
                                 <div
                                     className={`text-[#7a7a7a] text-2xl ${index % 2 ? 'text-start' : 'text-end'}`}
-                                ><ReactMarkdown>{item.content}</ReactMarkdown></div>
+                                >
+                                     
+                                     <ContentRenderer content={item.content} />
+                                </div>
 
                             </div>
 

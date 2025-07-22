@@ -8,6 +8,7 @@ use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Redirect;
+
 class CreateOurBlog extends CreateRecord
 {
     protected static string $resource = OurBlogResource::class;

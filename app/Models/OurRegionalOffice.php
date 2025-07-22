@@ -11,8 +11,9 @@ class OurRegionalOffice extends Model
     protected $fillable = [
         'state',
         'address',
-        'mailbox',
+        'fax',
         'phone',
+        'phone_free',
         'email',
 
     ];

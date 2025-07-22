@@ -63,6 +63,6 @@ return [
     'webist'=>[
         'control webiste' => "Contorl Webiste",
         'about_us' => "About Us",
-        'future' => "Buliding future"
+        'how_make' => "How make"
     ]
 ];

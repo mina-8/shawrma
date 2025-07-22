@@ -1,7 +1,8 @@
+import ContentRenderer from '@/Components/ContentRenderer';
 import { Head, Link } from '@inertiajs/react';
 import React from 'react'
 import { useTranslation } from 'react-i18next';
-import ReactMarkdown from 'react-markdown';
+
 export interface NewsItem {
     id: number;
     title: string;
@@ -52,7 +53,10 @@ const Index = ({ ourblog }: Props) => {
                 {/* Text Content */}
                 <div className="px-12 text-xl leading-10 flex flex-col justify-center bg-gray-200">
                     <h3 className="text-4xl font-semibold mb-4">{ourblog?.title}</h3>
-                    <ReactMarkdown>{ourblog?.content}</ReactMarkdown>
+                    <div>
+
+                         <ContentRenderer content={ourblog.content} />
+                    </div>
 
                 </div>
 
@@ -81,7 +85,10 @@ const Index = ({ ourblog }: Props) => {
                                         <div
                                             className='text-4xl font-bold'
                                         >{item.title}</div>
-                                        <ReactMarkdown>{item?.content}</ReactMarkdown>
+                                        <div>
+
+                                             <ContentRenderer content={item.content} />
+                                        </div>
                                         <div
                                             className='flex '
                                         >
@@ -123,7 +130,10 @@ const Index = ({ ourblog }: Props) => {
                                         <div
                                             className='text-4xl font-bold'
                                         >{item.title}</div>
-                                        <ReactMarkdown>{item?.content}</ReactMarkdown>
+                                        <div>
+                                             
+                                             <ContentRenderer content={item.content} />
+                                        </div>
                                         <div
                                             className='flex '
                                         >

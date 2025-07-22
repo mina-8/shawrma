@@ -2,13 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blog;
-use App\Models\FactNumber;
-use App\Models\Home;
-use App\Models\MainProduct;
-use App\Models\OurBrand;
-use App\Models\OurImpact;
-use App\Models\OurMainPlair;
 use App\Models\Slide;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -41,6 +34,9 @@ class HomeController extends Controller
                 ];
             });
 
+        if(!$slides) {
+            return inertia('Welcome/NotFound/NotFound');
+        }
 
         return Inertia::render('Welcome', [
             'slides' => $slides,

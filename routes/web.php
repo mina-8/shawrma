@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\BuildInformationController;
+
 use App\Http\Controllers\ContactformController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\OurBrandController;
+
 use App\Http\Controllers\OurPromiseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MainProductController;
@@ -58,17 +59,15 @@ Route::group(
 
         // main product
         Route::get('mainproduct', [MainProductController::class, 'index'])->name('mainproduct');
-        Route::get('mainproduct/{slug}', [MainProductController::class, 'show'])->name('mainproduct.show');
+
+
+        // delivery
+        Route::get('delivery' , [DeliveryController::class , 'index'])->name('delivery');
 
         // products
-        // Route::get('Products', [ProductController::class, 'index'])->name('products');
-        Route::get('product/{slug}', [ProductController::class, 'show'])->name('product.show');
-        Route::get('product-search', [ProductController::class, 'search'])->name('product-search');
-        Route::get('product-video', [ProductController::class, 'video'])->name('product-video');
+        // Route::get('product/{slug}', [ProductController::class, 'show'])->name('product.show');
 
 
-        // brands
-        Route::get('brand-show/{slug}', [OurBrandController::class, 'show'])->name('brand-show');
 
         // news
         Route::get('news', [BlogController::class, 'index'])->name('news');
@@ -82,10 +81,9 @@ Route::group(
         Route::post('contact-form', [ContactformController::class, 'store'])->name('contact-form');
         // work us
         Route::get('work-us', [WorkUsController::class, 'index'])->name('work-us');
-        Route::get('jobads/{slug}', [WorkUsController::class, 'show'])->name('work-us.jobads.show');
+        // Route::get('jobads/{slug}', [WorkUsController::class, 'show'])->name('work-us.jobads.show');
 
-        // build information
-        Route::get('build-information', [BuildInformationController::class, 'index'])->name('build-information');
+
 
         // search web
         Route::get('search-web', [SearchWebController::class, 'search'])->name('search-web');

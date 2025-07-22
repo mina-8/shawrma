@@ -1,4 +1,5 @@
 
+import ContentRenderer from "@/Components/ContentRenderer";
 import { Head } from "@inertiajs/react";
 
 import { useTranslation } from "react-i18next";
@@ -41,7 +42,7 @@ const Show = ({ blog }: Props) => {
                 {/* Text Content */}
                 <div className="px-12 text-xl leading-10 flex flex-col justify-center bg-gray-200">
                     <h3 className="text-4xl font-semibold mb-4">{blog?.title}</h3>
-                    <ReactMarkdown>{blog?.content}</ReactMarkdown>
+                    <ContentRenderer content={blog.content} />
 
                 </div>
             </section>

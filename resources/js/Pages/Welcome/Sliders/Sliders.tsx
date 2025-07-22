@@ -8,9 +8,9 @@ import slidefour from '../../../../../public/sliders/slide (4).webp'
 import { useTranslation } from 'react-i18next'
 import { Link } from '@inertiajs/react'
 
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
-import ReactMarkdown from 'react-markdown'
+
 import { MdOutlineArrowCircleLeft, MdOutlineArrowCircleRight } from 'react-icons/md'
+import ContentRenderer from '@/Components/ContentRenderer'
 
 interface Slides {
     id: number;
@@ -29,36 +29,36 @@ export default function Sliders({ slides }: Props) {
 
     const { t, i18n } = useTranslation();
 
-    const [visibleSlides , setVisibleSlides] = useState<boolean[]>(
+    const [visibleSlides, setVisibleSlides] = useState<boolean[]>(
         Array(slides.length).fill(false)
     )
 
     const slideRefs = useRef<(HTMLDivElement | null)[]>([])
 
     useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const index = Number(entry.target.getAttribute('data-index'))
-          if (!isNaN(index)) {
-            setVisibleSlides((prev) => {
-              const updated = [...prev]
-              updated[index] = entry.isIntersecting
-              return updated
-            })
-          }
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const index = Number(entry.target.getAttribute('data-index'))
+                    if (!isNaN(index)) {
+                        setVisibleSlides((prev) => {
+                            const updated = [...prev]
+                            updated[index] = entry.isIntersecting
+                            return updated
+                        })
+                    }
+                })
+            },
+            { threshold: 0.1 } // يبدأ الأنيميشن لما يظهر 30% من العنصر
+        )
+
+        slideRefs.current.forEach((el) => {
+            if (el) observer.observe(el)
         })
-      },
-      { threshold: 0.1 } // يبدأ الأنيميشن لما يظهر 30% من العنصر
-    )
 
-    slideRefs.current.forEach((el) => {
-      if (el) observer.observe(el)
-    })
+        return () => observer.disconnect()
 
-    return () => observer.disconnect()
-
-  }, [slides.length]);
+    }, [slides.length]);
 
     const images = [
         slideone,
@@ -73,10 +73,10 @@ export default function Sliders({ slides }: Props) {
                 {slides?.length > 0 ?
                     slides.map((item, index) =>
                         <div
-                        key={index}
+                            key={index}
                             className='w-full h-screen bg-center bg-cover '
                             data-index={index}
-                            ref={(el)=>(slideRefs.current[index] = el)}
+                            ref={(el) => (slideRefs.current[index] = el)}
                             style={{ backgroundImage: `url('${item.image}')` }}
                         >
                             {index === 0 ?
@@ -89,7 +89,10 @@ export default function Sliders({ slides }: Props) {
                                     >{item.title}</p>
                                     <div className='text-white font-bold text-4xl'
                                         style={{ textShadow: '2px 1px 2px rgba(0,0,0,0.3)' }}
-                                    ><ReactMarkdown>{item.content}</ReactMarkdown></div>
+                                    >
+
+                                        <ContentRenderer content={item.content} />
+                                    </div>
                                 </div>
                                 :
 
@@ -106,7 +109,10 @@ export default function Sliders({ slides }: Props) {
                                         >{item.title}</p>
                                         <div className='text-white font-bold text-xl'
                                             style={{ textShadow: '2px 1px 2px rgba(0,0,0,0.3)' }}
-                                        ><ReactMarkdown>{item.content}</ReactMarkdown></div>
+                                        >
+                                            
+                                            <ContentRenderer content={item.content} />
+                                        </div>
                                         {item.active_btn &&
                                             <Link
                                                 className='px-4 py-2 rounded my-4 font-semibold bg-primary-color text-white flex items-center gap-3'

@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import ReactMarkdown from "react-markdown";
 import { IoMdCheckmark } from "react-icons/io";
 import React from "react";
+import ContentRenderer from "@/Components/ContentRenderer";
 interface CoreVesions {
     id: number;
     title: string;
@@ -36,8 +37,10 @@ const Index = ({ workus }: Props) => {
                 {/* Text Content */}
                 <div className="px-12 text-xl leading-10 flex flex-col justify-center bg-gray-200">
                     <h3 className="text-4xl font-semibold mb-4">{workus?.title}</h3>
-                    <ReactMarkdown>{workus?.content}</ReactMarkdown>
+                    <div>
 
+                        <ContentRenderer content={workus.content} />
+                    </div>
                 </div>
 
                 {/* Image */}
@@ -53,13 +56,13 @@ const Index = ({ workus }: Props) => {
             {/* contet title */}
             <section>
                 <div
-                className="flex justify-center items-center my-8 mx-auto "
+                    className="flex justify-center items-center my-8 mx-auto "
                 >
                     <p
-                    className="font-bold text-7xl"
+                        className="font-bold text-7xl"
                     >
 
-                {workus.content_title}
+                        {workus.content_title}
                     </p>
                 </div>
             </section>
@@ -79,8 +82,10 @@ const Index = ({ workus }: Props) => {
                                         <div
                                             className='text-4xl font-bold'
                                         >{item.title}</div>
-                                        <ReactMarkdown>{item?.content}</ReactMarkdown>
+                                        <div>
 
+                                            <ContentRenderer content={item.content} />
+                                        </div>
                                     </div>
 
                                     {/* الصورة */}
@@ -110,7 +115,10 @@ const Index = ({ workus }: Props) => {
                                         <div
                                             className='text-4xl font-bold'
                                         >{item.title}</div>
-                                        <ReactMarkdown>{item?.content}</ReactMarkdown>
+                                        <div>
+
+                                            <ContentRenderer content={item.content} />
+                                        </div>
 
                                     </div>
 
@@ -123,11 +131,12 @@ const Index = ({ workus }: Props) => {
 
             {/* footer */}
             <section
-            className="mx-auto w-full max-w-7xl flex justify-center items-center my-8 flex-col gap-4"
+                className="mx-auto w-full max-w-7xl flex justify-center items-center my-8 flex-col gap-4"
             >
-                <ReactMarkdown>
-                    {workus.footer_content}
-                </ReactMarkdown>
+                <div>
+
+                    <ContentRenderer content={workus.footer_content} />
+                </div>
             </section>
 
         </>

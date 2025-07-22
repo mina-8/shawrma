@@ -19,6 +19,24 @@ class ProductInfoResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+        public static function getNavigationGroup(): string
+    {
+        return __('filament-panels::layout.webist.how_make');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('filament-panels::resources/pages/productinfo.title');
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament-panels::resources/pages/productinfo.title');
+    }
+    public static function getNavigationLabel(): string
+    {
+        return __('filament-panels::resources/pages/productinfo.title');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -31,7 +49,20 @@ class ProductInfoResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('id')->sortable(),
+                Tables\Columns\TextColumn::make('title')
+                    ->label(__('filament-panels::resources/pages/blog.fields.title'))
+                    ->searchable(),
+
+                Tables\Columns\ImageColumn::make('image')
+                    ->label(__('filament-panels::resources/pages/blog.fields.image'))
+                    ->disk('public')
+                    ->square()
+                    ->size(60),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('filament-panels::resources/pages/blog.fields.created_at'))
+                    ->dateTime()
+                    ->sortable(),
             ])
             ->filters([
                 //

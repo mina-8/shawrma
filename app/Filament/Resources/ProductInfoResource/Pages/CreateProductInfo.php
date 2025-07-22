@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Filament\Forms\Components\Wizard\Step;
 use Filament\Forms\Components;
 use Pixelpeter\FilamentLanguageTabs\Forms\Components\LanguageTabs;
+use Rawilk\FilamentQuill\Filament\Forms\Components\QuillEditor;
 class CreateProductInfo extends CreateRecord
 {
     use CreateRecord\Concerns\HasWizard;
@@ -19,22 +20,22 @@ class CreateProductInfo extends CreateRecord
     protected function getSteps(): array
     {
         return [
-            Step::make(__('filament-panels::resources/pages/aboutus.fields.header'))
-                ->description(__('filament-panels::resources/pages/aboutus.fields.description'))
+            Step::make(__('filament-panels::resources/pages/productinfo.fields.header'))
+                ->description(__('filament-panels::resources/pages/productinfo.fields.description'))
                 ->schema([
 
                     Components\Group::make([
                         LanguageTabs::make([
                             Components\TextInput::make('nav_title')
-                                ->label(__('filament-panels::resources/pages/aboutus.fields.title'))
+                                ->label(__('filament-panels::resources/pages/productinfo.fields.nav_title'))
                                 ->required(),
                             Components\TextInput::make('title')
-                                ->label(__('filament-panels::resources/pages/aboutus.fields.title'))
+                                ->label(__('filament-panels::resources/pages/productinfo.fields.title'))
                                 ->required(),
 
 
-                            Components\MarkdownEditor::make('content')
-                                ->label(__('filament-panels::resources/pages/aboutus.fields.content')),
+                            QuillEditor::make('content')
+                                ->label(__('filament-panels::resources/pages/productinfo.fields.content')),
 
 
                             Components\Hidden::make('slug')
@@ -42,7 +43,7 @@ class CreateProductInfo extends CreateRecord
                         ]),
                     ]),
                     Components\FileUpload::make('image')
-                        ->label(__('filament-panels::resources/pages/aboutus.fields.image'))
+                        ->label(__('filament-panels::resources/pages/productinfo.fields.image'))
                         ->disk('public')
                         ->directory('uploads/howmake')
                         ->visibility('public')
@@ -54,20 +55,20 @@ class CreateProductInfo extends CreateRecord
                         ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp'])
                         ->required(),
                 ]),
-            Step::make(__('filament-panels::resources/pages/aboutus.fields.create_station.header'))
-                ->description(__('filament-panels::resources/pages/aboutus.fields.create_station.description'))
+            Step::make(__('filament-panels::resources/pages/productinfo.fields.create_station.header'))
+                ->description(__('filament-panels::resources/pages/productinfo.fields.create_station.description'))
                 ->schema([
                     Components\Repeater::make('create_core_station')
-                        ->label(__('filament-panels::resources/pages/aboutus.fields.create_station.description'))
+                        ->label(__('filament-panels::resources/pages/productinfo.fields.create_station.description'))
                         ->schema([
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
-                                    ->label(__('filament-panels::resources/pages/aboutus.fields.create_station.title')),
-                                Components\MarkdownEditor::make('content')
-                                    ->label(__('filament-panels::resources/pages/aboutus.fields.create_station.content')),
+                                    ->label(__('filament-panels::resources/pages/productinfo.fields.create_station.title')),
+                                QuillEditor::make('content')
+                                    ->label(__('filament-panels::resources/pages/productinfo.fields.create_station.content')),
                             ]),
                             Components\FileUpload::make('image')
-                                ->label(__('filament-panels::resources/pages/aboutus.fields.image'))
+                                ->label(__('filament-panels::resources/pages/productinfo.fields.image'))
                                 ->disk('public')
                                 ->directory('uploads/stations')
                                 ->visibility('public')
@@ -79,7 +80,7 @@ class CreateProductInfo extends CreateRecord
                                 ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp'])
                                 ->required(),
                         ])
-                        ->addActionLabel(__('filament-panels::resources/pages/aboutus.fields.create_station.add_station'))
+                        ->addActionLabel(__('filament-panels::resources/pages/productinfo.fields.create_station.add_station'))
                         ->collapsible()
                         ->itemLabel(fn(array $state): ?string => $state['title']['en'] ?? $state['title']['ar'] ?? null)
                         ->required(),

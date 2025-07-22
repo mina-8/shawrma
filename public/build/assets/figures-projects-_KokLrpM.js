@@ -1,1 +1,0 @@
-const s="/build/assets/figures-customers-BkqS6rR_.svg",t="/build/assets/figures-employees-B7mZzTqm.svg",i="/build/assets/figures-products-C3jw5tU_.svg",e="/build/assets/figures-tons-Bb7T64Eo.svg",g="/build/assets/poduction-lines-Ct-6N1K3.svg",o="/build/assets/figures-projects-BCESZmat.svg";export{t as a,i as b,e as c,g as d,o as e,s as i};

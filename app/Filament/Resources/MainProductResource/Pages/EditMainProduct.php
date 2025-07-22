@@ -35,20 +35,6 @@ class EditMainProduct extends EditRecord
             }
         }
 
-        $recordTitle = is_array($record->title) ? $record->title : json_decode($record->title, true);
-        $dataSlug = is_array($data['slug'] ?? null) ? $data['slug'] : [];
-
-        // تحديث slug العربي
-        if (!empty($data['title']['ar']) && (!isset($recordTitle['ar']) || $data['title']['ar'] !== $recordTitle['ar'])) {
-            $dataSlug['ar'] = str_replace(' ', '-', $data['title']['ar']);
-        }
-
-        // تحديث slug الإنجليزي
-        if (!empty($data['title']['en']) && (!isset($recordTitle['en']) || $data['title']['en'] !== $recordTitle['en'])) {
-            $dataSlug['en'] = str_replace(' ', '-', $data['title']['en']);
-        }
-
-        $data['slug'] = $dataSlug;
 
 
         return $data;

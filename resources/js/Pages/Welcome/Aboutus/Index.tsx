@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import banner from '@/../../public/aboutus/our-story.jpg'
-import ReactMarkdown from 'react-markdown';
+
 import { Head } from '@inertiajs/react';
 import { Carousel, ConfigProvider } from 'antd';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import quote from '@/../../public/aboutus/quote.png';
+import React from 'react';
+import ContentRenderer from '@/Components/ContentRenderer';
 interface CoreStories {
     id: number;
     title: string;
@@ -23,7 +24,12 @@ interface CoreStations {
     content: string;
     image: string;
 }
-
+interface Product {
+    id: number;
+    title: string;
+    link: string;
+    image: string;
+}
 interface Aboutus {
     id: number;
     title: string;
@@ -33,7 +39,8 @@ interface Aboutus {
     description: string;
     coresvesions: CoreVesions[];
     corestations: CoreStations[];
-    corestories: CoreStories[]
+    corestories: CoreStories[];
+    products: Product[];
 
 }
 
@@ -42,7 +49,7 @@ interface Props {
 }
 
 const Index = ({ aboutus }: Props) => {
-    console.log(aboutus.corestations.length)
+
     const { t, i18n } = useTranslation();
     const CustomArrow = ({ direction, onClick }: any) => {
         const ArrowIcon = direction === 'prev' ? FaArrowLeft : FaArrowRight;
@@ -72,7 +79,11 @@ const Index = ({ aboutus }: Props) => {
                 {/* Text Content */}
                 <div className="px-12 text-xl leading-10 flex flex-col justify-center">
                     <h3 className="text-4xl font-semibold mb-4">{aboutus?.title}</h3>
-                    <ReactMarkdown>{aboutus?.content}</ReactMarkdown>
+                    <div>
+
+                        <ContentRenderer content={aboutus.content} />
+                    </div>
+
                 </div>
 
                 {/* Image */}
@@ -84,8 +95,98 @@ const Index = ({ aboutus }: Props) => {
                     />
                 </div>
             </div>
+
+            {/* Special Products Section */}
+            <div className="py-12 bg-gray-100">
+                {/* Only show section if products exist */}
+                {aboutus.products.length > 0 && (
+                    <>
+                        {/* Section Title */}
+                        <div className="relative text-center mb-8 px-4">
+                            <h2 className="text-2xl sm:text-4xl md:text-5xl text-black font-semibold inline-block py-4">
+                                {t('aboutus.stories')}
+                            </h2>
+
+                        </div>
+
+                        {/* Carousel */}
+                        <ConfigProvider
+                            theme={{
+                                components: {
+                                    Carousel: {
+                                        dotHeight: 12,
+                                        dotWidth: 12,
+                                        dotActiveWidth: 20,
+                                    },
+                                },
+                            }}
+                        >
+                            <div className="max-w-6xl mx-auto px-2 sm:px-4">
+                                <Carousel
+                                    arrows
+                                    dots={false}
+                                    autoplay
+                                    infinite
+                                    slidesToShow={5} // Default on desktop
+                                    slidesToScroll={1}
+                                    prevArrow={<CustomArrow direction="prev" />}
+                                    nextArrow={<CustomArrow direction="next" />}
+                                    responsive={[
+                                        {
+                                            breakpoint: 1280, // Large screens
+                                            settings: {
+                                                slidesToShow: 2,
+                                                slidesToScroll: 1,
+                                            },
+                                        },
+                                        {
+                                            breakpoint: 1024, // Medium screens (tablets)
+                                            settings: {
+                                                slidesToShow: 1,
+                                                slidesToScroll: 1,
+                                            },
+                                        },
+                                        {
+                                            breakpoint: 640, // Small screens (mobile)
+                                            settings: {
+                                                slidesToShow: 1,
+                                                slidesToScroll: 1,
+                                            },
+                                        },
+                                    ]}
+                                >
+                                    {aboutus.products.map((item, index) => (
+                                        <div key={index} className="p-4">
+                                            {/* <div className="flex flex-col md:flex-row justify-between items-center gap-6 hover:bg-white hover:shadow-lg"> */}
+
+
+                                            {/* Image */}
+                                            <a
+                                                target='_blank'
+                                                href={item.link != '' ? item.link : '#'}
+                                                className="text-primary-color w-full flex flex-col justify-center items-center">
+                                                <img
+                                                    src={item.image}
+                                                    alt={item.title}
+                                                    // className="w-full max-h-64 md:max-h-96 object-cover object-center rounded-md"
+                                                    className='h-80'
+                                                />
+                                                <div>
+                                                    {item.title}
+                                                </div>
+                                            </a>
+                                            {/* </div> */}
+                                        </div>
+                                    ))}
+                                </Carousel>
+                            </div>
+                        </ConfigProvider>
+                    </>
+                )}
+            </div>
+
             {/* about customer stories */}
-            <div className="py-12 bg-gray-100 dark:bg-gray-900 dark:text-gray-100">
+            <div className="py-12 bg-gray-100 ">
                 {/* Section Heading */}
                 <div className="text-center mb-8 px-4 relative">
                     <h2 className="text-2xl sm:text-5xl text-black font-semibold inline-block py-4">
@@ -134,7 +235,8 @@ const Index = ({ aboutus }: Props) => {
 
                                         {/* النص */}
                                         <div className="w-full md:w-1/2 text-center text-2xl">
-                                            <ReactMarkdown>{item.content}</ReactMarkdown>
+
+                                            <ContentRenderer content={item.content} />
                                         </div>
 
                                         {/* الصورة */}
@@ -168,13 +270,15 @@ const Index = ({ aboutus }: Props) => {
 
                 {/* النص */}
                 <div className="mx-4 md:mx-8 text-lg md:text-xl leading-relaxed py-6 md:py-0">
-                    <ReactMarkdown>{aboutus?.content}</ReactMarkdown>
+
+                    <ContentRenderer content={aboutus.content} />
                 </div>
 
 
                 {/* النص */}
                 <div className="mx-4 md:mx-8 text-lg md:text-xl leading-relaxed py-6 md:py-0">
-                    <ReactMarkdown>{aboutus?.content}</ReactMarkdown>
+                    <ContentRenderer content={aboutus.content} />
+
                 </div>
 
                 {/* الصورة */}
@@ -192,39 +296,45 @@ const Index = ({ aboutus }: Props) => {
 
             {/* about orca corevesion */}
             {aboutus.coresvesions.length > 0 && (
-                <div
-                    className='flex flex-col '
-                >
+                <div className="flex flex-col">
                     {aboutus.coresvesions.map((item, index) => (
                         <div
                             key={index}
-                            className='bg-cover bg-center bg-no-repeat flex flex-col justify-center items-center gap-4 py-8 px-12 relative min-h-screen relative'
+                            className="relative flex flex-col justify-center items-center gap-4 min-h-screen bg-cover bg-center bg-no-repeat"
                             style={{
-                                backgroundImage: `url('${item.image}')`
+                                backgroundImage: `url('${item.image}')`,
                             }}
                         >
-                            {/* <div className='absolute w-full h-full bg-black top-0 right-0 opacity-50'></div> */}
-                            <div
-                                className='bg-white p-12 flex flex-col gap-8 w-1/2 absolute bottom-0 right-40'
-                            >
+                            {/* خلفية شفافة اختيارية */}
+                            {/* <div className="absolute inset-0 bg-black/40"></div> */}
 
-                                <h3
-                                    className='text-5xl font-semibold'
-                                >{item.title}</h3>
-                                <div
-                                    className=' text-xl leading-10'
-                                >
-                                    <ReactMarkdown>{item?.content}</ReactMarkdown>
+                            {/* الصندوق الأبيض */}
+                            <div
+                                className="
+            bg-white p-6 sm:p-8 md:p-12 flex flex-col gap-4 sm:gap-6 md:gap-8
+            w-[90%] sm:w-[80%] md:w-[60%] lg:w-1/2
+            absolute bottom-4 sm:bottom-8 md:bottom-10
+            left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-10 lg:right-20
+            shadow-lg rounded-lg
+          "
+                            >
+                                <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">
+                                    {item.title}
+                                </h3>
+
+                                <div className="text-base sm:text-lg md:text-xl leading-relaxed md:leading-9">
+
+                                    <ContentRenderer content={item.content} />
                                 </div>
                             </div>
-
                         </div>
                     ))}
                 </div>
             )}
 
+
             {/* certifcate */}
-            <div className="my-12 "  id='certif'>
+            <div className="my-12 " id='certif'>
                 {/* Section certifcate */}
                 <div className="text-center mb-8 px-4" >
                     <h2 className="text-2xl sm:text-5xl text-black font-semibold inline-block py-4">
@@ -298,7 +408,8 @@ const Index = ({ aboutus }: Props) => {
                                         <div
                                             className='text-sm'
                                         >
-                                            <ReactMarkdown>{item.content}</ReactMarkdown>
+
+                                            <ContentRenderer content={item.content} />
                                         </div>
                                     </div>
                                 </div>

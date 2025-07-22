@@ -15,7 +15,7 @@ use Filament\Forms\Components\Wizard\Step;
 use Filament\Forms\Components;
 use Illuminate\Support\Str;
 use Pixelpeter\FilamentLanguageTabs\Forms\Components\LanguageTabs;
-
+use Rawilk\FilamentQuill\Filament\Forms\Components\QuillEditor;
 class EditOurPromise extends EditRecord
 {
     use EditRecord\Concerns\HasWizard;
@@ -40,11 +40,11 @@ class EditOurPromise extends EditRecord
                             Components\TextInput::make('title')
                                 ->label(__('filament-panels::resources/pages/ourpromise.fields.title')),
 
-                            Components\MarkdownEditor::make('content')
+                            QuillEditor::make('content')
                                 ->label(__('filament-panels::resources/pages/ourpromise.fields.content')),
-                            Components\MarkdownEditor::make('description')
+                            QuillEditor::make('description')
                                 ->label(__('filament-panels::resources/pages/ourpromise.fields.description')),
-                            Components\MarkdownEditor::make('footer_title')
+                            QuillEditor::make('footer_title')
                                 ->label(__('filament-panels::resources/pages/ourpromise.fields.footer_title')),
 
 
@@ -103,7 +103,7 @@ class EditOurPromise extends EditRecord
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
                                     ->label(__('filament-panels::resources/pages/ourpromise.fields.create_sustainable.title')),
-                                Components\MarkdownEditor::make('content')
+                                QuillEditor::make('content')
                                     ->label(__('filament-panels::resources/pages/ourpromise.fields.create_sustainable.content')),
                             ]),
                             Components\ColorPicker::make('color'),
@@ -134,7 +134,7 @@ class EditOurPromise extends EditRecord
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
                                     ->label(__('filament-panels::resources/pages/ourpromise.fields.create_vesion.title')),
-                                Components\MarkdownEditor::make('content')
+                                QuillEditor::make('content')
                                     ->label(__('filament-panels::resources/pages/ourpromise.fields.create_vesion.content')),
                             ]),
                             Components\FileUpload::make('image')
@@ -164,7 +164,7 @@ class EditOurPromise extends EditRecord
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
                                     ->label(__('filament-panels::resources/pages/ourpromise.fields.create_station.title')),
-                                Components\MarkdownEditor::make('content')
+                                QuillEditor::make('content')
                                     ->label(__('filament-panels::resources/pages/ourpromise.fields.create_station.content')),
                             ]),
                             Components\FileUpload::make('image')

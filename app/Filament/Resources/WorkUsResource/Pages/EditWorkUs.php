@@ -14,7 +14,7 @@ use Filament\Forms\Components;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Pixelpeter\FilamentLanguageTabs\Forms\Components\LanguageTabs;
-
+use Rawilk\FilamentQuill\Filament\Forms\Components\QuillEditor;
 class EditWorkUs extends EditRecord
 {
     use EditRecord\Concerns\HasWizard;
@@ -40,7 +40,7 @@ class EditWorkUs extends EditRecord
                                 ->label(__('filament-panels::resources/pages/workus.fields.title'))
                                 ->required(),
 
-                            Components\MarkdownEditor::make('content')
+                            QuillEditor::make('content')
                                 ->label(__('filament-panels::resources/pages/workus.fields.content'))
                                 ->required(),
 
@@ -48,7 +48,7 @@ class EditWorkUs extends EditRecord
                                 ->label(__('filament-panels::resources/pages/workus.fields.content_title'))
                                 ->required(),
 
-                            Components\MarkdownEditor::make('footer_content')
+                            QuillEditor::make('footer_content')
                                 ->label(__('filament-panels::resources/pages/workus.fields.footer_content'))
                                 ->required(),
 
@@ -77,7 +77,7 @@ class EditWorkUs extends EditRecord
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
                                     ->label(__('filament-panels::resources/pages/workus.fields.create_vesion.title')),
-                                Components\MarkdownEditor::make('content')
+                                QuillEditor::make('content')
                                     ->label(__('filament-panels::resources/pages/workus.fields.create_vesion.content')),
                             ]),
                             Components\FileUpload::make('image')

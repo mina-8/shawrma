@@ -16,7 +16,7 @@ use Pixelpeter\FilamentLanguageTabs\Forms\Components\LanguageTabs;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components;
-
+use Illuminate\Support\Str;
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
@@ -47,8 +47,32 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                // Forms\Components\Grid::make(1)
+                Forms\Components\Grid::make(1)
+                    ->schema([
+                        LanguageTabs::make([
+                            Forms\Components\TextInput::make('title')
+                                ->label(__('filament-panels::resources/pages/product.fields.title'))
+                                ->required(),
 
+                        ]),
+                        Forms\Components\TextInput::make('link')
+                            ->label(__('filament-panels::resources/pages/product.fields.link'))
+                            // ->required()
+                            ->url(),
+                        Forms\Components\FileUpload::make('image')
+                            ->label(__('filament-panels::resources/pages/product.fields.image'))
+                            ->image()
+                            ->disk('public')
+                            ->directory('uploads/product')
+                            ->visibility('public')
+                            ->maxSize(4096)
+                            ->getUploadedFileNameForStorageUsing(function ($file) {
+                                $extension = $file->getClientOriginalExtension();
+                                return Str::uuid() . '.' . $extension;
+                            })
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp'])
+                            ->required(),
+                    ]),
             ]);
     }
 
@@ -60,7 +84,7 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->label(__('filament-panels::resources/pages/product.fields.title'))
                     ->searchable(),
-                
+
                 Tables\Columns\ImageColumn::make('image')
                     ->label(__('filament-panels::resources/pages/product.fields.image'))
                     ->disk('public')

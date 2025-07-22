@@ -9,7 +9,7 @@ import { User } from '@/types';
 import { useTranslation } from 'react-i18next';
 
 import { AiOutlineGlobal } from 'react-icons/ai';
-import { FaArrowUp } from 'react-icons/fa';
+import { FaArrowUp, FaTruck } from 'react-icons/fa';
 import { IoMoon, IoSearch } from 'react-icons/io5';
 import SearchForm from '@/Components/SearchWeb/SearchForm';
 import Footer from './Footer';
@@ -22,6 +22,7 @@ import WorkusNav from '@/Components/NavList/WorkusNav';
 
 import { MdOutlineWbSunny } from 'react-icons/md';
 import ChangeLang from '@/Components/ChangeLang/ChangeLang';
+import { FaCartShopping } from 'react-icons/fa6';
 
 
 export default function AuthWelcome({
@@ -29,6 +30,7 @@ export default function AuthWelcome({
     children,
 }: PropsWithChildren<{ header?: ReactNode }>) {
     const { currentRoute }: string | any = usePage().props;
+    const { site_setting }: string | any = usePage().props;
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
@@ -68,14 +70,25 @@ export default function AuthWelcome({
                         <div
                             className='flex items-center justify-between max-w-7xl mx-auto px-4 py-4'
                         >
-                            <div>
-                                <Link
-                                    className='text-white cursor-pointer'
-
-                                    href={route('contact-us', { lang: i18n.language })}
+                            <div
+                                className='flex items-center gap-4'
+                            >
+                                <a
+                                    className={`text-white cursor-pointer ${i18n.language == 'ar' ? 'border-l-2 px-4' : 'border-r-2 px-4'} flex items-center gap-2`}
+                                    target='_blank'
+                                    href={site_setting?.shop_link || '#'}
                                 >
+                                    <FaCartShopping />
+                                    {t('navbar-links.shop')}
+                                </a>
 
-                                    {t('navbar-links.contact-us')}
+                                <Link
+                                    className={`text-white cursor-pointer flex items-center gap-2 `}
+
+                                    href={route('delivery', { lang: i18n.language })}
+                                >
+                                    <FaTruck />
+                                    {t('navbar-links.delivery')}
                                 </Link>
 
 
@@ -165,8 +178,8 @@ export default function AuthWelcome({
 
                                         <Dropdown>
                                             <NavLink
-                                                href={route('contact-us', { lang: i18n.language })}
-                                                active={currentRoute === 'contact-us'}
+                                                href={route('mainproduct', { lang: i18n.language })}
+                                                active={currentRoute === 'mainproduct'}
                                             >
                                                 {t('home.products')}
                                                 <svg
@@ -183,7 +196,7 @@ export default function AuthWelcome({
                                                 </svg>
                                             </NavLink>
                                             <Dropdown.Content
-                                            align='center'
+                                                align='center'
                                             >
                                                 {/* <ProductNav /> */}
                                             </Dropdown.Content>

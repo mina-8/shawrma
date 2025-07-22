@@ -53,7 +53,7 @@ class ContactUsResource extends Resource
                     ->schema([
 
                         Forms\Components\FileUpload::make('banner')
-                            ->label(__('filament-panels::resources/pages/blog.fields.image'))
+                            ->label(__('filament-panels::resources/pages/contactus.fields.image'))
                             ->image()
                             ->disk('public')
                             ->directory('uploads/contactus')
@@ -73,16 +73,16 @@ class ContactUsResource extends Resource
                         ]),
 
                         Forms\Components\TextInput::make('addres')
-                            ->label(__('filament-panels::resources/pages/ourstory.fields.addres'))
+                            ->label(__('filament-panels::resources/pages/contactus.fields.addres'))
                             ->required(),
                         Forms\Components\TextInput::make('phone')
-                            ->label(__('filament-panels::resources/pages/ourstory.fields.phone'))
+                            ->label(__('filament-panels::resources/pages/contactus.fields.phone'))
                             ->required(),
                         Forms\Components\TextInput::make('fax')
-                            ->label(__('filament-panels::resources/pages/ourstory.fields.fax'))
+                            ->label(__('filament-panels::resources/pages/contactus.fields.fax'))
                             ->required(),
                         Forms\Components\TextInput::make('map')
-                            ->label(__('filament-panels::resources/pages/ourstory.fields.map'))
+                            ->label(__('filament-panels::resources/pages/contactus.fields.map'))
                             ->required(),
                     ]),
             ]);
@@ -93,10 +93,7 @@ class ContactUsResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')->sortable(),
-                Tables\Columns\TextColumn::make('type')
-                    ->label(__('filament-panels::resources/pages/contactus.fields.type'))
-                    ->formatStateUsing(fn(string $state) => __('filament-panels::resources/pages/contactus.fields.' . $state))
-                    ->searchable(),
+
                 Tables\Columns\TextColumn::make('title')
                     ->label(__('filament-panels::resources/pages/contactus.fields.name'))
                     ->searchable(),

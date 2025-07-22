@@ -1,4 +1,4 @@
-import ReciveUpdate from '@/Components/ReciveUpdate'
+
 import { Head, Link } from '@inertiajs/react'
 import React from 'react'
 import { useTranslation } from 'react-i18next';
@@ -57,7 +57,7 @@ const Index = ({ results, query }: Props) => {
                 </div>
             </div>
 
-            <ReciveUpdate />
+
         </>
     );
 };

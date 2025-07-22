@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
 use Pixelpeter\FilamentLanguageTabs\Forms\Components\LanguageTabs;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
+use Rawilk\FilamentQuill\Filament\Forms\Components\QuillEditor;
 
 class BlogResource extends Resource
 {
@@ -52,7 +53,7 @@ class BlogResource extends Resource
                             Forms\Components\TextInput::make('title')
                                 ->label(__('filament-panels::resources/pages/blog.fields.title'))
                                 ->required(),
-                            Forms\Components\MarkdownEditor::make('content')
+                            QuillEditor::make('content')
                                 ->label(__('filament-panels::resources/pages/blog.fields.content')),
                             Forms\Components\Hidden::make('slug')
                                 ->label('slug'),

@@ -15,7 +15,7 @@ use Illuminate\Support\Str;
 use Pixelpeter\FilamentLanguageTabs\Forms\Components\LanguageTabs;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Redirect;
-
+use Rawilk\FilamentQuill\Filament\Forms\Components\QuillEditor;
 class CreateWorkUs extends CreateRecord
 {
     use CreateRecord\Concerns\HasWizard;
@@ -49,7 +49,7 @@ class CreateWorkUs extends CreateRecord
                                 ->label(__('filament-panels::resources/pages/workus.fields.title'))
                                 ->required(),
 
-                            Components\MarkdownEditor::make('content')
+                            QuillEditor::make('content')
                                 ->label(__('filament-panels::resources/pages/workus.fields.content'))
                                 ->required(),
 
@@ -57,7 +57,7 @@ class CreateWorkUs extends CreateRecord
                                 ->label(__('filament-panels::resources/pages/workus.fields.content_title'))
                                 ->required(),
 
-                            Components\MarkdownEditor::make('footer_content')
+                            QuillEditor::make('footer_content')
                                 ->label(__('filament-panels::resources/pages/workus.fields.footer_content'))
                                 ->required(),
 
@@ -86,7 +86,7 @@ class CreateWorkUs extends CreateRecord
                             LanguageTabs::make([
                                 Components\TextInput::make('title')
                                     ->label(__('filament-panels::resources/pages/workus.fields.create_vesion.title')),
-                                Components\MarkdownEditor::make('content')
+                                QuillEditor::make('content')
                                     ->label(__('filament-panels::resources/pages/workus.fields.create_vesion.content')),
                             ]),
                             Components\FileUpload::make('image')

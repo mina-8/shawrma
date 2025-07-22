@@ -1,7 +1,8 @@
+import ContentRenderer from '@/Components/ContentRenderer';
 import { Head, Link } from '@inertiajs/react';
 import React from 'react'
 import { useTranslation } from 'react-i18next';
-import ReactMarkdown from 'react-markdown';
+
 interface CoreStations {
     id: number;
     title: string;
@@ -31,7 +32,11 @@ const Index = ({ howmake }: Props) => {
                 {/* Text Content */}
                 <div className="px-12 text-xl leading-10 flex flex-col justify-center bg-gray-200">
                     <h3 className="text-4xl font-semibold mb-4">{howmake?.title}</h3>
-                    <ReactMarkdown>{howmake?.content}</ReactMarkdown>
+                    <div>
+
+                        <ContentRenderer content={howmake.content} />
+                    </div>
+
 
                 </div>
 
@@ -60,7 +65,11 @@ const Index = ({ howmake }: Props) => {
                                         <div
                                             className='text-4xl font-bold'
                                         >{item.title}</div>
-                                        <ReactMarkdown>{item?.content}</ReactMarkdown>
+                                        <div>
+
+                                            <ContentRenderer content={item.content} />
+                                        </div>
+
 
                                     </div>
 
@@ -91,7 +100,11 @@ const Index = ({ howmake }: Props) => {
                                         <div
                                             className='text-4xl font-bold'
                                         >{item.title}</div>
-                                        <ReactMarkdown>{item?.content}</ReactMarkdown>
+                                        <div>
+
+                                            <ContentRenderer content={item.content} />
+                                        </div>
+
 
                                     </div>
 

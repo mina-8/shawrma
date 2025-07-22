@@ -17,7 +17,7 @@ use Pixelpeter\FilamentLanguageTabs\Forms\Components\LanguageTabs;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use function PHPUnit\Framework\callback;
-
+use Rawilk\FilamentQuill\Filament\Forms\Components\QuillEditor;
 class SlideResource extends Resource
 {
     protected static ?string $model = Slide::class;
@@ -60,7 +60,7 @@ class SlideResource extends Resource
                             Forms\Components\TextInput::make('title')
                                 ->label(__('filament-panels::resources/pages/slide.fields.title'))
                                 ->required(),
-                            Forms\Components\MarkdownEditor::make('content')
+                            QuillEditor::make('content')
                                 ->label(__('filament-panels::resources/pages/slide.fields.content')),
 
                         ]),
