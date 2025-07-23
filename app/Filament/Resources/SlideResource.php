@@ -13,98 +13,21 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
-use Pixelpeter\FilamentLanguageTabs\Forms\Components\LanguageTabs;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Storage;
-use function PHPUnit\Framework\callback;
-use Rawilk\FilamentQuill\Filament\Forms\Components\QuillEditor;
 class SlideResource extends Resource
 {
     protected static ?string $model = Slide::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-presentation-chart-bar';
-
-
-
-    public static function getNavigationGroup(): string
-    {
-        return __('filament-panels::layout.webist.control webiste');
-    }
-
-    public static function getNavigationSort(): ?int
-    {
-        return 1; // Lower numbers appear first
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament-panels::resources/pages/slide.title');
-    }
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament-panels::resources/pages/slide.title');
-    }
-    public static function getNavigationLabel(): string
-    {
-        return __('filament-panels::resources/pages/slide.title');
-    }
-
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Grid::make(1)
-                    ->schema([
-                        LanguageTabs::make([
-                            Forms\Components\TextInput::make('title')
-                                ->label(__('filament-panels::resources/pages/slide.fields.title'))
-                                ->required(),
-                            QuillEditor::make('content')
-                                ->label(__('filament-panels::resources/pages/slide.fields.content')),
-
-                        ]),
-
-                        Forms\Components\Toggle::make('active_btn')
-                            ->label(__('filament-panels::resources/pages/slide.fields.active_btn'))
-                            ->default(false)
-                            ->reactive(),
-                        LanguageTabs::make([
-                            Forms\Components\TextInput::make('str_btn')
-                                ->label(__('filament-panels::resources/pages/slide.fields.str_btn'))
-                                ->disabled(fn(callable $get) => !$get('active_btn')),
-
-                        ]),
-
-                        Forms\Components\Select::make('link')
-                            ->label(__('filament-panels::resources/pages/slide.fields.link'))
-                            ->options([
-                                'welcome' => 'Home',
-                                'our-story' => 'our story',
-                                'our-promise' => 'our promise',
-                                'our-culture' => 'our culture',
-                                'building-best' => 'bulid best',
-                                'Sustainability' => 'Sustainability',
-                                'projects' => 'projects',
-                                'innovation' => 'innovation',
-                                'contact-us' => 'contact-us',
-                                'mainproduct' => 'mainproduct',
-                                'product-search' => 'product',
-                                'news' => 'news',
-                                'work-us' => 'work-us',
-                                'build-information' => 'build information',
-
-                            ])
-                            ->searchable()
-                            ->default('welcome')
-                            ->disabled(fn(callable $get) => !$get('active_btn')),
-
-
-                        Forms\Components\FileUpload::make('image')
+                Forms\Components\FileUpload::make('image')
                             ->label(__('filament-panels::resources/pages/slide.fields.image'))
                             ->image()
                             ->disk('public')
-                            ->directory('uploads/slides')
+                            ->directory('uploads/product')
                             ->visibility('public')
                             ->maxSize(4096)
                             ->getUploadedFileNameForStorageUsing(function ($file) {
@@ -113,7 +36,6 @@ class SlideResource extends Resource
                             })
                             ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp'])
                             ->required(),
-                    ]),
             ]);
     }
 
@@ -121,48 +43,17 @@ class SlideResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->sortable(),
-                Tables\Columns\TextColumn::make('title')
-                    ->label(__('filament-panels::resources/pages/blog.fields.title'))
-                    ->searchable(),
-
-                Tables\Columns\ImageColumn::make('image')
-                    ->label(__('filament-panels::resources/pages/blog.fields.image'))
-                    ->disk('public')
-                    ->square()
-                    ->size(60),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->label(__('filament-panels::resources/pages/blog.fields.created_at'))
-                    ->dateTime()
-                    ->sortable(),
+                //
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make()
-                    ->label(__('filament-panels::resources/pages/blog.actions.edit.label')),
-
-                Tables\Actions\DeleteAction::make()
-                    ->label(__('filament-panels::resources/pages/blog.actions.delete.label'))
-                    ->requiresConfirmation()
-                    ->before(function (Slide $record) {
-                        if (!empty($record->image) && Storage::disk('public')->exists($record->image)) {
-                            Storage::disk('public')->delete($record->image);
-                        }
-                    }),
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make()
-                        ->label(__('filament-panels::resources/pages/blog.actions.delete.label'))
-                        ->before(function (Collection $records) {
-                            foreach ($records as $record) {
-                                if (!empty($record->image) && Storage::disk('public')->exists($record->image)) {
-                                    Storage::disk('public')->delete($record->$record->image);
-                                }
-                            }
-                        }),
+                    Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

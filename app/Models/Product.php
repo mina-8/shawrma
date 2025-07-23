@@ -6,20 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use \Spatie\Translatable\HasTranslations;
-    protected $fillable = [
 
+    protected $fillable = [
         'title',
         'image',
-        'link'
+        'conttent',
+        'price'
     ];
-    public $translatable = ['title'];
-
-    protected $casts = [
-        'title' => 'array',
-
-    ];
-
+    
     protected $guarded = ['id'];
 
 }

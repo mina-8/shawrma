@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Slide;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -19,28 +20,45 @@ class HomeController extends Controller
         // Slides
         $slides = Slide::get()
             ->map(function ($slide) use ($appLang) {
-                $title = $slide->getTranslation('title', $appLang);
-                $content = $slide->getTranslation('content', $appLang);
+
+
                 $image = Storage::url($slide->image);
-                $str_btn = $slide->getTranslation('str_btn', $appLang);
+
+                return [
+                    'id' => $slide->id,
+
+
+                    'image' => $image,
+
+
+
+                ];
+            });
+
+        $product = Product::get()
+            ->map(function ($slide) use ($appLang) {
+                $title = $slide->title;
+                $content = $slide->conttent;
+                $image = Storage::url($slide->image);
+                $price = $slide->price;;
                 return [
                     'id' => $slide->id,
                     'title' => $title,
                     'content' => $content,
                     'image' => $image,
-                    'active_btn' => $slide->active_btn,
-                    'str_btn' => $str_btn,
-                    'link' => $slide->link
+
+                    'price' => $price,
+
                 ];
             });
 
-        if(!$slides) {
-            return inertia('Welcome/NotFound/NotFound');
-        }
-
         return Inertia::render('Welcome', [
             'slides' => $slides,
-
+            'proudct' => $product
         ]);
+    }
+
+    public function servay(){
+        return Inertia::render('Welcome/Servay/Servay');
     }
 }

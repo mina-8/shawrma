@@ -10,15 +10,15 @@ import Loading from '@/Components/Loading';
 
 export default function Welcome({
     slides = [],
-
-}: PageProps<{  slides?: []}>) {
+proudct=[]
+}: PageProps<{  slides?: [] , proudct?:[]}>) {
 
 
     return (
         <>
             <Head title="Home" />
             
-            <Sliders slides={slides} />
+            <Sliders slides={slides} product={proudct} />
 
         </>
     );

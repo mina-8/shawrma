@@ -1,6 +1,6 @@
 import { SVGAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
-import logo from '@/../../public/logo.svg'
+import logo from '@/../../public/logo.png'
 export default function ApplicationLogo(props: SVGAttributes<SVGElement>) {
 
     return (

@@ -9,7 +9,7 @@ import { User } from '@/types';
 import { useTranslation } from 'react-i18next';
 
 import { AiOutlineGlobal } from 'react-icons/ai';
-import { FaArrowUp, FaTruck } from 'react-icons/fa';
+import { FaArrowUp, FaPhoneAlt, FaTruck } from 'react-icons/fa';
 import { IoMoon, IoSearch } from 'react-icons/io5';
 import SearchForm from '@/Components/SearchWeb/SearchForm';
 import Footer from './Footer';
@@ -59,46 +59,21 @@ export default function AuthWelcome({
 
     return (
         <LangWraper>
-            <div className="min-h-screen " dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}>
+            <div className="min-h-screen "
+            // dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}
+            dir='rtl'
+            >
                 <nav
                     className={`${isScrolled ? 'fixed' : ''}  top-0 left-0 w-full z-50 transition-colors duration-300 `}
                 >
                     <div
                         className='bg-primary-color '
                     >
-                        {/* top bar */}
-                        <div
-                            className='flex items-center justify-between max-w-7xl mx-auto px-4 py-4'
-                        >
-                            <div
-                                className='flex items-center gap-4'
-                            >
-                                <a
-                                    className={`text-white cursor-pointer ${i18n.language == 'ar' ? 'border-l-2 px-4' : 'border-r-2 px-4'} flex items-center gap-2`}
-                                    target='_blank'
-                                    href={site_setting?.shop_link || '#'}
-                                >
-                                    <FaCartShopping />
-                                    {t('navbar-links.shop')}
-                                </a>
 
-                                <Link
-                                    className={`text-white cursor-pointer flex items-center gap-2 `}
-
-                                    href={route('delivery', { lang: i18n.language })}
-                                >
-                                    <FaTruck />
-                                    {t('navbar-links.delivery')}
-                                </Link>
-
-
-                            </div>
-                            <ChangeLang />
-                        </div>
                     </div>
                     {/* navbar */}
                     <div
-                        className='bg-white'
+                        // className='bg-white'
                     >
                         <div className={`mx-auto py-4  px-4 sm:px-6 lg:px-8  max-w-7xl `}>
                             <div className="flex h-16 ">
@@ -115,120 +90,42 @@ export default function AuthWelcome({
                                 <div className={`hidden xl:ms-6 xl:flex xl:items-center relative justify-between w-full`}>
                                     <div className="hidden gap-1 sm:-my-px sm:ms-10 sm:flex">
 
-                                        <NavLink
+                                        {/* <NavLink
                                             href={route('welcome', { lang: i18n.language })}
                                             active={currentRoute === 'welcome'}
                                             className='uppercase inline-flex items-center '
                                         >
                                             {t('home.home')}
-                                        </NavLink>
+                                        </NavLink> */}
 
-                                        <Dropdown>
-                                            <NavLink
-                                                href={route('about-us', { lang: i18n.language })}
-                                                active={currentRoute === 'about-us'}>
-                                                {t('home.about')}
-                                                <svg
-                                                    className="-me-0.5 ms-2 h-4 w-4"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                >
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clipRule="evenodd"
-                                                    />
-                                                </svg>
-                                            </NavLink>
-                                            <Dropdown.Content
-                                                align='center'
-                                            >
-                                                <AboutNav />
-
-                                            </Dropdown.Content>
-                                        </Dropdown>
-
-                                        <Dropdown>
-                                            <NavLink
-                                                href={route('how-make', { lang: i18n.language })}
-                                                active={currentRoute === 'how-make'}
-                                            >
-                                                {t('home.how_build')}
-                                                <svg
-                                                    className="-me-0.5 ms-2 h-4 w-4"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                >
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clipRule="evenodd"
-                                                    />
-                                                </svg>
-                                            </NavLink>
-                                            <Dropdown.Content
-                                                align='center'
-                                            >
-                                                <ServiceNav />
-                                            </Dropdown.Content>
-                                        </Dropdown>
-
-
-                                        <Dropdown>
-                                            <NavLink
-                                                href={route('mainproduct', { lang: i18n.language })}
-                                                active={currentRoute === 'mainproduct'}
-                                            >
-                                                {t('home.products')}
-                                                <svg
-                                                    className="-me-0.5 ms-2 h-4 w-4"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                >
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clipRule="evenodd"
-                                                    />
-                                                </svg>
-                                            </NavLink>
-                                            <Dropdown.Content
-                                                align='center'
-                                            >
-                                                {/* <ProductNav /> */}
-                                            </Dropdown.Content>
-                                        </Dropdown>
-
-
-                                        <NavLink
-                                            href={route('work-us', { lang: i18n.language })}
-                                            active={currentRoute === 'work-us'}
-                                            className='uppercase'
-                                        >
-                                            {t('home.carreer')}
-                                        </NavLink>
-
-                                        <NavLink
-                                            href={route('contact-us', { lang: i18n.language })}
-                                            active={currentRoute === 'contact-us'}
-                                            className='uppercase'
-                                        >
-                                            {t('home.contact_us')}
-                                        </NavLink>
 
                                     </div>
+                                    <div
+                                    className='flex items-center gap-4'
+                                    >
+                                        <Link
+                                        href={route('servay' , {lang:i18n.language})}
+                                        className='text-primary-color font-bold text-xl'
+                                        >
+                                            شاركنا رايك
+                                        </Link>
                                     <div className="relative ms-3">
-                                        <button
+                                        {/* <button
                                             name='search'
                                             type="button"
-                                            className="inline-flex items-center rounded-full bg-primary-color hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
+                                            className="inline-flex items-center gap-3 rounded-full bg-primary-color  border border-transparent text-white px-2 py-2 text-md font-bold leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
                                             onClick={() => setShowSearch(true)}
                                         >
-                                            <IoSearch size={24} />
-                                        </button>
+
+                                        </button> */}
+                                        <a href="tel:01012345678"
+                                        className="inline-flex items-center gap-3 rounded-full bg-primary-color  border border-transparent text-white px-2 py-2 text-md font-bold leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
+                                        >
+                                            01012345678
+                                            <FaPhoneAlt />
+                                        </a>
+                                    </div>
+
                                     </div>
 
                                 </div>
@@ -289,78 +186,7 @@ export default function AuthWelcome({
                                 {t('home.home')}
                             </ResponsiveNavLink>
 
-                            <ResponsiveNavLink
-                                href={route('contact-us', { lang: i18n.language })}
-                                active={route().current('contact-us')}
-                            >
-                                {t('home.contact')}
-                            </ResponsiveNavLink>
 
-                            <Dropdown>
-                                <Dropdown.Trigger>
-                                    <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
-                                        {t('home.about')}
-                                    </span>
-                                </Dropdown.Trigger>
-                                <Dropdown.Content>
-                                    <AboutNav />
-                                </Dropdown.Content>
-                            </Dropdown>
-
-
-                            <Dropdown>
-                                <Dropdown.Trigger>
-                                    <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
-                                        {t('home.how_build')}
-                                    </span>
-                                </Dropdown.Trigger>
-                                <Dropdown.Content>
-                                    <ServiceNav />
-                                </Dropdown.Content>
-                            </Dropdown>
-
-                            <Dropdown>
-                                <Dropdown.Trigger>
-                                    <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
-                                        {t('home.products')}
-                                    </span>
-                                </Dropdown.Trigger>
-                                <Dropdown.Content>
-                                    {/* <ProductNav /> */}
-                                </Dropdown.Content>
-                            </Dropdown>
-
-                            <Dropdown>
-                                <Dropdown.Trigger>
-                                    <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
-                                        {t('home.bulidinus')}
-                                    </span>
-                                </Dropdown.Trigger>
-                                <Dropdown.Content>
-                                    <WorkusNav />
-                                </Dropdown.Content>
-                            </Dropdown>
-
-                            <Dropdown>
-                                <Dropdown.Trigger>
-                                    <span className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded">
-                                        {t('home.spotlight')}
-                                    </span>
-                                </Dropdown.Trigger>
-                                <Dropdown.Content>
-                                    <SpotlightNav />
-                                </Dropdown.Content>
-                            </Dropdown>
-
-                            <span className="inline-flex rounded-md">
-                                <button
-                                    type="button"
-                                    className="inline-flex items-center rounded-full bg-yellow-original hover:bg-yellow-700 border border-transparent text-white px-2 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
-                                    onClick={() => setShowSearch(true)}
-                                >
-                                    <IoSearch size={24} />
-                                </button>
-                            </span>
                         </div>
                     </div>
 
@@ -374,7 +200,7 @@ export default function AuthWelcome({
                     </header>
                 )}
 
-                <main className="relative">{children}</main>
+                <main className="relative ">{children}</main>
                 {isScrolled && (
                     <div className='fixed bottom-4 right-4 z-50'>
                         <div
@@ -385,7 +211,7 @@ export default function AuthWelcome({
                         </div>
                     </div>
                 )}
-                <Footer />
+                {/* <Footer /> */}
             </div>
         </LangWraper>
     );

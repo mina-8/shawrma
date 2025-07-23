@@ -17,6 +17,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components;
 use Illuminate\Support\Str;
+
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
@@ -24,7 +25,7 @@ class ProductResource extends Resource
 
     protected static ?string $navigationIcon = 'polaris-product-add-icon';
 
-    public static function getNavigationGroup():string
+    public static function getNavigationGroup(): string
     {
         return __('filament-panels::resources/pages/mainproduct.navigationgroup');
     }
@@ -49,16 +50,15 @@ class ProductResource extends Resource
             ->schema([
                 Forms\Components\Grid::make(1)
                     ->schema([
-                        LanguageTabs::make([
-                            Forms\Components\TextInput::make('title')
-                                ->label(__('filament-panels::resources/pages/product.fields.title'))
-                                ->required(),
-
-                        ]),
-                        Forms\Components\TextInput::make('link')
+                        Forms\Components\TextInput::make('title')
+                            ->label(__('filament-panels::resources/pages/product.fields.title'))
+                            ->required(),
+                        Forms\Components\TextInput::make('conttent')
                             ->label(__('filament-panels::resources/pages/product.fields.link'))
-                            // ->required()
-                            ->url(),
+                        ->required(),
+                        Forms\Components\TextInput::make('price')
+                            ->label(__('filament-panels::resources/pages/product.fields.link'))
+                        ->required(),
                         Forms\Components\FileUpload::make('image')
                             ->label(__('filament-panels::resources/pages/product.fields.image'))
                             ->image()
@@ -100,7 +100,7 @@ class ProductResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                ->label(__('filament-panels::resources/pages/product.actions.edit.label')),
+                    ->label(__('filament-panels::resources/pages/product.actions.edit.label')),
                 Tables\Actions\DeleteAction::make()
                     ->label(__('filament-panels::resources/pages/product.actions.delete.label'))
                     ->requiresConfirmation()

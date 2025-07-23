@@ -46,7 +46,7 @@ createInertiaApp({
             }, []);
             return (
                 <LanguageContext>
-                    {showLoading && <Loading loading={loading} />}
+                    {/* {showLoading && <Loading loading={loading} />} */}
                     <App {...props} />
                 </LanguageContext>
 

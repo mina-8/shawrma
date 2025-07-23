@@ -40,54 +40,12 @@ Route::group(
         //     return Inertia::render('Dashboard');
         // })->middleware(['auth', 'verified'])->name('dashboard');
 
-        Route::fallback(function () {
-            return Inertia::render('Welcome/NotFound/NotFound');
-        });
+        // Route::fallback(function () {
+        //     return Inertia::render('Welcome/NotFound/NotFound');
+        // });
 
         Route::get('/', [HomeController::class, 'index'])->name('welcome');
-
-        // about us
-        Route::get('about-us', [AboutUsController::class, 'index'])->name('about-us');
-        // our story
-        Route::get('our-story', [OurStoryController::class, 'index'])->name('our-story');
-        // our proimse
-        Route::get('our-promise', [OurPromiseController::class, 'index'])->name('our-promise');
-        Route::get('pdf-review/{id}', [OurPromiseController::class, 'show'])->name('pdf-review');
-        // How Make
-        Route::get('how-make', [HowMakeController::class, 'index'])->name('how-make');
-        Route::get('how-make/{slug}', [HowMakeController::class, 'show'])->name('how-make.show');
-
-        // main product
-        Route::get('mainproduct', [MainProductController::class, 'index'])->name('mainproduct');
-
-
-        // delivery
-        Route::get('delivery' , [DeliveryController::class , 'index'])->name('delivery');
-
-        // products
-        // Route::get('product/{slug}', [ProductController::class, 'show'])->name('product.show');
-
-
-
-        // news
-        Route::get('news', [BlogController::class, 'index'])->name('news');
-        Route::get('news/{slug}', [BlogController::class, 'show'])->name('news.show');
-
-        // contact us
-        Route::get('contact-us', [ContactUsController::class, 'index'])->name('contact-us');
-        Route::post('contact-us', [ContactUsController::class, 'store'])->name('contact-us');
-
-        // contact form
-        Route::post('contact-form', [ContactformController::class, 'store'])->name('contact-form');
-        // work us
-        Route::get('work-us', [WorkUsController::class, 'index'])->name('work-us');
-        // Route::get('jobads/{slug}', [WorkUsController::class, 'show'])->name('work-us.jobads.show');
-
-
-
-        // search web
-        Route::get('search-web', [SearchWebController::class, 'search'])->name('search-web');
-
+        Route::get('servay' , [HomeController::class , 'servay'])->name('servay');
         Route::middleware('auth')->group(function () {
             Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
             Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
