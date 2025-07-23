@@ -1,0 +1,1 @@
+import{j as r,$ as o}from"./app-BuHe2j-c.js";import s from"./Sliders-HurG_U_j.js";import"./index-D1elSMO1.js";function p({slides:t=[],proudct:e=[]}){return r.jsxs(r.Fragment,{children:[r.jsx(o,{title:"Home"}),r.jsx(s,{slides:t,product:e})]})}export{p as default};
