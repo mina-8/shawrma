@@ -15,7 +15,7 @@ return [
     ],
     'fields' => [
         'link' => 'اللينك',
-        'icon' => 'الايقونة من موقع react-icons',
+        'icon' => 'الايقونة بصيغة svg',
 
         'created_at' => 'تاريخ الإنشاء',
     ],

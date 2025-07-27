@@ -2,14 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\MainProduct;
-use App\Models\OurBrand;
-use App\Models\OurRegionalOffice;
-use App\Models\ProductInfo;
-use App\Models\SettingSite;
 use App\Models\SocialLink;
-use App\Models\SolveBrand;
-use App\Models\Sustainability;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -47,7 +40,7 @@ class HandleInertiaRequests extends Middleware
             ],
             'applang' =>  $appLang,
             'currentRoute' => Route::currentRouteName(),
-            
+            'socialicons' => fn()=> SocialLink::get(),
             'flash' => function () {
                 return [
                     'success' => session('success'),

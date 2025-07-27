@@ -19,6 +19,19 @@ class SlideResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function getModelLabel(): string
+    {
+        return __('filament-panels::resources/pages/slide.title');
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament-panels::resources/pages/slide.title');
+    }
+    public static function getNavigationLabel(): string
+    {
+        return __('filament-panels::resources/pages/slide.title');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

@@ -2,6 +2,7 @@
 return [
     'title' => 'المنتجات',
     'breadcrumb' => 'المنتجات',
+    
     'actions' => [
         'create' => [
             'label' => 'إضافة منتج',
@@ -20,6 +21,7 @@ return [
         'title' => 'اسم المنتج',
         'product description' => 'الوصف',
         'content' => 'المحتوي',
+        'price' => 'السعر',
         'uses' => 'الاستخدامات',
         'advantages' => 'المزايا',
         'special' => 'منتج مميز',

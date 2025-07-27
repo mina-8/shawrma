@@ -25,11 +25,6 @@ class ProductResource extends Resource
 
     protected static ?string $navigationIcon = 'polaris-product-add-icon';
 
-    public static function getNavigationGroup(): string
-    {
-        return __('filament-panels::resources/pages/mainproduct.navigationgroup');
-    }
-
 
     public static function getModelLabel(): string
     {
@@ -54,10 +49,10 @@ class ProductResource extends Resource
                             ->label(__('filament-panels::resources/pages/product.fields.title'))
                             ->required(),
                         Forms\Components\TextInput::make('conttent')
-                            ->label(__('filament-panels::resources/pages/product.fields.link'))
+                            ->label(__('filament-panels::resources/pages/product.fields.content'))
                         ->required(),
                         Forms\Components\TextInput::make('price')
-                            ->label(__('filament-panels::resources/pages/product.fields.link'))
+                            ->label(__('filament-panels::resources/pages/product.fields.price'))
                         ->required(),
                         Forms\Components\FileUpload::make('image')
                             ->label(__('filament-panels::resources/pages/product.fields.image'))

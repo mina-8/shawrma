@@ -1,0 +1,1 @@
+import{j as r,$ as o}from"./app-DQn-VxnX.js";import s from"./Sliders-B6Jj_3ud.js";import"./Footer-BItt4RWP.js";function p({slides:t=[],proudct:e=[]}){return r.jsxs(r.Fragment,{children:[r.jsx(o,{title:"Home"}),r.jsx(s,{slides:t,product:e})]})}export{p as default};

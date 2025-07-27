@@ -118,10 +118,10 @@ export default function AuthWelcome({
                                         >
 
                                         </button> */}
-                                        <a href="tel:01012345678"
+                                        <a href="tel:0542008883"
                                         className="inline-flex items-center gap-3 rounded-full bg-primary-color  border border-transparent text-white px-2 py-2 text-md font-bold leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
                                         >
-                                            01012345678
+                                            0542008883
                                             <FaPhoneAlt />
                                         </a>
                                     </div>
