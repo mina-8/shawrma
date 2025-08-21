@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\BlogController;
 
+use App\Http\Controllers\BranchController;
 use App\Http\Controllers\ContactformController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DeliveryController;
@@ -46,6 +47,8 @@ Route::group(
 
         Route::get('/', [HomeController::class, 'index'])->name('welcome');
         Route::get('servay' , [HomeController::class , 'servay'])->name('servay');
+        Route::get('branches' , [BranchController::class , 'index'])->name('branches');
+        
         Route::middleware('auth')->group(function () {
             Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
             Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

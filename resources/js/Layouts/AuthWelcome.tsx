@@ -104,20 +104,19 @@ export default function AuthWelcome({
                                     className='flex items-center gap-4'
                                     >
                                         <Link
+                                        href={route('branches' , {lang:i18n.language})}
+                                        className='text-primary-color font-bold text-xl'
+                                        >
+                                            فروعنا
+                                        </Link>
+                                        <Link
                                         href={route('servay' , {lang:i18n.language})}
                                         className='text-primary-color font-bold text-xl'
                                         >
                                             شاركنا رايك
                                         </Link>
                                     <div className="relative ms-3">
-                                        {/* <button
-                                            name='search'
-                                            type="button"
-                                            className="inline-flex items-center gap-3 rounded-full bg-primary-color  border border-transparent text-white px-2 py-2 text-md font-bold leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
-                                            onClick={() => setShowSearch(true)}
-                                        >
-
-                                        </button> */}
+                                        
                                         <a href="tel:0542008883"
                                         className="inline-flex items-center gap-3 rounded-full bg-primary-color  border border-transparent text-white px-2 py-2 text-md font-bold leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
                                         >
