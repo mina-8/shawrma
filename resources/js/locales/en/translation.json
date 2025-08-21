@@ -10,7 +10,8 @@
         "testimonials": "Testimonials",
         "faq": "FAQ",
         "privacy_policy": "Privacy Policy",
-        "terms_of_service": "Terms of Service"
+        "terms_of_service": "Terms of Service",
+        "branch" : "Branch"
     },
     "navbarlist": {
         "service": {

@@ -1,4 +1,5 @@
 import ContentRenderer from '@/Components/ContentRenderer';
+import { Head } from '@inertiajs/react';
 import React from 'react'
 import { useTranslation } from 'react-i18next';
 interface props {
@@ -12,6 +13,8 @@ interface props {
 const Index = ({ branches }: props) => {
     const {t} = useTranslation()
     return (
+        <>
+        <Head title={t('home.branch')}/>
         <section className="mx-auto w-full max-w-7xl px-4 py-8">
             <div
                 className=' flex flex-col justify-center items-center gap-8'
@@ -58,6 +61,7 @@ const Index = ({ branches }: props) => {
                 )}
             </div>
         </section>
+        </>
     )
 }
 
