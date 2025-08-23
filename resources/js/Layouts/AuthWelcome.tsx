@@ -64,7 +64,7 @@ export default function AuthWelcome({
             dir='rtl'
             >
                 <nav
-                    className={`${isScrolled ? 'fixed' : ''}  top-0 left-0 w-full z-50 transition-colors duration-300 `}
+                    className={`${isScrolled ? 'fixed' : ''}  top-0 left-0 w-full z-50 transition-colors duration-300 bg-[#f1f5f9]`}
                 >
                     <div
                         className='bg-primary-color '
@@ -116,7 +116,7 @@ export default function AuthWelcome({
                                             شاركنا رايك
                                         </Link>
                                     <div className="relative ms-3">
-                                        
+
                                         <a href="tel:0542008883"
                                         className="inline-flex items-center gap-3 rounded-full bg-primary-color  border border-transparent text-white px-2 py-2 text-md font-bold leading-4 transition duration-150 ease-in-out hover:text-white focus:outline-none"
                                         >
