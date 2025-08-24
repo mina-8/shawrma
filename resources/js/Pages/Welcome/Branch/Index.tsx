@@ -1,4 +1,5 @@
 import ContentRenderer from '@/Components/ContentRenderer';
+import TextSahwrma from '@/Components/TextSahwrma';
 import { Head } from '@inertiajs/react';
 import React from 'react'
 import { useTranslation } from 'react-i18next';
@@ -15,6 +16,7 @@ const Index = ({ branches }: props) => {
     return (
         <>
         <Head title={t('home.branch')}/>
+        <TextSahwrma />
         <section className="mx-auto w-full max-w-7xl px-4 py-8">
             <div
                 className=' flex flex-col justify-center items-center gap-8'

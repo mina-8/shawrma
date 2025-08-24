@@ -16,27 +16,36 @@ class Lang
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $supportedLanguages = ['en', 'ar'];
-        // Check for 'lang' query parameter first
+        $supportedLanguages = ['ar', 'en'];
+        $excludedPaths = ['livewire', 'admin', 'api'];
+
+        // استثناء المسارات المحددة من فحص اللغة
+        if (in_array($request->segment(1), $excludedPaths)) {
+            return $next($request);
+        }
+
+        // التحقق من وجود باراميتر lang في الرابط ?lang=ar
         $queryLang = $request->query('lang');
         if ($queryLang && in_array($queryLang, $supportedLanguages)) {
             app()->setLocale($queryLang);
             URL::defaults(['lang' => $queryLang]);
             return $next($request);
         }
+
+        // تحديد اللغة من أول جزء في الرابط
         $lang = $request->segment(1);
-        // Allow 'livewire' and 'admin' to bypass this middleware
-        if ($lang === 'livewire' || $lang === 'admin') {
-            return $next($request);
-        }
-        // Check if the language is supported
+
         if (in_array($lang, $supportedLanguages)) {
+            // إذا كانت اللغة صحيحة
             app()->setLocale($lang);
             URL::defaults(['lang' => $lang]);
         } else {
-            // If the language is not supported, redirect to the default language
-            return redirect()->to('/en' . $request->getRequestUri());
+            // إذا لم يكتب المستخدم اللغة، نحوله للغة الافتراضية مع الاحتفاظ بالمسار
+            $path = ltrim($request->getPathInfo(), '/');
+            $newPath = '/ar' . ($path ? '/' . $path : '');
+            return redirect($newPath);
         }
+
         return $next($request);
     }
 }

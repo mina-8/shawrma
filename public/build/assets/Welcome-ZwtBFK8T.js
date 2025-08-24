@@ -1,0 +1,1 @@
+import{h as e,j as t,$ as m}from"./app-D3OJ-6Bb.js";import a from"./Sliders-Co2WLh5H.js";import{T as i}from"./TextSahwrma-BY6_Lrzj.js";import"./Footer-DynJFF0W.js";function l({slides:r=[],proudct:o=[]}){const{t:s}=e();return t.jsxs(t.Fragment,{children:[t.jsx(m,{title:s("home.home")}),t.jsx(i,{}),t.jsx(a,{slides:r,product:o})]})}export{l as default};

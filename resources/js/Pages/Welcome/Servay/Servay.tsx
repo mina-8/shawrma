@@ -1,4 +1,5 @@
 
+import TextSahwrma from '@/Components/TextSahwrma';
 import Footer from '@/Layouts/Footer';
 import { Head, usePage } from '@inertiajs/react';
 import React, { useState } from 'react';
@@ -257,6 +258,7 @@ const Servay = () => {
     return (
         <>
             <Head title="servay" />
+            <TextSahwrma />
             <section className="mx-auto w-full max-w-4xl px-4 py-8">
                 <section className="bg-primary-color text-white p-4 flex justify-center items-center rounded-lg my-6 text-2xl font-bold">
                     رأيك يهمنا

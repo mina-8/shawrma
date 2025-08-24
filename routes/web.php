@@ -28,7 +28,7 @@ Route::fallback(function () {
 
 Route::group(
     [
-        'prefix' => '{lang?}',
+      'prefix' => '{lang?}',
         'where' => [
             // Exclude 'livewire' and 'admin' from being matched as language
             'lang' => '(?!livewire|admin)[a-zA-Z]{2}(-[a-zA-Z]{2})?'
@@ -48,7 +48,7 @@ Route::group(
         Route::get('/', [HomeController::class, 'index'])->name('welcome');
         Route::get('servay' , [HomeController::class , 'servay'])->name('servay');
         Route::get('branches' , [BranchController::class , 'index'])->name('branches');
-        
+
         Route::middleware('auth')->group(function () {
             Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
             Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
